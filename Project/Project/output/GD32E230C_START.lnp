@@ -24,6 +24,10 @@
 ".\output\gd32e23x_timer.o"
 ".\output\gd32e23x_usart.o"
 ".\output\gd32e23x_wwdgt.o"
+".\output\cmt2119b.o"
+".\output\cmt2119b_port.o"
+".\output\cmt2119b_spi.o"
+".\output\radio_tx.o"
 --library_type=microlib --strict --scatter ".\output\GD32E230C_START.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

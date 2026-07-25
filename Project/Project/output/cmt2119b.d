@@ -1,7 +1,10 @@
-./output/main.o: ..\User\main.c \
+./output/cmt2119b.o: ..\Hardware\cmt2119b\cmt2119b.c \
+  ..\Hardware\cmt2119b\cmt2119b.h \
+  D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
+  ..\Hardware\cmt2119b\cmt2119b_spi.h \
+  ..\Hardware\cmt2119b\cmt2119b_port.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
@@ -26,4 +29,4 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
-  ..\User\systick.h ..\Hardware\cmt2119b\radio_tx.h
+  ..\Hardware\cmt2119b\cmt2119b_params.h

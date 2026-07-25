@@ -1,31 +1,28 @@
-
 #include "gd32e23x.h"
 #include "systick.h"
-#include <stdio.h>
+#include "radio_tx.h"
+#include <stdint.h>
 
+static uint8_t tx_buf[32];
+
+static void test_packet_init(void)
+{
+    uint8_t i;
+
+    for (i = 0; i < sizeof(tx_buf); i++) {
+        tx_buf[i] = i + 1;
+    }
+}
 
 int main(void)
 {
     systick_config();
 
-    /* enable the LED1 GPIO clock */
-    rcu_periph_clock_enable(RCU_GPIOC);
-    /* configure LED1 GPIO port */ 
-    gpio_mode_set(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_13);
-    gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_13);
-    /* reset LED1 GPIO pin */
-    gpio_bit_reset(GPIOC,GPIO_PIN_13);
+    test_packet_init();
+    radio_tx_init();
 
-
-    while(1)
-		{
-
-        gpio_bit_set(GPIOC,GPIO_PIN_13);
-        delay_1ms(1000);
-        gpio_bit_reset(GPIOC,GPIO_PIN_13);
-        delay_1ms(1000);
-		delay_ms(1);
-		delay_us(1);
-
+    while (1) {
+        radio_tx_send(tx_buf, sizeof(tx_buf));
+        delay_ms(1000);
     }
 }
