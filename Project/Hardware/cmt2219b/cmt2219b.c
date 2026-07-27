@@ -339,7 +339,13 @@ void cmt2219b_clear_interrupt_flags(void)
 uint8_t cmt2219b_packet_received(void)
 {
     /*
-     * PB10 / GPIO3 有效时，认为收到一包。
+     * 0x6D 是 INT_FLAG 寄存器。
+     * bit0 = 1 表示收到完整数据包。
      */
-    return cmt2219b_gpio3_read();
+    if (cmt2219b_read_reg(0x6D) & 0x01) {
+        return CMT2219B_OK;
+    }
+
+    return CMT2219B_ERROR;
 }
+

@@ -3,49 +3,38 @@
 #include "bsp_usart.h"
 #include "radio_tx.h"
 #include "radio_rx.h"
-#include "cmt2119b_port.h"
 #include "cmt2219b.h"
-#include "cmt2219b_port.h"
 #include <stdio.h>
 #include <stdint.h>
 
-static uint8_t tx_buf[32];
-static uint8_t rx_buf[32];
+#define TEST_PACKET_LEN    32
 
-static void test_packet_init(void)
-{
-    uint8_t i;
+/*
+ * 你要发送的数据就在这里改。
+ * 注意长度保持 32 字节，因为当前 RFPDK 配置的是固定 32 字节包。
+ */
+static uint8_t tx_buf[TEST_PACKET_LEN] = {
+    0x11, 0x22, 0x33, 0x44,
+    0x55, 0x66, 0x77, 0x88,
+    0x99, 0xAA, 0xBB, 0xCC,
+    0xDD, 0xEE, 0xFF, 0x00,
+    0x01, 0x02, 0x03, 0x04,
+    0x05, 0x06, 0x07, 0x08,
+    0x09, 0x0A, 0x0B, 0x0C,
+    0x0D, 0x0E, 0x0F, 0x10,
+};
 
-    for (i = 0; i < sizeof(tx_buf); i++)
-    {
-        tx_buf[i] = i + 1;
-    }
-}
+static uint8_t rx_buf[TEST_PACKET_LEN];
 
 static void print_buf(uint8_t *buf, uint8_t len)
 {
     uint8_t i;
 
-    for (i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         printf("%02X ", buf[i]);
     }
 
     printf("\r\n");
-}
-
-static void print_rx_regs(void)
-{
-    printf("RX REG: MODE_STA=0x%02X, INT1_CTL=0x%02X, INT2_CTL=0x%02X, INT_EN=0x%02X, FIFO_CTL=0x%02X, INT_CLR1=0x%02X, INT_CLR2=0x%02X, INT_FLAG=0x%02X, FIFO_FLAG=0x%02X\r\n",
-           cmt2219b_read_reg(0x61),
-           cmt2219b_read_reg(0x66),
-           cmt2219b_read_reg(0x67),
-           cmt2219b_read_reg(0x68),
-           cmt2219b_read_reg(0x69),
-           cmt2219b_read_reg(0x6A),
-           cmt2219b_read_reg(0x6B),
-           cmt2219b_read_reg(0x6D),
-           cmt2219b_read_reg(0x6E));
 }
 
 int main(void)
@@ -53,103 +42,71 @@ int main(void)
     uint8_t tx_ok;
     uint8_t rx_ok;
     uint8_t send_ret;
-    uint8_t tx_gpio_before;
-    uint8_t tx_gpio_after;
-    uint8_t rx_gpio_after;
-    uint8_t rx_found;
-    uint16_t i;
     uint32_t tx_count = 0;
     uint32_t rx_count = 0;
 
     systick_config();
 
     usart_gpio_config(115200);
-    printf("\r\nPH2119BBA TX + PH2219BBA RX test start\r\n");
-
-    test_packet_init();
+    printf("\r\nPH2119BBA TX + PH2219BBA RX user data test\r\n");
 
     tx_ok = radio_tx_init();
-    if (tx_ok)
-    {
+    if (tx_ok) {
         printf("TX init OK\r\n");
-    }
-    else
-    {
+    } else {
         printf("TX init ERROR\r\n");
     }
 
     rx_ok = radio_rx_init();
-    if (rx_ok)
-    {
+    if (rx_ok) {
         printf("RX init OK\r\n");
-    }
-    else
-    {
+    } else {
         printf("RX init ERROR\r\n");
     }
 
-    printf("TX packet: ");
-    print_buf(tx_buf, sizeof(tx_buf));
+    printf("User TX data: ");
+    print_buf(tx_buf, TEST_PACKET_LEN);
 
-    print_rx_regs();
-
-    while (1)
-    {
-        tx_gpio_before = cmt2119b_gpio3_read();
-
-        if (tx_ok)
-        {
-            send_ret = radio_tx_send(tx_buf, sizeof(tx_buf));
+    while (1) {
+        /*
+         * 发送你在 tx_buf 里面填写的数据
+         */
+        if (tx_ok) {
+            send_ret = radio_tx_send(tx_buf, TEST_PACKET_LEN);
             tx_count++;
 
-            tx_gpio_after = cmt2119b_gpio3_read();
-
-            if (send_ret)
-            {
-                printf("TX OK, count=%lu, TX_GPIO3 before=%d after=%d\r\n",
-                       tx_count, tx_gpio_before, tx_gpio_after);
-            }
-            else
-            {
-                printf("TX ERROR, count=%lu, TX_GPIO3 before=%d after=%d\r\n",
-                       tx_count, tx_gpio_before, tx_gpio_after);
+            if (send_ret) {
+                printf("\r\nTX OK, count=%lu\r\n", tx_count);
+            } else {
+                printf("\r\nTX ERROR, count=%lu\r\n", tx_count);
             }
         }
-
-        rx_found = 0;
 
         /*
-         * 发完后连续观察 200ms，避免 RX GPIO3 脉冲太短漏掉。
-         * 当前实测 PH2219BBA GPIO3/PB10 空闲为高电平，所以临时按低电平有效判断。
+         * 这里判断的是接收芯片内部 INT_FLAG 寄存器。
+         * 0x6D 是 INT_FLAG，bit0 = 1 表示接收芯片收到完整数据包。
+         * 所以下面打印出来的数据，是从 PH2219BBA 接收芯片 FIFO 里面读出来的。
          */
-        for (i = 0; i < 200; i++)
-        {
-            if (rx_ok && (cmt2219b_read_reg(0x6D) & 0x01))
-            {
-                cmt2219b_go_stby();
+        if (rx_ok && (cmt2219b_read_reg(0x6D) & 0x01)) {
+            cmt2219b_go_stby();
 
-                cmt2219b_read_fifo(rx_buf, sizeof(rx_buf));
+            /*
+             * 从接收芯片 FIFO 读取数据，不是直接打印 tx_buf。
+             */
+            cmt2219b_read_fifo(rx_buf, TEST_PACKET_LEN);
 
-                cmt2219b_clear_rx_fifo();
-                cmt2219b_clear_interrupt_flags();
-                cmt2219b_go_rx();
+            cmt2219b_clear_rx_fifo();
+            cmt2219b_clear_interrupt_flags();
+            cmt2219b_go_rx();
 
-                rx_count++;
+            rx_count++;
 
-                printf("RX OK, count=%lu, data: ", rx_count);
-                print_buf(rx_buf, sizeof(rx_buf));
-            }
-
-            delay_ms(1);
+            printf("RX chip FIFO data, count=%lu: ", rx_count);
+            print_buf(rx_buf, TEST_PACKET_LEN);
+        } else {
+            printf("RX chip no packet\r\n");
         }
 
-        if (!rx_found)
-        {
-            rx_gpio_after = cmt2219b_gpio3_read();
-            printf("RX no packet, RX_GPIO3=%d\r\n", rx_gpio_after);
-            print_rx_regs();
-        }
-
-        delay_ms(800);
+        delay_ms(1000);
     }
 }
