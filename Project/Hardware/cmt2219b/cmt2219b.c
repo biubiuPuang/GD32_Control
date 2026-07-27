@@ -10,6 +10,7 @@
 #define CMT2219B_DATA_RATE_BANK_ADDR        0x20
 #define CMT2219B_BASEBAND_BANK_ADDR         0x38
 #define CMT2219B_TX_BANK_ADDR               0x55
+#define CMT2219B_LBD_BANK_ADDR              0x5F
 
 /* Registers */
 #define CMT2219B_CUS_CMT10                  0x09
@@ -212,6 +213,10 @@ uint8_t cmt2219b_init(void)
     cmt2219b_config_reg_bank(CMT2219B_TX_BANK_ADDR,
                              g_cmt2219b_tx_bank,
                              CMT2219B_TX_BANK_SIZE);
+                             
+    cmt2219b_config_reg_bank(CMT2219B_LBD_BANK_ADDR,
+                            g_cmt2219b_lbd_bank,
+                            CMT2219B_LBD_BANK_SIZE);
 
     /*
      * 官方 Demo 里有这个额外配置：
