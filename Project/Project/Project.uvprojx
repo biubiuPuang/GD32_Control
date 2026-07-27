@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b</IncludePath>
+              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -408,6 +408,96 @@
               <FileName>bsp_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\usart\bsp_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b_params.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b_params.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b_port.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b_port.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2119b_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2119b\cmt2119b_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>radio_tx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2119b\radio_tx.c</FilePath>
+            </File>
+            <File>
+              <FileName>radio_tx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2119b\radio_tx.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b_params.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b_params.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b_port.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b_port.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmt2219b_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2219b\cmt2219b_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>radio_rx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\cmt2219b\radio_rx.c</FilePath>
+            </File>
+            <File>
+              <FileName>radio_rx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\cmt2219b\radio_rx.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -536,56 +626,6 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\Doc\readme.txt</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>cmt2119b</GroupName>
-          <Files>
-            <File>
-              <FileName>cmt2119b.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmt2119b.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b.h</FilePath>
-            </File>
-            <File>
-              <FileName>cmt2119b_params.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b_params.h</FilePath>
-            </File>
-            <File>
-              <FileName>cmt2119b_port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b_port.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmt2119b_port.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b_port.h</FilePath>
-            </File>
-            <File>
-              <FileName>cmt2119b_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmt2119b_spi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\cmt2119b\cmt2119b_spi.h</FilePath>
-            </File>
-            <File>
-              <FileName>radio_tx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\cmt2119b\radio_tx.c</FilePath>
-            </File>
-            <File>
-              <FileName>radio_tx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\cmt2119b\radio_tx.h</FilePath>
             </File>
           </Files>
         </Group>
