@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b</IncludePath>
+              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -518,6 +518,28 @@
         </Group>
         <Group>
           <GroupName>App</GroupName>
+          <Files>
+            <File>
+              <FileName>app_211.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\app_211.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_211.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\app_211.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_221.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\app_221.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_221.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\app_221.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Firmware</GroupName>

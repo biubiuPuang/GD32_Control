@@ -13,6 +13,8 @@
 ".\output\radio_rx.o"
 ".\output\startup_gd32e23x.o"
 ".\output\system_gd32e23x.o"
+".\output\app_211.o"
+".\output\app_221.o"
 ".\output\gd32e23x_adc.o"
 ".\output\gd32e23x_cmp.o"
 ".\output\gd32e23x_crc.o"

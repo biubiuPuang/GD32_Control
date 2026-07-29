@@ -1,4 +1,4 @@
-./output/main.o: ..\User\main.c \
+./output/app_211.o: App\app_211.c App\app_211.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
   D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
@@ -28,5 +28,4 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\User\systick.h ..\Hardware\usart\bsp_usart.h \
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
-  ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
-  App\app_211.h App\app_221.h
+  ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h
