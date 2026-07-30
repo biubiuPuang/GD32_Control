@@ -10,12 +10,9 @@
 #include <stdio.h>
 #include <stdint.h>
 
-// 221Ğ¾Æ¬³õÊ¼»¯
+// 221æ¥æ”¶èŠ¯ç‰‡åˆå§‹åŒ–
 void app_221_init(void);
-// 221½ÓÊÕ32×Ö½ÚÊı¾İ
+// 221æ¥æ”¶èŠ¯ç‰‡æ¥æ”¶æ•°æ®
 void app_221_receive_data(void);
-
-
-
 
 #endif /* __APP_221_H_ */

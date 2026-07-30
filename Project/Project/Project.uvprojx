@@ -539,6 +539,16 @@
               <FileType>5</FileType>
               <FilePath>.\App\app_221.h</FilePath>
             </File>
+            <File>
+              <FileName>led_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\led_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>led_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\led_test.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -3,10 +3,9 @@
 // �����ֽڵĳ��ȹ̶�32�ֽ�
 #define TEST_PACKET_LEN 32
 
-/*
- * �⴮����Ϊ�������� 11 22 33 44 55 ��ӡ�����������ʾ��ǰ���͵��ǲ�������
- * ��Ҫ���͵����ݾ�������ġ�
- * ע�ⳤ�ȱ��� 32 �ֽڣ���Ϊ��ǰ RFPDK ���õ��ǹ̶� 32 �ֽڰ���
+/**
+ * @brief 测试数据,串口如果打印11 22 33 则说明是初始化测试数据
+ * 
  */
 static uint8_t tx_buf_data[TEST_PACKET_LEN] = {
     0x11,
@@ -48,10 +47,9 @@ static uint8_t send_ret;
 static uint32_t tx_count = 0;
 
 /**
- * @brief ��ȡGD32E230оƬ��ΨһUID
- *
- * GD32E230��ΨһID��96λ
- * @param uid��С:3�ֽ�
+ * @brief 获取GD32E230的UID
+ * 
+ * @param uid 固定长度3个字节
  */
 void gd32_get_uid(uint32_t uid[3])
 {
@@ -63,11 +61,10 @@ void gd32_get_uid(uint32_t uid[3])
 }
 
 /**
- *
- * @brief ���ڴ�ӡ,��һ���ֽڰ���16���ƴ�ӡ����
- * ��ͨ��printf��ӡ������ɲ����� ����16���������������������
- * @param buf ��Ҫ��ӡ���ֽ�
- * @param len ��Ҫ��ӡ���ֽڳ���
+ * @brief 串口打印16进制数据
+ * 
+ * @param buf 打印输出数组
+ * @param len 数组长度
  */
 void print_buf(uint8_t *buf, uint8_t len)
 {
@@ -82,20 +79,18 @@ void print_buf(uint8_t *buf, uint8_t len)
 }
 
 /**
- * @brief 211����оƬ��ʼ������
- *
- * @return uint8_t ��ʼ���Ƿ�ɹ��ı�־λ
+ * @brief 211发送芯片初始化
+ * 
  */
 void app_211_init(void)
 {
-    // ʱ������
+    // 时钟配置
     systick_config();
-    // ���ڳ�ʼ������
+    // 串口配置
     usart_gpio_config(115200);
 
-    // 211����оƬ��ʼ��
+    // 判断211发送芯片是否成功
     tx_ok = radio_tx_init();
-    // �ж�211����оƬ��ʼ���Ƿ�ɹ�
     if (tx_ok)
     {
         printf("TX init OK\r\n");
@@ -107,16 +102,15 @@ void app_211_init(void)
 }
 
 /**
- * @brief 211����оƬ����32�ֽڵ�����
+ * @brief 211发送数据
  *
  */
 void app_211_send_data(void)
 {
     printf("User TX data: ");
-    // ��ӡ��ǰ�û���д������,���ӡ��11 22 33...���ʾ�ǳ�ʼ���Ĳ�������
     print_buf(tx_buf_data, TEST_PACKET_LEN);
 
-    // �������� tx_buf ������д������
+
     if (tx_ok)
     {
         send_ret = radio_tx_send(tx_buf_data, TEST_PACKET_LEN);

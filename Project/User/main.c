@@ -9,6 +9,10 @@
 #include "app_211.h"
 #include "app_221.h"
 
+// LED灯测试头文件
+#include "led_test.h"
+
+
 // #define TEST_PACKET_LEN 32
 
 // /*----------------------------------------------------------*/
@@ -79,11 +83,11 @@
 
 // int main(void)
 // {
-//     // uint8_t tx_ok;
-//     // uint8_t rx_ok;
-//     // uint8_t send_ret;
-//     // uint32_t tx_count = 0;
-//     // uint32_t rx_count = 0;
+//     uint8_t tx_ok;
+//     uint8_t rx_ok;
+//     uint8_t send_ret;
+//     uint32_t tx_count = 0;
+//     uint32_t rx_count = 0;
 
 //     systick_config();
 
@@ -167,15 +171,23 @@
 
 int main(void)
 {
+    // LED灯引脚初始化
+    pa15_output_high_init();
+    // 发送芯片初始化
+    app_211_init();
+    delay_ms(100);
+    // 接收芯片初始化
+    app_221_init();
+    delay_ms(100);
     while (1)
     {
-        // 发送芯片初始化
-        app_211_init();
-        // 接收芯片初始化
-        app_221_init();
         // 211芯片发送数据
         app_211_send_data();
+        delay_ms(100);
         // 221芯片接收数据
         app_221_receive_data();
+        delay_ms(100);
+        delay_ms(1000);
+        delay_ms(1000);
     }
 }

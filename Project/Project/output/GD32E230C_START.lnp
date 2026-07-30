@@ -15,6 +15,7 @@
 ".\output\system_gd32e23x.o"
 ".\output\app_211.o"
 ".\output\app_221.o"
+".\output\led_test.o"
 ".\output\gd32e23x_adc.o"
 ".\output\gd32e23x_cmp.o"
 ".\output\gd32e23x_crc.o"
