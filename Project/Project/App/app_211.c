@@ -1,6 +1,6 @@
 #include "app_211.h"
 
-// �����ֽڵĳ��ȹ̶�32�ֽ�
+// 发送数据固定长度,32字节
 #define TEST_PACKET_LEN 32
 
 /**
