@@ -13,12 +13,21 @@
 #define CMT2219B_LBD_BANK_ADDR              0x5F
 
 /* Registers */
+/* 
+这里新增了三个寄存器：// 手动快速调频相关
+#define CMT2219B_CUS_FSK4                   0x27  // AFC 阈值
+#define CMT2219B_CUS_FREQ_CHNL              0x63  // 跳频信道
+#define CMT2219B_CUS_FREQ_OFS               0x64  // 跳频步进
+*/
 #define CMT2219B_CUS_CMT10                  0x09
 #define CMT2219B_CUS_SYS2                   0x0D
+#define CMT2219B_CUS_FSK4                   0x27
 #define CMT2219B_CUS_PKT17                  0x48
 #define CMT2219B_CUS_MODE_CTL               0x60
 #define CMT2219B_CUS_MODE_STA               0x61
 #define CMT2219B_CUS_EN_CTL                 0x62
+#define CMT2219B_CUS_FREQ_CHNL              0x63
+#define CMT2219B_CUS_FREQ_OFS               0x64
 #define CMT2219B_CUS_IO_SEL                 0x65
 #define CMT2219B_CUS_INT2_CTL               0x67
 #define CMT2219B_CUS_INT_EN                 0x68
@@ -267,6 +276,28 @@ uint8_t cmt2219b_read_reg(uint8_t addr)
 void cmt2219b_write_reg(uint8_t addr, uint8_t dat)
 {
     cmt2219b_spi_write_reg(addr, dat);
+}
+
+/*
+// 手动快速调频相关 
+这三个函数对应官方 Demo 里的：
+CMT2300A_SetFrequencyChannel()
+CMT2300A_SetFrequencyStep()
+CMT2300A_SetAfcOvfTh()
+*/
+void cmt2219b_set_frequency_channel(uint8_t channel)
+{
+    cmt2219b_write_reg(CMT2219B_CUS_FREQ_CHNL, channel);
+}
+
+void cmt2219b_set_frequency_step(uint8_t step)
+{
+    cmt2219b_write_reg(CMT2219B_CUS_FREQ_OFS, step);
+}
+
+void cmt2219b_set_afc_ovf_th(uint8_t afc_ovf_th)
+{
+    cmt2219b_write_reg(CMT2219B_CUS_FSK4, afc_ovf_th);
 }
 
 void cmt2219b_read_fifo(uint8_t *buf, uint8_t len)

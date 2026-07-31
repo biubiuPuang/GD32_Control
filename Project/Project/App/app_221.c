@@ -28,7 +28,7 @@ void app_221_init(void)
     {
         printf("RX init OK\r\n");
         
-        printf("PA15高电平");
+        printf("PA15 hight\r\n");
         // PA15 输出高电平
         gpio_bit_set(GPIOA, GPIO_PIN_15);    
     }

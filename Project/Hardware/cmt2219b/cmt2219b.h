@@ -14,6 +14,10 @@ uint8_t cmt2219b_is_exist(void);
 uint8_t cmt2219b_read_reg(uint8_t addr);
 void cmt2219b_write_reg(uint8_t addr, uint8_t dat);
 
+void cmt2219b_set_frequency_channel(uint8_t channel);
+void cmt2219b_set_frequency_step(uint8_t step);
+void cmt2219b_set_afc_ovf_th(uint8_t afc_ovf_th);
+
 void cmt2219b_read_fifo(uint8_t *buf, uint8_t len);
 void cmt2219b_write_fifo(const uint8_t *buf, uint8_t len);
 
