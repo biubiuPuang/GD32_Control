@@ -16,6 +16,7 @@
 ".\output\app_211.o"
 ".\output\app_221.o"
 ".\output\led_test.o"
+".\output\app_tx-rx_config.o"
 ".\output\gd32e23x_adc.o"
 ".\output\gd32e23x_cmp.o"
 ".\output\gd32e23x_crc.o"
@@ -35,6 +36,8 @@
 ".\output\gd32e23x_timer.o"
 ".\output\gd32e23x_usart.o"
 ".\output\gd32e23x_wwdgt.o"
+".\output\rf_apply.o"
+".\output\rf_config.o"
 --library_type=microlib --strict --scatter ".\output\GD32E230C_START.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

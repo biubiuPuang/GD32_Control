@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App</IncludePath>
+              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -549,6 +549,16 @@
               <FileType>5</FileType>
               <FilePath>.\App\led_test.h</FilePath>
             </File>
+            <File>
+              <FileName>app_tx-rx_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\app_tx-rx_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_tx-rx_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\app_tx-rx_config.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -658,6 +668,31 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\Doc\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>rf_config</GroupName>
+          <Files>
+            <File>
+              <FileName>rf_apply.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\rf_config\rf_apply.c</FilePath>
+            </File>
+            <File>
+              <FileName>rf_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\rf_config\rf_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>rf_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\rf_config\rf_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>rf_apply.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\rf_config\rf_apply.h</FilePath>
             </File>
           </Files>
         </Group>
