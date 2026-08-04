@@ -51,7 +51,7 @@ int main(void)
         delay_ms(100);
 
         // 串口打印收发芯片的真实寄存器配置
-        rf_print_tx_rx_real_freq();
+        // rf_print_tx_rx_real_freq();
         delay_ms(200);
 
         delay_ms(1000);

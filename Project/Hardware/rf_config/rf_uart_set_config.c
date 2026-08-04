@@ -9,38 +9,57 @@
 #include <stdint.h>
 #include <string.h>
 
+// 芯片Flash内部最后一页起始页地址(用于存储收发chip配置参数)
 #define RF_FLASH_PAGE_ADDR       0x0800FC00UL
+// Flash配置的识别标志
 #define RF_FLASH_MAGIC           0x52464643UL
+// Flash配置的识别标志
 #define RF_FLASH_VERSION         1U
+// 串口配置命令的最大长度为64字节，防止接收缓冲区越界
 #define RF_UART_COMMAND_MAX      64U
 
+// 收发命令标志位
+/*
+    RF_TARGET_TX：只配置发射芯片。
+    RF_TARGET_RX：只配置接收芯片。
+    RF_TARGET_BOTH：同时配置发射和接收芯片。
+*/
 #define RF_TARGET_TX             1U
 #define RF_TARGET_RX             2U
 #define RF_TARGET_BOTH           3U
 
 typedef struct
 {
-    uint32_t magic;
-    uint16_t version;
-    uint16_t data_size;
+    uint32_t magic; // 配置识别标志。读取Flash时，用它判断数据是不是本程序保存的射频配置。
+    uint16_t version; // 配置格式版本号。用于避免以后结构体格式变化后错误读取旧数据。
+    uint16_t data_size; // 记录整个 rf_flash_config_t 的大小。读取时用于检查Flash数据长度是否正确。
 
-    rf_factory_config_t tx;
-    rf_factory_config_t rx;
+    rf_factory_config_t tx; // 发射芯片的配置。
+    rf_factory_config_t rx; // 接收芯片的配置。
 
-    uint16_t crc16;
-    uint16_t reserved;
+    uint16_t crc16; // 整个结构体的CRC16校验值。读取Flash后重新计算CRC，与它比较，判断配置是否损坏。
+    uint16_t reserved; // 保留字段，目前没有实际功能，预留给以后扩展，同时有助于保持结构体按4字节对齐。
 } rf_flash_config_t;
 
 static rf_flash_config_t g_rf_saved_config;
 
 
-
+/**
+ * @brief 这个函数用于生成一份TX或RX的射频配置数据。
+ * 
+ * @param cfg 存放生成后的配置。
+ * @param role 配置对象，TX或RX。
+ * @param offset 跳频间隔参数 fh_offset
+ * @param channel 当前频道 fh_channel
+ * @param count 总频道数 channel_count
+ */
 static void rf_build_one_config(rf_factory_config_t *cfg,
                                 uint8_t role,
                                 uint8_t offset,
                                 uint8_t channel,
                                 uint8_t count)
 {
+    // 先把整个配置结构体清零，防止残留数据影响CRC校验。
     memset(cfg, 0, sizeof(*cfg));
 
     cfg->magic = RF_CONFIG_MAGIC;
@@ -51,12 +70,20 @@ static void rf_build_one_config(rf_factory_config_t *cfg,
     cfg->fh_channel = channel;
     cfg->channel_count = count;
 
+    // 计算CRC前，先把CRC字段清零，避免旧CRC参与本次计算。
     cfg->crc16 = 0U;
+    // 对整个配置结构体计算CRC16，并将结果保存到 crc16 中，之后可以用它检查配置数据是否损坏。
     cfg->crc16 = rf_crc16_calc((const uint8_t *)cfg, sizeof(*cfg));
 }
 
+/**
+ * @brief 这个函数用于生成一份默认的TX和RX配置，但它本身不会把配置写入Flash。
+ * 
+ * @param record 用于存放生成的完整默认配置
+ */
 static void rf_build_default_flash_config(rf_flash_config_t *record)
 {
+    // 将整个配置结构体清零，避免残留数据影响配置和CRC校验。
     memset(record, 0, sizeof(*record));
 
     record->magic = RF_FLASH_MAGIC;
@@ -70,7 +97,12 @@ static void rf_build_default_flash_config(rf_flash_config_t *record)
     record->crc16 =
         rf_crc16_calc((const uint8_t *)record, sizeof(*record));
 }
-
+/**
+ * @brief 这个函数用于检查从Flash读取的整份TX/RX配置是否有效。
+ * 
+ * @param record 要检查的Flash配置。
+ * @return uint8_t 
+ */
 static uint8_t rf_flash_record_check(const rf_flash_config_t *record)
 {
     rf_flash_config_t temp;
@@ -122,6 +154,12 @@ static uint8_t rf_flash_record_check(const rf_flash_config_t *record)
     return 1U;
 }
 
+/**
+ * @brief 这个函数用于从指定的Flash地址读取射频配置，并检查配置是否有效。
+ * 
+ * @param record 用于接收读取到的配置。
+ * @return uint8_t 
+ */
 static uint8_t rf_flash_config_read(rf_flash_config_t *record)
 {
     const rf_flash_config_t *flash_record;
@@ -139,6 +177,12 @@ static uint8_t rf_flash_config_read(rf_flash_config_t *record)
     return rf_flash_record_check(record);
 }
 
+/**
+ * @brief 这个函数用于擦除配置Flash页、写入新的TX/RX配置，并读回校验。返回 1U 表示成功，返回 0U 表示失败
+ * 
+ * @param record 
+ * @return uint8_t 
+ */
 static uint8_t rf_flash_config_write(rf_flash_config_t *record)
 {
     uint32_t address;
@@ -207,6 +251,13 @@ static uint8_t rf_flash_config_write(rf_flash_config_t *record)
     return rf_flash_record_check(&verify_record);
 }
 
+/**
+ * @brief 从字符串当前位置读取一个十进制整数，将结果保存为 uint8_t，并把字符串指针移动到数字结束的位置。
+ * 
+ * @param cursor 
+ * @param value 
+ * @return uint8_t 
+ */
 static uint8_t rf_parse_uint8(const char **cursor, uint8_t *value)
 {
     const char *p;
@@ -244,6 +295,13 @@ static uint8_t rf_parse_uint8(const char **cursor, uint8_t *value)
     return 1U;
 }
 
+/**
+ * @brief 这个函数用于检查字符串当前位置是否为指定字符。
+ * 
+ * @param cursor 
+ * @param expected 
+ * @return uint8_t 
+ */
 static uint8_t rf_expect_char(const char **cursor, char expected)
 {
     if ((cursor == 0) || (*cursor == 0))
@@ -260,6 +318,16 @@ static uint8_t rf_expect_char(const char **cursor, char expected)
     return 1U;
 }
 
+/**
+ * @brief 这个函数用于解析串口发送的射频配置命令。
+ * 
+ * @param command 
+ * @param target 
+ * @param offset 
+ * @param channel 
+ * @param count 
+ * @return uint8_t 
+ */
 static uint8_t rf_parse_command(const char *command,
                                 uint8_t *target,
                                 uint8_t *offset,
@@ -341,6 +409,11 @@ static uint8_t rf_parse_command(const char *command,
     return (*p == '\0') ? 1U : 0U;
 }
 
+/**
+ * @brief 这个函数用于设备启动时从Flash恢复TX和RX的射频配置。
+ * 
+ * @return uint8_t 
+ */
 uint8_t rf_uart_config_restore(void)
 {
     if (!rf_flash_config_read(&g_rf_saved_config))
@@ -362,6 +435,15 @@ uint8_t rf_uart_config_restore(void)
     return 1U;
 }
 
+/**
+ * @brief 这个函数用于执行解析完成的射频配置命令。
+ * 
+ * @param target 
+ * @param offset 
+ * @param channel 
+ * @param count 
+ * @return uint8_t 
+ */
 static uint8_t rf_execute_command(uint8_t target,
                                   uint8_t offset,
                                   uint8_t channel,
@@ -429,6 +511,10 @@ static uint8_t rf_execute_command(uint8_t target,
     return 1U;
 }
 
+/**
+ * @brief 这个函数用于处理串口接收到的射频配置命令。
+ * 
+ */
 void rf_uart_config_process(void)
 {
     char command[RF_UART_COMMAND_MAX];

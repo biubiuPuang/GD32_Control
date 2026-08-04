@@ -54,18 +54,18 @@ void rf_print_tx_rx_real_freq(void)
 
     rf_get_tx_rx_real_freq(&info);
 
-    printf("TX real reg data: fh_channel=%u(0x%02X), fh_offset=%u(0x%02X), freq=%lu Hz\r\n",
-           info.tx.fh_channel,
-           info.tx.fh_channel,
+    printf("TX real reg data:  fh_offset=%u(0x%02X),fh_channel=%u(0x%02X), freq=%lu Hz\r\n",
            info.tx.fh_offset,
            info.tx.fh_offset,
+           info.tx.fh_channel,
+           info.tx.fh_channel,
            (unsigned long)info.tx.freq_hz);
 
-    printf("RX real reg data: fh_channel=%u(0x%02X), fh_offset=%u(0x%02X), freq=%lu Hz\r\n",
-           info.rx.fh_channel,
-           info.rx.fh_channel,
+    printf("RX real reg data:  fh_offset=%u(0x%02X),fh_channel=%u(0x%02X), freq=%lu Hz\r\n",
            info.rx.fh_offset,
            info.rx.fh_offset,
+           info.rx.fh_channel,
+           info.rx.fh_channel,
            (unsigned long)info.rx.freq_hz);
 }
 
