@@ -38,6 +38,7 @@
 ".\output\gd32e23x_wwdgt.o"
 ".\output\rf_apply.o"
 ".\output\rf_config.o"
+".\output\rf_uart_set_config.o"
 --library_type=microlib --strict --scatter ".\output\GD32E230C_START.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
