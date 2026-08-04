@@ -3,9 +3,12 @@
 // 发送数据固定长度,32字节
 #define TEST_PACKET_LEN 32
 
+// 串口循环打印输出开关
+#define RF_LOOP_LOG_ENABLE 0
+
 /**
  * @brief 测试数据,串口如果打印11 22 33 则说明是初始化测试数据
- * 
+ *
  */
 static uint8_t tx_buf_data[TEST_PACKET_LEN] = {
     0x11,
@@ -48,7 +51,7 @@ static uint32_t tx_count = 0;
 
 /**
  * @brief 获取GD32E230的UID
- * 
+ *
  * @param uid 固定长度3个字节
  */
 void gd32_get_uid(uint32_t uid[3])
@@ -62,7 +65,7 @@ void gd32_get_uid(uint32_t uid[3])
 
 /**
  * @brief 串口打印16进制数据
- * 
+ *
  * @param buf 打印输出数组
  * @param len 数组长度
  */
@@ -80,7 +83,7 @@ void print_buf(uint8_t *buf, uint8_t len)
 
 /**
  * @brief 211发送芯片初始化
- * 
+ *
  */
 void app_211_init(void)
 {
@@ -105,11 +108,13 @@ void app_211_init(void)
  * @brief 211发送数据
  *
  */
+
 void app_211_send_data(void)
 {
+#if RF_LOOP_LOG_ENABLE
     printf("User TX data: ");
     print_buf(tx_buf_data, TEST_PACKET_LEN);
-
+#endif
 
     if (tx_ok)
     {
@@ -118,10 +123,15 @@ void app_211_send_data(void)
 
         if (send_ret)
         {
+#if RF_LOOP_LOG_ENABLE
             printf("\r\nTX OK, count=%u\r\n", tx_count);
+#endif
         }
         else
         {
+            /*
+             * 发送失败仍然打印，方便发现真正的发送异常。
+             */
             printf("\r\nTX ERROR, count=%u\r\n", tx_count);
         }
     }

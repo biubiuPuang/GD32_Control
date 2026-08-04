@@ -3,6 +3,8 @@
 // LED灯头文件
 #include "gd32e23x.h"
 
+// 串口循环打印当前接收芯片 FIFO 数据开关
+#define RF_LOOP_LOG_ENABLE 0
 
 extern void print_buf(uint8_t *buf, uint8_t len);
 
@@ -27,10 +29,10 @@ void app_221_init(void)
     if (rx_ok)
     {
         printf("RX init OK\r\n");
-        
+
         printf("PA15 hight\r\n");
         // PA15 输出高电平
-        gpio_bit_set(GPIOA, GPIO_PIN_15);    
+        gpio_bit_set(GPIOA, GPIO_PIN_15);
     }
     else
     {
@@ -64,11 +66,15 @@ void app_221_receive_data(void)
 
         rx_count++;
 
+#if RF_LOOP_LOG_ENABLE
         printf("RX chip FIFO data, count=%u: ", rx_count);
         print_buf(rx_buf, TEST_PACKET_LEN);
+#endif
     }
     else
     {
+#if RF_LOOP_LOG_ENABLE
         printf("RX chip no packet\r\n");
+#endif
     }
 }
