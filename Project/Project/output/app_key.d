@@ -1,4 +1,4 @@
-./output/main.o: ..\User\main.c \
+./output/app_key.o: App\app_key.c App\app_key.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
   D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
@@ -26,11 +26,4 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
-  ..\User\systick.h ..\Hardware\usart\bsp_usart.h \
-  ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
-  ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
-  App\app_211.h App\app_221.h App\app_tx-rx_config.h \
-  ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
-  ..\Hardware\rf_config\rf_apply.h \
-  ..\Hardware\rf_config\rf_uart_set_config.h App\led_test.h \
-  App\app_key.h
+  D:\_Keil5\ARM\ARMCLANG\include\stdio.h ..\User\systick.h

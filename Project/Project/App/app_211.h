@@ -10,6 +10,15 @@
 #include <stdio.h>
 #include <stdint.h>
 
+// 发送数据固定长度,32字节
+#define TEST_PACKET_LEN 32
+
+/**
+ * @brief 测试数据,串口如果打印11 22 33 则说明是初始化测试数据
+ *
+ */
+extern volatile uint8_t tx_buf_data[TEST_PACKET_LEN];
+
 // GD32E230芯片UID,寄存器地址
 #define GD32_UID_BASE 0x1FFFF7ACU
 
@@ -20,6 +29,8 @@ void print_buf(uint8_t *buf, uint8_t len);
 // 211发送芯片初始化
 void app_211_init(void);
 // 211发送芯片发送数据
+void app_211_send_test_data(void);
+// 发送用户自定义函数
 void app_211_send_data(void);
 
 #endif /* __APP_211_H_ */

@@ -559,6 +559,16 @@
               <FileType>5</FileType>
               <FilePath>.\App\app_tx-rx_config.h</FilePath>
             </File>
+            <File>
+              <FileName>app_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\app_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\app_key.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

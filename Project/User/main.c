@@ -18,6 +18,9 @@
 // LED灯测试头文件
 #include "led_test.h"
 
+// 按键头文件
+#include "app_key.h"
+
 int main(void)
 {
     // LED灯引脚初始化
@@ -28,6 +31,9 @@ int main(void)
     // 接收芯片初始化
     app_221_init();
     delay_ms(100);
+    // 按键初始化
+    key_init();
+
 
     // ❌
     // 假装串口发送配置参数数据
@@ -39,22 +45,30 @@ int main(void)
 
     while (1)
     {
-        // ❌
-        rf_uart_config_process();
-        delay_ms(100);
+        // // ❌
+        // rf_uart_config_process();
+        // delay_ms(100);
 
-        // 211芯片发送数据
-        app_211_send_data();
-        delay_ms(100);
-        // 221芯片接收数据
-        app_221_receive_data();
-        delay_ms(100);
+        // // 211芯片发送数据
+        // app_211_send_test_data();
+        // delay_ms(100);
+
+        // 按键按下则发送数据
+        if(key_is_pressed() == 1)
+        {
+            // 发送数组里面的数据
+            // app_211_send_data();
+            printf("Key1 press\r\n");
+        }
+
+        // // 221芯片接收数据
+        // app_221_receive_data();
+        // delay_ms(100);
 
         // 串口打印收发芯片的真实寄存器配置
         // rf_print_tx_rx_real_freq();
         // delay_ms(200);
 
-        delay_ms(1000);
-        delay_ms(1000);
+
     }
 }

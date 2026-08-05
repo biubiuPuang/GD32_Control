@@ -1,16 +1,17 @@
 #include "app_211.h"
 
-// 发送数据固定长度,32字节
-#define TEST_PACKET_LEN 32
-
 // 串口循环打印输出开关
 #define RF_LOOP_LOG_ENABLE 0
+
+static uint8_t tx_ok;
+static uint8_t send_ret;
+static uint32_t tx_count = 0;
 
 /**
  * @brief 测试数据,串口如果打印11 22 33 则说明是初始化测试数据
  *
  */
-static uint8_t tx_buf_data[TEST_PACKET_LEN] = {
+extern volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
     0x11,
     0x22,
     0x33,
@@ -45,9 +46,6 @@ static uint8_t tx_buf_data[TEST_PACKET_LEN] = {
     0x10,
 };
 
-static uint8_t tx_ok;
-static uint8_t send_ret;
-static uint32_t tx_count = 0;
 
 /**
  * @brief 获取GD32E230的UID
@@ -105,11 +103,11 @@ void app_211_init(void)
 }
 
 /**
- * @brief 211发送数据
+ * @brief 211串口发送循环打印数据
  *
  */
 
-void app_211_send_data(void)
+void app_211_send_test_data(void)
 {
 #if RF_LOOP_LOG_ENABLE
     printf("User TX data: ");
@@ -135,4 +133,10 @@ void app_211_send_data(void)
             printf("\r\nTX ERROR, count=%u\r\n", tx_count);
         }
     }
+}
+
+// 发送用户自定义函数
+void app_211_send_data(void)
+{
+    radio_tx_send(tx_buf_data, TEST_PACKET_LEN);
 }
