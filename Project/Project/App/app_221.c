@@ -16,6 +16,9 @@ static uint8_t rx_buf[TEST_PACKET_LEN];
 static uint8_t rx_ok;
 static uint32_t rx_count = 0;
 
+// 翻转LED灯的标志位
+static uint8_t cmd_44_handled = 0;
+
 // 221芯片初始化
 void app_221_init(void)
 {
@@ -57,6 +60,23 @@ void app_221_receive_data(void)
          */
         cmt2219b_read_fifo(rx_buf, TEST_PACKET_LEN);
 
+        // 判断按键数据内容
+        if (rx_buf[3] == 0x44)
+        {
+            if (cmd_44_handled == 0)
+            {
+                // LED锁存标志位
+                cmd_44_handled = 1;
+                // 翻转LED灯电平
+                led_PA15_toggle();
+            }
+        }
+        else
+        {
+            // 收到非0x44数据,下次发0x44则会重新触发led翻转程序
+            cmd_44_handled = 0;
+        }
+
         // 清空 CMT2219B 的接收 FIFO
         cmt2219b_clear_rx_fifo();
         // 清楚CMT2219B的中断标志位
@@ -65,6 +85,10 @@ void app_221_receive_data(void)
         cmt2219b_go_rx();
 
         rx_count++;
+
+        // 串口打印接收芯片 FIFO 数据
+        printf("RX chip FIFO data: ");
+        print_buf(rx_buf, TEST_PACKET_LEN);
 
 #if RF_LOOP_LOG_ENABLE
         printf("RX chip FIFO data, count=%u: ", rx_count);

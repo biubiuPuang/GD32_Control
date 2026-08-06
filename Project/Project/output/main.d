@@ -29,8 +29,7 @@
   ..\User\systick.h ..\Hardware\usart\bsp_usart.h \
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
   ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
-  App\app_211.h App\app_221.h App\app_tx-rx_config.h \
+  App\app_211.h App\app_221.h App\led_test.h App\app_tx-rx_config.h \
   ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
   ..\Hardware\rf_config\rf_apply.h \
-  ..\Hardware\rf_config\rf_uart_set_config.h App\led_test.h \
-  App\app_key.h
+  ..\Hardware\rf_config\rf_uart_set_config.h App\app_key.h

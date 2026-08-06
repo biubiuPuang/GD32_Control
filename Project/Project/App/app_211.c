@@ -11,7 +11,7 @@ static uint32_t tx_count = 0;
  * @brief 测试数据,串口如果打印11 22 33 则说明是初始化测试数据
  *
  */
-extern volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
+volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
     0x11,
     0x22,
     0x33,

@@ -13,7 +13,13 @@ void pa15_output_high_init(void)
     /* 推挽输出，50MHz */
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_15);
 
-    /* 默认输出高电平 */
+    /* 默认输出低电平 */
     gpio_bit_set(GPIOA, GPIO_PIN_15);
+}
+
+// 翻转LED(PA15)高低电平
+void led_PA15_toggle(void)
+{
+    gpio_bit_toggle(GPIOA, GPIO_PIN_15);
 }
 
