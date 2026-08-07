@@ -4,7 +4,7 @@
 #include "gd32e23x.h"
 
 // 串口循环打印当前接收芯片 FIFO 数据开关
-#define RF_LOOP_LOG_ENABLE 0
+#define RF_LOOP_LOG_ENABLE 1
 
 extern void print_buf(uint8_t *buf, uint8_t len);
 
@@ -51,7 +51,7 @@ void app_221_receive_data(void)
      * 0x6D 是 INT_FLAG，bit0 = 1 表示接收芯片收到完整数据包。
      * 所以下面打印出来的数据，是从 PH2219BBA 接收芯片 FIFO 里面读出来的。
      */
-    if (rx_ok && (cmt2219b_read_reg(0x6D) & 0x01))
+    if (rx_ok && cmt2219b_packet_received())
     {
         cmt2219b_go_stby();
 

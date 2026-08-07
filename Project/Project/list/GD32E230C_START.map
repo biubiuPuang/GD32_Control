@@ -26,6 +26,7 @@ Section Cross References
     main.o(.text.main) refers to printfa.o(i.__0printf) for printf
     main.o(.text.main) refers to app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq) for rf_print_tx_rx_real_freq
     main.o(.text.main) refers to app_key.o(.text.check_double_key12) for check_double_key12
+    main.o(.text.main) refers to app_211.o(.text.app_211_send_test_data) for app_211_send_test_data
     main.o(.text.main) refers to app_221.o(.text.app_221_receive_data) for app_221_receive_data
     main.o(.text.main) refers to main.o(.rodata.str1.1) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
@@ -495,13 +496,14 @@ Section Cross References
     app_211.o(.text.app_211_init) refers to app_211.o(.bss.tx_ok) for [Anonymous Symbol]
     app_211.o(.text.app_211_init) refers to app_211.o(.rodata.str1.1) for [Anonymous Symbol]
     app_211.o(.ARM.exidx.text.app_211_init) refers to app_211.o(.text.app_211_init) for [Anonymous Symbol]
-    app_211.o(.text.app_211_send_test_data) refers to radio_tx.o(.text.radio_tx_send) for radio_tx_send
     app_211.o(.text.app_211_send_test_data) refers to printfa.o(i.__0printf) for printf
-    app_211.o(.text.app_211_send_test_data) refers to app_211.o(.bss.tx_ok) for [Anonymous Symbol]
+    app_211.o(.text.app_211_send_test_data) refers to app_211.o(.text.print_buf) for print_buf
+    app_211.o(.text.app_211_send_test_data) refers to radio_tx.o(.text.radio_tx_send) for radio_tx_send
+    app_211.o(.text.app_211_send_test_data) refers to app_211.o(.rodata.str1.1) for [Anonymous Symbol]
     app_211.o(.text.app_211_send_test_data) refers to app_211.o(.data.tx_buf_data) for tx_buf_data
+    app_211.o(.text.app_211_send_test_data) refers to app_211.o(.bss.tx_ok) for [Anonymous Symbol]
     app_211.o(.text.app_211_send_test_data) refers to app_211.o(.bss.send_ret) for [Anonymous Symbol]
     app_211.o(.text.app_211_send_test_data) refers to app_211.o(.bss.tx_count) for [Anonymous Symbol]
-    app_211.o(.text.app_211_send_test_data) refers to app_211.o(.rodata.str1.1) for [Anonymous Symbol]
     app_211.o(.ARM.exidx.text.app_211_send_test_data) refers to app_211.o(.text.app_211_send_test_data) for [Anonymous Symbol]
     app_211.o(.text.app_211_send_data) refers to radio_tx.o(.text.radio_tx_send) for radio_tx_send
     app_211.o(.text.app_211_send_data) refers to app_211.o(.data.tx_buf_data) for tx_buf_data
@@ -514,7 +516,7 @@ Section Cross References
     app_221.o(.text.app_221_init) refers to app_221.o(.bss.rx_ok) for [Anonymous Symbol]
     app_221.o(.text.app_221_init) refers to app_221.o(.rodata.str1.1) for [Anonymous Symbol]
     app_221.o(.ARM.exidx.text.app_221_init) refers to app_221.o(.text.app_221_init) for [Anonymous Symbol]
-    app_221.o(.text.app_221_receive_data) refers to cmt2219b.o(.text.cmt2219b_read_reg) for cmt2219b_read_reg
+    app_221.o(.text.app_221_receive_data) refers to cmt2219b.o(.text.cmt2219b_packet_received) for cmt2219b_packet_received
     app_221.o(.text.app_221_receive_data) refers to cmt2219b.o(.text.cmt2219b_go_stby) for cmt2219b_go_stby
     app_221.o(.text.app_221_receive_data) refers to cmt2219b.o(.text.cmt2219b_read_fifo) for cmt2219b_read_fifo
     app_221.o(.text.app_221_receive_data) refers to led_test.o(.text.led_PA15_toggle) for led_PA15_toggle
@@ -524,10 +526,10 @@ Section Cross References
     app_221.o(.text.app_221_receive_data) refers to printfa.o(i.__0printf) for printf
     app_221.o(.text.app_221_receive_data) refers to app_211.o(.text.print_buf) for print_buf
     app_221.o(.text.app_221_receive_data) refers to app_221.o(.bss.rx_ok) for [Anonymous Symbol]
+    app_221.o(.text.app_221_receive_data) refers to app_221.o(.rodata.str1.1) for [Anonymous Symbol]
     app_221.o(.text.app_221_receive_data) refers to app_221.o(.bss.rx_buf) for [Anonymous Symbol]
     app_221.o(.text.app_221_receive_data) refers to app_221.o(.bss.cmd_44_handled) for [Anonymous Symbol]
     app_221.o(.text.app_221_receive_data) refers to app_221.o(.bss.rx_count) for [Anonymous Symbol]
-    app_221.o(.text.app_221_receive_data) refers to app_221.o(.rodata.str1.1) for [Anonymous Symbol]
     app_221.o(.ARM.exidx.text.app_221_receive_data) refers to app_221.o(.text.app_221_receive_data) for [Anonymous Symbol]
     led_test.o(.text.pa15_output_high_init) refers to gd32e23x_rcu.o(.text.rcu_periph_clock_enable) for rcu_periph_clock_enable
     led_test.o(.text.pa15_output_high_init) refers to gd32e23x_gpio.o(.text.gpio_mode_set) for gpio_mode_set
@@ -1369,7 +1371,6 @@ Removing Unused input sections from the image.
     Removing cmt2219b.o(.ARM.exidx.text.cmt2219b_go_rx), (8 bytes).
     Removing cmt2219b.o(.ARM.exidx.text.cmt2219b_enable_read_fifo), (8 bytes).
     Removing cmt2219b.o(.ARM.exidx.text.cmt2219b_clear_rx_fifo), (8 bytes).
-    Removing cmt2219b.o(.text.cmt2219b_packet_received), (40 bytes).
     Removing cmt2219b.o(.ARM.exidx.text.cmt2219b_packet_received), (8 bytes).
     Removing cmt2219b.o(.ARM.exidx.text.cmt2219b_get_chip_status), (8 bytes).
     Removing cmt2219b_port.o(.text), (0 bytes).
@@ -1421,11 +1422,8 @@ Removing Unused input sections from the image.
     Removing app_211.o(.ARM.exidx.text.gd32_get_uid), (8 bytes).
     Removing app_211.o(.ARM.exidx.text.print_buf), (8 bytes).
     Removing app_211.o(.ARM.exidx.text.app_211_init), (8 bytes).
-    Removing app_211.o(.text.app_211_send_test_data), (76 bytes).
     Removing app_211.o(.ARM.exidx.text.app_211_send_test_data), (8 bytes).
     Removing app_211.o(.ARM.exidx.text.app_211_send_data), (8 bytes).
-    Removing app_211.o(.bss.send_ret), (1 bytes).
-    Removing app_211.o(.bss.tx_count), (4 bytes).
     Removing app_221.o(.text), (0 bytes).
     Removing app_221.o(.ARM.exidx.text.app_221_init), (8 bytes).
     Removing app_221.o(.ARM.exidx.text.app_221_receive_data), (8 bytes).
@@ -2426,7 +2424,7 @@ Removing Unused input sections from the image.
     Removing rf_uart_set_config.o(.ARM.exidx.text.rf_expect_char), (8 bytes).
     Removing rf_uart_set_config.o(.ARM.exidx.text.rf_flash_config_write), (8 bytes).
 
-1161 unused section(s) (total 33946 bytes) removed from the image.
+1157 unused section(s) (total 33825 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2587,359 +2585,367 @@ Image Symbol Table
     __arm_cp.1_0                             0x08000aa4   Number         4  gd32e23x_misc.o(.text.__NVIC_SetPriority)
     __arm_cp.1_1                             0x08000aa8   Number         4  gd32e23x_misc.o(.text.__NVIC_SetPriority)
     [Anonymous Symbol]                       0x08000aac   Section        0  app_211.o(.text.app_211_init)
-    __arm_cp.2_0                             0x08000adc   Number         4  app_211.o(.text.app_211_init)
-    __arm_cp.2_1                             0x08000ae0   Number         4  app_211.o(.text.app_211_init)
-    __arm_cp.2_2                             0x08000ae4   Number         4  app_211.o(.text.app_211_init)
-    [Anonymous Symbol]                       0x08000ae8   Section        0  app_211.o(.text.app_211_send_data)
-    __arm_cp.4_0                             0x08000af4   Number         4  app_211.o(.text.app_211_send_data)
-    [Anonymous Symbol]                       0x08000af8   Section        0  app_221.o(.text.app_221_init)
-    __arm_cp.0_1                             0x08000b3c   Number         4  app_221.o(.text.app_221_init)
-    __arm_cp.0_2                             0x08000b40   Number         4  app_221.o(.text.app_221_init)
-    __arm_cp.0_3                             0x08000b44   Number         4  app_221.o(.text.app_221_init)
-    [Anonymous Symbol]                       0x08000b48   Section        0  app_221.o(.text.app_221_receive_data)
-    __arm_cp.1_0                             0x08000bc0   Number         4  app_221.o(.text.app_221_receive_data)
-    __arm_cp.1_1                             0x08000bc4   Number         4  app_221.o(.text.app_221_receive_data)
-    __arm_cp.1_2                             0x08000bc8   Number         4  app_221.o(.text.app_221_receive_data)
-    __arm_cp.1_3                             0x08000bcc   Number         4  app_221.o(.text.app_221_receive_data)
-    __arm_cp.1_4                             0x08000bd0   Number         4  app_221.o(.text.app_221_receive_data)
-    [Anonymous Symbol]                       0x08000bd4   Section        0  app_key.o(.text.check_double_key12)
-    __arm_cp.2_0                             0x08000c38   Number         4  app_key.o(.text.check_double_key12)
-    __arm_cp.2_1                             0x08000c3c   Number         4  app_key.o(.text.check_double_key12)
-    cmt2119b_auto_switch_status              0x08000c41   Thumb Code   130  cmt2119b.o(.text.cmt2119b_auto_switch_status)
-    [Anonymous Symbol]                       0x08000c40   Section        0  cmt2119b.o(.text.cmt2119b_auto_switch_status)
-    [Anonymous Symbol]                       0x08000cc2   Section        0  cmt2119b.o(.text.cmt2119b_clear_interrupt_flags)
-    [Anonymous Symbol]                       0x08000cd6   Section        0  cmt2119b.o(.text.cmt2119b_clear_tx_fifo)
-    cmt2119b_config_gpio_interrupt           0x08000ce3   Thumb Code    64  cmt2119b.o(.text.cmt2119b_config_gpio_interrupt)
-    [Anonymous Symbol]                       0x08000ce2   Section        0  cmt2119b.o(.text.cmt2119b_config_gpio_interrupt)
-    cmt2119b_config_reg_bank                 0x08000d23   Thumb Code    70  cmt2119b.o(.text.cmt2119b_config_reg_bank)
-    [Anonymous Symbol]                       0x08000d22   Section        0  cmt2119b.o(.text.cmt2119b_config_reg_bank)
-    [Anonymous Symbol]                       0x08000d68   Section        0  cmt2119b_port.o(.text.cmt2119b_csb_high)
-    [Anonymous Symbol]                       0x08000d76   Section        0  cmt2119b_port.o(.text.cmt2119b_csb_low)
-    [Anonymous Symbol]                       0x08000d84   Section        0  cmt2119b_port.o(.text.cmt2119b_delay_ms)
-    [Anonymous Symbol]                       0x08000d94   Section        0  cmt2119b_port.o(.text.cmt2119b_delay_us)
-    cmt2119b_enable_lfosc                    0x08000da5   Thumb Code   100  cmt2119b.o(.text.cmt2119b_enable_lfosc)
-    [Anonymous Symbol]                       0x08000da4   Section        0  cmt2119b.o(.text.cmt2119b_enable_lfosc)
-    cmt2119b_enable_write_fifo               0x08000e09   Thumb Code    46  cmt2119b.o(.text.cmt2119b_enable_write_fifo)
-    [Anonymous Symbol]                       0x08000e08   Section        0  cmt2119b.o(.text.cmt2119b_enable_write_fifo)
-    [Anonymous Symbol]                       0x08000e38   Section        0  cmt2119b_port.o(.text.cmt2119b_fcsb_high)
-    [Anonymous Symbol]                       0x08000e44   Section        0  cmt2119b_port.o(.text.cmt2119b_fcsb_low)
-    cmt2119b_get_chip_status                 0x08000e51   Thumb Code    14  cmt2119b.o(.text.cmt2119b_get_chip_status)
-    [Anonymous Symbol]                       0x08000e50   Section        0  cmt2119b.o(.text.cmt2119b_get_chip_status)
-    [Anonymous Symbol]                       0x08000e5e   Section        0  cmt2119b.o(.text.cmt2119b_go_sleep)
-    [Anonymous Symbol]                       0x08000e6a   Section        0  cmt2119b.o(.text.cmt2119b_go_stby)
-    [Anonymous Symbol]                       0x08000e76   Section        0  cmt2119b.o(.text.cmt2119b_go_tx)
-    [Anonymous Symbol]                       0x08000e84   Section        0  cmt2119b_port.o(.text.cmt2119b_gpio3_read)
-    [Anonymous Symbol]                       0x08000e94   Section        0  cmt2119b.o(.text.cmt2119b_init)
-    __arm_cp.0_0                             0x08000f70   Number         4  cmt2119b.o(.text.cmt2119b_init)
-    __arm_cp.0_1                             0x08000f74   Number         4  cmt2119b.o(.text.cmt2119b_init)
-    __arm_cp.0_2                             0x08000f78   Number         4  cmt2119b.o(.text.cmt2119b_init)
-    __arm_cp.0_3                             0x08000f7c   Number         4  cmt2119b.o(.text.cmt2119b_init)
-    __arm_cp.0_4                             0x08000f80   Number         4  cmt2119b.o(.text.cmt2119b_init)
-    __arm_cp.0_5                             0x08000f84   Number         4  cmt2119b.o(.text.cmt2119b_init)
-    [Anonymous Symbol]                       0x08000f88   Section        0  cmt2119b_port.o(.text.cmt2119b_port_init)
-    __arm_cp.0_0                             0x0800102c   Number         4  cmt2119b_port.o(.text.cmt2119b_port_init)
-    __arm_cp.0_1                             0x08001030   Number         4  cmt2119b_port.o(.text.cmt2119b_port_init)
-    __arm_cp.0_2                             0x08001034   Number         4  cmt2119b_port.o(.text.cmt2119b_port_init)
-    [Anonymous Symbol]                       0x08001038   Section        0  cmt2119b.o(.text.cmt2119b_read_reg)
-    [Anonymous Symbol]                       0x0800104c   Section        0  cmt2119b_port.o(.text.cmt2119b_sclk_high)
-    [Anonymous Symbol]                       0x0800105a   Section        0  cmt2119b_port.o(.text.cmt2119b_sclk_low)
-    [Anonymous Symbol]                       0x08001068   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_high)
-    [Anonymous Symbol]                       0x08001076   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_input)
-    [Anonymous Symbol]                       0x08001088   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_low)
-    [Anonymous Symbol]                       0x08001096   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_output)
-    [Anonymous Symbol]                       0x080010be   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_read)
-    [Anonymous Symbol]                       0x080010d0   Section        0  cmt2119b.o(.text.cmt2119b_send_packet)
-    [Anonymous Symbol]                       0x0800119a   Section        0  cmt2119b.o(.text.cmt2119b_set_frequency_channel)
-    [Anonymous Symbol]                       0x080011b0   Section        0  cmt2119b.o(.text.cmt2119b_set_frequency_step)
-    cmt2119b_soft_reset                      0x080011c7   Thumb Code    12  cmt2119b.o(.text.cmt2119b_soft_reset)
-    [Anonymous Symbol]                       0x080011c6   Section        0  cmt2119b.o(.text.cmt2119b_soft_reset)
-    cmt2119b_spi_delay                       0x080011d3   Thumb Code    24  cmt2119b_spi.o(.text.cmt2119b_spi_delay)
-    [Anonymous Symbol]                       0x080011d2   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_delay)
-    cmt2119b_spi_delay_us                    0x080011eb   Thumb Code    10  cmt2119b_spi.o(.text.cmt2119b_spi_delay_us)
-    [Anonymous Symbol]                       0x080011ea   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_delay_us)
-    [Anonymous Symbol]                       0x080011f4   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_init)
-    [Anonymous Symbol]                       0x08001214   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_read_reg)
-    cmt2119b_spi_recv                        0x08001275   Thumb Code    90  cmt2119b_spi.o(.text.cmt2119b_spi_recv)
-    [Anonymous Symbol]                       0x08001274   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_recv)
-    cmt2119b_spi_send                        0x080012cf   Thumb Code    90  cmt2119b_spi.o(.text.cmt2119b_spi_send)
-    [Anonymous Symbol]                       0x080012ce   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_send)
-    [Anonymous Symbol]                       0x08001328   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_write_fifo)
-    [Anonymous Symbol]                       0x080013b0   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_write_reg)
-    [Anonymous Symbol]                       0x08001410   Section        0  cmt2119b.o(.text.cmt2119b_write_fifo)
-    [Anonymous Symbol]                       0x08001438   Section        0  cmt2119b.o(.text.cmt2119b_write_reg)
-    cmt2219b_auto_switch_status              0x08001455   Thumb Code    96  cmt2219b.o(.text.cmt2219b_auto_switch_status)
-    [Anonymous Symbol]                       0x08001454   Section        0  cmt2219b.o(.text.cmt2219b_auto_switch_status)
-    [Anonymous Symbol]                       0x080014b4   Section        0  cmt2219b.o(.text.cmt2219b_clear_interrupt_flags)
-    [Anonymous Symbol]                       0x080014c8   Section        0  cmt2219b.o(.text.cmt2219b_clear_rx_fifo)
-    [Anonymous Symbol]                       0x080014d4   Section        0  cmt2219b_port.o(.text.cmt2219b_clk_high)
-    [Anonymous Symbol]                       0x080014e4   Section        0  cmt2219b_port.o(.text.cmt2219b_clk_low)
-    cmt2219b_config_gpio_interrupt           0x080014f5   Thumb Code    64  cmt2219b.o(.text.cmt2219b_config_gpio_interrupt)
-    [Anonymous Symbol]                       0x080014f4   Section        0  cmt2219b.o(.text.cmt2219b_config_gpio_interrupt)
-    cmt2219b_config_reg_bank                 0x08001535   Thumb Code    70  cmt2219b.o(.text.cmt2219b_config_reg_bank)
-    [Anonymous Symbol]                       0x08001534   Section        0  cmt2219b.o(.text.cmt2219b_config_reg_bank)
-    [Anonymous Symbol]                       0x0800157c   Section        0  cmt2219b_port.o(.text.cmt2219b_csb_high)
-    [Anonymous Symbol]                       0x0800158c   Section        0  cmt2219b_port.o(.text.cmt2219b_csb_low)
-    [Anonymous Symbol]                       0x0800159c   Section        0  cmt2219b_port.o(.text.cmt2219b_delay_ms)
-    [Anonymous Symbol]                       0x080015ac   Section        0  cmt2219b_port.o(.text.cmt2219b_delay_us)
-    cmt2219b_enable_lfosc                    0x080015bd   Thumb Code   100  cmt2219b.o(.text.cmt2219b_enable_lfosc)
-    [Anonymous Symbol]                       0x080015bc   Section        0  cmt2219b.o(.text.cmt2219b_enable_lfosc)
-    [Anonymous Symbol]                       0x08001620   Section        0  cmt2219b.o(.text.cmt2219b_enable_read_fifo)
-    [Anonymous Symbol]                       0x08001650   Section        0  cmt2219b_port.o(.text.cmt2219b_fcsb_high)
-    [Anonymous Symbol]                       0x08001660   Section        0  cmt2219b_port.o(.text.cmt2219b_fcsb_low)
-    __arm_cp.7_0                             0x08001670   Number         4  cmt2219b_port.o(.text.cmt2219b_fcsb_low)
-    cmt2219b_get_chip_status                 0x08001675   Thumb Code    14  cmt2219b.o(.text.cmt2219b_get_chip_status)
-    [Anonymous Symbol]                       0x08001674   Section        0  cmt2219b.o(.text.cmt2219b_get_chip_status)
-    [Anonymous Symbol]                       0x08001682   Section        0  cmt2219b.o(.text.cmt2219b_go_rx)
-    [Anonymous Symbol]                       0x0800168e   Section        0  cmt2219b.o(.text.cmt2219b_go_sleep)
-    [Anonymous Symbol]                       0x0800169a   Section        0  cmt2219b.o(.text.cmt2219b_go_stby)
-    [Anonymous Symbol]                       0x080016a8   Section        0  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_0                             0x080017ac   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_1                             0x080017b0   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_2                             0x080017b4   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_3                             0x080017b8   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_4                             0x080017bc   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_5                             0x080017c0   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    __arm_cp.0_6                             0x080017c4   Number         4  cmt2219b.o(.text.cmt2219b_init)
-    [Anonymous Symbol]                       0x080017c8   Section        0  cmt2219b.o(.text.cmt2219b_is_exist)
-    [Anonymous Symbol]                       0x08001820   Section        0  cmt2219b_port.o(.text.cmt2219b_port_init)
-    __arm_cp.0_0                             0x080018c8   Number         4  cmt2219b_port.o(.text.cmt2219b_port_init)
-    __arm_cp.0_1                             0x080018cc   Number         4  cmt2219b_port.o(.text.cmt2219b_port_init)
-    [Anonymous Symbol]                       0x080018d0   Section        0  cmt2219b.o(.text.cmt2219b_read_fifo)
-    [Anonymous Symbol]                       0x080018f8   Section        0  cmt2219b.o(.text.cmt2219b_read_reg)
-    [Anonymous Symbol]                       0x0800190c   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_high)
-    [Anonymous Symbol]                       0x0800191c   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_input)
-    [Anonymous Symbol]                       0x08001930   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_low)
-    __arm_cp.9_0                             0x08001940   Number         4  cmt2219b_port.o(.text.cmt2219b_sdio_low)
-    [Anonymous Symbol]                       0x08001944   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_output)
-    __arm_cp.1_0                             0x0800196c   Number         4  cmt2219b_port.o(.text.cmt2219b_sdio_output)
-    [Anonymous Symbol]                       0x08001970   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_read)
-    __arm_cp.10_0                            0x0800199c   Number         4  cmt2219b_port.o(.text.cmt2219b_sdio_read)
-    [Anonymous Symbol]                       0x080019a0   Section        0  cmt2219b.o(.text.cmt2219b_set_frequency_channel)
-    [Anonymous Symbol]                       0x080019b6   Section        0  cmt2219b.o(.text.cmt2219b_set_frequency_step)
-    cmt2219b_soft_reset                      0x080019cd   Thumb Code    12  cmt2219b.o(.text.cmt2219b_soft_reset)
-    [Anonymous Symbol]                       0x080019cc   Section        0  cmt2219b.o(.text.cmt2219b_soft_reset)
-    cmt2219b_spi_delay                       0x080019d9   Thumb Code    24  cmt2219b_spi.o(.text.cmt2219b_spi_delay)
-    [Anonymous Symbol]                       0x080019d8   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_delay)
-    cmt2219b_spi_delay_us                    0x080019f1   Thumb Code    10  cmt2219b_spi.o(.text.cmt2219b_spi_delay_us)
-    [Anonymous Symbol]                       0x080019f0   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_delay_us)
-    [Anonymous Symbol]                       0x080019fa   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_init)
-    [Anonymous Symbol]                       0x08001a1a   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_read_fifo)
-    [Anonymous Symbol]                       0x08001aa2   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_read_reg)
-    cmt2219b_spi_recv                        0x08001b03   Thumb Code    90  cmt2219b_spi.o(.text.cmt2219b_spi_recv)
-    [Anonymous Symbol]                       0x08001b02   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_recv)
-    cmt2219b_spi_send                        0x08001b5d   Thumb Code    90  cmt2219b_spi.o(.text.cmt2219b_spi_send)
-    [Anonymous Symbol]                       0x08001b5c   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_send)
-    [Anonymous Symbol]                       0x08001bb6   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_write_reg)
-    [Anonymous Symbol]                       0x08001c16   Section        0  cmt2219b.o(.text.cmt2219b_write_reg)
-    [Anonymous Symbol]                       0x08001c34   Section        0  systick.o(.text.delay_ms)
-    __arm_cp.4_0                             0x08001ca4   Number         4  systick.o(.text.delay_ms)
-    [Anonymous Symbol]                       0x08001ca8   Section        0  systick.o(.text.delay_us)
-    __arm_cp.2_0                             0x08001d18   Number         4  systick.o(.text.delay_us)
-    __arm_cp.2_1                             0x08001d1c   Number         4  systick.o(.text.delay_us)
-    __arm_cp.2_2                             0x08001d20   Number         4  systick.o(.text.delay_us)
-    __arm_cp.2_3                             0x08001d24   Number         4  systick.o(.text.delay_us)
-    [Anonymous Symbol]                       0x08001d28   Section        0  gd32e23x_fmc.o(.text.fmc_flag_clear)
-    [Anonymous Symbol]                       0x08001d38   Section        0  gd32e23x_fmc.o(.text.fmc_lock)
-    [Anonymous Symbol]                       0x08001d44   Section        0  gd32e23x_fmc.o(.text.fmc_page_erase)
-    __arm_cp.5_1                             0x08001d9c   Number         4  gd32e23x_fmc.o(.text.fmc_page_erase)
-    [Anonymous Symbol]                       0x08001da0   Section        0  gd32e23x_fmc.o(.text.fmc_ready_wait)
-    [Anonymous Symbol]                       0x08001dfc   Section        0  gd32e23x_fmc.o(.text.fmc_state_get)
-    __arm_cp.29_0                            0x08001e4c   Number         4  gd32e23x_fmc.o(.text.fmc_state_get)
-    [Anonymous Symbol]                       0x08001e50   Section        0  gd32e23x_fmc.o(.text.fmc_unlock)
-    __arm_cp.0_1                             0x08001e6c   Number         4  gd32e23x_fmc.o(.text.fmc_unlock)
-    __arm_cp.0_2                             0x08001e70   Number         4  gd32e23x_fmc.o(.text.fmc_unlock)
-    __arm_cp.0_3                             0x08001e74   Number         4  gd32e23x_fmc.o(.text.fmc_unlock)
-    [Anonymous Symbol]                       0x08001e78   Section        0  gd32e23x_fmc.o(.text.fmc_word_program)
-    __arm_cp.9_0                             0x08001ec8   Number         4  gd32e23x_fmc.o(.text.fmc_word_program)
-    [Anonymous Symbol]                       0x08001ecc   Section        0  bsp_usart.o(.text.fputc)
-    [Anonymous Symbol]                       0x08001ee2   Section        0  gd32e23x_gpio.o(.text.gpio_af_set)
-    [Anonymous Symbol]                       0x08001fa2   Section        0  gd32e23x_gpio.o(.text.gpio_bit_reset)
-    [Anonymous Symbol]                       0x08001fb2   Section        0  gd32e23x_gpio.o(.text.gpio_bit_set)
-    [Anonymous Symbol]                       0x08001fc2   Section        0  gd32e23x_gpio.o(.text.gpio_bit_toggle)
-    [Anonymous Symbol]                       0x08001fd2   Section        0  gd32e23x_gpio.o(.text.gpio_input_bit_get)
-    [Anonymous Symbol]                       0x08001ffc   Section        0  gd32e23x_gpio.o(.text.gpio_mode_set)
-    [Anonymous Symbol]                       0x0800208a   Section        0  gd32e23x_gpio.o(.text.gpio_output_options_set)
-    [Anonymous Symbol]                       0x08002114   Section        0  app_key.o(.text.key_init)
-    [Anonymous Symbol]                       0x08002144   Section        0  app_key.o(.text.key_is_pressed)
-    __arm_cp.1_0                             0x080021b8   Number         4  app_key.o(.text.key_is_pressed)
-    __arm_cp.1_1                             0x080021bc   Number         4  app_key.o(.text.key_is_pressed)
-    [Anonymous Symbol]                       0x080021c0   Section        0  led_test.o(.text.led_PA15_toggle)
-    [Anonymous Symbol]                       0x080021d0   Section        0  main.o(.text.main)
-    __arm_cp.0_0                             0x08002258   Number         4  main.o(.text.main)
-    __arm_cp.0_1                             0x0800225c   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x08002260   Section        0  gd32e23x_misc.o(.text.nvic_irq_disable)
-    [Anonymous Symbol]                       0x08002276   Section        0  gd32e23x_misc.o(.text.nvic_irq_enable)
-    [Anonymous Symbol]                       0x080022a4   Section        0  gd32e23x_misc.o(.text.nvic_vector_table_set)
-    __arm_cp.7_0                             0x080022bc   Number         4  gd32e23x_misc.o(.text.nvic_vector_table_set)
-    __arm_cp.7_1                             0x080022c0   Number         4  gd32e23x_misc.o(.text.nvic_vector_table_set)
-    [Anonymous Symbol]                       0x080022c4   Section        0  led_test.o(.text.pa15_output_high_init)
-    __arm_cp.0_0                             0x080022fc   Number         4  led_test.o(.text.pa15_output_high_init)
-    [Anonymous Symbol]                       0x08002300   Section        0  app_211.o(.text.print_buf)
-    __arm_cp.1_0                             0x08002344   Number         4  app_211.o(.text.print_buf)
-    __arm_cp.1_1                             0x08002348   Number         4  app_211.o(.text.print_buf)
-    [Anonymous Symbol]                       0x0800234c   Section        0  radio_rx.o(.text.radio_rx_init)
-    [Anonymous Symbol]                       0x080023b2   Section        0  radio_rx.o(.text.radio_rx_set_channel)
-    [Anonymous Symbol]                       0x080023dc   Section        0  radio_rx.o(.text.radio_rx_set_frequency_step)
-    [Anonymous Symbol]                       0x08002406   Section        0  radio_tx.o(.text.radio_tx_init)
-    [Anonymous Symbol]                       0x08002440   Section        0  radio_tx.o(.text.radio_tx_send)
-    [Anonymous Symbol]                       0x08002460   Section        0  radio_tx.o(.text.radio_tx_set_channel)
-    [Anonymous Symbol]                       0x0800247e   Section        0  radio_tx.o(.text.radio_tx_set_frequency_step)
-    [Anonymous Symbol]                       0x0800249c   Section        0  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_0                            0x080026f4   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_1                            0x080026f8   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_2                            0x080026fc   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_3                            0x08002700   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_4                            0x08002704   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_5                            0x08002708   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_6                            0x0800270c   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_7                            0x08002710   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    __arm_cp.38_8                            0x08002714   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    [Anonymous Symbol]                       0x08002718   Section        0  gd32e23x_rcu.o(.text.rcu_periph_clock_enable)
-    [Anonymous Symbol]                       0x0800273c   Section        0  gd32e23x_rcu.o(.text.rcu_periph_reset_disable)
-    [Anonymous Symbol]                       0x08002760   Section        0  gd32e23x_rcu.o(.text.rcu_periph_reset_enable)
-    __arm_cp.5_0                             0x08002784   Number         4  gd32e23x_rcu.o(.text.rcu_periph_reset_enable)
-    rf_build_default_flash_config            0x08002789   Thumb Code    96  rf_uart_set_config.o(.text.rf_build_default_flash_config)
-    [Anonymous Symbol]                       0x08002788   Section        0  rf_uart_set_config.o(.text.rf_build_default_flash_config)
-    __arm_cp.2_0                             0x080027e8   Number         4  rf_uart_set_config.o(.text.rf_build_default_flash_config)
-    rf_build_one_config                      0x080027ed   Thumb Code   100  rf_uart_set_config.o(.text.rf_build_one_config)
-    [Anonymous Symbol]                       0x080027ec   Section        0  rf_uart_set_config.o(.text.rf_build_one_config)
-    rf_calc_freq_hz                          0x08002851   Thumb Code    32  app_tx-rx_config.o(.text.rf_calc_freq_hz)
-    [Anonymous Symbol]                       0x08002850   Section        0  app_tx-rx_config.o(.text.rf_calc_freq_hz)
-    __arm_cp.1_0                             0x08002870   Number         4  app_tx-rx_config.o(.text.rf_calc_freq_hz)
-    __arm_cp.1_1                             0x08002874   Number         4  app_tx-rx_config.o(.text.rf_calc_freq_hz)
-    [Anonymous Symbol]                       0x08002878   Section        0  rf_apply.o(.text.rf_config_apply)
-    __arm_cp.0_0                             0x080028f8   Number         4  rf_apply.o(.text.rf_config_apply)
-    __arm_cp.0_1                             0x080028fc   Number         4  rf_apply.o(.text.rf_config_apply)
-    __arm_cp.0_2                             0x08002900   Number         4  rf_apply.o(.text.rf_config_apply)
-    [Anonymous Symbol]                       0x08002904   Section        0  rf_config.o(.text.rf_config_check)
-    __arm_cp.0_0                             0x080029dc   Number         4  rf_config.o(.text.rf_config_check)
-    __arm_cp.0_1                             0x080029e0   Number         4  rf_config.o(.text.rf_config_check)
-    __arm_cp.0_2                             0x080029e4   Number         4  rf_config.o(.text.rf_config_check)
-    [Anonymous Symbol]                       0x080029e8   Section        0  rf_config.o(.text.rf_crc16_calc)
-    __arm_cp.1_0                             0x08002a88   Number         4  rf_config.o(.text.rf_crc16_calc)
-    __arm_cp.1_1                             0x08002a8c   Number         4  rf_config.o(.text.rf_crc16_calc)
-    rf_execute_command                       0x08002a91   Thumb Code   312  rf_uart_set_config.o(.text.rf_execute_command)
-    [Anonymous Symbol]                       0x08002a90   Section        0  rf_uart_set_config.o(.text.rf_execute_command)
-    __arm_cp.5_0                             0x08002bc8   Number         4  rf_uart_set_config.o(.text.rf_execute_command)
-    rf_expect_char                           0x08002bcd   Thumb Code    78  rf_uart_set_config.o(.text.rf_expect_char)
-    [Anonymous Symbol]                       0x08002bcc   Section        0  rf_uart_set_config.o(.text.rf_expect_char)
-    rf_flash_config_read                     0x08002c1d   Thumb Code    60  rf_uart_set_config.o(.text.rf_flash_config_read)
-    [Anonymous Symbol]                       0x08002c1c   Section        0  rf_uart_set_config.o(.text.rf_flash_config_read)
-    rf_flash_config_write                    0x08002c59   Thumb Code   252  rf_uart_set_config.o(.text.rf_flash_config_write)
-    [Anonymous Symbol]                       0x08002c58   Section        0  rf_uart_set_config.o(.text.rf_flash_config_write)
-    __arm_cp.10_1                            0x08002d54   Number         4  rf_uart_set_config.o(.text.rf_flash_config_write)
-    rf_flash_record_check                    0x08002d59   Thumb Code   200  rf_uart_set_config.o(.text.rf_flash_record_check)
-    [Anonymous Symbol]                       0x08002d58   Section        0  rf_uart_set_config.o(.text.rf_flash_record_check)
-    __arm_cp.6_0                             0x08002e20   Number         4  rf_uart_set_config.o(.text.rf_flash_record_check)
-    [Anonymous Symbol]                       0x08002e24   Section        0  app_tx-rx_config.o(.text.rf_get_tx_rx_real_freq)
-    rf_parse_command                         0x08002ead   Thumb Code   396  rf_uart_set_config.o(.text.rf_parse_command)
-    [Anonymous Symbol]                       0x08002eac   Section        0  rf_uart_set_config.o(.text.rf_parse_command)
-    rf_parse_uint8                           0x08003039   Thumb Code   192  rf_uart_set_config.o(.text.rf_parse_uint8)
-    [Anonymous Symbol]                       0x08003038   Section        0  rf_uart_set_config.o(.text.rf_parse_uint8)
-    [Anonymous Symbol]                       0x080030f8   Section        0  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
-    __arm_cp.2_0                             0x08003130   Number         4  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
-    __arm_cp.2_1                             0x08003134   Number         4  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
-    [Anonymous Symbol]                       0x08003138   Section        0  rf_apply.o(.text.rf_test_apply_config)
-    __arm_cp.1_0                             0x080031b0   Number         4  rf_apply.o(.text.rf_test_apply_config)
-    __arm_cp.1_1                             0x080031b4   Number         4  rf_apply.o(.text.rf_test_apply_config)
-    __arm_cp.1_2                             0x080031b8   Number         4  rf_apply.o(.text.rf_test_apply_config)
-    __arm_cp.1_3                             0x080031bc   Number         4  rf_apply.o(.text.rf_test_apply_config)
-    [Anonymous Symbol]                       0x080031c0   Section        0  rf_uart_set_config.o(.text.rf_uart_config_process)
-    __arm_cp.3_0                             0x080032e0   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
-    __arm_cp.3_1                             0x080032e4   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
-    __arm_cp.3_2                             0x080032e8   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
-    __arm_cp.3_3                             0x080032ec   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
-    __arm_cp.3_4                             0x080032f0   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
-    [Anonymous Symbol]                       0x080032f4   Section        0  rf_uart_set_config.o(.text.rf_uart_config_restore)
-    __arm_cp.0_0                             0x0800334c   Number         4  rf_uart_set_config.o(.text.rf_uart_config_restore)
-    system_clock_72m_hxtal                   0x08003351   Thumb Code   208  system_gd32e23x.o(.text.system_clock_72m_hxtal)
-    [Anonymous Symbol]                       0x08003350   Section        0  system_gd32e23x.o(.text.system_clock_72m_hxtal)
-    __arm_cp.3_0                             0x08003420   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
-    __arm_cp.3_1                             0x08003424   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
-    __arm_cp.3_2                             0x08003428   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
-    __arm_cp.3_3                             0x0800342c   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
-    system_clock_config                      0x08003431   Thumb Code     8  system_gd32e23x.o(.text.system_clock_config)
-    [Anonymous Symbol]                       0x08003430   Section        0  system_gd32e23x.o(.text.system_clock_config)
-    [Anonymous Symbol]                       0x08003438   Section        0  gd32e23x_misc.o(.text.systick_clksource_set)
-    __arm_cp.10_0                            0x08003460   Number         4  gd32e23x_misc.o(.text.systick_clksource_set)
-    [Anonymous Symbol]                       0x08003464   Section        0  systick.o(.text.systick_config)
-    __arm_cp.0_0                             0x08003490   Number         4  systick.o(.text.systick_config)
-    __arm_cp.0_1                             0x08003494   Number         4  systick.o(.text.systick_config)
-    __arm_cp.0_2                             0x08003498   Number         4  systick.o(.text.systick_config)
-    __arm_cp.0_3                             0x0800349c   Number         4  systick.o(.text.systick_config)
-    __arm_cp.0_4                             0x080034a0   Number         4  systick.o(.text.systick_config)
-    [Anonymous Symbol]                       0x080034a4   Section        0  gd32e23x_usart.o(.text.usart_baudrate_set)
-    __arm_cp.1_2                             0x08003550   Number         4  gd32e23x_usart.o(.text.usart_baudrate_set)
-    [Anonymous Symbol]                       0x08003554   Section        0  gd32e23x_usart.o(.text.usart_data_receive)
-    [Anonymous Symbol]                       0x08003564   Section        0  gd32e23x_usart.o(.text.usart_data_transmit)
-    __arm_cp.18_0                            0x08003578   Number         4  gd32e23x_usart.o(.text.usart_data_transmit)
-    [Anonymous Symbol]                       0x0800357c   Section        0  gd32e23x_usart.o(.text.usart_deinit)
-    __arm_cp.0_0                             0x080035c0   Number         4  gd32e23x_usart.o(.text.usart_deinit)
-    __arm_cp.0_2                             0x080035c4   Number         4  gd32e23x_usart.o(.text.usart_deinit)
-    __arm_cp.0_3                             0x080035c8   Number         4  gd32e23x_usart.o(.text.usart_deinit)
-    [Anonymous Symbol]                       0x080035cc   Section        0  gd32e23x_usart.o(.text.usart_enable)
-    [Anonymous Symbol]                       0x080035de   Section        0  gd32e23x_usart.o(.text.usart_flag_get)
-    [Anonymous Symbol]                       0x0800361c   Section        0  bsp_usart.o(.text.usart_gpio_config)
-    __arm_cp.0_0                             0x080036ec   Number         4  bsp_usart.o(.text.usart_gpio_config)
-    __arm_cp.0_1                             0x080036f0   Number         4  bsp_usart.o(.text.usart_gpio_config)
-    [Anonymous Symbol]                       0x080036f4   Section        0  gd32e23x_usart.o(.text.usart_interrupt_enable)
-    [Anonymous Symbol]                       0x08003718   Section        0  gd32e23x_usart.o(.text.usart_interrupt_flag_clear)
-    __arm_cp.73_0                            0x08003754   Number         4  gd32e23x_usart.o(.text.usart_interrupt_flag_clear)
-    [Anonymous Symbol]                       0x08003758   Section        0  gd32e23x_usart.o(.text.usart_interrupt_flag_get)
-    [Anonymous Symbol]                       0x080037ba   Section        0  gd32e23x_usart.o(.text.usart_parity_config)
-    [Anonymous Symbol]                       0x080037e4   Section        0  gd32e23x_usart.o(.text.usart_receive_config)
-    [Anonymous Symbol]                       0x08003804   Section        0  bsp_usart.o(.text.usart_send_data)
-    __arm_cp.1_0                             0x0800382c   Number         4  bsp_usart.o(.text.usart_send_data)
-    __arm_cp.1_1                             0x08003830   Number         4  bsp_usart.o(.text.usart_send_data)
-    [Anonymous Symbol]                       0x08003834   Section        0  bsp_usart.o(.text.usart_send_string)
-    [Anonymous Symbol]                       0x0800386c   Section        0  gd32e23x_usart.o(.text.usart_stop_bit_set)
-    [Anonymous Symbol]                       0x08003896   Section        0  gd32e23x_usart.o(.text.usart_transmit_config)
-    [Anonymous Symbol]                       0x080038b4   Section        0  gd32e23x_usart.o(.text.usart_word_length_set)
-    i.__0printf                              0x080038e0   Section        0  printfa.o(i.__0printf)
-    i.__ARM_clz                              0x08003900   Section        0  depilogue.o(i.__ARM_clz)
-    i.__scatterload_copy                     0x0800392e   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800393c   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800393e   Section       14  handlers.o(i.__scatterload_zeroinit)
-    _fp_digits                               0x0800394d   Thumb Code   344  printfa.o(i._fp_digits)
-    i._fp_digits                             0x0800394c   Section        0  printfa.o(i._fp_digits)
-    _printf_core                             0x08003ac1   Thumb Code  1754  printfa.o(i._printf_core)
-    i._printf_core                           0x08003ac0   Section        0  printfa.o(i._printf_core)
-    _printf_post_padding                     0x080041ad   Thumb Code    32  printfa.o(i._printf_post_padding)
-    i._printf_post_padding                   0x080041ac   Section        0  printfa.o(i._printf_post_padding)
-    _printf_pre_padding                      0x080041cd   Thumb Code    44  printfa.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x080041cc   Section        0  printfa.o(i._printf_pre_padding)
-    g_cmt2119b_baseband_bank                 0x080041f8   Data          29  cmt2119b.o(.rodata.g_cmt2119b_baseband_bank)
-    [Anonymous Symbol]                       0x080041f8   Section        0  cmt2119b.o(.rodata.g_cmt2119b_baseband_bank)
-    g_cmt2119b_cmt_bank                      0x08004215   Data          12  cmt2119b.o(.rodata.g_cmt2119b_cmt_bank)
-    [Anonymous Symbol]                       0x08004215   Section        0  cmt2119b.o(.rodata.g_cmt2119b_cmt_bank)
-    g_cmt2119b_data_rate_bank                0x08004221   Data          24  cmt2119b.o(.rodata.g_cmt2119b_data_rate_bank)
-    [Anonymous Symbol]                       0x08004221   Section        0  cmt2119b.o(.rodata.g_cmt2119b_data_rate_bank)
-    g_cmt2119b_frequency_bank                0x08004239   Data           8  cmt2119b.o(.rodata.g_cmt2119b_frequency_bank)
-    [Anonymous Symbol]                       0x08004239   Section        0  cmt2119b.o(.rodata.g_cmt2119b_frequency_bank)
-    g_cmt2119b_system_bank                   0x08004241   Data          12  cmt2119b.o(.rodata.g_cmt2119b_system_bank)
-    [Anonymous Symbol]                       0x08004241   Section        0  cmt2119b.o(.rodata.g_cmt2119b_system_bank)
-    g_cmt2119b_tx_bank                       0x0800424d   Data          11  cmt2119b.o(.rodata.g_cmt2119b_tx_bank)
-    [Anonymous Symbol]                       0x0800424d   Section        0  cmt2119b.o(.rodata.g_cmt2119b_tx_bank)
-    g_cmt2219b_baseband_bank                 0x08004258   Data          29  cmt2219b.o(.rodata.g_cmt2219b_baseband_bank)
-    [Anonymous Symbol]                       0x08004258   Section        0  cmt2219b.o(.rodata.g_cmt2219b_baseband_bank)
-    g_cmt2219b_cmt_bank                      0x08004275   Data          12  cmt2219b.o(.rodata.g_cmt2219b_cmt_bank)
-    [Anonymous Symbol]                       0x08004275   Section        0  cmt2219b.o(.rodata.g_cmt2219b_cmt_bank)
-    g_cmt2219b_data_rate_bank                0x08004281   Data          24  cmt2219b.o(.rodata.g_cmt2219b_data_rate_bank)
-    [Anonymous Symbol]                       0x08004281   Section        0  cmt2219b.o(.rodata.g_cmt2219b_data_rate_bank)
-    g_cmt2219b_frequency_bank                0x08004299   Data           8  cmt2219b.o(.rodata.g_cmt2219b_frequency_bank)
-    [Anonymous Symbol]                       0x08004299   Section        0  cmt2219b.o(.rodata.g_cmt2219b_frequency_bank)
-    g_cmt2219b_lbd_bank                      0x080042a1   Data           1  cmt2219b.o(.rodata.g_cmt2219b_lbd_bank)
-    [Anonymous Symbol]                       0x080042a1   Section        0  cmt2219b.o(.rodata.g_cmt2219b_lbd_bank)
-    g_cmt2219b_system_bank                   0x080042a2   Data          12  cmt2219b.o(.rodata.g_cmt2219b_system_bank)
-    [Anonymous Symbol]                       0x080042a2   Section        0  cmt2219b.o(.rodata.g_cmt2219b_system_bank)
-    g_cmt2219b_tx_bank                       0x080042ae   Data          10  cmt2219b.o(.rodata.g_cmt2219b_tx_bank)
-    [Anonymous Symbol]                       0x080042ae   Section        0  cmt2219b.o(.rodata.g_cmt2219b_tx_bank)
-    [Anonymous Symbol]                       0x080042b8   Section        0  main.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080042d4   Section        0  app_211.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0800430e   Section        0  app_221.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0800434c   Section        0  app_tx-rx_config.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080043e6   Section        0  app_key.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080043f3   Section        0  rf_apply.o(.rodata.str1.1)
+    __arm_cp.2_1                             0x08000adc   Number         4  app_211.o(.text.app_211_init)
+    __arm_cp.2_2                             0x08000ae0   Number         4  app_211.o(.text.app_211_init)
+    [Anonymous Symbol]                       0x08000ae4   Section        0  app_211.o(.text.app_211_send_data)
+    [Anonymous Symbol]                       0x08000af0   Section        0  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_0                             0x08000b40   Number         4  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_1                             0x08000b44   Number         4  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_2                             0x08000b48   Number         4  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_3                             0x08000b4c   Number         4  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_4                             0x08000b50   Number         4  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_5                             0x08000b54   Number         4  app_211.o(.text.app_211_send_test_data)
+    __arm_cp.3_6                             0x08000b58   Number         4  app_211.o(.text.app_211_send_test_data)
+    [Anonymous Symbol]                       0x08000b5c   Section        0  app_221.o(.text.app_221_init)
+    __arm_cp.0_1                             0x08000ba0   Number         4  app_221.o(.text.app_221_init)
+    __arm_cp.0_2                             0x08000ba4   Number         4  app_221.o(.text.app_221_init)
+    __arm_cp.0_3                             0x08000ba8   Number         4  app_221.o(.text.app_221_init)
+    [Anonymous Symbol]                       0x08000bac   Section        0  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_0                             0x08000c40   Number         4  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_1                             0x08000c44   Number         4  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_2                             0x08000c48   Number         4  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_3                             0x08000c4c   Number         4  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_4                             0x08000c50   Number         4  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_5                             0x08000c54   Number         4  app_221.o(.text.app_221_receive_data)
+    __arm_cp.1_6                             0x08000c58   Number         4  app_221.o(.text.app_221_receive_data)
+    [Anonymous Symbol]                       0x08000c5c   Section        0  app_key.o(.text.check_double_key12)
+    __arm_cp.2_0                             0x08000cc0   Number         4  app_key.o(.text.check_double_key12)
+    __arm_cp.2_1                             0x08000cc4   Number         4  app_key.o(.text.check_double_key12)
+    cmt2119b_auto_switch_status              0x08000cc9   Thumb Code   130  cmt2119b.o(.text.cmt2119b_auto_switch_status)
+    [Anonymous Symbol]                       0x08000cc8   Section        0  cmt2119b.o(.text.cmt2119b_auto_switch_status)
+    [Anonymous Symbol]                       0x08000d4a   Section        0  cmt2119b.o(.text.cmt2119b_clear_interrupt_flags)
+    [Anonymous Symbol]                       0x08000d5e   Section        0  cmt2119b.o(.text.cmt2119b_clear_tx_fifo)
+    cmt2119b_config_gpio_interrupt           0x08000d6b   Thumb Code    64  cmt2119b.o(.text.cmt2119b_config_gpio_interrupt)
+    [Anonymous Symbol]                       0x08000d6a   Section        0  cmt2119b.o(.text.cmt2119b_config_gpio_interrupt)
+    cmt2119b_config_reg_bank                 0x08000dab   Thumb Code    70  cmt2119b.o(.text.cmt2119b_config_reg_bank)
+    [Anonymous Symbol]                       0x08000daa   Section        0  cmt2119b.o(.text.cmt2119b_config_reg_bank)
+    [Anonymous Symbol]                       0x08000df0   Section        0  cmt2119b_port.o(.text.cmt2119b_csb_high)
+    [Anonymous Symbol]                       0x08000dfe   Section        0  cmt2119b_port.o(.text.cmt2119b_csb_low)
+    [Anonymous Symbol]                       0x08000e0c   Section        0  cmt2119b_port.o(.text.cmt2119b_delay_ms)
+    [Anonymous Symbol]                       0x08000e1c   Section        0  cmt2119b_port.o(.text.cmt2119b_delay_us)
+    cmt2119b_enable_lfosc                    0x08000e2d   Thumb Code   100  cmt2119b.o(.text.cmt2119b_enable_lfosc)
+    [Anonymous Symbol]                       0x08000e2c   Section        0  cmt2119b.o(.text.cmt2119b_enable_lfosc)
+    cmt2119b_enable_write_fifo               0x08000e91   Thumb Code    46  cmt2119b.o(.text.cmt2119b_enable_write_fifo)
+    [Anonymous Symbol]                       0x08000e90   Section        0  cmt2119b.o(.text.cmt2119b_enable_write_fifo)
+    [Anonymous Symbol]                       0x08000ec0   Section        0  cmt2119b_port.o(.text.cmt2119b_fcsb_high)
+    [Anonymous Symbol]                       0x08000ecc   Section        0  cmt2119b_port.o(.text.cmt2119b_fcsb_low)
+    cmt2119b_get_chip_status                 0x08000ed9   Thumb Code    14  cmt2119b.o(.text.cmt2119b_get_chip_status)
+    [Anonymous Symbol]                       0x08000ed8   Section        0  cmt2119b.o(.text.cmt2119b_get_chip_status)
+    [Anonymous Symbol]                       0x08000ee6   Section        0  cmt2119b.o(.text.cmt2119b_go_sleep)
+    [Anonymous Symbol]                       0x08000ef2   Section        0  cmt2119b.o(.text.cmt2119b_go_stby)
+    [Anonymous Symbol]                       0x08000efe   Section        0  cmt2119b.o(.text.cmt2119b_go_tx)
+    [Anonymous Symbol]                       0x08000f0c   Section        0  cmt2119b_port.o(.text.cmt2119b_gpio3_read)
+    [Anonymous Symbol]                       0x08000f1c   Section        0  cmt2119b.o(.text.cmt2119b_init)
+    __arm_cp.0_0                             0x08000ff8   Number         4  cmt2119b.o(.text.cmt2119b_init)
+    __arm_cp.0_1                             0x08000ffc   Number         4  cmt2119b.o(.text.cmt2119b_init)
+    __arm_cp.0_2                             0x08001000   Number         4  cmt2119b.o(.text.cmt2119b_init)
+    __arm_cp.0_3                             0x08001004   Number         4  cmt2119b.o(.text.cmt2119b_init)
+    __arm_cp.0_4                             0x08001008   Number         4  cmt2119b.o(.text.cmt2119b_init)
+    __arm_cp.0_5                             0x0800100c   Number         4  cmt2119b.o(.text.cmt2119b_init)
+    [Anonymous Symbol]                       0x08001010   Section        0  cmt2119b_port.o(.text.cmt2119b_port_init)
+    __arm_cp.0_0                             0x080010b4   Number         4  cmt2119b_port.o(.text.cmt2119b_port_init)
+    __arm_cp.0_1                             0x080010b8   Number         4  cmt2119b_port.o(.text.cmt2119b_port_init)
+    __arm_cp.0_2                             0x080010bc   Number         4  cmt2119b_port.o(.text.cmt2119b_port_init)
+    [Anonymous Symbol]                       0x080010c0   Section        0  cmt2119b.o(.text.cmt2119b_read_reg)
+    [Anonymous Symbol]                       0x080010d4   Section        0  cmt2119b_port.o(.text.cmt2119b_sclk_high)
+    [Anonymous Symbol]                       0x080010e2   Section        0  cmt2119b_port.o(.text.cmt2119b_sclk_low)
+    [Anonymous Symbol]                       0x080010f0   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_high)
+    [Anonymous Symbol]                       0x080010fe   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_input)
+    [Anonymous Symbol]                       0x08001110   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_low)
+    [Anonymous Symbol]                       0x0800111e   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_output)
+    [Anonymous Symbol]                       0x08001146   Section        0  cmt2119b_port.o(.text.cmt2119b_sdio_read)
+    [Anonymous Symbol]                       0x08001158   Section        0  cmt2119b.o(.text.cmt2119b_send_packet)
+    [Anonymous Symbol]                       0x08001222   Section        0  cmt2119b.o(.text.cmt2119b_set_frequency_channel)
+    [Anonymous Symbol]                       0x08001238   Section        0  cmt2119b.o(.text.cmt2119b_set_frequency_step)
+    cmt2119b_soft_reset                      0x0800124f   Thumb Code    12  cmt2119b.o(.text.cmt2119b_soft_reset)
+    [Anonymous Symbol]                       0x0800124e   Section        0  cmt2119b.o(.text.cmt2119b_soft_reset)
+    cmt2119b_spi_delay                       0x0800125b   Thumb Code    24  cmt2119b_spi.o(.text.cmt2119b_spi_delay)
+    [Anonymous Symbol]                       0x0800125a   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_delay)
+    cmt2119b_spi_delay_us                    0x08001273   Thumb Code    10  cmt2119b_spi.o(.text.cmt2119b_spi_delay_us)
+    [Anonymous Symbol]                       0x08001272   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_delay_us)
+    [Anonymous Symbol]                       0x0800127c   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_init)
+    [Anonymous Symbol]                       0x0800129c   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_read_reg)
+    cmt2119b_spi_recv                        0x080012fd   Thumb Code    90  cmt2119b_spi.o(.text.cmt2119b_spi_recv)
+    [Anonymous Symbol]                       0x080012fc   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_recv)
+    cmt2119b_spi_send                        0x08001357   Thumb Code    90  cmt2119b_spi.o(.text.cmt2119b_spi_send)
+    [Anonymous Symbol]                       0x08001356   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_send)
+    [Anonymous Symbol]                       0x080013b0   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_write_fifo)
+    [Anonymous Symbol]                       0x08001438   Section        0  cmt2119b_spi.o(.text.cmt2119b_spi_write_reg)
+    [Anonymous Symbol]                       0x08001498   Section        0  cmt2119b.o(.text.cmt2119b_write_fifo)
+    [Anonymous Symbol]                       0x080014c0   Section        0  cmt2119b.o(.text.cmt2119b_write_reg)
+    cmt2219b_auto_switch_status              0x080014dd   Thumb Code    96  cmt2219b.o(.text.cmt2219b_auto_switch_status)
+    [Anonymous Symbol]                       0x080014dc   Section        0  cmt2219b.o(.text.cmt2219b_auto_switch_status)
+    [Anonymous Symbol]                       0x0800153c   Section        0  cmt2219b.o(.text.cmt2219b_clear_interrupt_flags)
+    [Anonymous Symbol]                       0x08001550   Section        0  cmt2219b.o(.text.cmt2219b_clear_rx_fifo)
+    [Anonymous Symbol]                       0x0800155c   Section        0  cmt2219b_port.o(.text.cmt2219b_clk_high)
+    [Anonymous Symbol]                       0x0800156c   Section        0  cmt2219b_port.o(.text.cmt2219b_clk_low)
+    cmt2219b_config_gpio_interrupt           0x0800157d   Thumb Code    62  cmt2219b.o(.text.cmt2219b_config_gpio_interrupt)
+    [Anonymous Symbol]                       0x0800157c   Section        0  cmt2219b.o(.text.cmt2219b_config_gpio_interrupt)
+    cmt2219b_config_reg_bank                 0x080015bb   Thumb Code    70  cmt2219b.o(.text.cmt2219b_config_reg_bank)
+    [Anonymous Symbol]                       0x080015ba   Section        0  cmt2219b.o(.text.cmt2219b_config_reg_bank)
+    [Anonymous Symbol]                       0x08001600   Section        0  cmt2219b_port.o(.text.cmt2219b_csb_high)
+    [Anonymous Symbol]                       0x08001610   Section        0  cmt2219b_port.o(.text.cmt2219b_csb_low)
+    [Anonymous Symbol]                       0x08001620   Section        0  cmt2219b_port.o(.text.cmt2219b_delay_ms)
+    [Anonymous Symbol]                       0x08001630   Section        0  cmt2219b_port.o(.text.cmt2219b_delay_us)
+    cmt2219b_enable_lfosc                    0x08001641   Thumb Code   100  cmt2219b.o(.text.cmt2219b_enable_lfosc)
+    [Anonymous Symbol]                       0x08001640   Section        0  cmt2219b.o(.text.cmt2219b_enable_lfosc)
+    [Anonymous Symbol]                       0x080016a4   Section        0  cmt2219b.o(.text.cmt2219b_enable_read_fifo)
+    [Anonymous Symbol]                       0x080016d4   Section        0  cmt2219b_port.o(.text.cmt2219b_fcsb_high)
+    [Anonymous Symbol]                       0x080016e4   Section        0  cmt2219b_port.o(.text.cmt2219b_fcsb_low)
+    __arm_cp.7_0                             0x080016f4   Number         4  cmt2219b_port.o(.text.cmt2219b_fcsb_low)
+    cmt2219b_get_chip_status                 0x080016f9   Thumb Code    14  cmt2219b.o(.text.cmt2219b_get_chip_status)
+    [Anonymous Symbol]                       0x080016f8   Section        0  cmt2219b.o(.text.cmt2219b_get_chip_status)
+    [Anonymous Symbol]                       0x08001706   Section        0  cmt2219b.o(.text.cmt2219b_go_rx)
+    [Anonymous Symbol]                       0x08001712   Section        0  cmt2219b.o(.text.cmt2219b_go_sleep)
+    [Anonymous Symbol]                       0x0800171e   Section        0  cmt2219b.o(.text.cmt2219b_go_stby)
+    [Anonymous Symbol]                       0x0800172c   Section        0  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_0                             0x08001830   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_1                             0x08001834   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_2                             0x08001838   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_3                             0x0800183c   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_4                             0x08001840   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_5                             0x08001844   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    __arm_cp.0_6                             0x08001848   Number         4  cmt2219b.o(.text.cmt2219b_init)
+    [Anonymous Symbol]                       0x0800184c   Section        0  cmt2219b.o(.text.cmt2219b_is_exist)
+    [Anonymous Symbol]                       0x080018a2   Section        0  cmt2219b.o(.text.cmt2219b_packet_received)
+    [Anonymous Symbol]                       0x080018d8   Section        0  cmt2219b_port.o(.text.cmt2219b_port_init)
+    __arm_cp.0_0                             0x08001980   Number         4  cmt2219b_port.o(.text.cmt2219b_port_init)
+    [Anonymous Symbol]                       0x08001984   Section        0  cmt2219b.o(.text.cmt2219b_read_fifo)
+    [Anonymous Symbol]                       0x080019ac   Section        0  cmt2219b.o(.text.cmt2219b_read_reg)
+    [Anonymous Symbol]                       0x080019c0   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_high)
+    [Anonymous Symbol]                       0x080019d0   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_input)
+    __arm_cp.11_0                            0x080019e4   Number         4  cmt2219b_port.o(.text.cmt2219b_sdio_input)
+    [Anonymous Symbol]                       0x080019e8   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_low)
+    __arm_cp.9_0                             0x080019f8   Number         4  cmt2219b_port.o(.text.cmt2219b_sdio_low)
+    [Anonymous Symbol]                       0x080019fc   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_output)
+    [Anonymous Symbol]                       0x08001a24   Section        0  cmt2219b_port.o(.text.cmt2219b_sdio_read)
+    __arm_cp.10_0                            0x08001a50   Number         4  cmt2219b_port.o(.text.cmt2219b_sdio_read)
+    [Anonymous Symbol]                       0x08001a54   Section        0  cmt2219b.o(.text.cmt2219b_set_frequency_channel)
+    [Anonymous Symbol]                       0x08001a6a   Section        0  cmt2219b.o(.text.cmt2219b_set_frequency_step)
+    cmt2219b_soft_reset                      0x08001a81   Thumb Code    12  cmt2219b.o(.text.cmt2219b_soft_reset)
+    [Anonymous Symbol]                       0x08001a80   Section        0  cmt2219b.o(.text.cmt2219b_soft_reset)
+    cmt2219b_spi_delay                       0x08001a8d   Thumb Code    24  cmt2219b_spi.o(.text.cmt2219b_spi_delay)
+    [Anonymous Symbol]                       0x08001a8c   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_delay)
+    cmt2219b_spi_delay_us                    0x08001aa5   Thumb Code    10  cmt2219b_spi.o(.text.cmt2219b_spi_delay_us)
+    [Anonymous Symbol]                       0x08001aa4   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_delay_us)
+    [Anonymous Symbol]                       0x08001aae   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_init)
+    [Anonymous Symbol]                       0x08001ace   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_read_fifo)
+    [Anonymous Symbol]                       0x08001b56   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_read_reg)
+    cmt2219b_spi_recv                        0x08001bb7   Thumb Code    90  cmt2219b_spi.o(.text.cmt2219b_spi_recv)
+    [Anonymous Symbol]                       0x08001bb6   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_recv)
+    cmt2219b_spi_send                        0x08001c11   Thumb Code    90  cmt2219b_spi.o(.text.cmt2219b_spi_send)
+    [Anonymous Symbol]                       0x08001c10   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_send)
+    [Anonymous Symbol]                       0x08001c6a   Section        0  cmt2219b_spi.o(.text.cmt2219b_spi_write_reg)
+    [Anonymous Symbol]                       0x08001cca   Section        0  cmt2219b.o(.text.cmt2219b_write_reg)
+    [Anonymous Symbol]                       0x08001ce8   Section        0  systick.o(.text.delay_ms)
+    __arm_cp.4_0                             0x08001d58   Number         4  systick.o(.text.delay_ms)
+    [Anonymous Symbol]                       0x08001d5c   Section        0  systick.o(.text.delay_us)
+    __arm_cp.2_0                             0x08001dcc   Number         4  systick.o(.text.delay_us)
+    __arm_cp.2_1                             0x08001dd0   Number         4  systick.o(.text.delay_us)
+    __arm_cp.2_2                             0x08001dd4   Number         4  systick.o(.text.delay_us)
+    __arm_cp.2_3                             0x08001dd8   Number         4  systick.o(.text.delay_us)
+    [Anonymous Symbol]                       0x08001ddc   Section        0  gd32e23x_fmc.o(.text.fmc_flag_clear)
+    [Anonymous Symbol]                       0x08001dec   Section        0  gd32e23x_fmc.o(.text.fmc_lock)
+    [Anonymous Symbol]                       0x08001df8   Section        0  gd32e23x_fmc.o(.text.fmc_page_erase)
+    __arm_cp.5_1                             0x08001e50   Number         4  gd32e23x_fmc.o(.text.fmc_page_erase)
+    [Anonymous Symbol]                       0x08001e54   Section        0  gd32e23x_fmc.o(.text.fmc_ready_wait)
+    [Anonymous Symbol]                       0x08001eb0   Section        0  gd32e23x_fmc.o(.text.fmc_state_get)
+    __arm_cp.29_0                            0x08001f00   Number         4  gd32e23x_fmc.o(.text.fmc_state_get)
+    [Anonymous Symbol]                       0x08001f04   Section        0  gd32e23x_fmc.o(.text.fmc_unlock)
+    __arm_cp.0_1                             0x08001f20   Number         4  gd32e23x_fmc.o(.text.fmc_unlock)
+    __arm_cp.0_2                             0x08001f24   Number         4  gd32e23x_fmc.o(.text.fmc_unlock)
+    __arm_cp.0_3                             0x08001f28   Number         4  gd32e23x_fmc.o(.text.fmc_unlock)
+    [Anonymous Symbol]                       0x08001f2c   Section        0  gd32e23x_fmc.o(.text.fmc_word_program)
+    __arm_cp.9_0                             0x08001f7c   Number         4  gd32e23x_fmc.o(.text.fmc_word_program)
+    [Anonymous Symbol]                       0x08001f80   Section        0  bsp_usart.o(.text.fputc)
+    [Anonymous Symbol]                       0x08001f96   Section        0  gd32e23x_gpio.o(.text.gpio_af_set)
+    [Anonymous Symbol]                       0x08002056   Section        0  gd32e23x_gpio.o(.text.gpio_bit_reset)
+    [Anonymous Symbol]                       0x08002066   Section        0  gd32e23x_gpio.o(.text.gpio_bit_set)
+    [Anonymous Symbol]                       0x08002076   Section        0  gd32e23x_gpio.o(.text.gpio_bit_toggle)
+    [Anonymous Symbol]                       0x08002086   Section        0  gd32e23x_gpio.o(.text.gpio_input_bit_get)
+    [Anonymous Symbol]                       0x080020b0   Section        0  gd32e23x_gpio.o(.text.gpio_mode_set)
+    [Anonymous Symbol]                       0x0800213e   Section        0  gd32e23x_gpio.o(.text.gpio_output_options_set)
+    [Anonymous Symbol]                       0x080021c8   Section        0  app_key.o(.text.key_init)
+    [Anonymous Symbol]                       0x080021f8   Section        0  app_key.o(.text.key_is_pressed)
+    __arm_cp.1_0                             0x0800226c   Number         4  app_key.o(.text.key_is_pressed)
+    __arm_cp.1_1                             0x08002270   Number         4  app_key.o(.text.key_is_pressed)
+    [Anonymous Symbol]                       0x08002274   Section        0  led_test.o(.text.led_PA15_toggle)
+    [Anonymous Symbol]                       0x08002284   Section        0  main.o(.text.main)
+    __arm_cp.0_0                             0x08002324   Number         4  main.o(.text.main)
+    __arm_cp.0_1                             0x08002328   Number         4  main.o(.text.main)
+    [Anonymous Symbol]                       0x0800232c   Section        0  gd32e23x_misc.o(.text.nvic_irq_disable)
+    [Anonymous Symbol]                       0x08002342   Section        0  gd32e23x_misc.o(.text.nvic_irq_enable)
+    [Anonymous Symbol]                       0x08002370   Section        0  gd32e23x_misc.o(.text.nvic_vector_table_set)
+    __arm_cp.7_0                             0x08002388   Number         4  gd32e23x_misc.o(.text.nvic_vector_table_set)
+    __arm_cp.7_1                             0x0800238c   Number         4  gd32e23x_misc.o(.text.nvic_vector_table_set)
+    [Anonymous Symbol]                       0x08002390   Section        0  led_test.o(.text.pa15_output_high_init)
+    __arm_cp.0_0                             0x080023c8   Number         4  led_test.o(.text.pa15_output_high_init)
+    [Anonymous Symbol]                       0x080023cc   Section        0  app_211.o(.text.print_buf)
+    __arm_cp.1_0                             0x08002410   Number         4  app_211.o(.text.print_buf)
+    __arm_cp.1_1                             0x08002414   Number         4  app_211.o(.text.print_buf)
+    [Anonymous Symbol]                       0x08002418   Section        0  radio_rx.o(.text.radio_rx_init)
+    [Anonymous Symbol]                       0x0800247e   Section        0  radio_rx.o(.text.radio_rx_set_channel)
+    [Anonymous Symbol]                       0x080024a8   Section        0  radio_rx.o(.text.radio_rx_set_frequency_step)
+    [Anonymous Symbol]                       0x080024d2   Section        0  radio_tx.o(.text.radio_tx_init)
+    [Anonymous Symbol]                       0x0800250c   Section        0  radio_tx.o(.text.radio_tx_send)
+    [Anonymous Symbol]                       0x0800252c   Section        0  radio_tx.o(.text.radio_tx_set_channel)
+    [Anonymous Symbol]                       0x0800254a   Section        0  radio_tx.o(.text.radio_tx_set_frequency_step)
+    [Anonymous Symbol]                       0x08002568   Section        0  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_0                            0x080027c0   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_1                            0x080027c4   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_2                            0x080027c8   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_3                            0x080027cc   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_4                            0x080027d0   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_5                            0x080027d4   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_6                            0x080027d8   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_7                            0x080027dc   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    __arm_cp.38_8                            0x080027e0   Number         4  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    [Anonymous Symbol]                       0x080027e4   Section        0  gd32e23x_rcu.o(.text.rcu_periph_clock_enable)
+    [Anonymous Symbol]                       0x08002808   Section        0  gd32e23x_rcu.o(.text.rcu_periph_reset_disable)
+    [Anonymous Symbol]                       0x0800282c   Section        0  gd32e23x_rcu.o(.text.rcu_periph_reset_enable)
+    __arm_cp.5_0                             0x08002850   Number         4  gd32e23x_rcu.o(.text.rcu_periph_reset_enable)
+    rf_build_default_flash_config            0x08002855   Thumb Code    96  rf_uart_set_config.o(.text.rf_build_default_flash_config)
+    [Anonymous Symbol]                       0x08002854   Section        0  rf_uart_set_config.o(.text.rf_build_default_flash_config)
+    __arm_cp.2_0                             0x080028b4   Number         4  rf_uart_set_config.o(.text.rf_build_default_flash_config)
+    rf_build_one_config                      0x080028b9   Thumb Code   100  rf_uart_set_config.o(.text.rf_build_one_config)
+    [Anonymous Symbol]                       0x080028b8   Section        0  rf_uart_set_config.o(.text.rf_build_one_config)
+    rf_calc_freq_hz                          0x0800291d   Thumb Code    32  app_tx-rx_config.o(.text.rf_calc_freq_hz)
+    [Anonymous Symbol]                       0x0800291c   Section        0  app_tx-rx_config.o(.text.rf_calc_freq_hz)
+    __arm_cp.1_0                             0x0800293c   Number         4  app_tx-rx_config.o(.text.rf_calc_freq_hz)
+    __arm_cp.1_1                             0x08002940   Number         4  app_tx-rx_config.o(.text.rf_calc_freq_hz)
+    [Anonymous Symbol]                       0x08002944   Section        0  rf_apply.o(.text.rf_config_apply)
+    __arm_cp.0_0                             0x080029c4   Number         4  rf_apply.o(.text.rf_config_apply)
+    __arm_cp.0_1                             0x080029c8   Number         4  rf_apply.o(.text.rf_config_apply)
+    __arm_cp.0_2                             0x080029cc   Number         4  rf_apply.o(.text.rf_config_apply)
+    [Anonymous Symbol]                       0x080029d0   Section        0  rf_config.o(.text.rf_config_check)
+    __arm_cp.0_0                             0x08002aa8   Number         4  rf_config.o(.text.rf_config_check)
+    __arm_cp.0_1                             0x08002aac   Number         4  rf_config.o(.text.rf_config_check)
+    __arm_cp.0_2                             0x08002ab0   Number         4  rf_config.o(.text.rf_config_check)
+    [Anonymous Symbol]                       0x08002ab4   Section        0  rf_config.o(.text.rf_crc16_calc)
+    __arm_cp.1_0                             0x08002b54   Number         4  rf_config.o(.text.rf_crc16_calc)
+    __arm_cp.1_1                             0x08002b58   Number         4  rf_config.o(.text.rf_crc16_calc)
+    rf_execute_command                       0x08002b5d   Thumb Code   312  rf_uart_set_config.o(.text.rf_execute_command)
+    [Anonymous Symbol]                       0x08002b5c   Section        0  rf_uart_set_config.o(.text.rf_execute_command)
+    __arm_cp.5_0                             0x08002c94   Number         4  rf_uart_set_config.o(.text.rf_execute_command)
+    rf_expect_char                           0x08002c99   Thumb Code    78  rf_uart_set_config.o(.text.rf_expect_char)
+    [Anonymous Symbol]                       0x08002c98   Section        0  rf_uart_set_config.o(.text.rf_expect_char)
+    rf_flash_config_read                     0x08002ce9   Thumb Code    60  rf_uart_set_config.o(.text.rf_flash_config_read)
+    [Anonymous Symbol]                       0x08002ce8   Section        0  rf_uart_set_config.o(.text.rf_flash_config_read)
+    rf_flash_config_write                    0x08002d25   Thumb Code   252  rf_uart_set_config.o(.text.rf_flash_config_write)
+    [Anonymous Symbol]                       0x08002d24   Section        0  rf_uart_set_config.o(.text.rf_flash_config_write)
+    __arm_cp.10_1                            0x08002e20   Number         4  rf_uart_set_config.o(.text.rf_flash_config_write)
+    rf_flash_record_check                    0x08002e25   Thumb Code   200  rf_uart_set_config.o(.text.rf_flash_record_check)
+    [Anonymous Symbol]                       0x08002e24   Section        0  rf_uart_set_config.o(.text.rf_flash_record_check)
+    __arm_cp.6_0                             0x08002eec   Number         4  rf_uart_set_config.o(.text.rf_flash_record_check)
+    [Anonymous Symbol]                       0x08002ef0   Section        0  app_tx-rx_config.o(.text.rf_get_tx_rx_real_freq)
+    rf_parse_command                         0x08002f79   Thumb Code   396  rf_uart_set_config.o(.text.rf_parse_command)
+    [Anonymous Symbol]                       0x08002f78   Section        0  rf_uart_set_config.o(.text.rf_parse_command)
+    rf_parse_uint8                           0x08003105   Thumb Code   192  rf_uart_set_config.o(.text.rf_parse_uint8)
+    [Anonymous Symbol]                       0x08003104   Section        0  rf_uart_set_config.o(.text.rf_parse_uint8)
+    [Anonymous Symbol]                       0x080031c4   Section        0  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
+    __arm_cp.2_0                             0x080031fc   Number         4  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
+    __arm_cp.2_1                             0x08003200   Number         4  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
+    [Anonymous Symbol]                       0x08003204   Section        0  rf_apply.o(.text.rf_test_apply_config)
+    __arm_cp.1_0                             0x0800327c   Number         4  rf_apply.o(.text.rf_test_apply_config)
+    __arm_cp.1_1                             0x08003280   Number         4  rf_apply.o(.text.rf_test_apply_config)
+    __arm_cp.1_2                             0x08003284   Number         4  rf_apply.o(.text.rf_test_apply_config)
+    __arm_cp.1_3                             0x08003288   Number         4  rf_apply.o(.text.rf_test_apply_config)
+    [Anonymous Symbol]                       0x0800328c   Section        0  rf_uart_set_config.o(.text.rf_uart_config_process)
+    __arm_cp.3_0                             0x080033ac   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
+    __arm_cp.3_1                             0x080033b0   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
+    __arm_cp.3_2                             0x080033b4   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
+    __arm_cp.3_3                             0x080033b8   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
+    __arm_cp.3_4                             0x080033bc   Number         4  rf_uart_set_config.o(.text.rf_uart_config_process)
+    [Anonymous Symbol]                       0x080033c0   Section        0  rf_uart_set_config.o(.text.rf_uart_config_restore)
+    __arm_cp.0_0                             0x08003418   Number         4  rf_uart_set_config.o(.text.rf_uart_config_restore)
+    system_clock_72m_hxtal                   0x0800341d   Thumb Code   208  system_gd32e23x.o(.text.system_clock_72m_hxtal)
+    [Anonymous Symbol]                       0x0800341c   Section        0  system_gd32e23x.o(.text.system_clock_72m_hxtal)
+    __arm_cp.3_0                             0x080034ec   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
+    __arm_cp.3_1                             0x080034f0   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
+    __arm_cp.3_2                             0x080034f4   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
+    __arm_cp.3_3                             0x080034f8   Number         4  system_gd32e23x.o(.text.system_clock_72m_hxtal)
+    system_clock_config                      0x080034fd   Thumb Code     8  system_gd32e23x.o(.text.system_clock_config)
+    [Anonymous Symbol]                       0x080034fc   Section        0  system_gd32e23x.o(.text.system_clock_config)
+    [Anonymous Symbol]                       0x08003504   Section        0  gd32e23x_misc.o(.text.systick_clksource_set)
+    __arm_cp.10_0                            0x0800352c   Number         4  gd32e23x_misc.o(.text.systick_clksource_set)
+    [Anonymous Symbol]                       0x08003530   Section        0  systick.o(.text.systick_config)
+    __arm_cp.0_0                             0x0800355c   Number         4  systick.o(.text.systick_config)
+    __arm_cp.0_1                             0x08003560   Number         4  systick.o(.text.systick_config)
+    __arm_cp.0_2                             0x08003564   Number         4  systick.o(.text.systick_config)
+    __arm_cp.0_3                             0x08003568   Number         4  systick.o(.text.systick_config)
+    __arm_cp.0_4                             0x0800356c   Number         4  systick.o(.text.systick_config)
+    [Anonymous Symbol]                       0x08003570   Section        0  gd32e23x_usart.o(.text.usart_baudrate_set)
+    __arm_cp.1_2                             0x0800361c   Number         4  gd32e23x_usart.o(.text.usart_baudrate_set)
+    [Anonymous Symbol]                       0x08003620   Section        0  gd32e23x_usart.o(.text.usart_data_receive)
+    [Anonymous Symbol]                       0x08003630   Section        0  gd32e23x_usart.o(.text.usart_data_transmit)
+    __arm_cp.18_0                            0x08003644   Number         4  gd32e23x_usart.o(.text.usart_data_transmit)
+    [Anonymous Symbol]                       0x08003648   Section        0  gd32e23x_usart.o(.text.usart_deinit)
+    __arm_cp.0_0                             0x0800368c   Number         4  gd32e23x_usart.o(.text.usart_deinit)
+    __arm_cp.0_2                             0x08003690   Number         4  gd32e23x_usart.o(.text.usart_deinit)
+    __arm_cp.0_3                             0x08003694   Number         4  gd32e23x_usart.o(.text.usart_deinit)
+    [Anonymous Symbol]                       0x08003698   Section        0  gd32e23x_usart.o(.text.usart_enable)
+    [Anonymous Symbol]                       0x080036aa   Section        0  gd32e23x_usart.o(.text.usart_flag_get)
+    [Anonymous Symbol]                       0x080036e8   Section        0  bsp_usart.o(.text.usart_gpio_config)
+    __arm_cp.0_0                             0x080037b8   Number         4  bsp_usart.o(.text.usart_gpio_config)
+    __arm_cp.0_1                             0x080037bc   Number         4  bsp_usart.o(.text.usart_gpio_config)
+    [Anonymous Symbol]                       0x080037c0   Section        0  gd32e23x_usart.o(.text.usart_interrupt_enable)
+    [Anonymous Symbol]                       0x080037e4   Section        0  gd32e23x_usart.o(.text.usart_interrupt_flag_clear)
+    __arm_cp.73_0                            0x08003820   Number         4  gd32e23x_usart.o(.text.usart_interrupt_flag_clear)
+    [Anonymous Symbol]                       0x08003824   Section        0  gd32e23x_usart.o(.text.usart_interrupt_flag_get)
+    [Anonymous Symbol]                       0x08003886   Section        0  gd32e23x_usart.o(.text.usart_parity_config)
+    [Anonymous Symbol]                       0x080038b0   Section        0  gd32e23x_usart.o(.text.usart_receive_config)
+    [Anonymous Symbol]                       0x080038d0   Section        0  bsp_usart.o(.text.usart_send_data)
+    __arm_cp.1_0                             0x080038f8   Number         4  bsp_usart.o(.text.usart_send_data)
+    __arm_cp.1_1                             0x080038fc   Number         4  bsp_usart.o(.text.usart_send_data)
+    [Anonymous Symbol]                       0x08003900   Section        0  bsp_usart.o(.text.usart_send_string)
+    [Anonymous Symbol]                       0x08003938   Section        0  gd32e23x_usart.o(.text.usart_stop_bit_set)
+    [Anonymous Symbol]                       0x08003962   Section        0  gd32e23x_usart.o(.text.usart_transmit_config)
+    [Anonymous Symbol]                       0x08003980   Section        0  gd32e23x_usart.o(.text.usart_word_length_set)
+    i.__0printf                              0x080039ac   Section        0  printfa.o(i.__0printf)
+    i.__ARM_clz                              0x080039cc   Section        0  depilogue.o(i.__ARM_clz)
+    i.__scatterload_copy                     0x080039fa   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08003a08   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08003a0a   Section       14  handlers.o(i.__scatterload_zeroinit)
+    _fp_digits                               0x08003a19   Thumb Code   344  printfa.o(i._fp_digits)
+    i._fp_digits                             0x08003a18   Section        0  printfa.o(i._fp_digits)
+    _printf_core                             0x08003b8d   Thumb Code  1754  printfa.o(i._printf_core)
+    i._printf_core                           0x08003b8c   Section        0  printfa.o(i._printf_core)
+    _printf_post_padding                     0x08004279   Thumb Code    32  printfa.o(i._printf_post_padding)
+    i._printf_post_padding                   0x08004278   Section        0  printfa.o(i._printf_post_padding)
+    _printf_pre_padding                      0x08004299   Thumb Code    44  printfa.o(i._printf_pre_padding)
+    i._printf_pre_padding                    0x08004298   Section        0  printfa.o(i._printf_pre_padding)
+    g_cmt2119b_baseband_bank                 0x080042c4   Data          29  cmt2119b.o(.rodata.g_cmt2119b_baseband_bank)
+    [Anonymous Symbol]                       0x080042c4   Section        0  cmt2119b.o(.rodata.g_cmt2119b_baseband_bank)
+    g_cmt2119b_cmt_bank                      0x080042e1   Data          12  cmt2119b.o(.rodata.g_cmt2119b_cmt_bank)
+    [Anonymous Symbol]                       0x080042e1   Section        0  cmt2119b.o(.rodata.g_cmt2119b_cmt_bank)
+    g_cmt2119b_data_rate_bank                0x080042ed   Data          24  cmt2119b.o(.rodata.g_cmt2119b_data_rate_bank)
+    [Anonymous Symbol]                       0x080042ed   Section        0  cmt2119b.o(.rodata.g_cmt2119b_data_rate_bank)
+    g_cmt2119b_frequency_bank                0x08004305   Data           8  cmt2119b.o(.rodata.g_cmt2119b_frequency_bank)
+    [Anonymous Symbol]                       0x08004305   Section        0  cmt2119b.o(.rodata.g_cmt2119b_frequency_bank)
+    g_cmt2119b_system_bank                   0x0800430d   Data          12  cmt2119b.o(.rodata.g_cmt2119b_system_bank)
+    [Anonymous Symbol]                       0x0800430d   Section        0  cmt2119b.o(.rodata.g_cmt2119b_system_bank)
+    g_cmt2119b_tx_bank                       0x08004319   Data          11  cmt2119b.o(.rodata.g_cmt2119b_tx_bank)
+    [Anonymous Symbol]                       0x08004319   Section        0  cmt2119b.o(.rodata.g_cmt2119b_tx_bank)
+    g_cmt2219b_baseband_bank                 0x08004324   Data          29  cmt2219b.o(.rodata.g_cmt2219b_baseband_bank)
+    [Anonymous Symbol]                       0x08004324   Section        0  cmt2219b.o(.rodata.g_cmt2219b_baseband_bank)
+    g_cmt2219b_cmt_bank                      0x08004341   Data          12  cmt2219b.o(.rodata.g_cmt2219b_cmt_bank)
+    [Anonymous Symbol]                       0x08004341   Section        0  cmt2219b.o(.rodata.g_cmt2219b_cmt_bank)
+    g_cmt2219b_data_rate_bank                0x0800434d   Data          24  cmt2219b.o(.rodata.g_cmt2219b_data_rate_bank)
+    [Anonymous Symbol]                       0x0800434d   Section        0  cmt2219b.o(.rodata.g_cmt2219b_data_rate_bank)
+    g_cmt2219b_frequency_bank                0x08004365   Data           8  cmt2219b.o(.rodata.g_cmt2219b_frequency_bank)
+    [Anonymous Symbol]                       0x08004365   Section        0  cmt2219b.o(.rodata.g_cmt2219b_frequency_bank)
+    g_cmt2219b_lbd_bank                      0x0800436d   Data           1  cmt2219b.o(.rodata.g_cmt2219b_lbd_bank)
+    [Anonymous Symbol]                       0x0800436d   Section        0  cmt2219b.o(.rodata.g_cmt2219b_lbd_bank)
+    g_cmt2219b_system_bank                   0x0800436e   Data          12  cmt2219b.o(.rodata.g_cmt2219b_system_bank)
+    [Anonymous Symbol]                       0x0800436e   Section        0  cmt2219b.o(.rodata.g_cmt2219b_system_bank)
+    g_cmt2219b_tx_bank                       0x0800437a   Data          10  cmt2219b.o(.rodata.g_cmt2219b_tx_bank)
+    [Anonymous Symbol]                       0x0800437a   Section        0  cmt2219b.o(.rodata.g_cmt2219b_tx_bank)
+    [Anonymous Symbol]                       0x08004384   Section        0  main.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x080043a0   Section        0  app_211.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x080043fd   Section        0  app_221.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x0800446d   Section        0  app_tx-rx_config.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08004507   Section        0  app_key.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08004514   Section        0  rf_apply.o(.rodata.str1.1)
     .data                                    0x20000000   Section        4  stdout.o(.data)
     check_double_key12.key_down              0x20000028   Data           1  app_key.o(.bss.check_double_key12.key_down)
     [Anonymous Symbol]                       0x20000028   Section        0  app_key.o(.bss.check_double_key12.key_down)
@@ -2959,9 +2965,13 @@ Image Symbol Table
     [Anonymous Symbol]                       0x20001088   Section        0  app_221.o(.bss.rx_count)
     rx_ok                                    0x2000108c   Data           1  app_221.o(.bss.rx_ok)
     [Anonymous Symbol]                       0x2000108c   Section        0  app_221.o(.bss.rx_ok)
-    tx_ok                                    0x2000108d   Data           1  app_211.o(.bss.tx_ok)
-    [Anonymous Symbol]                       0x2000108d   Section        0  app_211.o(.bss.tx_ok)
-    STACK                                    0x20001090   Section     1024  startup_gd32e23x.o(STACK)
+    send_ret                                 0x2000108d   Data           1  app_211.o(.bss.send_ret)
+    [Anonymous Symbol]                       0x2000108d   Section        0  app_211.o(.bss.send_ret)
+    tx_count                                 0x20001090   Data           4  app_211.o(.bss.tx_count)
+    [Anonymous Symbol]                       0x20001090   Section        0  app_211.o(.bss.tx_count)
+    tx_ok                                    0x20001094   Data           1  app_211.o(.bss.tx_ok)
+    [Anonymous Symbol]                       0x20001094   Section        0  app_211.o(.bss.tx_ok)
+    STACK                                    0x20001098   Section     1024  startup_gd32e23x.o(STACK)
 
     Global Symbols
 
@@ -3059,154 +3069,156 @@ Image Symbol Table
     SystemInit                               0x08000899   Thumb Code   136  system_gd32e23x.o(.text.SystemInit)
     USART0_IRQHandler                        0x08000945   Thumb Code    92  bsp_usart.o(.text.USART0_IRQHandler)
     app_211_init                             0x08000aad   Thumb Code    48  app_211.o(.text.app_211_init)
-    app_211_send_data                        0x08000ae9   Thumb Code    12  app_211.o(.text.app_211_send_data)
-    app_221_init                             0x08000af9   Thumb Code    68  app_221.o(.text.app_221_init)
-    app_221_receive_data                     0x08000b49   Thumb Code   120  app_221.o(.text.app_221_receive_data)
-    check_double_key12                       0x08000bd5   Thumb Code   100  app_key.o(.text.check_double_key12)
-    cmt2119b_clear_interrupt_flags           0x08000cc3   Thumb Code    20  cmt2119b.o(.text.cmt2119b_clear_interrupt_flags)
-    cmt2119b_clear_tx_fifo                   0x08000cd7   Thumb Code    12  cmt2119b.o(.text.cmt2119b_clear_tx_fifo)
-    cmt2119b_csb_high                        0x08000d69   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_csb_high)
-    cmt2119b_csb_low                         0x08000d77   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_csb_low)
-    cmt2119b_delay_ms                        0x08000d85   Thumb Code    16  cmt2119b_port.o(.text.cmt2119b_delay_ms)
-    cmt2119b_delay_us                        0x08000d95   Thumb Code    16  cmt2119b_port.o(.text.cmt2119b_delay_us)
-    cmt2119b_fcsb_high                       0x08000e39   Thumb Code    12  cmt2119b_port.o(.text.cmt2119b_fcsb_high)
-    cmt2119b_fcsb_low                        0x08000e45   Thumb Code    12  cmt2119b_port.o(.text.cmt2119b_fcsb_low)
-    cmt2119b_go_sleep                        0x08000e5f   Thumb Code    12  cmt2119b.o(.text.cmt2119b_go_sleep)
-    cmt2119b_go_stby                         0x08000e6b   Thumb Code    12  cmt2119b.o(.text.cmt2119b_go_stby)
-    cmt2119b_go_tx                           0x08000e77   Thumb Code    12  cmt2119b.o(.text.cmt2119b_go_tx)
-    cmt2119b_gpio3_read                      0x08000e85   Thumb Code    16  cmt2119b_port.o(.text.cmt2119b_gpio3_read)
-    cmt2119b_init                            0x08000e95   Thumb Code   220  cmt2119b.o(.text.cmt2119b_init)
-    cmt2119b_port_init                       0x08000f89   Thumb Code   164  cmt2119b_port.o(.text.cmt2119b_port_init)
-    cmt2119b_read_reg                        0x08001039   Thumb Code    20  cmt2119b.o(.text.cmt2119b_read_reg)
-    cmt2119b_sclk_high                       0x0800104d   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sclk_high)
-    cmt2119b_sclk_low                        0x0800105b   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sclk_low)
-    cmt2119b_sdio_high                       0x08001069   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sdio_high)
-    cmt2119b_sdio_input                      0x08001077   Thumb Code    18  cmt2119b_port.o(.text.cmt2119b_sdio_input)
-    cmt2119b_sdio_low                        0x08001089   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sdio_low)
-    cmt2119b_sdio_output                     0x08001097   Thumb Code    40  cmt2119b_port.o(.text.cmt2119b_sdio_output)
-    cmt2119b_sdio_read                       0x080010bf   Thumb Code    18  cmt2119b_port.o(.text.cmt2119b_sdio_read)
-    cmt2119b_send_packet                     0x080010d1   Thumb Code   202  cmt2119b.o(.text.cmt2119b_send_packet)
-    cmt2119b_set_frequency_channel           0x0800119b   Thumb Code    22  cmt2119b.o(.text.cmt2119b_set_frequency_channel)
-    cmt2119b_set_frequency_step              0x080011b1   Thumb Code    22  cmt2119b.o(.text.cmt2119b_set_frequency_step)
-    cmt2119b_spi_init                        0x080011f5   Thumb Code    32  cmt2119b_spi.o(.text.cmt2119b_spi_init)
-    cmt2119b_spi_read_reg                    0x08001215   Thumb Code    96  cmt2119b_spi.o(.text.cmt2119b_spi_read_reg)
-    cmt2119b_spi_write_fifo                  0x08001329   Thumb Code   136  cmt2119b_spi.o(.text.cmt2119b_spi_write_fifo)
-    cmt2119b_spi_write_reg                   0x080013b1   Thumb Code    96  cmt2119b_spi.o(.text.cmt2119b_spi_write_reg)
-    cmt2119b_write_fifo                      0x08001411   Thumb Code    40  cmt2119b.o(.text.cmt2119b_write_fifo)
-    cmt2119b_write_reg                       0x08001439   Thumb Code    28  cmt2119b.o(.text.cmt2119b_write_reg)
-    cmt2219b_clear_interrupt_flags           0x080014b5   Thumb Code    20  cmt2219b.o(.text.cmt2219b_clear_interrupt_flags)
-    cmt2219b_clear_rx_fifo                   0x080014c9   Thumb Code    12  cmt2219b.o(.text.cmt2219b_clear_rx_fifo)
-    cmt2219b_clk_high                        0x080014d5   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_clk_high)
-    cmt2219b_clk_low                         0x080014e5   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_clk_low)
-    cmt2219b_csb_high                        0x0800157d   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_csb_high)
-    cmt2219b_csb_low                         0x0800158d   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_csb_low)
-    cmt2219b_delay_ms                        0x0800159d   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_delay_ms)
-    cmt2219b_delay_us                        0x080015ad   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_delay_us)
-    cmt2219b_enable_read_fifo                0x08001621   Thumb Code    46  cmt2219b.o(.text.cmt2219b_enable_read_fifo)
-    cmt2219b_fcsb_high                       0x08001651   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_fcsb_high)
-    cmt2219b_fcsb_low                        0x08001661   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_fcsb_low)
-    cmt2219b_go_rx                           0x08001683   Thumb Code    12  cmt2219b.o(.text.cmt2219b_go_rx)
-    cmt2219b_go_sleep                        0x0800168f   Thumb Code    12  cmt2219b.o(.text.cmt2219b_go_sleep)
-    cmt2219b_go_stby                         0x0800169b   Thumb Code    12  cmt2219b.o(.text.cmt2219b_go_stby)
-    cmt2219b_init                            0x080016a9   Thumb Code   260  cmt2219b.o(.text.cmt2219b_init)
-    cmt2219b_is_exist                        0x080017c9   Thumb Code    86  cmt2219b.o(.text.cmt2219b_is_exist)
-    cmt2219b_port_init                       0x08001821   Thumb Code   168  cmt2219b_port.o(.text.cmt2219b_port_init)
-    cmt2219b_read_fifo                       0x080018d1   Thumb Code    40  cmt2219b.o(.text.cmt2219b_read_fifo)
-    cmt2219b_read_reg                        0x080018f9   Thumb Code    20  cmt2219b.o(.text.cmt2219b_read_reg)
-    cmt2219b_sdio_high                       0x0800190d   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_sdio_high)
-    cmt2219b_sdio_input                      0x0800191d   Thumb Code    20  cmt2219b_port.o(.text.cmt2219b_sdio_input)
-    cmt2219b_sdio_low                        0x08001931   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_sdio_low)
-    cmt2219b_sdio_output                     0x08001945   Thumb Code    40  cmt2219b_port.o(.text.cmt2219b_sdio_output)
-    cmt2219b_sdio_read                       0x08001971   Thumb Code    44  cmt2219b_port.o(.text.cmt2219b_sdio_read)
-    cmt2219b_set_frequency_channel           0x080019a1   Thumb Code    22  cmt2219b.o(.text.cmt2219b_set_frequency_channel)
-    cmt2219b_set_frequency_step              0x080019b7   Thumb Code    22  cmt2219b.o(.text.cmt2219b_set_frequency_step)
-    cmt2219b_spi_init                        0x080019fb   Thumb Code    32  cmt2219b_spi.o(.text.cmt2219b_spi_init)
-    cmt2219b_spi_read_fifo                   0x08001a1b   Thumb Code   136  cmt2219b_spi.o(.text.cmt2219b_spi_read_fifo)
-    cmt2219b_spi_read_reg                    0x08001aa3   Thumb Code    96  cmt2219b_spi.o(.text.cmt2219b_spi_read_reg)
-    cmt2219b_spi_write_reg                   0x08001bb7   Thumb Code    96  cmt2219b_spi.o(.text.cmt2219b_spi_write_reg)
-    cmt2219b_write_reg                       0x08001c17   Thumb Code    28  cmt2219b.o(.text.cmt2219b_write_reg)
-    delay_ms                                 0x08001c35   Thumb Code   112  systick.o(.text.delay_ms)
-    delay_us                                 0x08001ca9   Thumb Code   112  systick.o(.text.delay_us)
-    fmc_flag_clear                           0x08001d29   Thumb Code    16  gd32e23x_fmc.o(.text.fmc_flag_clear)
-    fmc_lock                                 0x08001d39   Thumb Code    12  gd32e23x_fmc.o(.text.fmc_lock)
-    fmc_page_erase                           0x08001d45   Thumb Code    88  gd32e23x_fmc.o(.text.fmc_page_erase)
-    fmc_ready_wait                           0x08001da1   Thumb Code    90  gd32e23x_fmc.o(.text.fmc_ready_wait)
-    fmc_state_get                            0x08001dfd   Thumb Code    80  gd32e23x_fmc.o(.text.fmc_state_get)
-    fmc_unlock                               0x08001e51   Thumb Code    28  gd32e23x_fmc.o(.text.fmc_unlock)
-    fmc_word_program                         0x08001e79   Thumb Code    80  gd32e23x_fmc.o(.text.fmc_word_program)
-    fputc                                    0x08001ecd   Thumb Code    22  bsp_usart.o(.text.fputc)
-    gpio_af_set                              0x08001ee3   Thumb Code   192  gd32e23x_gpio.o(.text.gpio_af_set)
-    gpio_bit_reset                           0x08001fa3   Thumb Code    16  gd32e23x_gpio.o(.text.gpio_bit_reset)
-    gpio_bit_set                             0x08001fb3   Thumb Code    16  gd32e23x_gpio.o(.text.gpio_bit_set)
-    gpio_bit_toggle                          0x08001fc3   Thumb Code    16  gd32e23x_gpio.o(.text.gpio_bit_toggle)
-    gpio_input_bit_get                       0x08001fd3   Thumb Code    42  gd32e23x_gpio.o(.text.gpio_input_bit_get)
-    gpio_mode_set                            0x08001ffd   Thumb Code   142  gd32e23x_gpio.o(.text.gpio_mode_set)
-    gpio_output_options_set                  0x0800208b   Thumb Code   138  gd32e23x_gpio.o(.text.gpio_output_options_set)
-    key_init                                 0x08002115   Thumb Code    48  app_key.o(.text.key_init)
-    key_is_pressed                           0x08002145   Thumb Code   116  app_key.o(.text.key_is_pressed)
-    led_PA15_toggle                          0x080021c1   Thumb Code    16  led_test.o(.text.led_PA15_toggle)
-    main                                     0x080021d1   Thumb Code   136  main.o(.text.main)
-    nvic_irq_disable                         0x08002261   Thumb Code    22  gd32e23x_misc.o(.text.nvic_irq_disable)
-    nvic_irq_enable                          0x08002277   Thumb Code    44  gd32e23x_misc.o(.text.nvic_irq_enable)
-    nvic_vector_table_set                    0x080022a5   Thumb Code    24  gd32e23x_misc.o(.text.nvic_vector_table_set)
-    pa15_output_high_init                    0x080022c5   Thumb Code    56  led_test.o(.text.pa15_output_high_init)
-    print_buf                                0x08002301   Thumb Code    68  app_211.o(.text.print_buf)
-    radio_rx_init                            0x0800234d   Thumb Code   102  radio_rx.o(.text.radio_rx_init)
-    radio_rx_set_channel                     0x080023b3   Thumb Code    42  radio_rx.o(.text.radio_rx_set_channel)
-    radio_rx_set_frequency_step              0x080023dd   Thumb Code    42  radio_rx.o(.text.radio_rx_set_frequency_step)
-    radio_tx_init                            0x08002407   Thumb Code    58  radio_tx.o(.text.radio_tx_init)
-    radio_tx_send                            0x08002441   Thumb Code    32  radio_tx.o(.text.radio_tx_send)
-    radio_tx_set_channel                     0x08002461   Thumb Code    30  radio_tx.o(.text.radio_tx_set_channel)
-    radio_tx_set_frequency_step              0x0800247f   Thumb Code    30  radio_tx.o(.text.radio_tx_set_frequency_step)
-    rcu_clock_freq_get                       0x0800249d   Thumb Code   600  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
-    rcu_periph_clock_enable                  0x08002719   Thumb Code    36  gd32e23x_rcu.o(.text.rcu_periph_clock_enable)
-    rcu_periph_reset_disable                 0x0800273d   Thumb Code    36  gd32e23x_rcu.o(.text.rcu_periph_reset_disable)
-    rcu_periph_reset_enable                  0x08002761   Thumb Code    36  gd32e23x_rcu.o(.text.rcu_periph_reset_enable)
-    rf_config_apply                          0x08002879   Thumb Code   128  rf_apply.o(.text.rf_config_apply)
-    rf_config_check                          0x08002905   Thumb Code   216  rf_config.o(.text.rf_config_check)
-    rf_crc16_calc                            0x080029e9   Thumb Code   160  rf_config.o(.text.rf_crc16_calc)
-    rf_get_tx_rx_real_freq                   0x08002e25   Thumb Code   136  app_tx-rx_config.o(.text.rf_get_tx_rx_real_freq)
-    rf_print_tx_rx_real_freq                 0x080030f9   Thumb Code    56  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
-    rf_test_apply_config                     0x08003139   Thumb Code   120  rf_apply.o(.text.rf_test_apply_config)
-    rf_uart_config_process                   0x080031c1   Thumb Code   288  rf_uart_set_config.o(.text.rf_uart_config_process)
-    rf_uart_config_restore                   0x080032f5   Thumb Code    88  rf_uart_set_config.o(.text.rf_uart_config_restore)
-    systick_clksource_set                    0x08003439   Thumb Code    40  gd32e23x_misc.o(.text.systick_clksource_set)
-    systick_config                           0x08003465   Thumb Code    44  systick.o(.text.systick_config)
-    usart_baudrate_set                       0x080034a5   Thumb Code   172  gd32e23x_usart.o(.text.usart_baudrate_set)
-    usart_data_receive                       0x08003555   Thumb Code    16  gd32e23x_usart.o(.text.usart_data_receive)
-    usart_data_transmit                      0x08003565   Thumb Code    20  gd32e23x_usart.o(.text.usart_data_transmit)
-    usart_deinit                             0x0800357d   Thumb Code    68  gd32e23x_usart.o(.text.usart_deinit)
-    usart_enable                             0x080035cd   Thumb Code    18  gd32e23x_usart.o(.text.usart_enable)
-    usart_flag_get                           0x080035df   Thumb Code    60  gd32e23x_usart.o(.text.usart_flag_get)
-    usart_gpio_config                        0x0800361d   Thumb Code   208  bsp_usart.o(.text.usart_gpio_config)
-    usart_interrupt_enable                   0x080036f5   Thumb Code    34  gd32e23x_usart.o(.text.usart_interrupt_enable)
-    usart_interrupt_flag_clear               0x08003719   Thumb Code    60  gd32e23x_usart.o(.text.usart_interrupt_flag_clear)
-    usart_interrupt_flag_get                 0x08003759   Thumb Code    98  gd32e23x_usart.o(.text.usart_interrupt_flag_get)
-    usart_parity_config                      0x080037bb   Thumb Code    42  gd32e23x_usart.o(.text.usart_parity_config)
-    usart_receive_config                     0x080037e5   Thumb Code    30  gd32e23x_usart.o(.text.usart_receive_config)
-    usart_send_data                          0x08003805   Thumb Code    40  bsp_usart.o(.text.usart_send_data)
-    usart_send_string                        0x08003835   Thumb Code    56  bsp_usart.o(.text.usart_send_string)
-    usart_stop_bit_set                       0x0800386d   Thumb Code    42  gd32e23x_usart.o(.text.usart_stop_bit_set)
-    usart_transmit_config                    0x08003897   Thumb Code    30  gd32e23x_usart.o(.text.usart_transmit_config)
-    usart_word_length_set                    0x080038b5   Thumb Code    42  gd32e23x_usart.o(.text.usart_word_length_set)
-    __0printf                                0x080038e1   Thumb Code    24  printfa.o(i.__0printf)
-    __1printf                                0x080038e1   Thumb Code     0  printfa.o(i.__0printf)
-    __2printf                                0x080038e1   Thumb Code     0  printfa.o(i.__0printf)
-    __c89printf                              0x080038e1   Thumb Code     0  printfa.o(i.__0printf)
-    printf                                   0x080038e1   Thumb Code     0  printfa.o(i.__0printf)
-    __ARM_clz                                0x08003901   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __scatterload_copy                       0x0800392f   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800393d   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800393f   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x0800449c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080044bc   Number         0  anon$$obj.o(Region$$Table)
+    app_211_send_data                        0x08000ae5   Thumb Code    12  app_211.o(.text.app_211_send_data)
+    app_211_send_test_data                   0x08000af1   Thumb Code    80  app_211.o(.text.app_211_send_test_data)
+    app_221_init                             0x08000b5d   Thumb Code    68  app_221.o(.text.app_221_init)
+    app_221_receive_data                     0x08000bad   Thumb Code   148  app_221.o(.text.app_221_receive_data)
+    check_double_key12                       0x08000c5d   Thumb Code   100  app_key.o(.text.check_double_key12)
+    cmt2119b_clear_interrupt_flags           0x08000d4b   Thumb Code    20  cmt2119b.o(.text.cmt2119b_clear_interrupt_flags)
+    cmt2119b_clear_tx_fifo                   0x08000d5f   Thumb Code    12  cmt2119b.o(.text.cmt2119b_clear_tx_fifo)
+    cmt2119b_csb_high                        0x08000df1   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_csb_high)
+    cmt2119b_csb_low                         0x08000dff   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_csb_low)
+    cmt2119b_delay_ms                        0x08000e0d   Thumb Code    16  cmt2119b_port.o(.text.cmt2119b_delay_ms)
+    cmt2119b_delay_us                        0x08000e1d   Thumb Code    16  cmt2119b_port.o(.text.cmt2119b_delay_us)
+    cmt2119b_fcsb_high                       0x08000ec1   Thumb Code    12  cmt2119b_port.o(.text.cmt2119b_fcsb_high)
+    cmt2119b_fcsb_low                        0x08000ecd   Thumb Code    12  cmt2119b_port.o(.text.cmt2119b_fcsb_low)
+    cmt2119b_go_sleep                        0x08000ee7   Thumb Code    12  cmt2119b.o(.text.cmt2119b_go_sleep)
+    cmt2119b_go_stby                         0x08000ef3   Thumb Code    12  cmt2119b.o(.text.cmt2119b_go_stby)
+    cmt2119b_go_tx                           0x08000eff   Thumb Code    12  cmt2119b.o(.text.cmt2119b_go_tx)
+    cmt2119b_gpio3_read                      0x08000f0d   Thumb Code    16  cmt2119b_port.o(.text.cmt2119b_gpio3_read)
+    cmt2119b_init                            0x08000f1d   Thumb Code   220  cmt2119b.o(.text.cmt2119b_init)
+    cmt2119b_port_init                       0x08001011   Thumb Code   164  cmt2119b_port.o(.text.cmt2119b_port_init)
+    cmt2119b_read_reg                        0x080010c1   Thumb Code    20  cmt2119b.o(.text.cmt2119b_read_reg)
+    cmt2119b_sclk_high                       0x080010d5   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sclk_high)
+    cmt2119b_sclk_low                        0x080010e3   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sclk_low)
+    cmt2119b_sdio_high                       0x080010f1   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sdio_high)
+    cmt2119b_sdio_input                      0x080010ff   Thumb Code    18  cmt2119b_port.o(.text.cmt2119b_sdio_input)
+    cmt2119b_sdio_low                        0x08001111   Thumb Code    14  cmt2119b_port.o(.text.cmt2119b_sdio_low)
+    cmt2119b_sdio_output                     0x0800111f   Thumb Code    40  cmt2119b_port.o(.text.cmt2119b_sdio_output)
+    cmt2119b_sdio_read                       0x08001147   Thumb Code    18  cmt2119b_port.o(.text.cmt2119b_sdio_read)
+    cmt2119b_send_packet                     0x08001159   Thumb Code   202  cmt2119b.o(.text.cmt2119b_send_packet)
+    cmt2119b_set_frequency_channel           0x08001223   Thumb Code    22  cmt2119b.o(.text.cmt2119b_set_frequency_channel)
+    cmt2119b_set_frequency_step              0x08001239   Thumb Code    22  cmt2119b.o(.text.cmt2119b_set_frequency_step)
+    cmt2119b_spi_init                        0x0800127d   Thumb Code    32  cmt2119b_spi.o(.text.cmt2119b_spi_init)
+    cmt2119b_spi_read_reg                    0x0800129d   Thumb Code    96  cmt2119b_spi.o(.text.cmt2119b_spi_read_reg)
+    cmt2119b_spi_write_fifo                  0x080013b1   Thumb Code   136  cmt2119b_spi.o(.text.cmt2119b_spi_write_fifo)
+    cmt2119b_spi_write_reg                   0x08001439   Thumb Code    96  cmt2119b_spi.o(.text.cmt2119b_spi_write_reg)
+    cmt2119b_write_fifo                      0x08001499   Thumb Code    40  cmt2119b.o(.text.cmt2119b_write_fifo)
+    cmt2119b_write_reg                       0x080014c1   Thumb Code    28  cmt2119b.o(.text.cmt2119b_write_reg)
+    cmt2219b_clear_interrupt_flags           0x0800153d   Thumb Code    20  cmt2219b.o(.text.cmt2219b_clear_interrupt_flags)
+    cmt2219b_clear_rx_fifo                   0x08001551   Thumb Code    12  cmt2219b.o(.text.cmt2219b_clear_rx_fifo)
+    cmt2219b_clk_high                        0x0800155d   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_clk_high)
+    cmt2219b_clk_low                         0x0800156d   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_clk_low)
+    cmt2219b_csb_high                        0x08001601   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_csb_high)
+    cmt2219b_csb_low                         0x08001611   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_csb_low)
+    cmt2219b_delay_ms                        0x08001621   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_delay_ms)
+    cmt2219b_delay_us                        0x08001631   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_delay_us)
+    cmt2219b_enable_read_fifo                0x080016a5   Thumb Code    46  cmt2219b.o(.text.cmt2219b_enable_read_fifo)
+    cmt2219b_fcsb_high                       0x080016d5   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_fcsb_high)
+    cmt2219b_fcsb_low                        0x080016e5   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_fcsb_low)
+    cmt2219b_go_rx                           0x08001707   Thumb Code    12  cmt2219b.o(.text.cmt2219b_go_rx)
+    cmt2219b_go_sleep                        0x08001713   Thumb Code    12  cmt2219b.o(.text.cmt2219b_go_sleep)
+    cmt2219b_go_stby                         0x0800171f   Thumb Code    12  cmt2219b.o(.text.cmt2219b_go_stby)
+    cmt2219b_init                            0x0800172d   Thumb Code   260  cmt2219b.o(.text.cmt2219b_init)
+    cmt2219b_is_exist                        0x0800184d   Thumb Code    86  cmt2219b.o(.text.cmt2219b_is_exist)
+    cmt2219b_packet_received                 0x080018a3   Thumb Code    52  cmt2219b.o(.text.cmt2219b_packet_received)
+    cmt2219b_port_init                       0x080018d9   Thumb Code   168  cmt2219b_port.o(.text.cmt2219b_port_init)
+    cmt2219b_read_fifo                       0x08001985   Thumb Code    40  cmt2219b.o(.text.cmt2219b_read_fifo)
+    cmt2219b_read_reg                        0x080019ad   Thumb Code    20  cmt2219b.o(.text.cmt2219b_read_reg)
+    cmt2219b_sdio_high                       0x080019c1   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_sdio_high)
+    cmt2219b_sdio_input                      0x080019d1   Thumb Code    20  cmt2219b_port.o(.text.cmt2219b_sdio_input)
+    cmt2219b_sdio_low                        0x080019e9   Thumb Code    16  cmt2219b_port.o(.text.cmt2219b_sdio_low)
+    cmt2219b_sdio_output                     0x080019fd   Thumb Code    40  cmt2219b_port.o(.text.cmt2219b_sdio_output)
+    cmt2219b_sdio_read                       0x08001a25   Thumb Code    44  cmt2219b_port.o(.text.cmt2219b_sdio_read)
+    cmt2219b_set_frequency_channel           0x08001a55   Thumb Code    22  cmt2219b.o(.text.cmt2219b_set_frequency_channel)
+    cmt2219b_set_frequency_step              0x08001a6b   Thumb Code    22  cmt2219b.o(.text.cmt2219b_set_frequency_step)
+    cmt2219b_spi_init                        0x08001aaf   Thumb Code    32  cmt2219b_spi.o(.text.cmt2219b_spi_init)
+    cmt2219b_spi_read_fifo                   0x08001acf   Thumb Code   136  cmt2219b_spi.o(.text.cmt2219b_spi_read_fifo)
+    cmt2219b_spi_read_reg                    0x08001b57   Thumb Code    96  cmt2219b_spi.o(.text.cmt2219b_spi_read_reg)
+    cmt2219b_spi_write_reg                   0x08001c6b   Thumb Code    96  cmt2219b_spi.o(.text.cmt2219b_spi_write_reg)
+    cmt2219b_write_reg                       0x08001ccb   Thumb Code    28  cmt2219b.o(.text.cmt2219b_write_reg)
+    delay_ms                                 0x08001ce9   Thumb Code   112  systick.o(.text.delay_ms)
+    delay_us                                 0x08001d5d   Thumb Code   112  systick.o(.text.delay_us)
+    fmc_flag_clear                           0x08001ddd   Thumb Code    16  gd32e23x_fmc.o(.text.fmc_flag_clear)
+    fmc_lock                                 0x08001ded   Thumb Code    12  gd32e23x_fmc.o(.text.fmc_lock)
+    fmc_page_erase                           0x08001df9   Thumb Code    88  gd32e23x_fmc.o(.text.fmc_page_erase)
+    fmc_ready_wait                           0x08001e55   Thumb Code    90  gd32e23x_fmc.o(.text.fmc_ready_wait)
+    fmc_state_get                            0x08001eb1   Thumb Code    80  gd32e23x_fmc.o(.text.fmc_state_get)
+    fmc_unlock                               0x08001f05   Thumb Code    28  gd32e23x_fmc.o(.text.fmc_unlock)
+    fmc_word_program                         0x08001f2d   Thumb Code    80  gd32e23x_fmc.o(.text.fmc_word_program)
+    fputc                                    0x08001f81   Thumb Code    22  bsp_usart.o(.text.fputc)
+    gpio_af_set                              0x08001f97   Thumb Code   192  gd32e23x_gpio.o(.text.gpio_af_set)
+    gpio_bit_reset                           0x08002057   Thumb Code    16  gd32e23x_gpio.o(.text.gpio_bit_reset)
+    gpio_bit_set                             0x08002067   Thumb Code    16  gd32e23x_gpio.o(.text.gpio_bit_set)
+    gpio_bit_toggle                          0x08002077   Thumb Code    16  gd32e23x_gpio.o(.text.gpio_bit_toggle)
+    gpio_input_bit_get                       0x08002087   Thumb Code    42  gd32e23x_gpio.o(.text.gpio_input_bit_get)
+    gpio_mode_set                            0x080020b1   Thumb Code   142  gd32e23x_gpio.o(.text.gpio_mode_set)
+    gpio_output_options_set                  0x0800213f   Thumb Code   138  gd32e23x_gpio.o(.text.gpio_output_options_set)
+    key_init                                 0x080021c9   Thumb Code    48  app_key.o(.text.key_init)
+    key_is_pressed                           0x080021f9   Thumb Code   116  app_key.o(.text.key_is_pressed)
+    led_PA15_toggle                          0x08002275   Thumb Code    16  led_test.o(.text.led_PA15_toggle)
+    main                                     0x08002285   Thumb Code   160  main.o(.text.main)
+    nvic_irq_disable                         0x0800232d   Thumb Code    22  gd32e23x_misc.o(.text.nvic_irq_disable)
+    nvic_irq_enable                          0x08002343   Thumb Code    44  gd32e23x_misc.o(.text.nvic_irq_enable)
+    nvic_vector_table_set                    0x08002371   Thumb Code    24  gd32e23x_misc.o(.text.nvic_vector_table_set)
+    pa15_output_high_init                    0x08002391   Thumb Code    56  led_test.o(.text.pa15_output_high_init)
+    print_buf                                0x080023cd   Thumb Code    68  app_211.o(.text.print_buf)
+    radio_rx_init                            0x08002419   Thumb Code   102  radio_rx.o(.text.radio_rx_init)
+    radio_rx_set_channel                     0x0800247f   Thumb Code    42  radio_rx.o(.text.radio_rx_set_channel)
+    radio_rx_set_frequency_step              0x080024a9   Thumb Code    42  radio_rx.o(.text.radio_rx_set_frequency_step)
+    radio_tx_init                            0x080024d3   Thumb Code    58  radio_tx.o(.text.radio_tx_init)
+    radio_tx_send                            0x0800250d   Thumb Code    32  radio_tx.o(.text.radio_tx_send)
+    radio_tx_set_channel                     0x0800252d   Thumb Code    30  radio_tx.o(.text.radio_tx_set_channel)
+    radio_tx_set_frequency_step              0x0800254b   Thumb Code    30  radio_tx.o(.text.radio_tx_set_frequency_step)
+    rcu_clock_freq_get                       0x08002569   Thumb Code   600  gd32e23x_rcu.o(.text.rcu_clock_freq_get)
+    rcu_periph_clock_enable                  0x080027e5   Thumb Code    36  gd32e23x_rcu.o(.text.rcu_periph_clock_enable)
+    rcu_periph_reset_disable                 0x08002809   Thumb Code    36  gd32e23x_rcu.o(.text.rcu_periph_reset_disable)
+    rcu_periph_reset_enable                  0x0800282d   Thumb Code    36  gd32e23x_rcu.o(.text.rcu_periph_reset_enable)
+    rf_config_apply                          0x08002945   Thumb Code   128  rf_apply.o(.text.rf_config_apply)
+    rf_config_check                          0x080029d1   Thumb Code   216  rf_config.o(.text.rf_config_check)
+    rf_crc16_calc                            0x08002ab5   Thumb Code   160  rf_config.o(.text.rf_crc16_calc)
+    rf_get_tx_rx_real_freq                   0x08002ef1   Thumb Code   136  app_tx-rx_config.o(.text.rf_get_tx_rx_real_freq)
+    rf_print_tx_rx_real_freq                 0x080031c5   Thumb Code    56  app_tx-rx_config.o(.text.rf_print_tx_rx_real_freq)
+    rf_test_apply_config                     0x08003205   Thumb Code   120  rf_apply.o(.text.rf_test_apply_config)
+    rf_uart_config_process                   0x0800328d   Thumb Code   288  rf_uart_set_config.o(.text.rf_uart_config_process)
+    rf_uart_config_restore                   0x080033c1   Thumb Code    88  rf_uart_set_config.o(.text.rf_uart_config_restore)
+    systick_clksource_set                    0x08003505   Thumb Code    40  gd32e23x_misc.o(.text.systick_clksource_set)
+    systick_config                           0x08003531   Thumb Code    44  systick.o(.text.systick_config)
+    usart_baudrate_set                       0x08003571   Thumb Code   172  gd32e23x_usart.o(.text.usart_baudrate_set)
+    usart_data_receive                       0x08003621   Thumb Code    16  gd32e23x_usart.o(.text.usart_data_receive)
+    usart_data_transmit                      0x08003631   Thumb Code    20  gd32e23x_usart.o(.text.usart_data_transmit)
+    usart_deinit                             0x08003649   Thumb Code    68  gd32e23x_usart.o(.text.usart_deinit)
+    usart_enable                             0x08003699   Thumb Code    18  gd32e23x_usart.o(.text.usart_enable)
+    usart_flag_get                           0x080036ab   Thumb Code    60  gd32e23x_usart.o(.text.usart_flag_get)
+    usart_gpio_config                        0x080036e9   Thumb Code   208  bsp_usart.o(.text.usart_gpio_config)
+    usart_interrupt_enable                   0x080037c1   Thumb Code    34  gd32e23x_usart.o(.text.usart_interrupt_enable)
+    usart_interrupt_flag_clear               0x080037e5   Thumb Code    60  gd32e23x_usart.o(.text.usart_interrupt_flag_clear)
+    usart_interrupt_flag_get                 0x08003825   Thumb Code    98  gd32e23x_usart.o(.text.usart_interrupt_flag_get)
+    usart_parity_config                      0x08003887   Thumb Code    42  gd32e23x_usart.o(.text.usart_parity_config)
+    usart_receive_config                     0x080038b1   Thumb Code    30  gd32e23x_usart.o(.text.usart_receive_config)
+    usart_send_data                          0x080038d1   Thumb Code    40  bsp_usart.o(.text.usart_send_data)
+    usart_send_string                        0x08003901   Thumb Code    56  bsp_usart.o(.text.usart_send_string)
+    usart_stop_bit_set                       0x08003939   Thumb Code    42  gd32e23x_usart.o(.text.usart_stop_bit_set)
+    usart_transmit_config                    0x08003963   Thumb Code    30  gd32e23x_usart.o(.text.usart_transmit_config)
+    usart_word_length_set                    0x08003981   Thumb Code    42  gd32e23x_usart.o(.text.usart_word_length_set)
+    __0printf                                0x080039ad   Thumb Code    24  printfa.o(i.__0printf)
+    __1printf                                0x080039ad   Thumb Code     0  printfa.o(i.__0printf)
+    __2printf                                0x080039ad   Thumb Code     0  printfa.o(i.__0printf)
+    __c89printf                              0x080039ad   Thumb Code     0  printfa.o(i.__0printf)
+    printf                                   0x080039ad   Thumb Code     0  printfa.o(i.__0printf)
+    __ARM_clz                                0x080039cd   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __scatterload_copy                       0x080039fb   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08003a09   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08003a0b   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x080045bc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080045dc   Number         0  anon$$obj.o(Region$$Table)
     __stdout                                 0x20000000   Data           4  stdout.o(.data)
     SystemCoreClock                          0x20000004   Data           4  system_gd32e23x.o(.data.SystemCoreClock)
     tx_buf_data                              0x20000008   Data          32  app_211.o(.data.tx_buf_data)
     g_recv_buff                              0x20000034   Data        4096  bsp_usart.o(.bss.g_recv_buff)
     g_recv_complete_flag                     0x20001034   Data           1  bsp_usart.o(.bss.g_recv_complete_flag)
     g_recv_length                            0x20001036   Data           2  bsp_usart.o(.bss.g_recv_length)
-    __initial_sp                             0x20001490   Data           0  startup_gd32e23x.o(STACK)
+    __initial_sp                             0x20001498   Data           0  startup_gd32e23x.o(STACK)
 
 
 
@@ -3216,9 +3228,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000cd
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000044e8, Max: 0x0000fc00, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004608, Max: 0x0000fc00, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000044bc, Max: 0x0000fc00, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000045dc, Max: 0x0000fc00, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3264,241 +3276,245 @@ Memory Map of the image
     0x080009b8   0x080009b8   0x0000003c   Code   RO          903    .text.__NVIC_DisableIRQ  gd32e23x_misc.o
     0x080009f4   0x080009f4   0x00000034   Code   RO          899    .text.__NVIC_EnableIRQ  gd32e23x_misc.o
     0x08000a28   0x08000a28   0x00000084   Code   RO          897    .text.__NVIC_SetPriority  gd32e23x_misc.o
-    0x08000aac   0x08000aac   0x0000003c   Code   RO          370    .text.app_211_init  app_211.o
-    0x08000ae8   0x08000ae8   0x00000010   Code   RO          374    .text.app_211_send_data  app_211.o
-    0x08000af8   0x08000af8   0x00000050   Code   RO          388    .text.app_221_init  app_221.o
-    0x08000b48   0x08000b48   0x0000008c   Code   RO          390    .text.app_221_receive_data  app_221.o
-    0x08000bd4   0x08000bd4   0x0000006c   Code   RO          433    .text.check_double_key12  app_key.o
-    0x08000c40   0x08000c40   0x00000082   Code   RO          101    .text.cmt2119b_auto_switch_status  cmt2119b.o
-    0x08000cc2   0x08000cc2   0x00000014   Code   RO           91    .text.cmt2119b_clear_interrupt_flags  cmt2119b.o
-    0x08000cd6   0x08000cd6   0x0000000c   Code   RO          107    .text.cmt2119b_clear_tx_fifo  cmt2119b.o
-    0x08000ce2   0x08000ce2   0x00000040   Code   RO           89    .text.cmt2119b_config_gpio_interrupt  cmt2119b.o
-    0x08000d22   0x08000d22   0x00000046   Code   RO           81    .text.cmt2119b_config_reg_bank  cmt2119b.o
-    0x08000d68   0x08000d68   0x0000000e   Code   RO          132    .text.cmt2119b_csb_high  cmt2119b_port.o
-    0x08000d76   0x08000d76   0x0000000e   Code   RO          140    .text.cmt2119b_csb_low  cmt2119b_port.o
-    0x08000d84   0x08000d84   0x00000010   Code   RO          156    .text.cmt2119b_delay_ms  cmt2119b_port.o
-    0x08000d94   0x08000d94   0x00000010   Code   RO          154    .text.cmt2119b_delay_us  cmt2119b_port.o
-    0x08000da4   0x08000da4   0x00000064   Code   RO           87    .text.cmt2119b_enable_lfosc  cmt2119b.o
-    0x08000e08   0x08000e08   0x0000002e   Code   RO          111    .text.cmt2119b_enable_write_fifo  cmt2119b.o
-    0x08000e36   0x08000e36   0x00000002   PAD
-    0x08000e38   0x08000e38   0x0000000c   Code   RO          134    .text.cmt2119b_fcsb_high  cmt2119b_port.o
-    0x08000e44   0x08000e44   0x0000000c   Code   RO          142    .text.cmt2119b_fcsb_low  cmt2119b_port.o
-    0x08000e50   0x08000e50   0x0000000e   Code   RO          113    .text.cmt2119b_get_chip_status  cmt2119b.o
-    0x08000e5e   0x08000e5e   0x0000000c   Code   RO           93    .text.cmt2119b_go_sleep  cmt2119b.o
-    0x08000e6a   0x08000e6a   0x0000000c   Code   RO          103    .text.cmt2119b_go_stby  cmt2119b.o
-    0x08000e76   0x08000e76   0x0000000c   Code   RO          105    .text.cmt2119b_go_tx  cmt2119b.o
-    0x08000e82   0x08000e82   0x00000002   PAD
-    0x08000e84   0x08000e84   0x00000010   Code   RO          152    .text.cmt2119b_gpio3_read  cmt2119b_port.o
-    0x08000e94   0x08000e94   0x000000f4   Code   RO           77    .text.cmt2119b_init  cmt2119b.o
-    0x08000f88   0x08000f88   0x000000b0   Code   RO          128    .text.cmt2119b_port_init  cmt2119b_port.o
-    0x08001038   0x08001038   0x00000014   Code   RO           83    .text.cmt2119b_read_reg  cmt2119b.o
-    0x0800104c   0x0800104c   0x0000000e   Code   RO          144    .text.cmt2119b_sclk_high  cmt2119b_port.o
-    0x0800105a   0x0800105a   0x0000000e   Code   RO          136    .text.cmt2119b_sclk_low  cmt2119b_port.o
-    0x08001068   0x08001068   0x0000000e   Code   RO          138    .text.cmt2119b_sdio_high  cmt2119b_port.o
-    0x08001076   0x08001076   0x00000012   Code   RO          150    .text.cmt2119b_sdio_input  cmt2119b_port.o
-    0x08001088   0x08001088   0x0000000e   Code   RO          146    .text.cmt2119b_sdio_low  cmt2119b_port.o
-    0x08001096   0x08001096   0x00000028   Code   RO          130    .text.cmt2119b_sdio_output  cmt2119b_port.o
-    0x080010be   0x080010be   0x00000012   Code   RO          148    .text.cmt2119b_sdio_read  cmt2119b_port.o
-    0x080010d0   0x080010d0   0x000000ca   Code   RO          109    .text.cmt2119b_send_packet  cmt2119b.o
-    0x0800119a   0x0800119a   0x00000016   Code   RO           95    .text.cmt2119b_set_frequency_channel  cmt2119b.o
-    0x080011b0   0x080011b0   0x00000016   Code   RO           97    .text.cmt2119b_set_frequency_step  cmt2119b.o
-    0x080011c6   0x080011c6   0x0000000c   Code   RO           79    .text.cmt2119b_soft_reset  cmt2119b.o
-    0x080011d2   0x080011d2   0x00000018   Code   RO          167    .text.cmt2119b_spi_delay  cmt2119b_spi.o
-    0x080011ea   0x080011ea   0x0000000a   Code   RO          179    .text.cmt2119b_spi_delay_us  cmt2119b_spi.o
-    0x080011f4   0x080011f4   0x00000020   Code   RO          165    .text.cmt2119b_spi_init  cmt2119b_spi.o
-    0x08001214   0x08001214   0x00000060   Code   RO          173    .text.cmt2119b_spi_read_reg  cmt2119b_spi.o
-    0x08001274   0x08001274   0x0000005a   Code   RO          175    .text.cmt2119b_spi_recv  cmt2119b_spi.o
-    0x080012ce   0x080012ce   0x0000005a   Code   RO          171    .text.cmt2119b_spi_send  cmt2119b_spi.o
-    0x08001328   0x08001328   0x00000088   Code   RO          177    .text.cmt2119b_spi_write_fifo  cmt2119b_spi.o
-    0x080013b0   0x080013b0   0x00000060   Code   RO          169    .text.cmt2119b_spi_write_reg  cmt2119b_spi.o
-    0x08001410   0x08001410   0x00000028   Code   RO           99    .text.cmt2119b_write_fifo  cmt2119b.o
-    0x08001438   0x08001438   0x0000001c   Code   RO           85    .text.cmt2119b_write_reg  cmt2119b.o
-    0x08001454   0x08001454   0x00000060   Code   RO          235    .text.cmt2219b_auto_switch_status  cmt2219b.o
-    0x080014b4   0x080014b4   0x00000014   Code   RO          215    .text.cmt2219b_clear_interrupt_flags  cmt2219b.o
-    0x080014c8   0x080014c8   0x0000000c   Code   RO          241    .text.cmt2219b_clear_rx_fifo  cmt2219b.o
-    0x080014d4   0x080014d4   0x00000010   Code   RO          277    .text.cmt2219b_clk_high  cmt2219b_port.o
-    0x080014e4   0x080014e4   0x00000010   Code   RO          269    .text.cmt2219b_clk_low  cmt2219b_port.o
-    0x080014f4   0x080014f4   0x00000040   Code   RO          219    .text.cmt2219b_config_gpio_interrupt  cmt2219b.o
-    0x08001534   0x08001534   0x00000046   Code   RO          217    .text.cmt2219b_config_reg_bank  cmt2219b.o
-    0x0800157a   0x0800157a   0x00000002   PAD
-    0x0800157c   0x0800157c   0x00000010   Code   RO          265    .text.cmt2219b_csb_high  cmt2219b_port.o
-    0x0800158c   0x0800158c   0x00000010   Code   RO          273    .text.cmt2219b_csb_low  cmt2219b_port.o
-    0x0800159c   0x0800159c   0x00000010   Code   RO          289    .text.cmt2219b_delay_ms  cmt2219b_port.o
-    0x080015ac   0x080015ac   0x00000010   Code   RO          287    .text.cmt2219b_delay_us  cmt2219b_port.o
-    0x080015bc   0x080015bc   0x00000064   Code   RO          213    .text.cmt2219b_enable_lfosc  cmt2219b.o
-    0x08001620   0x08001620   0x0000002e   Code   RO          239    .text.cmt2219b_enable_read_fifo  cmt2219b.o
-    0x0800164e   0x0800164e   0x00000002   PAD
-    0x08001650   0x08001650   0x00000010   Code   RO          267    .text.cmt2219b_fcsb_high  cmt2219b_port.o
-    0x08001660   0x08001660   0x00000014   Code   RO          275    .text.cmt2219b_fcsb_low  cmt2219b_port.o
-    0x08001674   0x08001674   0x0000000e   Code   RO          245    .text.cmt2219b_get_chip_status  cmt2219b.o
-    0x08001682   0x08001682   0x0000000c   Code   RO          237    .text.cmt2219b_go_rx  cmt2219b.o
-    0x0800168e   0x0800168e   0x0000000c   Code   RO          221    .text.cmt2219b_go_sleep  cmt2219b.o
-    0x0800169a   0x0800169a   0x0000000c   Code   RO          207    .text.cmt2219b_go_stby  cmt2219b.o
-    0x080016a6   0x080016a6   0x00000002   PAD
-    0x080016a8   0x080016a8   0x00000120   Code   RO          203    .text.cmt2219b_init  cmt2219b.o
-    0x080017c8   0x080017c8   0x00000056   Code   RO          223    .text.cmt2219b_is_exist  cmt2219b.o
-    0x0800181e   0x0800181e   0x00000002   PAD
-    0x08001820   0x08001820   0x000000b0   Code   RO          261    .text.cmt2219b_port_init  cmt2219b_port.o
-    0x080018d0   0x080018d0   0x00000028   Code   RO          231    .text.cmt2219b_read_fifo  cmt2219b.o
-    0x080018f8   0x080018f8   0x00000014   Code   RO          209    .text.cmt2219b_read_reg  cmt2219b.o
-    0x0800190c   0x0800190c   0x00000010   Code   RO          271    .text.cmt2219b_sdio_high  cmt2219b_port.o
-    0x0800191c   0x0800191c   0x00000014   Code   RO          283    .text.cmt2219b_sdio_input  cmt2219b_port.o
-    0x08001930   0x08001930   0x00000014   Code   RO          279    .text.cmt2219b_sdio_low  cmt2219b_port.o
-    0x08001944   0x08001944   0x0000002c   Code   RO          263    .text.cmt2219b_sdio_output  cmt2219b_port.o
-    0x08001970   0x08001970   0x00000030   Code   RO          281    .text.cmt2219b_sdio_read  cmt2219b_port.o
-    0x080019a0   0x080019a0   0x00000016   Code   RO          225    .text.cmt2219b_set_frequency_channel  cmt2219b.o
-    0x080019b6   0x080019b6   0x00000016   Code   RO          227    .text.cmt2219b_set_frequency_step  cmt2219b.o
-    0x080019cc   0x080019cc   0x0000000c   Code   RO          205    .text.cmt2219b_soft_reset  cmt2219b.o
-    0x080019d8   0x080019d8   0x00000018   Code   RO          300    .text.cmt2219b_spi_delay  cmt2219b_spi.o
-    0x080019f0   0x080019f0   0x0000000a   Code   RO          312    .text.cmt2219b_spi_delay_us  cmt2219b_spi.o
-    0x080019fa   0x080019fa   0x00000020   Code   RO          298    .text.cmt2219b_spi_init  cmt2219b_spi.o
-    0x08001a1a   0x08001a1a   0x00000088   Code   RO          314    .text.cmt2219b_spi_read_fifo  cmt2219b_spi.o
-    0x08001aa2   0x08001aa2   0x00000060   Code   RO          306    .text.cmt2219b_spi_read_reg  cmt2219b_spi.o
-    0x08001b02   0x08001b02   0x0000005a   Code   RO          308    .text.cmt2219b_spi_recv  cmt2219b_spi.o
-    0x08001b5c   0x08001b5c   0x0000005a   Code   RO          304    .text.cmt2219b_spi_send  cmt2219b_spi.o
-    0x08001bb6   0x08001bb6   0x00000060   Code   RO          302    .text.cmt2219b_spi_write_reg  cmt2219b_spi.o
-    0x08001c16   0x08001c16   0x0000001c   Code   RO          211    .text.cmt2219b_write_reg  cmt2219b.o
-    0x08001c32   0x08001c32   0x00000002   PAD
-    0x08001c34   0x08001c34   0x00000074   Code   RO           46    .text.delay_ms      systick.o
-    0x08001ca8   0x08001ca8   0x00000080   Code   RO           42    .text.delay_us      systick.o
-    0x08001d28   0x08001d28   0x00000010   Code   RO          741    .text.fmc_flag_clear  gd32e23x_fmc.o
-    0x08001d38   0x08001d38   0x0000000c   Code   RO          691    .text.fmc_lock      gd32e23x_fmc.o
-    0x08001d44   0x08001d44   0x0000005c   Code   RO          699    .text.fmc_page_erase  gd32e23x_fmc.o
-    0x08001da0   0x08001da0   0x0000005a   Code   RO          701    .text.fmc_ready_wait  gd32e23x_fmc.o
-    0x08001dfa   0x08001dfa   0x00000002   PAD
-    0x08001dfc   0x08001dfc   0x00000054   Code   RO          747    .text.fmc_state_get  gd32e23x_fmc.o
-    0x08001e50   0x08001e50   0x00000028   Code   RO          689    .text.fmc_unlock    gd32e23x_fmc.o
-    0x08001e78   0x08001e78   0x00000054   Code   RO          707    .text.fmc_word_program  gd32e23x_fmc.o
-    0x08001ecc   0x08001ecc   0x00000016   Code   RO           63    .text.fputc         bsp_usart.o
-    0x08001ee2   0x08001ee2   0x000000c0   Code   RO          803    .text.gpio_af_set   gd32e23x_gpio.o
-    0x08001fa2   0x08001fa2   0x00000010   Code   RO          789    .text.gpio_bit_reset  gd32e23x_gpio.o
-    0x08001fb2   0x08001fb2   0x00000010   Code   RO          787    .text.gpio_bit_set  gd32e23x_gpio.o
-    0x08001fc2   0x08001fc2   0x00000010   Code   RO          807    .text.gpio_bit_toggle  gd32e23x_gpio.o
-    0x08001fd2   0x08001fd2   0x0000002a   Code   RO          795    .text.gpio_input_bit_get  gd32e23x_gpio.o
-    0x08001ffc   0x08001ffc   0x0000008e   Code   RO          783    .text.gpio_mode_set  gd32e23x_gpio.o
-    0x0800208a   0x0800208a   0x0000008a   Code   RO          785    .text.gpio_output_options_set  gd32e23x_gpio.o
-    0x08002114   0x08002114   0x00000030   Code   RO          429    .text.key_init      app_key.o
-    0x08002144   0x08002144   0x0000007c   Code   RO          431    .text.key_is_pressed  app_key.o
-    0x080021c0   0x080021c0   0x00000010   Code   RO          406    .text.led_PA15_toggle  led_test.o
-    0x080021d0   0x080021d0   0x00000090   Code   RO           27    .text.main          main.o
-    0x08002260   0x08002260   0x00000016   Code   RO          901    .text.nvic_irq_disable  gd32e23x_misc.o
-    0x08002276   0x08002276   0x0000002c   Code   RO          895    .text.nvic_irq_enable  gd32e23x_misc.o
-    0x080022a2   0x080022a2   0x00000002   PAD
-    0x080022a4   0x080022a4   0x00000020   Code   RO          909    .text.nvic_vector_table_set  gd32e23x_misc.o
-    0x080022c4   0x080022c4   0x0000003c   Code   RO          404    .text.pa15_output_high_init  led_test.o
-    0x08002300   0x08002300   0x0000004c   Code   RO          368    .text.print_buf     app_211.o
-    0x0800234c   0x0800234c   0x00000066   Code   RO          323    .text.radio_rx_init  radio_rx.o
-    0x080023b2   0x080023b2   0x0000002a   Code   RO          327    .text.radio_rx_set_channel  radio_rx.o
-    0x080023dc   0x080023dc   0x0000002a   Code   RO          329    .text.radio_rx_set_frequency_step  radio_rx.o
-    0x08002406   0x08002406   0x0000003a   Code   RO          188    .text.radio_tx_init  radio_tx.o
-    0x08002440   0x08002440   0x00000020   Code   RO          190    .text.radio_tx_send  radio_tx.o
-    0x08002460   0x08002460   0x0000001e   Code   RO          192    .text.radio_tx_set_channel  radio_tx.o
-    0x0800247e   0x0800247e   0x0000001e   Code   RO          194    .text.radio_tx_set_frequency_step  radio_tx.o
-    0x0800249c   0x0800249c   0x0000027c   Code   RO         1034    .text.rcu_clock_freq_get  gd32e23x_rcu.o
-    0x08002718   0x08002718   0x00000024   Code   RO          960    .text.rcu_periph_clock_enable  gd32e23x_rcu.o
-    0x0800273c   0x0800273c   0x00000024   Code   RO          970    .text.rcu_periph_reset_disable  gd32e23x_rcu.o
-    0x08002760   0x08002760   0x00000028   Code   RO          968    .text.rcu_periph_reset_enable  gd32e23x_rcu.o
-    0x08002788   0x08002788   0x00000064   Code   RO         1592    .text.rf_build_default_flash_config  rf_uart_set_config.o
-    0x080027ec   0x080027ec   0x00000064   Code   RO         1602    .text.rf_build_one_config  rf_uart_set_config.o
-    0x08002850   0x08002850   0x00000028   Code   RO          417    .text.rf_calc_freq_hz  app_tx-rx_config.o
-    0x08002878   0x08002878   0x0000008c   Code   RO         1565    .text.rf_config_apply  rf_apply.o
-    0x08002904   0x08002904   0x000000e4   Code   RO         1577    .text.rf_config_check  rf_config.o
-    0x080029e8   0x080029e8   0x000000a8   Code   RO         1579    .text.rf_crc16_calc  rf_config.o
-    0x08002a90   0x08002a90   0x0000013c   Code   RO         1598    .text.rf_execute_command  rf_uart_set_config.o
-    0x08002bcc   0x08002bcc   0x0000004e   Code   RO         1606    .text.rf_expect_char  rf_uart_set_config.o
-    0x08002c1a   0x08002c1a   0x00000002   PAD
-    0x08002c1c   0x08002c1c   0x0000003c   Code   RO         1590    .text.rf_flash_config_read  rf_uart_set_config.o
-    0x08002c58   0x08002c58   0x00000100   Code   RO         1608    .text.rf_flash_config_write  rf_uart_set_config.o
-    0x08002d58   0x08002d58   0x000000cc   Code   RO         1600    .text.rf_flash_record_check  rf_uart_set_config.o
-    0x08002e24   0x08002e24   0x00000088   Code   RO          415    .text.rf_get_tx_rx_real_freq  app_tx-rx_config.o
-    0x08002eac   0x08002eac   0x0000018c   Code   RO         1596    .text.rf_parse_command  rf_uart_set_config.o
-    0x08003038   0x08003038   0x000000c0   Code   RO         1604    .text.rf_parse_uint8  rf_uart_set_config.o
-    0x080030f8   0x080030f8   0x00000040   Code   RO          419    .text.rf_print_tx_rx_real_freq  app_tx-rx_config.o
-    0x08003138   0x08003138   0x00000088   Code   RO         1567    .text.rf_test_apply_config  rf_apply.o
-    0x080031c0   0x080031c0   0x00000134   Code   RO         1594    .text.rf_uart_config_process  rf_uart_set_config.o
-    0x080032f4   0x080032f4   0x0000005c   Code   RO         1588    .text.rf_uart_config_restore  rf_uart_set_config.o
-    0x08003350   0x08003350   0x000000e0   Code   RO          355    .text.system_clock_72m_hxtal  system_gd32e23x.o
-    0x08003430   0x08003430   0x00000008   Code   RO          351    .text.system_clock_config  system_gd32e23x.o
-    0x08003438   0x08003438   0x0000002c   Code   RO          915    .text.systick_clksource_set  gd32e23x_misc.o
-    0x08003464   0x08003464   0x00000040   Code   RO           38    .text.systick_config  systick.o
-    0x080034a4   0x080034a4   0x000000b0   Code   RO         1391    .text.usart_baudrate_set  gd32e23x_usart.o
-    0x08003554   0x08003554   0x00000010   Code   RO         1427    .text.usart_data_receive  gd32e23x_usart.o
-    0x08003564   0x08003564   0x00000018   Code   RO         1425    .text.usart_data_transmit  gd32e23x_usart.o
-    0x0800357c   0x0800357c   0x00000050   Code   RO         1389    .text.usart_deinit  gd32e23x_usart.o
-    0x080035cc   0x080035cc   0x00000012   Code   RO         1399    .text.usart_enable  gd32e23x_usart.o
-    0x080035de   0x080035de   0x0000003c   Code   RO         1523    .text.usart_flag_get  gd32e23x_usart.o
-    0x0800361a   0x0800361a   0x00000002   PAD
-    0x0800361c   0x0800361c   0x000000d8   Code   RO           57    .text.usart_gpio_config  bsp_usart.o
-    0x080036f4   0x080036f4   0x00000022   Code   RO         1527    .text.usart_interrupt_enable  gd32e23x_usart.o
-    0x08003716   0x08003716   0x00000002   PAD
-    0x08003718   0x08003718   0x00000040   Code   RO         1535    .text.usart_interrupt_flag_clear  gd32e23x_usart.o
-    0x08003758   0x08003758   0x00000062   Code   RO         1533    .text.usart_interrupt_flag_get  gd32e23x_usart.o
-    0x080037ba   0x080037ba   0x0000002a   Code   RO         1393    .text.usart_parity_config  gd32e23x_usart.o
-    0x080037e4   0x080037e4   0x0000001e   Code   RO         1405    .text.usart_receive_config  gd32e23x_usart.o
-    0x08003802   0x08003802   0x00000002   PAD
-    0x08003804   0x08003804   0x00000030   Code   RO           59    .text.usart_send_data  bsp_usart.o
-    0x08003834   0x08003834   0x00000038   Code   RO           61    .text.usart_send_string  bsp_usart.o
-    0x0800386c   0x0800386c   0x0000002a   Code   RO         1397    .text.usart_stop_bit_set  gd32e23x_usart.o
-    0x08003896   0x08003896   0x0000001e   Code   RO         1403    .text.usart_transmit_config  gd32e23x_usart.o
-    0x080038b4   0x080038b4   0x0000002a   Code   RO         1395    .text.usart_word_length_set  gd32e23x_usart.o
-    0x080038de   0x080038de   0x00000002   PAD
-    0x080038e0   0x080038e0   0x00000020   Code   RO         1630    i.__0printf         mc_p.l(printfa.o)
-    0x08003900   0x08003900   0x0000002e   Code   RO         1717    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x0800392e   0x0800392e   0x0000000e   Code   RO         1721    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x0800393c   0x0800393c   0x00000002   Code   RO         1722    i.__scatterload_null  mc_p.l(handlers.o)
-    0x0800393e   0x0800393e   0x0000000e   Code   RO         1723    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x0800394c   0x0800394c   0x00000174   Code   RO         1637    i._fp_digits        mc_p.l(printfa.o)
-    0x08003ac0   0x08003ac0   0x000006ec   Code   RO         1638    i._printf_core      mc_p.l(printfa.o)
-    0x080041ac   0x080041ac   0x00000020   Code   RO         1639    i._printf_post_padding  mc_p.l(printfa.o)
-    0x080041cc   0x080041cc   0x0000002c   Code   RO         1640    i._printf_pre_padding  mc_p.l(printfa.o)
-    0x080041f8   0x080041f8   0x0000001d   Data   RO          119    .rodata.g_cmt2119b_baseband_bank  cmt2119b.o
-    0x08004215   0x08004215   0x0000000c   Data   RO          115    .rodata.g_cmt2119b_cmt_bank  cmt2119b.o
-    0x08004221   0x08004221   0x00000018   Data   RO          118    .rodata.g_cmt2119b_data_rate_bank  cmt2119b.o
-    0x08004239   0x08004239   0x00000008   Data   RO          117    .rodata.g_cmt2119b_frequency_bank  cmt2119b.o
-    0x08004241   0x08004241   0x0000000c   Data   RO          116    .rodata.g_cmt2119b_system_bank  cmt2119b.o
-    0x0800424d   0x0800424d   0x0000000b   Data   RO          120    .rodata.g_cmt2119b_tx_bank  cmt2119b.o
-    0x08004258   0x08004258   0x0000001d   Data   RO          251    .rodata.g_cmt2219b_baseband_bank  cmt2219b.o
-    0x08004275   0x08004275   0x0000000c   Data   RO          247    .rodata.g_cmt2219b_cmt_bank  cmt2219b.o
-    0x08004281   0x08004281   0x00000018   Data   RO          250    .rodata.g_cmt2219b_data_rate_bank  cmt2219b.o
-    0x08004299   0x08004299   0x00000008   Data   RO          249    .rodata.g_cmt2219b_frequency_bank  cmt2219b.o
-    0x080042a1   0x080042a1   0x00000001   Data   RO          253    .rodata.g_cmt2219b_lbd_bank  cmt2219b.o
-    0x080042a2   0x080042a2   0x0000000c   Data   RO          248    .rodata.g_cmt2219b_system_bank  cmt2219b.o
-    0x080042ae   0x080042ae   0x0000000a   Data   RO          252    .rodata.g_cmt2219b_tx_bank  cmt2219b.o
-    0x080042b8   0x080042b8   0x0000001c   Data   RO           30    .rodata.str1.1      main.o
-    0x080042d4   0x080042d4   0x0000003a   Data   RO          377    .rodata.str1.1      app_211.o
-    0x0800430e   0x0800430e   0x0000003e   Data   RO          393    .rodata.str1.1      app_221.o
-    0x0800434c   0x0800434c   0x0000009a   Data   RO          421    .rodata.str1.1      app_tx-rx_config.o
-    0x080043e6   0x080043e6   0x0000000d   Data   RO          437    .rodata.str1.1      app_key.o
-    0x080043f3   0x080043f3   0x000000a6   Data   RO         1569    .rodata.str1.1      rf_apply.o
-    0x08004499   0x08004499   0x00000003   PAD
-    0x0800449c   0x0800449c   0x00000020   Data   RO         1720    Region$$Table       anon$$obj.o
+    0x08000aac   0x08000aac   0x00000038   Code   RO          370    .text.app_211_init  app_211.o
+    0x08000ae4   0x08000ae4   0x0000000c   Code   RO          374    .text.app_211_send_data  app_211.o
+    0x08000af0   0x08000af0   0x0000006c   Code   RO          372    .text.app_211_send_test_data  app_211.o
+    0x08000b5c   0x08000b5c   0x00000050   Code   RO          388    .text.app_221_init  app_221.o
+    0x08000bac   0x08000bac   0x000000b0   Code   RO          390    .text.app_221_receive_data  app_221.o
+    0x08000c5c   0x08000c5c   0x0000006c   Code   RO          433    .text.check_double_key12  app_key.o
+    0x08000cc8   0x08000cc8   0x00000082   Code   RO          101    .text.cmt2119b_auto_switch_status  cmt2119b.o
+    0x08000d4a   0x08000d4a   0x00000014   Code   RO           91    .text.cmt2119b_clear_interrupt_flags  cmt2119b.o
+    0x08000d5e   0x08000d5e   0x0000000c   Code   RO          107    .text.cmt2119b_clear_tx_fifo  cmt2119b.o
+    0x08000d6a   0x08000d6a   0x00000040   Code   RO           89    .text.cmt2119b_config_gpio_interrupt  cmt2119b.o
+    0x08000daa   0x08000daa   0x00000046   Code   RO           81    .text.cmt2119b_config_reg_bank  cmt2119b.o
+    0x08000df0   0x08000df0   0x0000000e   Code   RO          132    .text.cmt2119b_csb_high  cmt2119b_port.o
+    0x08000dfe   0x08000dfe   0x0000000e   Code   RO          140    .text.cmt2119b_csb_low  cmt2119b_port.o
+    0x08000e0c   0x08000e0c   0x00000010   Code   RO          156    .text.cmt2119b_delay_ms  cmt2119b_port.o
+    0x08000e1c   0x08000e1c   0x00000010   Code   RO          154    .text.cmt2119b_delay_us  cmt2119b_port.o
+    0x08000e2c   0x08000e2c   0x00000064   Code   RO           87    .text.cmt2119b_enable_lfosc  cmt2119b.o
+    0x08000e90   0x08000e90   0x0000002e   Code   RO          111    .text.cmt2119b_enable_write_fifo  cmt2119b.o
+    0x08000ebe   0x08000ebe   0x00000002   PAD
+    0x08000ec0   0x08000ec0   0x0000000c   Code   RO          134    .text.cmt2119b_fcsb_high  cmt2119b_port.o
+    0x08000ecc   0x08000ecc   0x0000000c   Code   RO          142    .text.cmt2119b_fcsb_low  cmt2119b_port.o
+    0x08000ed8   0x08000ed8   0x0000000e   Code   RO          113    .text.cmt2119b_get_chip_status  cmt2119b.o
+    0x08000ee6   0x08000ee6   0x0000000c   Code   RO           93    .text.cmt2119b_go_sleep  cmt2119b.o
+    0x08000ef2   0x08000ef2   0x0000000c   Code   RO          103    .text.cmt2119b_go_stby  cmt2119b.o
+    0x08000efe   0x08000efe   0x0000000c   Code   RO          105    .text.cmt2119b_go_tx  cmt2119b.o
+    0x08000f0a   0x08000f0a   0x00000002   PAD
+    0x08000f0c   0x08000f0c   0x00000010   Code   RO          152    .text.cmt2119b_gpio3_read  cmt2119b_port.o
+    0x08000f1c   0x08000f1c   0x000000f4   Code   RO           77    .text.cmt2119b_init  cmt2119b.o
+    0x08001010   0x08001010   0x000000b0   Code   RO          128    .text.cmt2119b_port_init  cmt2119b_port.o
+    0x080010c0   0x080010c0   0x00000014   Code   RO           83    .text.cmt2119b_read_reg  cmt2119b.o
+    0x080010d4   0x080010d4   0x0000000e   Code   RO          144    .text.cmt2119b_sclk_high  cmt2119b_port.o
+    0x080010e2   0x080010e2   0x0000000e   Code   RO          136    .text.cmt2119b_sclk_low  cmt2119b_port.o
+    0x080010f0   0x080010f0   0x0000000e   Code   RO          138    .text.cmt2119b_sdio_high  cmt2119b_port.o
+    0x080010fe   0x080010fe   0x00000012   Code   RO          150    .text.cmt2119b_sdio_input  cmt2119b_port.o
+    0x08001110   0x08001110   0x0000000e   Code   RO          146    .text.cmt2119b_sdio_low  cmt2119b_port.o
+    0x0800111e   0x0800111e   0x00000028   Code   RO          130    .text.cmt2119b_sdio_output  cmt2119b_port.o
+    0x08001146   0x08001146   0x00000012   Code   RO          148    .text.cmt2119b_sdio_read  cmt2119b_port.o
+    0x08001158   0x08001158   0x000000ca   Code   RO          109    .text.cmt2119b_send_packet  cmt2119b.o
+    0x08001222   0x08001222   0x00000016   Code   RO           95    .text.cmt2119b_set_frequency_channel  cmt2119b.o
+    0x08001238   0x08001238   0x00000016   Code   RO           97    .text.cmt2119b_set_frequency_step  cmt2119b.o
+    0x0800124e   0x0800124e   0x0000000c   Code   RO           79    .text.cmt2119b_soft_reset  cmt2119b.o
+    0x0800125a   0x0800125a   0x00000018   Code   RO          167    .text.cmt2119b_spi_delay  cmt2119b_spi.o
+    0x08001272   0x08001272   0x0000000a   Code   RO          179    .text.cmt2119b_spi_delay_us  cmt2119b_spi.o
+    0x0800127c   0x0800127c   0x00000020   Code   RO          165    .text.cmt2119b_spi_init  cmt2119b_spi.o
+    0x0800129c   0x0800129c   0x00000060   Code   RO          173    .text.cmt2119b_spi_read_reg  cmt2119b_spi.o
+    0x080012fc   0x080012fc   0x0000005a   Code   RO          175    .text.cmt2119b_spi_recv  cmt2119b_spi.o
+    0x08001356   0x08001356   0x0000005a   Code   RO          171    .text.cmt2119b_spi_send  cmt2119b_spi.o
+    0x080013b0   0x080013b0   0x00000088   Code   RO          177    .text.cmt2119b_spi_write_fifo  cmt2119b_spi.o
+    0x08001438   0x08001438   0x00000060   Code   RO          169    .text.cmt2119b_spi_write_reg  cmt2119b_spi.o
+    0x08001498   0x08001498   0x00000028   Code   RO           99    .text.cmt2119b_write_fifo  cmt2119b.o
+    0x080014c0   0x080014c0   0x0000001c   Code   RO           85    .text.cmt2119b_write_reg  cmt2119b.o
+    0x080014dc   0x080014dc   0x00000060   Code   RO          235    .text.cmt2219b_auto_switch_status  cmt2219b.o
+    0x0800153c   0x0800153c   0x00000014   Code   RO          215    .text.cmt2219b_clear_interrupt_flags  cmt2219b.o
+    0x08001550   0x08001550   0x0000000c   Code   RO          241    .text.cmt2219b_clear_rx_fifo  cmt2219b.o
+    0x0800155c   0x0800155c   0x00000010   Code   RO          277    .text.cmt2219b_clk_high  cmt2219b_port.o
+    0x0800156c   0x0800156c   0x00000010   Code   RO          269    .text.cmt2219b_clk_low  cmt2219b_port.o
+    0x0800157c   0x0800157c   0x0000003e   Code   RO          219    .text.cmt2219b_config_gpio_interrupt  cmt2219b.o
+    0x080015ba   0x080015ba   0x00000046   Code   RO          217    .text.cmt2219b_config_reg_bank  cmt2219b.o
+    0x08001600   0x08001600   0x00000010   Code   RO          265    .text.cmt2219b_csb_high  cmt2219b_port.o
+    0x08001610   0x08001610   0x00000010   Code   RO          273    .text.cmt2219b_csb_low  cmt2219b_port.o
+    0x08001620   0x08001620   0x00000010   Code   RO          289    .text.cmt2219b_delay_ms  cmt2219b_port.o
+    0x08001630   0x08001630   0x00000010   Code   RO          287    .text.cmt2219b_delay_us  cmt2219b_port.o
+    0x08001640   0x08001640   0x00000064   Code   RO          213    .text.cmt2219b_enable_lfosc  cmt2219b.o
+    0x080016a4   0x080016a4   0x0000002e   Code   RO          239    .text.cmt2219b_enable_read_fifo  cmt2219b.o
+    0x080016d2   0x080016d2   0x00000002   PAD
+    0x080016d4   0x080016d4   0x00000010   Code   RO          267    .text.cmt2219b_fcsb_high  cmt2219b_port.o
+    0x080016e4   0x080016e4   0x00000014   Code   RO          275    .text.cmt2219b_fcsb_low  cmt2219b_port.o
+    0x080016f8   0x080016f8   0x0000000e   Code   RO          245    .text.cmt2219b_get_chip_status  cmt2219b.o
+    0x08001706   0x08001706   0x0000000c   Code   RO          237    .text.cmt2219b_go_rx  cmt2219b.o
+    0x08001712   0x08001712   0x0000000c   Code   RO          221    .text.cmt2219b_go_sleep  cmt2219b.o
+    0x0800171e   0x0800171e   0x0000000c   Code   RO          207    .text.cmt2219b_go_stby  cmt2219b.o
+    0x0800172a   0x0800172a   0x00000002   PAD
+    0x0800172c   0x0800172c   0x00000120   Code   RO          203    .text.cmt2219b_init  cmt2219b.o
+    0x0800184c   0x0800184c   0x00000056   Code   RO          223    .text.cmt2219b_is_exist  cmt2219b.o
+    0x080018a2   0x080018a2   0x00000034   Code   RO          243    .text.cmt2219b_packet_received  cmt2219b.o
+    0x080018d6   0x080018d6   0x00000002   PAD
+    0x080018d8   0x080018d8   0x000000ac   Code   RO          261    .text.cmt2219b_port_init  cmt2219b_port.o
+    0x08001984   0x08001984   0x00000028   Code   RO          231    .text.cmt2219b_read_fifo  cmt2219b.o
+    0x080019ac   0x080019ac   0x00000014   Code   RO          209    .text.cmt2219b_read_reg  cmt2219b.o
+    0x080019c0   0x080019c0   0x00000010   Code   RO          271    .text.cmt2219b_sdio_high  cmt2219b_port.o
+    0x080019d0   0x080019d0   0x00000018   Code   RO          283    .text.cmt2219b_sdio_input  cmt2219b_port.o
+    0x080019e8   0x080019e8   0x00000014   Code   RO          279    .text.cmt2219b_sdio_low  cmt2219b_port.o
+    0x080019fc   0x080019fc   0x00000028   Code   RO          263    .text.cmt2219b_sdio_output  cmt2219b_port.o
+    0x08001a24   0x08001a24   0x00000030   Code   RO          281    .text.cmt2219b_sdio_read  cmt2219b_port.o
+    0x08001a54   0x08001a54   0x00000016   Code   RO          225    .text.cmt2219b_set_frequency_channel  cmt2219b.o
+    0x08001a6a   0x08001a6a   0x00000016   Code   RO          227    .text.cmt2219b_set_frequency_step  cmt2219b.o
+    0x08001a80   0x08001a80   0x0000000c   Code   RO          205    .text.cmt2219b_soft_reset  cmt2219b.o
+    0x08001a8c   0x08001a8c   0x00000018   Code   RO          300    .text.cmt2219b_spi_delay  cmt2219b_spi.o
+    0x08001aa4   0x08001aa4   0x0000000a   Code   RO          312    .text.cmt2219b_spi_delay_us  cmt2219b_spi.o
+    0x08001aae   0x08001aae   0x00000020   Code   RO          298    .text.cmt2219b_spi_init  cmt2219b_spi.o
+    0x08001ace   0x08001ace   0x00000088   Code   RO          314    .text.cmt2219b_spi_read_fifo  cmt2219b_spi.o
+    0x08001b56   0x08001b56   0x00000060   Code   RO          306    .text.cmt2219b_spi_read_reg  cmt2219b_spi.o
+    0x08001bb6   0x08001bb6   0x0000005a   Code   RO          308    .text.cmt2219b_spi_recv  cmt2219b_spi.o
+    0x08001c10   0x08001c10   0x0000005a   Code   RO          304    .text.cmt2219b_spi_send  cmt2219b_spi.o
+    0x08001c6a   0x08001c6a   0x00000060   Code   RO          302    .text.cmt2219b_spi_write_reg  cmt2219b_spi.o
+    0x08001cca   0x08001cca   0x0000001c   Code   RO          211    .text.cmt2219b_write_reg  cmt2219b.o
+    0x08001ce6   0x08001ce6   0x00000002   PAD
+    0x08001ce8   0x08001ce8   0x00000074   Code   RO           46    .text.delay_ms      systick.o
+    0x08001d5c   0x08001d5c   0x00000080   Code   RO           42    .text.delay_us      systick.o
+    0x08001ddc   0x08001ddc   0x00000010   Code   RO          741    .text.fmc_flag_clear  gd32e23x_fmc.o
+    0x08001dec   0x08001dec   0x0000000c   Code   RO          691    .text.fmc_lock      gd32e23x_fmc.o
+    0x08001df8   0x08001df8   0x0000005c   Code   RO          699    .text.fmc_page_erase  gd32e23x_fmc.o
+    0x08001e54   0x08001e54   0x0000005a   Code   RO          701    .text.fmc_ready_wait  gd32e23x_fmc.o
+    0x08001eae   0x08001eae   0x00000002   PAD
+    0x08001eb0   0x08001eb0   0x00000054   Code   RO          747    .text.fmc_state_get  gd32e23x_fmc.o
+    0x08001f04   0x08001f04   0x00000028   Code   RO          689    .text.fmc_unlock    gd32e23x_fmc.o
+    0x08001f2c   0x08001f2c   0x00000054   Code   RO          707    .text.fmc_word_program  gd32e23x_fmc.o
+    0x08001f80   0x08001f80   0x00000016   Code   RO           63    .text.fputc         bsp_usart.o
+    0x08001f96   0x08001f96   0x000000c0   Code   RO          803    .text.gpio_af_set   gd32e23x_gpio.o
+    0x08002056   0x08002056   0x00000010   Code   RO          789    .text.gpio_bit_reset  gd32e23x_gpio.o
+    0x08002066   0x08002066   0x00000010   Code   RO          787    .text.gpio_bit_set  gd32e23x_gpio.o
+    0x08002076   0x08002076   0x00000010   Code   RO          807    .text.gpio_bit_toggle  gd32e23x_gpio.o
+    0x08002086   0x08002086   0x0000002a   Code   RO          795    .text.gpio_input_bit_get  gd32e23x_gpio.o
+    0x080020b0   0x080020b0   0x0000008e   Code   RO          783    .text.gpio_mode_set  gd32e23x_gpio.o
+    0x0800213e   0x0800213e   0x0000008a   Code   RO          785    .text.gpio_output_options_set  gd32e23x_gpio.o
+    0x080021c8   0x080021c8   0x00000030   Code   RO          429    .text.key_init      app_key.o
+    0x080021f8   0x080021f8   0x0000007c   Code   RO          431    .text.key_is_pressed  app_key.o
+    0x08002274   0x08002274   0x00000010   Code   RO          406    .text.led_PA15_toggle  led_test.o
+    0x08002284   0x08002284   0x000000a8   Code   RO           27    .text.main          main.o
+    0x0800232c   0x0800232c   0x00000016   Code   RO          901    .text.nvic_irq_disable  gd32e23x_misc.o
+    0x08002342   0x08002342   0x0000002c   Code   RO          895    .text.nvic_irq_enable  gd32e23x_misc.o
+    0x0800236e   0x0800236e   0x00000002   PAD
+    0x08002370   0x08002370   0x00000020   Code   RO          909    .text.nvic_vector_table_set  gd32e23x_misc.o
+    0x08002390   0x08002390   0x0000003c   Code   RO          404    .text.pa15_output_high_init  led_test.o
+    0x080023cc   0x080023cc   0x0000004c   Code   RO          368    .text.print_buf     app_211.o
+    0x08002418   0x08002418   0x00000066   Code   RO          323    .text.radio_rx_init  radio_rx.o
+    0x0800247e   0x0800247e   0x0000002a   Code   RO          327    .text.radio_rx_set_channel  radio_rx.o
+    0x080024a8   0x080024a8   0x0000002a   Code   RO          329    .text.radio_rx_set_frequency_step  radio_rx.o
+    0x080024d2   0x080024d2   0x0000003a   Code   RO          188    .text.radio_tx_init  radio_tx.o
+    0x0800250c   0x0800250c   0x00000020   Code   RO          190    .text.radio_tx_send  radio_tx.o
+    0x0800252c   0x0800252c   0x0000001e   Code   RO          192    .text.radio_tx_set_channel  radio_tx.o
+    0x0800254a   0x0800254a   0x0000001e   Code   RO          194    .text.radio_tx_set_frequency_step  radio_tx.o
+    0x08002568   0x08002568   0x0000027c   Code   RO         1034    .text.rcu_clock_freq_get  gd32e23x_rcu.o
+    0x080027e4   0x080027e4   0x00000024   Code   RO          960    .text.rcu_periph_clock_enable  gd32e23x_rcu.o
+    0x08002808   0x08002808   0x00000024   Code   RO          970    .text.rcu_periph_reset_disable  gd32e23x_rcu.o
+    0x0800282c   0x0800282c   0x00000028   Code   RO          968    .text.rcu_periph_reset_enable  gd32e23x_rcu.o
+    0x08002854   0x08002854   0x00000064   Code   RO         1592    .text.rf_build_default_flash_config  rf_uart_set_config.o
+    0x080028b8   0x080028b8   0x00000064   Code   RO         1602    .text.rf_build_one_config  rf_uart_set_config.o
+    0x0800291c   0x0800291c   0x00000028   Code   RO          417    .text.rf_calc_freq_hz  app_tx-rx_config.o
+    0x08002944   0x08002944   0x0000008c   Code   RO         1565    .text.rf_config_apply  rf_apply.o
+    0x080029d0   0x080029d0   0x000000e4   Code   RO         1577    .text.rf_config_check  rf_config.o
+    0x08002ab4   0x08002ab4   0x000000a8   Code   RO         1579    .text.rf_crc16_calc  rf_config.o
+    0x08002b5c   0x08002b5c   0x0000013c   Code   RO         1598    .text.rf_execute_command  rf_uart_set_config.o
+    0x08002c98   0x08002c98   0x0000004e   Code   RO         1606    .text.rf_expect_char  rf_uart_set_config.o
+    0x08002ce6   0x08002ce6   0x00000002   PAD
+    0x08002ce8   0x08002ce8   0x0000003c   Code   RO         1590    .text.rf_flash_config_read  rf_uart_set_config.o
+    0x08002d24   0x08002d24   0x00000100   Code   RO         1608    .text.rf_flash_config_write  rf_uart_set_config.o
+    0x08002e24   0x08002e24   0x000000cc   Code   RO         1600    .text.rf_flash_record_check  rf_uart_set_config.o
+    0x08002ef0   0x08002ef0   0x00000088   Code   RO          415    .text.rf_get_tx_rx_real_freq  app_tx-rx_config.o
+    0x08002f78   0x08002f78   0x0000018c   Code   RO         1596    .text.rf_parse_command  rf_uart_set_config.o
+    0x08003104   0x08003104   0x000000c0   Code   RO         1604    .text.rf_parse_uint8  rf_uart_set_config.o
+    0x080031c4   0x080031c4   0x00000040   Code   RO          419    .text.rf_print_tx_rx_real_freq  app_tx-rx_config.o
+    0x08003204   0x08003204   0x00000088   Code   RO         1567    .text.rf_test_apply_config  rf_apply.o
+    0x0800328c   0x0800328c   0x00000134   Code   RO         1594    .text.rf_uart_config_process  rf_uart_set_config.o
+    0x080033c0   0x080033c0   0x0000005c   Code   RO         1588    .text.rf_uart_config_restore  rf_uart_set_config.o
+    0x0800341c   0x0800341c   0x000000e0   Code   RO          355    .text.system_clock_72m_hxtal  system_gd32e23x.o
+    0x080034fc   0x080034fc   0x00000008   Code   RO          351    .text.system_clock_config  system_gd32e23x.o
+    0x08003504   0x08003504   0x0000002c   Code   RO          915    .text.systick_clksource_set  gd32e23x_misc.o
+    0x08003530   0x08003530   0x00000040   Code   RO           38    .text.systick_config  systick.o
+    0x08003570   0x08003570   0x000000b0   Code   RO         1391    .text.usart_baudrate_set  gd32e23x_usart.o
+    0x08003620   0x08003620   0x00000010   Code   RO         1427    .text.usart_data_receive  gd32e23x_usart.o
+    0x08003630   0x08003630   0x00000018   Code   RO         1425    .text.usart_data_transmit  gd32e23x_usart.o
+    0x08003648   0x08003648   0x00000050   Code   RO         1389    .text.usart_deinit  gd32e23x_usart.o
+    0x08003698   0x08003698   0x00000012   Code   RO         1399    .text.usart_enable  gd32e23x_usart.o
+    0x080036aa   0x080036aa   0x0000003c   Code   RO         1523    .text.usart_flag_get  gd32e23x_usart.o
+    0x080036e6   0x080036e6   0x00000002   PAD
+    0x080036e8   0x080036e8   0x000000d8   Code   RO           57    .text.usart_gpio_config  bsp_usart.o
+    0x080037c0   0x080037c0   0x00000022   Code   RO         1527    .text.usart_interrupt_enable  gd32e23x_usart.o
+    0x080037e2   0x080037e2   0x00000002   PAD
+    0x080037e4   0x080037e4   0x00000040   Code   RO         1535    .text.usart_interrupt_flag_clear  gd32e23x_usart.o
+    0x08003824   0x08003824   0x00000062   Code   RO         1533    .text.usart_interrupt_flag_get  gd32e23x_usart.o
+    0x08003886   0x08003886   0x0000002a   Code   RO         1393    .text.usart_parity_config  gd32e23x_usart.o
+    0x080038b0   0x080038b0   0x0000001e   Code   RO         1405    .text.usart_receive_config  gd32e23x_usart.o
+    0x080038ce   0x080038ce   0x00000002   PAD
+    0x080038d0   0x080038d0   0x00000030   Code   RO           59    .text.usart_send_data  bsp_usart.o
+    0x08003900   0x08003900   0x00000038   Code   RO           61    .text.usart_send_string  bsp_usart.o
+    0x08003938   0x08003938   0x0000002a   Code   RO         1397    .text.usart_stop_bit_set  gd32e23x_usart.o
+    0x08003962   0x08003962   0x0000001e   Code   RO         1403    .text.usart_transmit_config  gd32e23x_usart.o
+    0x08003980   0x08003980   0x0000002a   Code   RO         1395    .text.usart_word_length_set  gd32e23x_usart.o
+    0x080039aa   0x080039aa   0x00000002   PAD
+    0x080039ac   0x080039ac   0x00000020   Code   RO         1630    i.__0printf         mc_p.l(printfa.o)
+    0x080039cc   0x080039cc   0x0000002e   Code   RO         1717    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x080039fa   0x080039fa   0x0000000e   Code   RO         1721    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x08003a08   0x08003a08   0x00000002   Code   RO         1722    i.__scatterload_null  mc_p.l(handlers.o)
+    0x08003a0a   0x08003a0a   0x0000000e   Code   RO         1723    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x08003a18   0x08003a18   0x00000174   Code   RO         1637    i._fp_digits        mc_p.l(printfa.o)
+    0x08003b8c   0x08003b8c   0x000006ec   Code   RO         1638    i._printf_core      mc_p.l(printfa.o)
+    0x08004278   0x08004278   0x00000020   Code   RO         1639    i._printf_post_padding  mc_p.l(printfa.o)
+    0x08004298   0x08004298   0x0000002c   Code   RO         1640    i._printf_pre_padding  mc_p.l(printfa.o)
+    0x080042c4   0x080042c4   0x0000001d   Data   RO          119    .rodata.g_cmt2119b_baseband_bank  cmt2119b.o
+    0x080042e1   0x080042e1   0x0000000c   Data   RO          115    .rodata.g_cmt2119b_cmt_bank  cmt2119b.o
+    0x080042ed   0x080042ed   0x00000018   Data   RO          118    .rodata.g_cmt2119b_data_rate_bank  cmt2119b.o
+    0x08004305   0x08004305   0x00000008   Data   RO          117    .rodata.g_cmt2119b_frequency_bank  cmt2119b.o
+    0x0800430d   0x0800430d   0x0000000c   Data   RO          116    .rodata.g_cmt2119b_system_bank  cmt2119b.o
+    0x08004319   0x08004319   0x0000000b   Data   RO          120    .rodata.g_cmt2119b_tx_bank  cmt2119b.o
+    0x08004324   0x08004324   0x0000001d   Data   RO          251    .rodata.g_cmt2219b_baseband_bank  cmt2219b.o
+    0x08004341   0x08004341   0x0000000c   Data   RO          247    .rodata.g_cmt2219b_cmt_bank  cmt2219b.o
+    0x0800434d   0x0800434d   0x00000018   Data   RO          250    .rodata.g_cmt2219b_data_rate_bank  cmt2219b.o
+    0x08004365   0x08004365   0x00000008   Data   RO          249    .rodata.g_cmt2219b_frequency_bank  cmt2219b.o
+    0x0800436d   0x0800436d   0x00000001   Data   RO          253    .rodata.g_cmt2219b_lbd_bank  cmt2219b.o
+    0x0800436e   0x0800436e   0x0000000c   Data   RO          248    .rodata.g_cmt2219b_system_bank  cmt2219b.o
+    0x0800437a   0x0800437a   0x0000000a   Data   RO          252    .rodata.g_cmt2219b_tx_bank  cmt2219b.o
+    0x08004384   0x08004384   0x0000001c   Data   RO           30    .rodata.str1.1      main.o
+    0x080043a0   0x080043a0   0x0000005d   Data   RO          377    .rodata.str1.1      app_211.o
+    0x080043fd   0x080043fd   0x00000070   Data   RO          393    .rodata.str1.1      app_221.o
+    0x0800446d   0x0800446d   0x0000009a   Data   RO          421    .rodata.str1.1      app_tx-rx_config.o
+    0x08004507   0x08004507   0x0000000d   Data   RO          437    .rodata.str1.1      app_key.o
+    0x08004514   0x08004514   0x000000a6   Data   RO         1569    .rodata.str1.1      rf_apply.o
+    0x080045ba   0x080045ba   0x00000002   PAD
+    0x080045bc   0x080045bc   0x00000020   Data   RO         1720    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080044c0, Size: 0x00001490, Max: 0x00002000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080045e0, Size: 0x00001498, Max: 0x00002000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080044c0   0x00000004   Data   RW         1679    .data               mc_p.l(stdout.o)
-    0x20000004   0x080044c4   0x00000004   Data   RW          357    .data.SystemCoreClock  system_gd32e23x.o
-    0x20000008   0x080044c8   0x00000020   Data   RW          376    .data.tx_buf_data   app_211.o
+    0x20000000   0x080045e0   0x00000004   Data   RW         1679    .data               mc_p.l(stdout.o)
+    0x20000004   0x080045e4   0x00000004   Data   RW          357    .data.SystemCoreClock  system_gd32e23x.o
+    0x20000008   0x080045e8   0x00000020   Data   RW          376    .data.tx_buf_data   app_211.o
     0x20000028        -       0x00000001   Zero   RW          436    .bss.check_double_key12.key_down  app_key.o
     0x20000029        -       0x00000001   Zero   RW          395    .bss.cmd_44_handled  app_221.o
-    0x2000002a   0x080044e8   0x00000002   PAD
+    0x2000002a   0x08004608   0x00000002   PAD
     0x2000002c        -       0x00000004   Zero   RW           49    .bss.count_1ms      systick.o
     0x20000030        -       0x00000004   Zero   RW           48    .bss.count_1us      systick.o
     0x20000034        -       0x00001000   Zero   RW           69    .bss.g_recv_buff    bsp_usart.o
     0x20001034        -       0x00000001   Zero   RW           68    .bss.g_recv_complete_flag  bsp_usart.o
-    0x20001035   0x080044e8   0x00000001   PAD
+    0x20001035   0x08004608   0x00000001   PAD
     0x20001036        -       0x00000002   Zero   RW           67    .bss.g_recv_length  bsp_usart.o
     0x20001038        -       0x0000002c   Zero   RW         1610    .bss.g_rf_saved_config  rf_uart_set_config.o
     0x20001064        -       0x00000001   Zero   RW          435    .bss.key_is_pressed.key_down  app_key.o
     0x20001065        -       0x00000020   Zero   RW          394    .bss.rx_buf         app_221.o
-    0x20001085   0x080044e8   0x00000003   PAD
+    0x20001085   0x08004608   0x00000003   PAD
     0x20001088        -       0x00000004   Zero   RW          396    .bss.rx_count       app_221.o
     0x2000108c        -       0x00000001   Zero   RW          392    .bss.rx_ok          app_221.o
-    0x2000108d        -       0x00000001   Zero   RW          378    .bss.tx_ok          app_211.o
-    0x2000108e   0x080044e8   0x00000002   PAD
-    0x20001090        -       0x00000400   Zero   RW          339    STACK               startup_gd32e23x.o
+    0x2000108d        -       0x00000001   Zero   RW          379    .bss.send_ret       app_211.o
+    0x2000108e   0x08004608   0x00000002   PAD
+    0x20001090        -       0x00000004   Zero   RW          380    .bss.tx_count       app_211.o
+    0x20001094        -       0x00000001   Zero   RW          378    .bss.tx_ok          app_211.o
+    0x20001095   0x08004608   0x00000003   PAD
+    0x20001098        -       0x00000400   Zero   RW          339    STACK               startup_gd32e23x.o
 
 
 ==============================================================================
@@ -3508,16 +3524,16 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       152         24         58         32          1       1575   app_211.o
-       220         32         62          0         38       1011   app_221.o
+       252         44         93         32          6       1637   app_211.o
+       256         40        112          0         38       1047   app_221.o
        280         16         13          0          2       1662   app_key.o
        240         16        154          0          0       1465   app_tx-rx_config.o
        458         40          0          0       4099       4434   bsp_usart.o
       1082         24         96          0          0       3988   cmt2119b.o
        408         12          0          0          0       2579   cmt2119b_port.o
        574          0          0          0          0       1934   cmt2119b_spi.o
-       976         28         96          0          0       4337   cmt2219b.o
-       456         24          0          0          0       2670   cmt2219b_port.o
+      1026         28         96          0          0       4377   cmt2219b.o
+       452         20          0          0          0       2670   cmt2219b_port.o
        574          0          0          0          0       2159   cmt2219b_spi.o
        418         24          0          0          0       6395   gd32e23x_fmc.o
        562          0          0          0          0       4208   gd32e23x_gpio.o
@@ -3526,7 +3542,7 @@ Image component sizes
        748         40          0          0          0      11143   gd32e23x_rcu.o
        756         24          0          0          0      14143   gd32e23x_usart.o
         76          4          0          0          0       1174   led_test.o
-       144          8         28          0          0        786   main.o
+       168          8         28          0          0        790   main.o
        186          0          0          0          0       1287   radio_rx.o
        150          0          0          0          0       1032   radio_tx.o
        276         28        166          0          0       1444   rf_apply.o
@@ -3537,9 +3553,9 @@ Image component sizes
        308         40          0          0          8       1742   systick.o
 
     ----------------------------------------------------------------------
-     12400        532        912         36       5224      86157   Object Totals
+     12604        556        996         36       5232      86299   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        28          0          3          0          8          0   (incl. Padding)
+        26          0          2          0         11          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3599,15 +3615,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16684        676        912         40       5224      86941   Grand Totals
-     16684        676        912         40       5224      86941   ELF Image Totals
-     16684        676        912         40          0          0   ROM Totals
+     16888        700        996         40       5232      87083   Grand Totals
+     16888        700        996         40       5232      87083   ELF Image Totals
+     16888        700        996         40          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                17596 (  17.18kB)
-    Total RW  Size (RW Data + ZI Data)              5264 (   5.14kB)
-    Total ROM Size (Code + RO Data + RW Data)      17636 (  17.22kB)
+    Total RO  Size (Code + RO Data)                17884 (  17.46kB)
+    Total RW  Size (RW Data + ZI Data)              5272 (   5.15kB)
+    Total ROM Size (Code + RO Data + RW Data)      17924 (  17.50kB)
 
 ==============================================================================
 

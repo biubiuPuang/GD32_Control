@@ -30,7 +30,5 @@ void print_buf(uint8_t *buf, uint8_t len);
 void app_211_init(void);
 // 211发送芯片发送数据
 void app_211_send_test_data(void);
-// 发送用户自定义函数
-void app_211_send_data(void);
 
 #endif /* __APP_211_H_ */

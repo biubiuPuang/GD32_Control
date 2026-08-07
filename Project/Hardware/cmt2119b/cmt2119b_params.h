@@ -103,7 +103,7 @@ static const uint8_t g_cmt2119b_baseband_bank[] = {
     0x00,
     0x00,
     0x00,
-    0x00,
+    0x01,
     0x00,
     0x00,
     0x60,

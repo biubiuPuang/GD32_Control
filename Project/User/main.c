@@ -58,14 +58,14 @@ int main(void)
         if (key_event == 1)
         {
             // 发送数组里面的数据
-            app_211_send_data();
+            app_211_send_test_data();
             printf("Key1 press\r\n");
             // 串口打印收发芯片的真实寄存器配置
             rf_print_tx_rx_real_freq();
         }
         else if (key_event == 2)
         {
-            app_211_send_data();
+            app_211_send_test_data();
             printf("Key1 release\r\n");
         }
 
@@ -86,7 +86,14 @@ int main(void)
         // 测试PA12按钮
         check_double_key12();
 
+        // 211 发送数据
+        app_211_send_test_data();
         // 221芯片接收数据
         app_221_receive_data();
+
+        for (uint16_t i = 0; i < 4000; i++)
+        {
+            delay_ms(1);
+        }
     }
 }

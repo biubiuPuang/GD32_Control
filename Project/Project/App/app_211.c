@@ -1,7 +1,7 @@
 #include "app_211.h"
 
 // 串口循环打印输出开关
-#define RF_LOOP_LOG_ENABLE 0
+#define RF_LOOP_LOG_ENABLE 1
 
 static uint8_t tx_ok;
 static uint8_t send_ret;
@@ -135,8 +135,3 @@ void app_211_send_test_data(void)
     }
 }
 
-// 发送用户自定义函数
-void app_211_send_data(void)
-{
-    radio_tx_send(tx_buf_data, TEST_PACKET_LEN);
-}

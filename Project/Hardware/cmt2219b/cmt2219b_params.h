@@ -15,7 +15,7 @@
  * Sync Size      : 3-byte
  * Sync Value     : 11152852
  * Whitening      : Disable
- * CRC            : None
+ * CRC            : CCITT-16
  */
 
 static const uint8_t g_cmt2219b_cmt_bank[] = {
@@ -107,7 +107,7 @@ static const uint8_t g_cmt2219b_baseband_bank[] = {
     0x00,
     0x00,
     0x00,
-    0x00,
+    0x01,
     0x00,
     0x00,
     0x60,

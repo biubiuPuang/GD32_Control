@@ -64,6 +64,7 @@
 
 #define CMT2219B_MASK_PREAM_OK_EN           0x10
 #define CMT2219B_MASK_SYNC_OK_EN            0x08
+#define CMT2219B_MASK_CRC_OK_EN             0x02
 #define CMT2219B_MASK_PKT_DONE_EN           0x01
 
 /* FIFO config */
@@ -160,9 +161,10 @@ static void cmt2219b_config_gpio_interrupt(void)
      * 使能接收相关中断。
      */
     cmt2219b_write_reg(CMT2219B_CUS_INT_EN,
-                       CMT2219B_MASK_PKT_DONE_EN |
-                       CMT2219B_MASK_PREAM_OK_EN |
-                       CMT2219B_MASK_SYNC_OK_EN);
+                   CMT2219B_MASK_PKT_DONE_EN |
+                   CMT2219B_MASK_CRC_OK_EN |
+                   CMT2219B_MASK_PREAM_OK_EN |
+                   CMT2219B_MASK_SYNC_OK_EN);
 }
 
 uint8_t cmt2219b_init(void)
@@ -369,11 +371,22 @@ void cmt2219b_clear_interrupt_flags(void)
 
 uint8_t cmt2219b_packet_received(void)
 {
+    uint8_t int_flag;
+
     /*
      * 0x6D 是 INT_FLAG 寄存器。
      * bit0 = 1 表示收到完整数据包。
+     * bit1 = CRC_OK，表示 CRC 校验通过。
+     * 只有两个标志都为 1，才认为收到有效数据包。
      */
-    if (cmt2219b_read_reg(0x6D) & 0x01) {
+    int_flag = cmt2219b_read_reg(0x6D);
+
+    // 无CRC校验判断
+    // if (cmt2219b_read_reg(0x6D) & 0x01) {
+    //     return CMT2219B_OK;
+    // }
+
+    if ((int_flag & 0x03) == 0x03) {
         return CMT2219B_OK;
     }
 
