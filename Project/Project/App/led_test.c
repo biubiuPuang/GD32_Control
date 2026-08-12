@@ -22,4 +22,3 @@ void led_PA15_toggle(void)
 {
     gpio_bit_toggle(GPIOA, GPIO_PIN_15);
 }
-

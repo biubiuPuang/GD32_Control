@@ -46,7 +46,6 @@ volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
     0x10,
 };
 
-
 /**
  * @brief 获取GD32E230的UID
  *
@@ -134,4 +133,3 @@ void app_211_send_test_data(void)
         }
     }
 }
-

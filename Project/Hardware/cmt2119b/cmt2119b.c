@@ -238,6 +238,7 @@ void cmt2119b_write_fifo(const uint8_t *buf, uint8_t len)
         len = CMT2119B_MAX_FIFO_SIZE;
     }
 
+    // 
     cmt2119b_spi_write_fifo(buf, len);
 }
 
@@ -285,12 +286,15 @@ uint8_t cmt2119b_send_packet(const uint8_t *buf, uint8_t len, uint32_t timeout_m
         return CMT2119B_ERROR;
     }
 
+    // 先进入待机并清理状态
     cmt2119b_go_stby();
     cmt2119b_clear_interrupt_flags();
 
+    // 配置为发送 FIFO
     cmt2119b_enable_write_fifo();
     cmt2119b_clear_tx_fifo();
 
+    // 把 32 字节写入发送芯片 FIFO
     cmt2119b_write_fifo(buf, len);
 
     fifo_flag = cmt2119b_read_reg(CMT2119B_CUS_FIFO_FLAG);

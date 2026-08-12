@@ -40,60 +40,27 @@ int main(void)
     if (!rf_uart_config_restore())
     {
         rf_test_apply_config();
+
         delay_ms(100);
     }
 
     while (1)
     {
-        // 按键标志位
-        uint8_t key_event = key_is_pressed();
-
         // 这个函数用于处理串口接收到的射频配置命令。
         rf_uart_config_process();
 
-        // 211芯片发送测试数据
-        // app_211_send_test_data();
-
-        // 按键按下则发送数据
-        if (key_event == 1)
-        {
-            // 发送数组里面的数据
-            app_211_send_test_data();
-            printf("Key1 press\r\n");
-            // 串口打印收发芯片的真实寄存器配置
-            rf_print_tx_rx_real_freq();
-        }
-        else if (key_event == 2)
-        {
-            app_211_send_test_data();
-            printf("Key1 release\r\n");
-        }
-
-        // // 测试PA12按钮电
-        // if (check_double_key12 == 1)
-        // {
-        //     if (key_num == 1)
-        //     {
-        //         led_PA15_toggle();
-        //         key_num == 0;
-        //     }
-        // }
-        // else
-        // {
-        //     key_num == 1;
-        // }
-
-        // 测试PA12按钮
-        check_double_key12();
+        // 获取按键值
+        get_key_num();
 
         // 211 发送数据
         app_211_send_test_data();
         // 221芯片接收数据
         app_221_receive_data();
 
-        for (uint16_t i = 0; i < 4000; i++)
-        {
-            delay_ms(1);
-        }
+
+        // for (uint16_t i = 0; i < 4000; i++)
+        // {
+        //     delay_ms(1);
+        // }
     }
 }
