@@ -1,7 +1,7 @@
 #include "app_211.h"
 
 // 串口循环打印输出开关
-#define RF_LOOP_LOG_ENABLE 1
+#define RF_LOOP_LOG_ENABLE 0
 
 static uint8_t tx_ok;
 static uint8_t send_ret;

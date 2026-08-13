@@ -410,6 +410,11 @@
               <FilePath>..\Hardware\usart\bsp_usart.c</FilePath>
             </File>
             <File>
+              <FileName>bsp_usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\usart\bsp_usart.h</FilePath>
+            </File>
+            <File>
               <FileName>cmt2119b.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Hardware\cmt2119b\cmt2119b.c</FilePath>

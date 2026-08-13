@@ -36,15 +36,37 @@
 #define BSP_USART_IRQ     		USART0_IRQn 		// 串口0中断
 #define BSP_USART_IRQHandler  	USART0_IRQHandler	// 串口0中断服务函数
 
+/* USART0默认DMA通道映射 */
+#define BSP_USART_TX_DMA_CHANNEL    DMA_CH1
+#define BSP_USART_RX_DMA_CHANNEL    DMA_CH2
+
+/* DMA_CH1和DMA_CH2共用同一个DMA中断 */
+#define BSP_USART_DMA_IRQ           DMA_Channel1_2_IRQn
+
 /* 串口缓冲区的数据长度 */
 #define USART_RECEIVE_LENGTH  4096
 
-extern uint8_t  g_recv_buff[USART_RECEIVE_LENGTH]; // 接收缓冲区
-extern uint16_t g_recv_length;										 // 接收数据长度
-extern uint8_t  g_recv_complete_flag; 						 // 接收完成标志位
+/* RX DMA临时接收缓冲区长度 */
+#define USART_RX_DMA_LENGTH       128U
+
+/* TX DMA环形队列长度 */
+#define USART_TX_QUEUE_LENGTH     512U
+
+extern uint8_t g_recv_buff[USART_RECEIVE_LENGTH];         // 接收缓冲区
+extern volatile uint16_t g_recv_length;									 // 接收数据长度
+extern volatile uint8_t g_recv_complete_flag;						 // 接收完成标志位
+
 
 void usart_gpio_config(uint32_t band_rate);  			 // 配置串口
 void usart_send_data(uint8_t ucch);          			 // 发送一个字符
 void usart_send_string(uint8_t *ucstr);      			 // 发送一个字符串
+
+/* 将一段数据放入TX DMA环形队列，返回实际放入的字节数 */
+uint16_t usart_send_buffer(const uint8_t *data, uint16_t length);
+
+/* DMA通信异常统计 */
+extern volatile uint32_t g_usart_tx_overflow_count;
+extern volatile uint32_t g_usart_rx_overflow_count;
+extern volatile uint32_t g_usart_dma_error_count;
 
 #endif

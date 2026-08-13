@@ -29,10 +29,10 @@ int main(void)
     pa15_output_high_init();
     // 发送芯片初始化
     app_211_init();
-    delay_ms(100);
+    delay_ms(10);
     // 接收芯片初始化
     app_221_init();
-    delay_ms(100);
+    delay_ms(10);
     // 按键初始化
     key_init();
 
@@ -41,7 +41,7 @@ int main(void)
     {
         rf_test_apply_config();
 
-        delay_ms(100);
+        delay_ms(10);
     }
 
     while (1)
