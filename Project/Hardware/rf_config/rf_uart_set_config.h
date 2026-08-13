@@ -1,6 +1,17 @@
 #ifndef RF_UART_SET_CONFIG_H
 #define RF_UART_SET_CONFIG_H
 
+#include "rf_apply.h"
+#include "rf_config.h"
+#include "bsp_usart.h"
+#include "gd32e23x.h"
+#include "gd32e23x_fmc.h"
+#include "app_tx-rx_config.h"
+
+#include <stddef.h>
+#include <stdint.h>
+#include <string.h>
+
 #include <stdint.h>
 
 /*

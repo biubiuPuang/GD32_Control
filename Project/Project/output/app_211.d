@@ -28,4 +28,5 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\User\systick.h ..\Hardware\usart\bsp_usart.h \
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
-  ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h
+  ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
+  ..\Hardware\common\Debug_printf.h

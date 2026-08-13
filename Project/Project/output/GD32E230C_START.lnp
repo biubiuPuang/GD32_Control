@@ -11,6 +11,7 @@
 ".\output\cmt2219b_port.o"
 ".\output\cmt2219b_spi.o"
 ".\output\radio_rx.o"
+".\output\debug_printf.o"
 ".\output\startup_gd32e23x.o"
 ".\output\system_gd32e23x.o"
 ".\output\app_211.o"

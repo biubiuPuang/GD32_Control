@@ -29,4 +29,4 @@
   D:\_Keil5\ARM\ARMCLANG\include\stdio.h App\app_211.h ..\User\systick.h \
   ..\Hardware\usart\bsp_usart.h ..\Hardware\cmt2119b\radio_tx.h \
   ..\Hardware\cmt2219b\radio_rx.h ..\Hardware\cmt2219b\cmt2219b.h \
-  App\led_test.h
+  ..\Hardware\common\Debug_printf.h App\led_test.h

@@ -3,4 +3,5 @@
   D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
   ..\Hardware\rf_config\rf_config.h \
   D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
-  ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h
+  ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
+  ..\Hardware\common\Debug_printf.h

@@ -9,26 +9,27 @@
 #include "cmt2219b.h"
 #include <stdio.h>
 #include <stdint.h>
+#include "Debug_printf.h"
 
-// å‘é€æ•°æ®å›ºå®šé•¿åº¦,32å­—èŠ‚
+// å‘é€æ•°æ?å›ºå®šé•¿åº¦,32å­—èŠ‚
 #define TEST_PACKET_LEN 32
 
 /**
- * @brief æµ‹è¯•æ•°æ®,ä¸²å£å¦‚æœæ‰“å°11 22 33 åˆ™è¯´æ˜æ˜¯åˆå§‹åŒ–æµ‹è¯•æ•°æ®
+ * @brief ²âÊÔÊı¾İ,´®¿ÚÈç¹û´òÓ¡11 22 33 ÔòËµÃ÷ÊÇ³õÊ¼»¯²âÊÔÊı¾İ
  *
  */
 extern volatile uint8_t tx_buf_data[TEST_PACKET_LEN];
 
-// GD32E230èŠ¯ç‰‡UID,å¯„å­˜å™¨åœ°å€
+// GD32E230Ğ¾Æ¬UID£¬¼Ä´æÆ÷µØÖ·
 #define GD32_UID_BASE 0x1FFFF7ACU
 
-// GD32E230èŠ¯ç‰‡UID,å¯„å­˜å™¨åœ°å€é•¿åº¦,å›ºå®š3ä¸ªå­—èŠ‚
+// GD32E230Ğ¾Æ¬UID£¬¼Ä´æÆ÷µØÖ·³¤¶È£¬¹Ì¶¨3¸ö×Ö½Ú
 void gd32_get_uid(uint32_t uid[3]);
-// ä¸²å£æ‰“å°16è¿›åˆ¶æ•°æ®
+// ´®¿Ú´òÓ¡16½øÖÆÊı¾İ
 void print_buf(uint8_t *buf, uint8_t len);
-// 211å‘é€èŠ¯ç‰‡åˆå§‹åŒ–
+// 211·¢ËÍĞ¾Æ¬³õÊ¼»¯
 void app_211_init(void);
-// 211å‘é€èŠ¯ç‰‡å‘é€æ•°æ®
+// 211·¢ËÍĞ¾Æ¬·¢ËÍÊı¾İ
 void app_211_send_test_data(void);
 
 #endif /* __APP_211_H_ */

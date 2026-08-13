@@ -72,10 +72,10 @@ void print_buf(uint8_t *buf, uint8_t len)
 
     for (i = 0; i < len; i++)
     {
-        printf("%02X ", buf[i]);
+        debug_printf("%02X ", buf[i]);
     }
 
-    printf("\r\n");
+    debug_printf("\r\n");
 }
 
 /**
@@ -93,11 +93,11 @@ void app_211_init(void)
     tx_ok = radio_tx_init();
     if (tx_ok)
     {
-        printf("TX init OK\r\n");
+        debug_printf("TX init OK\r\n");
     }
     else
     {
-        printf("TX init ERROR\r\n");
+        debug_printf("TX init ERROR\r\n");
     }
 }
 
@@ -109,7 +109,7 @@ void app_211_init(void)
 void app_211_send_test_data(void)
 {
 #if RF_LOOP_LOG_ENABLE
-    printf("User TX data: ");
+    debug_printf("User TX data: ");
     print_buf(tx_buf_data, TEST_PACKET_LEN);
 #endif
 
@@ -121,7 +121,7 @@ void app_211_send_test_data(void)
         if (send_ret)
         {
 #if RF_LOOP_LOG_ENABLE
-            printf("\r\nTX OK, count=%u\r\n", tx_count);
+            debug_printf("\r\nTX OK, count=%u\r\n", tx_count);
 #endif
         }
         else
@@ -129,7 +129,7 @@ void app_211_send_test_data(void)
             /*
              * 发送失败仍然打印，方便发现真正的发送异常。
              */
-            printf("\r\nTX ERROR, count=%u\r\n", tx_count);
+            debug_printf("\r\nTX ERROR, count=%u\r\n", tx_count);
         }
     }
 }

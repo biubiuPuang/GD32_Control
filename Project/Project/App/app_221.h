@@ -10,11 +10,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "led_test.h"
+#include "Debug_printf.h"
 
 
-// 221接收芯片初始化
+// 221接收�?片初始化
 void app_221_init(void);
-// 221接收芯片接收数据
+// 221接收�?片接收数�?
 void app_221_receive_data(void);
 
 #endif /* __APP_221_H_ */

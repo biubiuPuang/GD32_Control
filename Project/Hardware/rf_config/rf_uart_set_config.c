@@ -1,13 +1,5 @@
 #include "rf_uart_set_config.h"
-#include "rf_apply.h"
-#include "rf_config.h"
-#include "bsp_usart.h"
-#include "gd32e23x.h"
-#include "gd32e23x_fmc.h"
 
-#include <stddef.h>
-#include <stdint.h>
-#include <string.h>
 
 // 芯片Flash内部最后一页起始页地址(用于存储收发chip配置参数)
 #define RF_FLASH_PAGE_ADDR       0x0800FC00UL
@@ -580,6 +572,11 @@ void rf_uart_config_process(void)
     if (result)
     {
         usart_send_string((uint8_t *)"OK\r\n");
+        /*
+        * 配置已经写入 Flash 并应用到芯片后，
+        * 读取收发芯片寄存器中的真实配置并返回。
+        */
+        rf_print_tx_rx_real_freq();
     }
     else
     {

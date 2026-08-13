@@ -31,15 +31,15 @@ void app_221_init(void)
     rx_ok = radio_rx_init();
     if (rx_ok)
     {
-        printf("RX init OK\r\n");
+        debug_printf("RX init OK\r\n");
 
-        printf("PA15 hight\r\n");
+        debug_printf("PA15 hight\r\n");
         // PA15 输出高电平
         gpio_bit_set(GPIOA, GPIO_PIN_15);
     }
     else
     {
-        printf("RX init ERROR\r\n");
+        debug_printf("RX init ERROR\r\n");
     }
 }
 
@@ -89,18 +89,18 @@ void app_221_receive_data(void)
         rx_count++;
 
         // 串口打印接收芯片 FIFO 数据
-        printf("RX chip FIFO data: ");
+        debug_printf("RX chip FIFO data: ");
         print_buf(rx_buf, TEST_PACKET_LEN);
 
 #if RF_LOOP_LOG_ENABLE
-        printf("RX chip FIFO data, count=%u: ", rx_count);
+        debug_printf("RX chip FIFO data, count=%u: ", rx_count);
         print_buf(rx_buf, TEST_PACKET_LEN);
 #endif
     }
     else
     {
 #if RF_LOOP_LOG_ENABLE
-        printf("RX chip no packet\r\n");
+        debug_printf("RX chip no packet\r\n");
 #endif
     }
 }

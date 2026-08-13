@@ -1,4 +1,5 @@
 #include "rf_apply.h"
+#include "Debug_printf.h"
 
 /**
  * @brief 应用配置到无线芯片
@@ -10,7 +11,7 @@ uint8_t rf_config_apply(const rf_factory_config_t *cfg)
 {
     if (rf_config_check(cfg) != RF_OK)
     {
-        printf("Check and Config ERROR\r\n");
+        debug_printf("Check and Config ERROR\r\n");
         return RF_ERROR;
     }
 
@@ -18,7 +19,7 @@ uint8_t rf_config_apply(const rf_factory_config_t *cfg)
     {
         radio_tx_set_frequency_step(cfg->fh_offset);
         radio_tx_set_channel(cfg->fh_channel);
-        printf("Check and Config TX APPLY OK\r\n");
+        debug_printf("Check and Config TX APPLY OK\r\n");
         return RF_OK;
     }
 
@@ -26,7 +27,7 @@ uint8_t rf_config_apply(const rf_factory_config_t *cfg)
     {
         radio_rx_set_frequency_step(cfg->fh_offset);
         radio_rx_set_channel(cfg->fh_channel);
-        printf("Check and Config RX APPLY OK\r\n");
+        debug_printf("Check and Config RX APPLY OK\r\n");
         return RF_OK;
     }
 
@@ -56,7 +57,7 @@ void rf_test_apply_config(void)
 
     if (rf_config_apply(&cfg) != RF_OK)
     {
-        printf("RF TX APPLY ERROR\r\n");
+        debug_printf("RF TX APPLY ERROR\r\n");
         return;
     }
 
@@ -66,10 +67,10 @@ void rf_test_apply_config(void)
 
     if (rf_config_apply(&cfg) != RF_OK)
     {
-        printf("USART RF tx and rx APPLY ERROR\r\n");
+        debug_printf("USART RF tx and rx APPLY ERROR\r\n");
         return;
     }
 
-    printf("USART RF TX/RX APPLY OK\r\n");
+    debug_printf("USART RF TX/RX APPLY OK\r\n");
 }
 
