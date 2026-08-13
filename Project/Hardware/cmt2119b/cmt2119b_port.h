@@ -37,6 +37,15 @@
 #define CMT2119B_GPIO3_PIN       GPIO_PIN_1
 #define CMT2119B_GPIO3_RCU       RCU_GPIOB
 
+/* CMT2119B uses GD32E230 SPI0:
+ * PA5 -> SPI0_SCK
+ * PA7 -> SPI0_MOSI / 1-line bidirectional SDIO
+ */
+#define CMT2119B_SPI_PERIPH       SPI0
+#define CMT2119B_SPI_RCU          RCU_SPI0
+#define CMT2119B_SPI_AF           GPIO_AF_0
+
+
 void cmt2119b_port_init(void);
 
 void cmt2119b_csb_high(void);
@@ -44,16 +53,6 @@ void cmt2119b_csb_low(void);
 
 void cmt2119b_fcsb_high(void);
 void cmt2119b_fcsb_low(void);
-
-void cmt2119b_sclk_high(void);
-void cmt2119b_sclk_low(void);
-
-void cmt2119b_sdio_high(void);
-void cmt2119b_sdio_low(void);
-uint8_t cmt2119b_sdio_read(void);
-
-void cmt2119b_sdio_output(void);
-void cmt2119b_sdio_input(void);
 
 uint8_t cmt2119b_gpio3_read(void);
 

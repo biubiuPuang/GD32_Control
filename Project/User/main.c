@@ -63,5 +63,11 @@ int main(void)
         app_211_send_test_data();
         // 221芯片接收数据
         app_221_receive_data();
+
+        for (int i = 0; i <= 3; i++)
+        {
+            delay_ms(1000);
+        }
+
     }
 }
