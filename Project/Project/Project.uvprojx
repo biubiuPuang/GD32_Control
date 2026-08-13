@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config</IncludePath>
+              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config;..\Hardware\common;..\Hardware\common</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -503,6 +503,16 @@
               <FileName>radio_rx.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Hardware\cmt2219b\radio_rx.h</FilePath>
+            </File>
+            <File>
+              <FileName>Debug_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\common\Debug_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>Debug_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Hardware\common\Debug_printf.h</FilePath>
             </File>
           </Files>
         </Group>
