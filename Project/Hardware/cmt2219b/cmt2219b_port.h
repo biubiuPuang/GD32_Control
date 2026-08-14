@@ -47,7 +47,7 @@
  */
 #define CMT2219B_SPI_PERIPH     SPI1
 #define CMT2219B_SPI_RCU        RCU_SPI1
-#define CMT2219B_SPI_AF         GPIO_AF_6
+#define CMT2219B_SPI_AF         GPIO_AF_0
 
 void cmt2219b_port_init(void);
 

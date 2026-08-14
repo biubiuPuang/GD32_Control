@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\GD32E230C_START.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\GD32E230C_START.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Aug 14 08:58:21 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Aug 14 09:42:00 2026
 <BR><P>
 <H3>Maximum Stack Usage =        444 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -421,7 +421,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[51]"></a>app_221_init</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, app_221.o(.text.app_221_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = app_221_init &rArr; radio_rx_init &rArr; cmt2219b_init &rArr; cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = app_221_init &rArr; radio_rx_init &rArr; cmt2219b_init &rArr; cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_rx_init
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
@@ -433,7 +433,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[54]"></a>app_221_receive_data</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, app_221.o(.text.app_221_receive_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = app_221_receive_data &rArr; cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = app_221_receive_data &rArr; cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_press_handle
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf
@@ -898,7 +898,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a4]"></a>cmt2219b_enable_read_fifo</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, cmt2219b.o(.text.cmt2219b_enable_read_fifo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = cmt2219b_enable_read_fifo &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cmt2219b_enable_read_fifo &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_write_reg
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_read_reg
@@ -929,7 +929,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5b]"></a>cmt2219b_go_rx</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, cmt2219b.o(.text.cmt2219b_go_rx))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_auto_switch_status
 </UL>
@@ -940,7 +940,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a7]"></a>cmt2219b_go_sleep</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, cmt2219b.o(.text.cmt2219b_go_sleep))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_auto_switch_status
 </UL>
@@ -948,7 +948,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[56]"></a>cmt2219b_go_stby</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, cmt2219b.o(.text.cmt2219b_go_stby))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = cmt2219b_go_stby &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = cmt2219b_go_stby &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_auto_switch_status
 </UL>
@@ -960,7 +960,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ae]"></a>cmt2219b_init</STRONG> (Thumb, 260 bytes, Stack size 56 bytes, cmt2219b.o(.text.cmt2219b_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = cmt2219b_init &rArr; cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = cmt2219b_init &rArr; cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_go_sleep
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_clear_interrupt_flags
@@ -978,7 +978,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b1]"></a>cmt2219b_is_exist</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, cmt2219b.o(.text.cmt2219b_is_exist))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = cmt2219b_is_exist &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = cmt2219b_is_exist &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_write_reg
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_read_reg
@@ -987,15 +987,15 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[55]"></a>cmt2219b_packet_received</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, cmt2219b.o(.text.cmt2219b_packet_received))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = cmt2219b_packet_received &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cmt2219b_packet_received &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_read_reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_221_receive_data
 </UL>
 
-<P><STRONG><a name="[b2]"></a>cmt2219b_port_init</STRONG> (Thumb, 228 bytes, Stack size 56 bytes, cmt2219b_port.o(.text.cmt2219b_port_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = cmt2219b_port_init &rArr; gpio_output_options_set
+<P><STRONG><a name="[b2]"></a>cmt2219b_port_init</STRONG> (Thumb, 228 bytes, Stack size 48 bytes, cmt2219b_port.o(.text.cmt2219b_port_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = cmt2219b_port_init &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_fcsb_high
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_csb_high
@@ -1010,7 +1010,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[57]"></a>cmt2219b_read_fifo</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, cmt2219b.o(.text.cmt2219b_read_fifo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = cmt2219b_read_fifo &rArr; cmt2219b_spi_read_fifo &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = cmt2219b_read_fifo &rArr; cmt2219b_spi_read_fifo &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_spi_read_fifo
 </UL>
@@ -1018,7 +1018,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9e]"></a>cmt2219b_read_reg</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, cmt2219b.o(.text.cmt2219b_read_reg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_spi_read_reg
 </UL>
@@ -1093,7 +1093,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[af]"></a>cmt2219b_spi_init</STRONG> (Thumb, 84 bytes, Stack size 48 bytes, cmt2219b_spi.o(.text.cmt2219b_spi_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cmt2219b_spi_init &rArr; cmt2219b_port_init &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = cmt2219b_spi_init &rArr; cmt2219b_port_init &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_fcsb_high
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_csb_high
@@ -1118,8 +1118,8 @@ Global Symbols
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_spi_read_reg
 </UL>
 
-<P><STRONG><a name="[ba]"></a>cmt2219b_spi_pins_to_spi1</STRONG> (Thumb, 112 bytes, Stack size 40 bytes, cmt2219b_port.o(.text.cmt2219b_spi_pins_to_spi1))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<P><STRONG><a name="[ba]"></a>cmt2219b_spi_pins_to_spi1</STRONG> (Thumb, 108 bytes, Stack size 32 bytes, cmt2219b_port.o(.text.cmt2219b_spi_pins_to_spi1))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_set
@@ -1132,7 +1132,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b3]"></a>cmt2219b_spi_read_fifo</STRONG> (Thumb, 188 bytes, Stack size 32 bytes, cmt2219b_spi.o(.text.cmt2219b_spi_read_fifo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = cmt2219b_spi_read_fifo &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = cmt2219b_spi_read_fifo &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_gpio_recv_byte
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_sdio_input
@@ -1151,7 +1151,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b4]"></a>cmt2219b_spi_read_reg</STRONG> (Thumb, 144 bytes, Stack size 40 bytes, cmt2219b_spi.o(.text.cmt2219b_spi_read_reg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_gpio_recv_byte
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_gpio_send_byte
@@ -1552,7 +1552,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[52]"></a>radio_rx_init</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, radio_rx.o(.text.radio_rx_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = radio_rx_init &rArr; cmt2219b_init &rArr; cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = radio_rx_init &rArr; cmt2219b_init &rArr; cmt2219b_go_sleep &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_clear_rx_fifo
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_enable_read_fifo
@@ -1568,7 +1568,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[d1]"></a>radio_rx_set_channel</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, radio_rx.o(.text.radio_rx_set_channel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = radio_rx_set_channel &rArr; cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = radio_rx_set_channel &rArr; cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_clear_rx_fifo
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_enable_read_fifo
@@ -1581,7 +1581,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[d2]"></a>radio_rx_set_frequency_step</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, radio_rx.o(.text.radio_rx_set_frequency_step))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = radio_rx_set_frequency_step &rArr; cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = radio_rx_set_frequency_step &rArr; cmt2219b_go_rx &rArr; cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_clear_rx_fifo
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_enable_read_fifo
@@ -2167,7 +2167,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[a3]"></a>cmt2219b_enable_lfosc</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, cmt2219b.o(.text.cmt2219b_enable_lfosc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = cmt2219b_enable_lfosc &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = cmt2219b_enable_lfosc &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_write_reg
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_read_reg
@@ -2184,7 +2184,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[9d]"></a>cmt2219b_config_gpio_interrupt</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, cmt2219b.o(.text.cmt2219b_config_gpio_interrupt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = cmt2219b_config_gpio_interrupt &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cmt2219b_config_gpio_interrupt &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_write_reg
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_read_reg
@@ -2193,7 +2193,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[97]"></a>cmt2219b_auto_switch_status</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, cmt2219b.o(.text.cmt2219b_auto_switch_status))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = cmt2219b_auto_switch_status &rArr; cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_delay_us
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_write_reg
@@ -2205,7 +2205,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[9a]"></a>cmt2219b_get_chip_status</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, cmt2219b.o(.text.cmt2219b_get_chip_status))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = cmt2219b_get_chip_status &rArr; cmt2219b_read_reg &rArr; cmt2219b_spi_read_reg &rArr; cmt2219b_spi_pins_to_spi1 &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2219b_read_reg
 </UL>
