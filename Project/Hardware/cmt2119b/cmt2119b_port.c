@@ -47,10 +47,8 @@ void cmt2119b_port_init(void)
                             GPIO_OSPEED_50MHZ,
                             CMT2119B_SDIO_PIN);
 
-    /* GPIO3 input: first use pull-down or floating.
-     * If TX_DONE cannot be read later, change to GPIO_PUPD_PULLUP or GPIO_PUPD_NONE according to actual waveform.
-     */
-    gpio_mode_set(CMT2119B_GPIO3_PORT, GPIO_MODE_INPUT, GPIO_PUPD_NONE, CMT2119B_GPIO3_PIN);
+    /* 原理图 GPIO3 未连接，PB1 设为模拟模式，避免浮空输入噪声与功耗 */
+    gpio_mode_set(CMT2119B_GPIO3_PORT, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, CMT2119B_GPIO3_PIN);
 
     cmt2119b_csb_high();
     cmt2119b_fcsb_high();

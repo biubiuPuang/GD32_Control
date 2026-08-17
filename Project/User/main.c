@@ -26,7 +26,7 @@ uint8_t key_num = 0;
 int main(void)
 {
     // LED�?引脚初�?�化
-    pa15_output_high_init();
+    pb9_led_init();
     // 发送芯片初始化
     app_211_init();
     delay_ms(10);

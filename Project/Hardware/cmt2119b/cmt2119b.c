@@ -306,12 +306,6 @@ uint8_t cmt2119b_send_packet(const uint8_t *buf, uint8_t len, uint32_t timeout_m
     cmt2119b_go_tx();
 
     while (timeout_ms--) {
-        if (cmt2119b_gpio3_read()) {
-            cmt2119b_clear_interrupt_flags();
-            cmt2119b_go_sleep();
-            return CMT2119B_OK;
-        }
-
         if (cmt2119b_read_reg(CMT2119B_CUS_INT_CLR1) & CMT2119B_MASK_TX_DONE_FLG) {
             cmt2119b_clear_interrupt_flags();
             cmt2119b_go_sleep();
