@@ -45,7 +45,16 @@ void cmt2219b_spi_init(void)
     spi_init_struct.prescale = SPI_PSC_16;
 
     spi_init(CMT2219B_SPI_PERIPH, &spi_init_struct);
-    spi_enable(CMT2219B_SPI_PERIPH);
+
+    /*
+    * SPI1 带独立 FIFO。
+    * CMT2219B 的寄存器读写单位为 8 bit，
+    * 所以 SPI1 的 SPI_DATA / FIFO 必须采用字节访问。
+    */
+    spi_fifo_access_size_config(CMT2219B_SPI_PERIPH,
+                                SPI_BYTE_ACCESS);
+
+    spi_enable(CMT2219B_SPI_PERIPH);                       
 
     cmt2219b_csb_high();
     cmt2219b_fcsb_high();

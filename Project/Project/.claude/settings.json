@@ -104,7 +104,17 @@
       "Bash(pdftotext -f 18 -l 21 -raw 'D:/_Project/GD32_Control/GD32E230芯片资料/GD32E230/立创·GD32E230C8T6开发板资料/04【立创·GD32E230C8T6开发板】文档手册/GD32E230xx_Datasheet_Rev2.3.pdf' -)",
       "Bash(pdftotext -f 21 -l 22 -layout 'D:/_Project/GD32_Control/移植文件注意事项/无线收发芯片数据手册/CMT2219B Datasheet-CN-V0.7a-20211123.pdf' D:/tmp/cmt2219-p21-22.txt)",
       "Bash(pdftoppm -f 21 -l 21 -r 250 -png -singlefile 'D:/_Project/GD32_Control/移植文件注意事项/无线收发芯片数据手册/CMT2219B Datasheet-CN-V0.7a-20211123.pdf' D:/tmp/cmt2219-p21)",
-      "Bash(pdftotext -f 19 -l 20 -layout 'D:/_Project/GD32_Control/GD32E230芯片资料/GD32E230/立创·GD32E230C8T6开发板资料/04【立创·GD32E230C8T6开发板】文档手册/GD32E230xx_Datasheet_Rev2.3.pdf' D:/tmp/gd32e230-ds-19-20.txt)"
+      "Bash(pdftotext -f 19 -l 20 -layout 'D:/_Project/GD32_Control/GD32E230芯片资料/GD32E230/立创·GD32E230C8T6开发板资料/04【立创·GD32E230C8T6开发板】文档手册/GD32E230xx_Datasheet_Rev2.3.pdf' D:/tmp/gd32e230-ds-19-20.txt)",
+      "Bash(git -C 'D:/_Project/GD32_Control/Project' show --format=fuller --no-ext-diff 95cef5f -- 'Hardware/rf_config/rf_uart_set_config.c' 'Hardware/rf_config/rf_apply.c' 'User/main.c' 'App/app_tx-rx_config.c')",
+      "Bash(git -C 'D:/_Project/GD32_Control/Project' show --format=fuller --no-ext-diff 7ae1a34^:'Hardware/cmt2219b/cmt2219b_port.h')",
+      "Bash(git -C 'D:/_Project/GD32_Control/Project' show --format=fuller --no-ext-diff 7ae1a34:'Hardware/cmt2219b/cmt2219b_port.h')",
+      "Bash(git -C 'D:/_Project/GD32_Control/Project' show --format=fuller --no-ext-diff 7ae1a34^:'Hardware/cmt2219b/cmt2219b_spi.c')",
+      "Bash(git -C 'D:/_Project/GD32_Control/Project' show --format=fuller --no-ext-diff 7ae1a34:'Hardware/cmt2219b/cmt2219b_spi.c')",
+      "Bash(git -C 'D:/_Project/GD32_Control' show --no-ext-diff 7ae1a34^:Project/Hardware/cmt2219b/cmt2219b_port.h)",
+      "Bash(git -C 'D:/_Project/GD32_Control' show --no-ext-diff 7ae1a34:Project/Hardware/cmt2219b/cmt2219b_port.h)",
+      "Bash(git -C 'D:/_Project/GD32_Control' show --no-ext-diff 7ae1a34^:Project/Hardware/cmt2219b/cmt2219b_spi.c)",
+      "Bash(git -C 'D:/_Project/GD32_Control' show --no-ext-diff 7ae1a34:Project/Hardware/cmt2219b/cmt2219b_spi.c)",
+      "Bash(git log *)"
     ]
   }
 }

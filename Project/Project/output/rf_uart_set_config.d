@@ -34,5 +34,6 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\User\systick.h App\app_tx-rx_config.h \
   ..\Hardware\cmt2119b\cmt2119b.h ..\Hardware\cmt2219b\cmt2219b.h \
+  ..\Hardware\common\Debug_printf.h \
   D:\_Keil5\ARM\ARMCLANG\include\stddef.h \
   D:\_Keil5\ARM\ARMCLANG\include\string.h

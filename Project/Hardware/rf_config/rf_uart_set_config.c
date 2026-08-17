@@ -507,7 +507,7 @@ static uint8_t rf_execute_command(uint8_t target,
  * @brief 这个函数用于处理串口接收到的射频配置命令。
  * 
  */
-void rf_uart_config_process(void)
+void  rf_uart_config_process(void)
 {
     char command[RF_UART_COMMAND_MAX];
     uint16_t length;

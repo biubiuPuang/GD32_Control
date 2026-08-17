@@ -6,6 +6,7 @@
 #include "rf_config.h"
 #include "cmt2119b.h"
 #include "cmt2219b.h"
+#include "Debug_printf.h"
 
 /*
  * 这两个寄存器就是芯片里面真实保存的值
