@@ -28,7 +28,7 @@ uint8_t key_num = 0;
 int main(void)
 {
     // LED�?引脚初�?�化
-    pb9_led_init();
+    pa15_led_init();
     // 发送芯片初始化
     app_211_init();
     delay_ms(10);
@@ -75,16 +75,16 @@ int main(void)
         // /* ------------------------------------- */ 
 
 
-        // // 这个函数用于处理串口接收到的射�?�配�?命令�?
-        // rf_uart_config_process();
+        // 这个函数用于处理串口接收到的射�?�配�?命令�?
+        rf_uart_config_process();
 
-        // // 获取按键�?
-        // get_key_num();
+        // 获取按键�?
+        get_key_num();
 
-        // // 211 发送数�?
-        // app_211_send_test_data();
-        // // 221�?片接收数�?
-        // app_221_receive_data();
+        // 211 发送数�?
+        app_211_send_test_data();
+        // 221�?片接收数�?
+        app_221_receive_data();
 
         // for (int i = 0; i <= 3; i++)
         // {

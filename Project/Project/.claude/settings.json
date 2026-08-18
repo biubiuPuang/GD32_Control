@@ -144,7 +144,13 @@
       "Bash(python -c \"import sys; [print\\(x.strip\\(\\)\\) for x in sys.stdin if any\\(k in x for k in ['cmt2219b','app_221.c','main.c','system_gd32e23x.c']\\)]\")",
       "Bash(git -C /d/_Project/GD32_Control show --stat --oneline 045693d)",
       "Bash(git -C /d/_Project/GD32_Control show --stat --oneline cc27850)",
-      "Bash(git -C /d/_Project/GD32_Control show --stat --oneline 4962491)"
+      "Bash(git -C /d/_Project/GD32_Control show --stat --oneline 4962491)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "WebSearch",
+      "Read(//d/_Project/GD32_Control/Project/App/**)",
+      "Read(//d/_Project/GD32_Control/Project/User/**)",
+      "Bash(xxd \"d:/_Project/GD32_Control/Project/Project/App/led_test.c\")"
     ]
   }
 }

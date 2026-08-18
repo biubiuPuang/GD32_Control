@@ -1,34 +1,24 @@
 #include "led_test.h"
 #include "gd32e23x.h"
 
-// ÅäÖÃ PB9 Îª LED Êä³ö£¨Ä¬ÈÏÏ¨Ãð£º¸ßµçÆ½£©
-void pb9_led_init(void)
+void pa15_led_init(void)
 {
-    /* Ê¹ÄÜ GPIOB Ê±ÖÓ */
-    rcu_periph_clock_enable(RCU_GPIOB);
+    /* GD32 å®˜æ–¹åº“å‡½æ•°ï¼šä½¿èƒ½ GPIOA æ—¶é’Ÿ */
+    rcu_periph_clock_enable(RCU_GPIOA);
 
-    /* PB9 ÅäÖÃÎªÍÆÍìÊä³ö */
-    gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_9);
-    gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_9);
+    /* GD32 å®˜æ–¹åº“å‡½æ•°ï¼šPA15 é…ç½®ä¸ºè¾“å‡ºæ¨¡å¼ */
+    gpio_mode_set(GPIOA,
+                  GPIO_MODE_OUTPUT,
+                  GPIO_PUPD_NONE,
+                  GPIO_PIN_15);
 
-    /* Ä¬ÈÏÊä³ö¸ßµçÆ½ = Ï¨Ãð£¨LED Ñô¼«¾­ R8 1k¦¸ µ½ VCC£¬µÍµçÆ½²ÅµãÁÁ£© */
-    gpio_bit_set(GPIOB, GPIO_PIN_9);
+    /* GD32 å®˜æ–¹åº“å‡½æ•°ï¼šé…ç½®ä¸ºæŽ¨æŒ½è¾“å‡ºã€50 MHz */
+    gpio_output_options_set(GPIOA,
+                            GPIO_OTYPE_PP,
+                            GPIO_OSPEED_50MHZ,
+                            GPIO_PIN_15);
+
+    /* é»˜è®¤è¾“å‡ºé«˜ç”µå¹³ */
+    gpio_bit_set(GPIOA, GPIO_PIN_15);
 }
 
-// µãÁÁ LED£¨PB9 À­µÍ£©
-void pb9_led_on(void)
-{
-    gpio_bit_reset(GPIOB, GPIO_PIN_9);
-}
-
-// Ï¨Ãð LED£¨PB9 À­¸ß£©
-void pb9_led_off(void)
-{
-    gpio_bit_set(GPIOB, GPIO_PIN_9);
-}
-
-// ·­×ª LED£¨PB9£©
-void pb9_led_toggle(void)
-{
-    gpio_bit_toggle(GPIOB, GPIO_PIN_9);
-}
