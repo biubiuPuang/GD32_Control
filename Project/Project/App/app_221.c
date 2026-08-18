@@ -82,7 +82,10 @@ void app_221_receive_data(void)
         // 娓呮?欳MT2219B鐨勪腑鏂?鏍囧織浣?
         cmt2219b_clear_interrupt_flags();
         // 璁? CMT2219B 閲嶆柊杩涘叆鎺ユ敹妯″紡 RX銆?
-        cmt2219b_go_rx();
+        if (cmt2219b_go_rx() != CMT2219B_OK)
+        {
+            debug_printf("go_rx FAIL\r\n");
+        }
 
         rx_count++;
 
@@ -95,6 +98,9 @@ void app_221_receive_data(void)
     }
     else
     {
-        debug_printf("RX chip no packet\r\n");
+        debug_printf("RX no pkt, FLAG=0x%02X, STA=0x%02X\r\n",
+                     cmt2219b_read_reg(0x6D),   // 中断标志：bit0=收包完成, bit1=CRC通过
+                     cmt2219b_read_reg(0x61));  // 芯片状态：0x05=接收中, 0x02=待机
     }
 }
+ 

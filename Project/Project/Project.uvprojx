@@ -584,6 +584,16 @@
               <FileType>5</FileType>
               <FilePath>.\App\app_key.h</FilePath>
             </File>
+            <File>
+              <FileName>packet_loss_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\packet_loss_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>packet_loss_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\packet_loss_test.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
