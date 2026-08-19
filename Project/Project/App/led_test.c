@@ -22,3 +22,26 @@ void pa15_led_init(void)
     gpio_bit_set(GPIOA, GPIO_PIN_15);
 }
 
+void pb9_led_init(void)
+{
+    /* 使能 GPIOB 时钟 */
+    rcu_periph_clock_enable(RCU_GPIOB);
+
+    /* PB9 配置为输出模式，无上下拉 */
+    gpio_mode_set(GPIOB,
+                  GPIO_MODE_OUTPUT,
+                  GPIO_PUPD_NONE,
+                  GPIO_PIN_9);
+
+    /* 推挽输出，50 MHz */
+    gpio_output_options_set(GPIOB,
+                            GPIO_OTYPE_PP,
+                            GPIO_OSPEED_50MHZ,
+                            GPIO_PIN_9);
+
+    /* 输出低电平，点亮 LED */
+    gpio_bit_reset(GPIOB, GPIO_PIN_9);
+}
+
+
+

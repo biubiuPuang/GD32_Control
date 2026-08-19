@@ -151,6 +151,9 @@
       "Read(//d/_Project/GD32_Control/Project/App/**)",
       "Read(//d/_Project/GD32_Control/Project/User/**)",
       "Bash(xxd \"d:/_Project/GD32_Control/Project/Project/App/led_test.c\")"
+    ],
+    "additionalDirectories": [
+      "d:\\_Project\\GD32_Control\\Project\\User"
     ]
   }
 }

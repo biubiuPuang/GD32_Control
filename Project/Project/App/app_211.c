@@ -1,6 +1,6 @@
 #include "app_211.h"
 
-// 串口�?�?打印输出开�?
+// 串口循环打印输出开关
 #define RF_LOOP_LOG_ENABLE 0
 
 static uint8_t tx_ok;
@@ -8,7 +8,7 @@ static uint8_t send_ret;
 static uint32_t tx_count = 0;
 
 /**
- * @brief 测试数据,串口如果打印11 22 33 则�?�明�?初�?�化测试数据
+ * @brief 测试数据,串口如果打印11 22 33 则说明已初始化测试数据
  *
  */
 volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
@@ -49,7 +49,7 @@ volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
 /**
  * @brief 获取GD32E230的UID
  *
- * @param uid 固定长度3�?字节
+ * @param uid 固定长度3个字（12字节）
  */
 void gd32_get_uid(uint32_t uid[3])
 {
@@ -89,7 +89,7 @@ void app_211_init(void)
     // 串口配置
     usart_gpio_config(115200);
 
-    // 判断211发送芯片是否成�?
+    // 判断211发送芯片是否成功
     tx_ok = radio_tx_init();
     if (tx_ok)
     {
@@ -102,7 +102,7 @@ void app_211_init(void)
 }
 
 /**
- * @brief 211串口发送循�?打印数据
+ * @brief 211串口发送循环打印数据
  *
  */
 
@@ -123,7 +123,7 @@ void app_211_send_test_data(void)
         else
         {
             /*
-             * 发送失败仍然打印，方便发现真�?�的发送异常�?
+             * 发送失败仍然打印，方便发现真实的发送异常
              */
             debug_printf("\r\nTX ERROR, count=%u\r\n", tx_count);
         }
