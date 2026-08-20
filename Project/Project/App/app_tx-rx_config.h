@@ -9,9 +9,9 @@
 #include "Debug_printf.h"
 
 /*
- * ÕâÁ½¸ö¼Ä´æÆ÷¾ÍÊÇĞ¾Æ¬ÀïÃæÕæÊµ±£´æµÄÖµ
- * 0x63 = µ±Ç°Í¨µÀ fh_channel
- * 0x64 = µ±Ç°Æµ¸ô fh_offset
+ * è¿™ä¸¤ä¸ªå¯„å­˜å™¨å°±æ˜¯èŠ¯ç‰‡é‡Œé¢çœŸå®ä¿å­˜çš„å€¼
+ * 0x63 = å½“å‰é€šé“ fh_channel
+ * 0x64 = å½“å‰é¢‘éš” fh_offset
  */
 #define RF_REG_FH_CHANNEL    0x63U
 #define RF_REG_FH_OFFSET     0x64U

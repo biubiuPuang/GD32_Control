@@ -3,11 +3,11 @@
 
 #define RADIO_TX_TIMEOUT_MS 1000
 
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
 #define RADIO_FH_STEP_100KHZ 40
 #define RADIO_FH_DEFAULT_CHANNEL 0
 
-// ÓĞÌí¼Ó¸úÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø´úÂë
+// æœ‰æ·»åŠ è·Ÿæ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³ä»£ç 
 uint8_t radio_tx_init(void)
 {
     if (cmt2119b_init() != CMT2119B_OK)
@@ -29,7 +29,7 @@ uint8_t radio_tx_send(const uint8_t *buf, uint8_t len)
 }
 
 
-// ÒÔÏÂº¯Êı¶¼ÊÇ¸úÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø 
+// ä»¥ä¸‹å‡½æ•°éƒ½æ˜¯è·Ÿæ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³ 
 void radio_tx_set_channel(uint8_t channel)
 {
     cmt2119b_go_stby();

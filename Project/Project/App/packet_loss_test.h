@@ -4,10 +4,10 @@
 #include <stdint.h>
 
 /**
- * @brief ¶ª°üÂÊ²âÊÔ
- *        ¹Ì¶¨·¢ËÍ TEST_PACKET_TOTAL °ü£¨Ô¼ 60 Ãë£©£¬Í³¼ÆÊÕ·¢/¶ª°ü²¢´®¿Ú´òÓ¡¡£
- *        µ÷ÓÃÇ°ĞèÏÈÍê³É radio_tx_init() ºÍ radio_rx_init()
- *        £¨Ò²¾ÍÊÇ main ÀïÏÈÖ´ĞĞ app_211_init() / app_221_init()£©¡£
+ * @brief ä¸¢åŒ…ç‡æµ‹è¯•
+ *        å›ºå®šå‘é€ TEST_PACKET_TOTAL åŒ…ï¼ˆçº¦ 60 ç§’ï¼‰ï¼Œç»Ÿè®¡æ”¶å‘/ä¸¢åŒ…å¹¶ä¸²å£æ‰“å°ã€‚
+ *        è°ƒç”¨å‰éœ€å…ˆå®Œæˆ radio_tx_init() å’Œ radio_rx_init()
+ *        ï¼ˆä¹Ÿå°±æ˜¯ main é‡Œå…ˆæ‰§è¡Œ app_211_init() / app_221_init()ï¼‰ã€‚
  */
 void packet_loss_test_run(void);
 

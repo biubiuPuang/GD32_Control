@@ -15,13 +15,13 @@ static void cmt2219b_spi_delay_us(void)
 }
 
 /*
- * ³õÊ¼»¯ CMT2219B Ê¹ÓÃµÄ SPI1¡£
+ * åˆå§‹åŒ– CMT2219B ä½¿ç”¨çš„ SPI1ã€‚
  *
- * ²ÎÊıÍêÈ«°´ÕÕ CMT2119B µÄ SPI0 ÅäÖÃ£º
- * SPI Ö÷»ú
- * µ¥ÏßË«Ïò£¬³õÊ¼Îª·¢ËÍ
+ * å‚æ•°å®Œå…¨æŒ‰ç…§ CMT2119B çš„ SPI0 é…ç½®ï¼š
+ * SPI ä¸»æœº
+ * å•çº¿åŒå‘ï¼Œåˆå§‹ä¸ºå‘é€
  * 8 bit
- * Èí¼ş NSS
+ * è½¯ä»¶ NSS
  * MSB first
  * SPI Mode 0
  * 72 MHz / 16 = 4.5 MHz
@@ -47,9 +47,9 @@ void cmt2219b_spi_init(void)
     spi_init(CMT2219B_SPI_PERIPH, &spi_init_struct);
 
     /*
-    * SPI1 ´ø¶ÀÁ¢ FIFO¡£
-    * CMT2219B µÄ¼Ä´æÆ÷¶ÁĞ´µ¥Î»Îª 8 bit£¬
-    * ËùÒÔ SPI1 µÄ SPI_DATA / FIFO ±ØĞë²ÉÓÃ×Ö½Ú·ÃÎÊ¡£
+    * SPI1 å¸¦ç‹¬ç«‹ FIFOã€‚
+    * CMT2219B çš„å¯„å­˜å™¨è¯»å†™å•ä½ä¸º 8 bitï¼Œ
+    * æ‰€ä»¥ SPI1 çš„ SPI_DATA / FIFO å¿…é¡»é‡‡ç”¨å­—èŠ‚è®¿é—®ã€‚
     */
     spi_fifo_access_size_config(CMT2219B_SPI_PERIPH,
                                 SPI_BYTE_ACCESS);
@@ -61,12 +61,12 @@ void cmt2219b_spi_init(void)
 }
 
 /*
- * Ê¹ÓÃ SPI1 Ó²¼ş·¢ËÍÒ»¸ö×Ö½Ú¡£
+ * ä½¿ç”¨ SPI1 ç¡¬ä»¶å‘é€ä¸€ä¸ªå­—èŠ‚ã€‚
  */
 static void cmt2219b_spi_send_byte(uint8_t data)
 {
     /*
-     * µÈ´ı·¢ËÍ»º³åÇøÎª¿Õ¡£
+     * ç­‰å¾…å‘é€ç¼“å†²åŒºä¸ºç©ºã€‚
      */
     while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
                              SPI_FLAG_TBE) == RESET) {
@@ -75,7 +75,7 @@ static void cmt2219b_spi_send_byte(uint8_t data)
     spi_i2s_data_transmit(CMT2219B_SPI_PERIPH, data);
 
     /*
-     * µÈ´ıµ±Ç°×Ö½ÚÕæÕı·¢ËÍÍê³É¡£
+     * ç­‰å¾…å½“å‰å­—èŠ‚çœŸæ­£å‘é€å®Œæˆã€‚
      */
     while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
                              SPI_FLAG_TRANS) != RESET) {
@@ -83,9 +83,9 @@ static void cmt2219b_spi_send_byte(uint8_t data)
 }
 
 /*
- * GPIO Ä£Äâ·¢ËÍÒ»¸ö×Ö½Ú¡£
+ * GPIO æ¨¡æ‹Ÿå‘é€ä¸€ä¸ªå­—èŠ‚ã€‚
  *
- * ¸Ãº¯ÊıÖ»ÓÃÓÚ¶ÁÈ¡ÊÂÎñÖĞµÄ¡°¶ÁµØÖ·¡±·¢ËÍ¡£
+ * è¯¥å‡½æ•°åªç”¨äºè¯»å–äº‹åŠ¡ä¸­çš„â€œè¯»åœ°å€â€å‘é€ã€‚
  */
 static void cmt2219b_gpio_send_byte(uint8_t data)
 {
@@ -111,11 +111,11 @@ static void cmt2219b_gpio_send_byte(uint8_t data)
 }
 
 /*
- * GPIO Ä£Äâ½ÓÊÕÒ»¸ö×Ö½Ú¡£
+ * GPIO æ¨¡æ‹Ÿæ¥æ”¶ä¸€ä¸ªå­—èŠ‚ã€‚
  *
- * º¯Êı½øÈëÊ±£º
- * CLK ÎªµÍµçÆ½£»
- * SDIO ÒÑ¾­ÇĞ»»ÎªÊäÈë¡£
+ * å‡½æ•°è¿›å…¥æ—¶ï¼š
+ * CLK ä¸ºä½ç”µå¹³ï¼›
+ * SDIO å·²ç»åˆ‡æ¢ä¸ºè¾“å…¥ã€‚
  */
 static uint8_t cmt2219b_gpio_recv_byte(void)
 {
@@ -138,8 +138,8 @@ static uint8_t cmt2219b_gpio_recv_byte(void)
     }
 
     /*
-     * ×îºóÒ»¸öÊı¾İÎ»²ÉÑùÍê³Éºó£¬
-     * ½« CLK À­»ØµÍµçÆ½¡£
+     * æœ€åä¸€ä¸ªæ•°æ®ä½é‡‡æ ·å®Œæˆåï¼Œ
+     * å°† CLK æ‹‰å›ä½ç”µå¹³ã€‚
      */
     cmt2219b_clk_low();
 
@@ -147,13 +147,13 @@ static uint8_t cmt2219b_gpio_recv_byte(void)
 }
 
 /*
- * Ğ´ CMT2219B ¼Ä´æÆ÷¡£
+ * å†™ CMT2219B å¯„å­˜å™¨ã€‚
  *
- * ²ÉÓÃ SPI1 Ó²¼ş·¢ËÍ£º
- * CSB µÍ
- * ·¢ËÍĞ´µØÖ·
- * ·¢ËÍÊı¾İ
- * CSB ¸ß
+ * é‡‡ç”¨ SPI1 ç¡¬ä»¶å‘é€ï¼š
+ * CSB ä½
+ * å‘é€å†™åœ°å€
+ * å‘é€æ•°æ®
+ * CSB é«˜
  */
 void cmt2219b_spi_write_reg(uint8_t addr, uint8_t dat)
 {
@@ -161,28 +161,28 @@ void cmt2219b_spi_write_reg(uint8_t addr, uint8_t dat)
     cmt2219b_csb_low();
 
     /*
-     * CSB À­µÍºóµÈ´ıÒ»¶Î½¨Á¢Ê±¼ä¡£
+     * CSB æ‹‰ä½åç­‰å¾…ä¸€æ®µå»ºç«‹æ—¶é—´ã€‚
      */
     cmt2219b_delay_us(1U);
 
     /*
-     * bit7 = 0 ±íÊ¾Ğ´¼Ä´æÆ÷¡£
+     * bit7 = 0 è¡¨ç¤ºå†™å¯„å­˜å™¨ã€‚
      */
     cmt2219b_spi_send_byte(addr & 0x7FU);
     cmt2219b_spi_send_byte(dat);
 
     /*
-     * ×îºóÒ»¸ö SCLK ½áÊøºóÔÙÊÍ·Å CSB¡£
+     * æœ€åä¸€ä¸ª SCLK ç»“æŸåå†é‡Šæ”¾ CSBã€‚
      */
     cmt2219b_delay_us(1U);
     cmt2219b_csb_high();
 }
 
 /*
- * ¶Á CMT2219B ¼Ä´æÆ÷¡£
+ * è¯» CMT2219B å¯„å­˜å™¨ã€‚
  *
- * ÓÉÓÚ CMT2219B ÒªÇó SDIO ÔÚµØÖ·ºÍ·µ»ØÊı¾İÖ®¼ä½øĞĞ¾«È·»»Ïò£¬
- * ÕâÀï±£Áô GPIO Ä£Äâ¶Á²Ù×÷¡£
+ * ç”±äº CMT2219B è¦æ±‚ SDIO åœ¨åœ°å€å’Œè¿”å›æ•°æ®ä¹‹é—´è¿›è¡Œç²¾ç¡®æ¢å‘ï¼Œ
+ * è¿™é‡Œä¿ç•™ GPIO æ¨¡æ‹Ÿè¯»æ“ä½œã€‚
  */
 uint8_t cmt2219b_spi_read_reg(uint8_t addr)
 {
@@ -190,22 +190,22 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr)
     uint32_t primask;
 
     /*
-     * ±£´æÖĞ¶Ï×´Ì¬£¬²¢ÔİÊ±¹Ø±ÕÖĞ¶Ï¡£
+     * ä¿å­˜ä¸­æ–­çŠ¶æ€ï¼Œå¹¶æš‚æ—¶å…³é—­ä¸­æ–­ã€‚
      *
-     * ¶ÁÈ¡ÆÚ¼ä±ØĞë±£Ö¤ GPIO Ä£ÄâÊ±Ğò²»±»ÖĞ¶Ï´ò¶Ï¡£
+     * è¯»å–æœŸé—´å¿…é¡»ä¿è¯ GPIO æ¨¡æ‹Ÿæ—¶åºä¸è¢«ä¸­æ–­æ‰“æ–­ã€‚
      */
     primask = __get_PRIMASK();
     __disable_irq();
 
     /*
-     * È·±£Ç°Ò»±Ê SPI1 Ó²¼ş·¢ËÍÒÑ¾­½áÊø¡£
+     * ç¡®ä¿å‰ä¸€ç¬” SPI1 ç¡¬ä»¶å‘é€å·²ç»ç»“æŸã€‚
      */
     while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
                              SPI_FLAG_TRANS) != RESET) {
     }
 
     /*
-     * Í£Ö¹ SPI1£¬×¼±¸ÓÉ GPIO ½Ó¹Ü PB13/PB15¡£
+     * åœæ­¢ SPI1ï¼Œå‡†å¤‡ç”± GPIO æ¥ç®¡ PB13/PB15ã€‚
      */
     spi_disable(CMT2219B_SPI_PERIPH);
     cmt2219b_spi_pins_to_gpio();
@@ -216,26 +216,26 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr)
     cmt2219b_delay_us(1U);
 
     /*
-     * ·¢ËÍ¶ÁµØÖ·¡£
-     * bit7 = 1 ±íÊ¾¶Á¼Ä´æÆ÷¡£
+     * å‘é€è¯»åœ°å€ã€‚
+     * bit7 = 1 è¡¨ç¤ºè¯»å¯„å­˜å™¨ã€‚
      */
     cmt2219b_sdio_output();
     cmt2219b_clk_low();
     cmt2219b_gpio_send_byte(addr | 0x80U);
 
     /*
-     * µØÖ··¢ËÍÍê±Ïºó£¬±ØĞëÔÚÏÂÒ»¸öÏÂ½µÑØÖ®Ç°
-     * ½« SDIO ÇĞ»»ÎªÊäÈë£¬ÊÍ·Å SDIO ×ÜÏß¡£
+     * åœ°å€å‘é€å®Œæ¯•åï¼Œå¿…é¡»åœ¨ä¸‹ä¸€ä¸ªä¸‹é™æ²¿ä¹‹å‰
+     * å°† SDIO åˆ‡æ¢ä¸ºè¾“å…¥ï¼Œé‡Šæ”¾ SDIO æ€»çº¿ã€‚
      */
     cmt2219b_sdio_input();
 
     /*
-     * ¶ÁÈ¡ CMT2219B ·µ»ØµÄ 8 bit Êı¾İ¡£
+     * è¯»å– CMT2219B è¿”å›çš„ 8 bit æ•°æ®ã€‚
      */
     dat = cmt2219b_gpio_recv_byte();
 
     /*
-     * ±£³Ö CSB µÍµçÆ½Ò»¶ÎÊ±¼ä£¬È»ºóÊÍ·Å¡£
+     * ä¿æŒ CSB ä½ç”µå¹³ä¸€æ®µæ—¶é—´ï¼Œç„¶åé‡Šæ”¾ã€‚
      */
     cmt2219b_delay_us(1U);
 
@@ -243,13 +243,13 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr)
     cmt2219b_fcsb_high();
 
     /*
-     * »Ö¸´ PB13/PB15 µÄ SPI1 ¸´ÓÃ¹¦ÄÜ¡£
+     * æ¢å¤ PB13/PB15 çš„ SPI1 å¤ç”¨åŠŸèƒ½ã€‚
      */
     cmt2219b_spi_pins_to_spi1();
     spi_enable(CMT2219B_SPI_PERIPH);
 
     /*
-     * »Ö¸´½øÈë±¾º¯ÊıÖ®Ç°µÄÖĞ¶Ï×´Ì¬¡£
+     * æ¢å¤è¿›å…¥æœ¬å‡½æ•°ä¹‹å‰çš„ä¸­æ–­çŠ¶æ€ã€‚
      */
     __set_PRIMASK(primask);
 
@@ -257,11 +257,11 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr)
 }
 
 /*
- * Ê¹ÓÃ SPI1 Ó²¼ş·¢ËÍ FIFO¡£
+ * ä½¿ç”¨ SPI1 ç¡¬ä»¶å‘é€ FIFOã€‚
  *
- * CMT2219B FIFO Ğ´ÈëÒªÇó£º
- * CSB ±£³Ö¸ßµçÆ½£»
- * Ã¿¸ö×Ö½Úµ¥¶À¿ØÖÆÒ»´Î FCSB¡£
+ * CMT2219B FIFO å†™å…¥è¦æ±‚ï¼š
+ * CSB ä¿æŒé«˜ç”µå¹³ï¼›
+ * æ¯ä¸ªå­—èŠ‚å•ç‹¬æ§åˆ¶ä¸€æ¬¡ FCSBã€‚
  */
 void cmt2219b_spi_write_fifo(const uint8_t *buf, uint16_t len)
 {
@@ -272,8 +272,8 @@ void cmt2219b_spi_write_fifo(const uint8_t *buf, uint16_t len)
 
     for (i = 0U; i < len; i++) {
         /*
-         * FCSB À­µÍµ½µÚÒ»¸ö SCLK ÉÏÉıÑØÇ°£¬
-         * ÖÁÉÙ±£³ÖÒ»¸ö SCLK ÖÜÆÚ¡£
+         * FCSB æ‹‰ä½åˆ°ç¬¬ä¸€ä¸ª SCLK ä¸Šå‡æ²¿å‰ï¼Œ
+         * è‡³å°‘ä¿æŒä¸€ä¸ª SCLK å‘¨æœŸã€‚
          */
         cmt2219b_fcsb_low();
         cmt2219b_delay_us(1U);
@@ -281,26 +281,26 @@ void cmt2219b_spi_write_fifo(const uint8_t *buf, uint16_t len)
         cmt2219b_spi_send_byte(buf[i]);
 
         /*
-         * ×îºóÒ»¸ö SCLK ÏÂ½µÑØºó£¬
-         * FCSB ÖÁÉÙ±£³ÖµÍµçÆ½ 2 us¡£
+         * æœ€åä¸€ä¸ª SCLK ä¸‹é™æ²¿åï¼Œ
+         * FCSB è‡³å°‘ä¿æŒä½ç”µå¹³ 2 usã€‚
          */
         cmt2219b_delay_us(2U);
         cmt2219b_fcsb_high();
 
         /*
-         * Á½¸öÁ¬Ğø FIFO ×Ö½ÚÖ®¼ä£¬
-         * FCSB ÖÁÉÙ±£³Ö¸ßµçÆ½ 4 us¡£
+         * ä¸¤ä¸ªè¿ç»­ FIFO å­—èŠ‚ä¹‹é—´ï¼Œ
+         * FCSB è‡³å°‘ä¿æŒé«˜ç”µå¹³ 4 usã€‚
          */
         cmt2219b_delay_us(4U);
     }
 }
 
 /*
- * GPIO Ä£Äâ¶ÁÈ¡ FIFO¡£
+ * GPIO æ¨¡æ‹Ÿè¯»å– FIFOã€‚
  *
- * ¶ÁÈ¡ FIFO Ê±²»ÄÜÊ¹ÓÃ SPI1 µÄÁ¬ĞøÓ²¼ş½ÓÊÕ£¬
- * ÒòÎª CMT2219B ÒªÇóÃ¿¸ö FIFO ×Ö½Úµ¥¶À¿ØÖÆ FCSB£¬
- * ²¢ÇÒ¶Ô×Ö½ÚÖ®¼äµÄÊ±¼äÓĞÃ÷È·ÒªÇó¡£
+ * è¯»å– FIFO æ—¶ä¸èƒ½ä½¿ç”¨ SPI1 çš„è¿ç»­ç¡¬ä»¶æ¥æ”¶ï¼Œ
+ * å› ä¸º CMT2219B è¦æ±‚æ¯ä¸ª FIFO å­—èŠ‚å•ç‹¬æ§åˆ¶ FCSBï¼Œ
+ * å¹¶ä¸”å¯¹å­—èŠ‚ä¹‹é—´çš„æ—¶é—´æœ‰æ˜ç¡®è¦æ±‚ã€‚
  */
 void cmt2219b_spi_read_fifo(uint8_t *buf, uint16_t len)
 {
@@ -315,14 +315,14 @@ void cmt2219b_spi_read_fifo(uint8_t *buf, uint16_t len)
     __disable_irq();
 
     /*
-     * È·±£Ç°Ò»±Ê SPI1 Ó²¼ş·¢ËÍÒÑ¾­Íê³É¡£
+     * ç¡®ä¿å‰ä¸€ç¬” SPI1 ç¡¬ä»¶å‘é€å·²ç»å®Œæˆã€‚
      */
     while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
                              SPI_FLAG_TRANS) != RESET) {
     }
 
     /*
-     * SPI1 ÔİÍ££¬ÓÉ GPIO ½Ó¹Ü PB13/PB15¡£
+     * SPI1 æš‚åœï¼Œç”± GPIO æ¥ç®¡ PB13/PB15ã€‚
      */
     spi_disable(CMT2219B_SPI_PERIPH);
     cmt2219b_spi_pins_to_gpio();
@@ -332,35 +332,35 @@ void cmt2219b_spi_read_fifo(uint8_t *buf, uint16_t len)
     cmt2219b_clk_low();
 
     /*
-     * FIFO ¶ÁÈ¡Ê±£¬SDIO Ö±½Ó×÷ÎªÊäÈë¡£
+     * FIFO è¯»å–æ—¶ï¼ŒSDIO ç›´æ¥ä½œä¸ºè¾“å…¥ã€‚
      */
     cmt2219b_sdio_input();
 
     for (i = 0U; i < len; i++) {
         /*
-         * Ã¿¸ö FIFO ×Ö½Úµ¥¶ÀÀ­µÍ FCSB¡£
+         * æ¯ä¸ª FIFO å­—èŠ‚å•ç‹¬æ‹‰ä½ FCSBã€‚
          */
         cmt2219b_fcsb_low();
 
         /*
-         * FCSB µÍµ½µÚÒ»¸ö SCLK ÉÏÉıÑØÇ°£¬
-         * ÖÁÉÙ±£³ÖÒ»¸ö SCLK ÖÜÆÚ¡£
+         * FCSB ä½åˆ°ç¬¬ä¸€ä¸ª SCLK ä¸Šå‡æ²¿å‰ï¼Œ
+         * è‡³å°‘ä¿æŒä¸€ä¸ª SCLK å‘¨æœŸã€‚
          */
         cmt2219b_delay_us(1U);
 
         buf[i] = cmt2219b_gpio_recv_byte();
 
         /*
-         * ×îºóÒ»¸ö SCLK ÏÂ½µÑØºó£¬
-         * FCSB ¼ÌĞø±£³ÖµÍµçÆ½ÖÁÉÙ 2 us¡£
+         * æœ€åä¸€ä¸ª SCLK ä¸‹é™æ²¿åï¼Œ
+         * FCSB ç»§ç»­ä¿æŒä½ç”µå¹³è‡³å°‘ 2 usã€‚
          */
         cmt2219b_delay_us(2U);
 
         cmt2219b_fcsb_high();
 
         /*
-         * Á½´Î FIFO ¶ÁÈ¡Ö®¼ä£¬
-         * FCSB ÖÁÉÙ±£³Ö¸ßµçÆ½ 4 us¡£
+         * ä¸¤æ¬¡ FIFO è¯»å–ä¹‹é—´ï¼Œ
+         * FCSB è‡³å°‘ä¿æŒé«˜ç”µå¹³ 4 usã€‚
          */
         cmt2219b_delay_us(4U);
     }
@@ -369,7 +369,7 @@ void cmt2219b_spi_read_fifo(uint8_t *buf, uint16_t len)
     cmt2219b_csb_high();
 
     /*
-     * »Ö¸´ SPI1 Ó²¼ş¹¦ÄÜ¡£
+     * æ¢å¤ SPI1 ç¡¬ä»¶åŠŸèƒ½ã€‚
      */
     cmt2219b_spi_pins_to_spi1();
     spi_enable(CMT2219B_SPI_PERIPH);

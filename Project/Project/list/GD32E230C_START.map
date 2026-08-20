@@ -1566,7 +1566,7 @@ Removing Unused input sections from the image.
     Removing packet_loss_test.o(.ARM.exidx.text.packet_loss_test_send), (8 bytes).
     Removing packet_loss_test.o(.text.packet_loss_test_poll_rx), (120 bytes).
     Removing packet_loss_test.o(.ARM.exidx.text.packet_loss_test_poll_rx), (8 bytes).
-    Removing packet_loss_test.o(.rodata.str1.1), (176 bytes).
+    Removing packet_loss_test.o(.rodata.str1.1), (218 bytes).
     Removing packet_loss_test.o(.bss.s_tx_count), (4 bytes).
     Removing packet_loss_test.o(.bss.s_rx_count), (4 bytes).
     Removing packet_loss_test.o(.bss.s_lost_by_gap), (4 bytes).
@@ -2539,7 +2539,7 @@ Removing Unused input sections from the image.
     Removing rf_uart_set_config.o(.ARM.exidx.text.rf_expect_char), (8 bytes).
     Removing rf_uart_set_config.o(.ARM.exidx.text.rf_flash_config_write), (8 bytes).
 
-1171 unused section(s) (total 33619 bytes) removed from the image.
+1171 unused section(s) (total 33661 bytes) removed from the image.
 
 ==============================================================================
 

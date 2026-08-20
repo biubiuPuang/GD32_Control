@@ -7,9 +7,9 @@
 #include "app_211.h"
 #include "led_test.h"
 
-// °´¼ü³õÊ¼»¯
+// æŒ‰é”®åˆå§‹åŒ–
 void key_init(void);
-// »ñÈ¡°´¼ü°´ÏÂ×´Ì¬
+// è·å–æŒ‰é”®æŒ‰ä¸‹çŠ¶æ€
 uint8_t get_key_num(void);
 
 

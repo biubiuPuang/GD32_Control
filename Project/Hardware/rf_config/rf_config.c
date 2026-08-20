@@ -1,11 +1,11 @@
 #include "rf_config.h"
 
 /*
-Õâ¸öº¯Êı¸ºÔğ·ÀÖ¹´íÎó²ÎÊı£º
+è¿™ä¸ªå‡½æ•°è´Ÿè´£é˜²æ­¢é”™è¯¯å‚æ•°ï¼š
 fh_offset = 0
 channel_count = 0
 channel = 120
-×î´óÆµÂÊ³¬·¶Î§
+æœ€å¤§é¢‘ç‡è¶…èŒƒå›´
 */
 uint8_t rf_config_check(const rf_factory_config_t *cfg)
 {
@@ -52,17 +52,17 @@ uint8_t rf_config_check(const rf_factory_config_t *cfg)
     }
 
     /*
-     * ¼ÆËã×î´óÆµÂÊ£º
+     * è®¡ç®—æœ€å¤§é¢‘ç‡ï¼š
      * base + 2.5kHz * offset * (channel_count - 1)
      *
-     * ÎªÁË±ÜÃâĞ¡Êı£¬ÕâÀïÓÃ Hz ¼ÆËã¸üÇå³ş£º
+     * ä¸ºäº†é¿å…å°æ•°ï¼Œè¿™é‡Œç”¨ Hz è®¡ç®—æ›´æ¸…æ¥šï¼š
      * 433920000Hz + 2500Hz * offset * (count - 1)
      */
     max_freq_khz = RF_BASE_FREQ_KHZ +
                    ((uint32_t)cfg->fh_offset * 25UL * (cfg->channel_count - 1)) / 10UL;
 
     /*
-     * ÕâÀïÏÈ°´ÄãµÄÄ¬ÈÏ·½°¸ÏŞÖÆ£º
+     * è¿™é‡Œå…ˆæŒ‰ä½ çš„é»˜è®¤æ–¹æ¡ˆé™åˆ¶ï¼š
      * 433.920MHz ~ 443.820MHz
      */
     if (max_freq_khz > 443820UL)
@@ -74,7 +74,7 @@ uint8_t rf_config_check(const rf_factory_config_t *cfg)
 }
 
 /**
- * @brief CRC16Ğ£ÑéÎ»º¯Êı
+ * @brief CRC16æ ¡éªŒä½å‡½æ•°
  * 
  * @param data 
  * @param len 

@@ -1,44 +1,44 @@
  /******************************************************************************
-   * ²âÊÔÓ²¼þ£ºÁ¢´´¿ª·¢°å¡¤GD32E230C8T6    Ê¹ÓÃÖ÷Æµ72Mhz    ¾§Õñ8Mhz
-   * °æ ±¾ ºÅ: V1.0
-   * ÐÞ¸Ä×÷Õß: www.lckfb.com
-   * ÐÞ¸ÄÈÕÆÚ: 2023Äê11ÔÂ02ÈÕ
-   * ¹¦ÄÜ½éÉÜ:      
+   * æµ‹è¯•ç¡¬ä»¶ï¼šç«‹åˆ›å¼€å‘æ¿Â·GD32E230C8T6    ä½¿ç”¨ä¸»é¢‘72Mhz    æ™¶æŒ¯8Mhz
+   * ç‰ˆ æœ¬ å·: V1.0
+   * ä¿®æ”¹ä½œè€…: www.lckfb.com
+   * ä¿®æ”¹æ—¥æœŸ: 2023å¹´11æœˆ02æ—¥
+   * åŠŸèƒ½ä»‹ç»:      
    *****************************************************************************
-   * ÁºÉ½ÅÉÈíÓ²¼þ×ÊÁÏÓëÏà¹ØÀ©Õ¹°åÈíÓ²¼þ×ÊÁÏ¹ÙÍøÈ«²¿¿ªÔ´  
-   * ¿ª·¢°å¹ÙÍø£ºwww.lckfb.com   
-   * ¼¼ÊõÖ§³Ö³£×¤ÂÛÌ³£¬ÈÎºÎ¼¼ÊõÎÊÌâ»¶Ó­ËæÊ±½»Á÷Ñ§Ï°  
-   * Á¢´´ÂÛÌ³£ºclub.szlcsc.com   
-   * ÆäÓàÄ£¿éÒÆÖ²ÊÖ²á£º¡¾Á¢´´¡¤GD32E230C8T6¿ª·¢°å¡¿Ä£¿éÒÆÖ²ÊÖ²á
-   * ¹Ø×¢bilibiliÕËºÅ£º¡¾Á¢´´¿ª·¢°å¡¿£¬ÕÆÎÕÎÒÃÇµÄ×îÐÂ¶¯Ì¬£¡
-   * ²»¿¿Âô°å×¬Ç®£¬ÒÔÅàÑøÖÐ¹ú¹¤³ÌÊ¦Îª¼ºÈÎ
+   * æ¢å±±æ´¾è½¯ç¡¬ä»¶èµ„æ–™ä¸Žç›¸å…³æ‰©å±•æ¿è½¯ç¡¬ä»¶èµ„æ–™å®˜ç½‘å…¨éƒ¨å¼€æº  
+   * å¼€å‘æ¿å®˜ç½‘ï¼šwww.lckfb.com   
+   * æŠ€æœ¯æ”¯æŒå¸¸é©»è®ºå›ï¼Œä»»ä½•æŠ€æœ¯é—®é¢˜æ¬¢è¿Žéšæ—¶äº¤æµå­¦ä¹   
+   * ç«‹åˆ›è®ºå›ï¼šclub.szlcsc.com   
+   * å…¶ä½™æ¨¡å—ç§»æ¤æ‰‹å†Œï¼šã€ç«‹åˆ›Â·GD32E230C8T6å¼€å‘æ¿ã€‘æ¨¡å—ç§»æ¤æ‰‹å†Œ
+   * å…³æ³¨bilibiliè´¦å·ï¼šã€ç«‹åˆ›å¼€å‘æ¿ã€‘ï¼ŒæŽŒæ¡æˆ‘ä»¬çš„æœ€æ–°åŠ¨æ€ï¼
+   * ä¸é å–æ¿èµšé’±ï¼Œä»¥åŸ¹å…»ä¸­å›½å·¥ç¨‹å¸ˆä¸ºå·±ä»»
   ******************************************************************************/
 #include "bsp_usart.h"
 #include "stdio.h"
 #include "string.h"
 
 
-/* Ô­ÓÐÃüÁî½ÓÊÕ»º³åÇø£¬¼ÌÐø¸ørf_uart_config_process()Ê¹ÓÃ */
+/* åŽŸæœ‰å‘½ä»¤æŽ¥æ”¶ç¼“å†²åŒºï¼Œç»§ç»­ç»™rf_uart_config_process()ä½¿ç”¨ */
 uint8_t g_recv_buff[USART_RECEIVE_LENGTH];
 volatile uint16_t g_recv_length = 0U;
 volatile uint8_t g_recv_complete_flag = 0U;
 
 
 /*
- * USART0 RX DMAÁÙÊ±»º³åÇø¡£
- * DMAÖ»ÍùÕâÀïÐ´£»IDLEÖÐ¶ÏÈ·ÈÏÒ»Ö¡½áÊøºó£¬
- * ÔÙ¸´ÖÆµ½ÉÏÃæµÄg_recv_buff¡£
+ * USART0 RX DMAä¸´æ—¶ç¼“å†²åŒºã€‚
+ * DMAåªå¾€è¿™é‡Œå†™ï¼›IDLEä¸­æ–­ç¡®è®¤ä¸€å¸§ç»“æŸåŽï¼Œ
+ * å†å¤åˆ¶åˆ°ä¸Šé¢çš„g_recv_buffã€‚
  */
 static uint8_t g_usart_rx_dma_buffer[USART_RX_DMA_LENGTH];
 
-/* USART0 TX DMA»·ÐÎ¶ÓÁÐ */
+/* USART0 TX DMAçŽ¯å½¢é˜Ÿåˆ— */
 static uint8_t g_usart_tx_queue[USART_TX_QUEUE_LENGTH];
 static volatile uint16_t g_usart_tx_read = 0U;
 static volatile uint16_t g_usart_tx_write = 0U;
 static volatile uint16_t g_usart_tx_dma_length = 0U;
 static volatile uint8_t g_usart_tx_dma_busy = 0U;
 
-/* Í¨ÐÅÒì³£Í³¼Æ */
+/* é€šä¿¡å¼‚å¸¸ç»Ÿè®¡ */
 volatile uint32_t g_usart_tx_overflow_count = 0U;
 volatile uint32_t g_usart_rx_overflow_count = 0U;
 volatile uint32_t g_usart_dma_error_count = 0U;
@@ -52,78 +52,78 @@ static void usart_rx_dma_init(void)
 {
     dma_parameter_struct dma_init_struct;
 
-    /* ÏÈ¸´Î»DMA_CH2 */
+    /* å…ˆå¤ä½DMA_CH2 */
     dma_deinit(BSP_USART_RX_DMA_CHANNEL);
 
-    /* ¸øDMAÅäÖÃ½á¹¹ÌåÌîÄ¬ÈÏÖµ */
+    /* ç»™DMAé…ç½®ç»“æž„ä½“å¡«é»˜è®¤å€¼ */
     dma_struct_para_init(&dma_init_struct);
 
     /*
-     * USART0½ÓÊÕÊý¾Ý¼Ä´æÆ÷µØÖ·¡£
-     * DMA´ÓÕâÀï¶ÁÈ¡ÊÕµ½µÄ×Ö½Ú¡£
+     * USART0æŽ¥æ”¶æ•°æ®å¯„å­˜å™¨åœ°å€ã€‚
+     * DMAä»Žè¿™é‡Œè¯»å–æ”¶åˆ°çš„å­—èŠ‚ã€‚
      */
     dma_init_struct.periph_addr = (uint32_t)&USART_RDATA(BSP_USART);
 
     /*
-     * DMA°ÑÊý¾ÝÐ´ÈëÁÙÊ±»º³åÇø¡£
+     * DMAæŠŠæ•°æ®å†™å…¥ä¸´æ—¶ç¼“å†²åŒºã€‚
      */
     dma_init_struct.memory_addr = (uint32_t)g_usart_rx_dma_buffer;
 
-    /* USARTÊý¾ÝºÍÄÚ´æÊý×é¶¼ÊÇ°´×Ö½ÚÊÕ·¢ */
+    /* USARTæ•°æ®å’Œå†…å­˜æ•°ç»„éƒ½æ˜¯æŒ‰å­—èŠ‚æ”¶å‘ */
     dma_init_struct.periph_width = DMA_PERIPHERAL_WIDTH_8BIT;
     dma_init_struct.memory_width = DMA_MEMORY_WIDTH_8BIT;
 
-    /* ±¾´Î×î¶à½ÓÊÕ128×Ö½Ú */
+    /* æœ¬æ¬¡æœ€å¤šæŽ¥æ”¶128å­—èŠ‚ */
     dma_init_struct.number = USART_RX_DMA_LENGTH;
 
-    /* USART½ÓÊÕÊý¾Ý¼Ä´æÆ÷µØÖ·¹Ì¶¨£¬²»ÄÜµÝÔö */
+    /* USARTæŽ¥æ”¶æ•°æ®å¯„å­˜å™¨åœ°å€å›ºå®šï¼Œä¸èƒ½é€’å¢ž */
     dma_init_struct.periph_inc = DMA_PERIPH_INCREASE_DISABLE;
 
-    /* Êý×éµØÖ·ËæÃ¿¸ö×Ö½ÚµÝÔö */
+    /* æ•°ç»„åœ°å€éšæ¯ä¸ªå­—èŠ‚é€’å¢ž */
     dma_init_struct.memory_inc = DMA_MEMORY_INCREASE_ENABLE;
 
-    /* ·½Ïò£ºUSARTÍâÉè ¡ú ÄÚ´æ */
+    /* æ–¹å‘ï¼šUSARTå¤–è®¾ â†’ å†…å­˜ */
     dma_init_struct.direction = DMA_PERIPHERAL_TO_MEMORY;
 
-    /* ½ÓÊÕÓÅÏÈ¼¶Éè¸ß */
+    /* æŽ¥æ”¶ä¼˜å…ˆçº§è®¾é«˜ */
     dma_init_struct.priority = DMA_PRIORITY_HIGH;
 
     dma_init(BSP_USART_RX_DMA_CHANNEL, &dma_init_struct);
 
     /*
-     * ²»Ê¹ÓÃÑ­»·Ä£Ê½¡£
-     * Ã¿´ÎIDLEÖÐ¶ÏºóÖØÐÂ×°ÔØDMA¼ÆÊý£¬¿ªÊ¼½ÓÊÕÏÂÒ»Ö¡¡£
+     * ä¸ä½¿ç”¨å¾ªçŽ¯æ¨¡å¼ã€‚
+     * æ¯æ¬¡IDLEä¸­æ–­åŽé‡æ–°è£…è½½DMAè®¡æ•°ï¼Œå¼€å§‹æŽ¥æ”¶ä¸‹ä¸€å¸§ã€‚
      */
     dma_circulation_disable(BSP_USART_RX_DMA_CHANNEL);
 
-    /* Çå³ýDMA_CH2¿ÉÄÜ²ÐÁôµÄ±êÖ¾ */
+    /* æ¸…é™¤DMA_CH2å¯èƒ½æ®‹ç•™çš„æ ‡å¿— */
     dma_flag_clear(BSP_USART_RX_DMA_CHANNEL, DMA_FLAG_G);
 
-    /* ÔÊÐíUSART0ÏòDMA·¢³ö½ÓÊÕÇëÇó */
+    /* å…è®¸USART0å‘DMAå‘å‡ºæŽ¥æ”¶è¯·æ±‚ */
     usart_dma_receive_config(BSP_USART, USART_DENR_ENABLE);
 
-    /* ×îºóÆô¶¯DMA_CH2 */
+    /* æœ€åŽå¯åŠ¨DMA_CH2 */
     dma_channel_enable(BSP_USART_RX_DMA_CHANNEL);
 }
 
 
 static void usart_rx_dma_restart(void)
 {
-    /* ÐÞ¸ÄDMA¼ÆÊýºÍµØÖ·Ç°£¬±ØÐëÏÈ¹Ø±ÕDMAÍ¨µÀ */
+    /* ä¿®æ”¹DMAè®¡æ•°å’Œåœ°å€å‰ï¼Œå¿…é¡»å…ˆå…³é—­DMAé€šé“ */
     dma_channel_disable(BSP_USART_RX_DMA_CHANNEL);
 
-    /* ½ÓÊÕµØÖ·ÈÔÈ»Ê¹ÓÃDMAÁÙÊ±»º³åÇø */
+    /* æŽ¥æ”¶åœ°å€ä»ç„¶ä½¿ç”¨DMAä¸´æ—¶ç¼“å†²åŒº */
     dma_memory_address_config(BSP_USART_RX_DMA_CHANNEL,
                               (uint32_t)g_usart_rx_dma_buffer);
 
-    /* ÖØÐÂ×°ÔØ½ÓÊÕÊýÁ¿ */
+    /* é‡æ–°è£…è½½æŽ¥æ”¶æ•°é‡ */
     dma_transfer_number_config(BSP_USART_RX_DMA_CHANNEL,
                                USART_RX_DMA_LENGTH);
 
-    /* Çå³ýDMA±êÖ¾ */
+    /* æ¸…é™¤DMAæ ‡å¿— */
     dma_flag_clear(BSP_USART_RX_DMA_CHANNEL, DMA_FLAG_G);
 
-    /* ÔÙ´ÎÆô¶¯DMA£¬¼ÌÐøµÈ´ýÏÂÒ»Ö¡ */
+    /* å†æ¬¡å¯åŠ¨DMAï¼Œç»§ç»­ç­‰å¾…ä¸‹ä¸€å¸§ */
     dma_channel_enable(BSP_USART_RX_DMA_CHANNEL);
 }
 
@@ -133,7 +133,7 @@ static void usart_tx_dma_start(void)
     uint16_t continuous_length;
 
     /*
-     * ÒÑÓÐDMAÕýÔÚ·¢ËÍ£¬²»ÄÜÖØ¸´Æô¶¯¡£
+     * å·²æœ‰DMAæ­£åœ¨å‘é€ï¼Œä¸èƒ½é‡å¤å¯åŠ¨ã€‚
      */
     if (g_usart_tx_dma_busy != 0U)
     {
@@ -141,7 +141,7 @@ static void usart_tx_dma_start(void)
     }
 
     /*
-     * ¶ÁÖ¸ÕëºÍÐ´Ö¸ÕëÏàÍ¬£¬ËµÃ÷¶ÓÁÐÎª¿Õ¡£
+     * è¯»æŒ‡é’ˆå’Œå†™æŒ‡é’ˆç›¸åŒï¼Œè¯´æ˜Žé˜Ÿåˆ—ä¸ºç©ºã€‚
      */
     if (g_usart_tx_read == g_usart_tx_write)
     {
@@ -150,7 +150,7 @@ static void usart_tx_dma_start(void)
     }
 
     /*
-     * »·ÐÎ¶ÓÁÐ»ØÈÆÊ±£¬Ò»´ÎDMAÖ»ÄÜ·¢ËÍÎïÀíÄÚ´æÁ¬ÐøµÄÒ»¶Î¡£
+     * çŽ¯å½¢é˜Ÿåˆ—å›žç»•æ—¶ï¼Œä¸€æ¬¡DMAåªèƒ½å‘é€ç‰©ç†å†…å­˜è¿žç»­çš„ä¸€æ®µã€‚
      */
     if (g_usart_tx_write > g_usart_tx_read)
     {
@@ -164,18 +164,18 @@ static void usart_tx_dma_start(void)
     g_usart_tx_dma_busy = 1U;
     g_usart_tx_dma_length = continuous_length;
 
-    /* ÖØÐÂÅäÖÃDMA_CH1Ç°ÏÈ¹Ø±Õ²¢¸´Î» */
+    /* é‡æ–°é…ç½®DMA_CH1å‰å…ˆå…³é—­å¹¶å¤ä½ */
     dma_channel_disable(BSP_USART_TX_DMA_CHANNEL);
     dma_deinit(BSP_USART_TX_DMA_CHANNEL);
     dma_struct_para_init(&dma_init_struct);
 
     /*
-     * DMAÐ´µ½USART0·¢ËÍÊý¾Ý¼Ä´æÆ÷¡£
+     * DMAå†™åˆ°USART0å‘é€æ•°æ®å¯„å­˜å™¨ã€‚
      */
     dma_init_struct.periph_addr = (uint32_t)&USART_TDATA(BSP_USART);
 
     /*
-     * DMA´Ó»·ÐÎ¶ÓÁÐµ±Ç°¶ÁÎ»ÖÃÈ¡Êý¾Ý¡£
+     * DMAä»ŽçŽ¯å½¢é˜Ÿåˆ—å½“å‰è¯»ä½ç½®å–æ•°æ®ã€‚
      */
     dma_init_struct.memory_addr =
         (uint32_t)&g_usart_tx_queue[g_usart_tx_read];
@@ -184,40 +184,40 @@ static void usart_tx_dma_start(void)
     dma_init_struct.memory_width = DMA_MEMORY_WIDTH_8BIT;
     dma_init_struct.number = continuous_length;
 
-    /* USART·¢ËÍÊý¾Ý¼Ä´æÆ÷µØÖ·¹Ì¶¨ */
+    /* USARTå‘é€æ•°æ®å¯„å­˜å™¨åœ°å€å›ºå®š */
     dma_init_struct.periph_inc = DMA_PERIPH_INCREASE_DISABLE;
 
-    /* ¶ÓÁÐÊý×éµØÖ·Ëæ·¢ËÍ×Ö½ÚµÝÔö */
+    /* é˜Ÿåˆ—æ•°ç»„åœ°å€éšå‘é€å­—èŠ‚é€’å¢ž */
     dma_init_struct.memory_inc = DMA_MEMORY_INCREASE_ENABLE;
 
-    /* ·½Ïò£ºÄÚ´æ ¡ú USARTÍâÉè */
+    /* æ–¹å‘ï¼šå†…å­˜ â†’ USARTå¤–è®¾ */
     dma_init_struct.direction = DMA_MEMORY_TO_PERIPHERAL;
 
     dma_init_struct.priority = DMA_PRIORITY_MEDIUM;
 
     dma_init(BSP_USART_TX_DMA_CHANNEL, &dma_init_struct);
 
-    /* Çå³ý¾É×´Ì¬ */
+    /* æ¸…é™¤æ—§çŠ¶æ€ */
     dma_flag_clear(BSP_USART_TX_DMA_CHANNEL, DMA_FLAG_G);
 
-    /* ¿ªÆô¡°±¾¶Î·¢ËÍÍê³É¡±ºÍ¡°DMA´íÎó¡±ÖÐ¶Ï */
+    /* å¼€å¯â€œæœ¬æ®µå‘é€å®Œæˆâ€å’Œâ€œDMAé”™è¯¯â€ä¸­æ–­ */
     dma_interrupt_enable(BSP_USART_TX_DMA_CHANNEL, DMA_INT_FTF);
     dma_interrupt_enable(BSP_USART_TX_DMA_CHANNEL, DMA_INT_ERR);
 
-    /* ÔÊÐíUSART0ÏòDMA·¢³ö·¢ËÍÇëÇó */
+    /* å…è®¸USART0å‘DMAå‘å‡ºå‘é€è¯·æ±‚ */
     usart_dma_transmit_config(BSP_USART, USART_DENT_ENABLE);
 
-    /* ×îºóÆô¶¯DMA_CH1 */
+    /* æœ€åŽå¯åŠ¨DMA_CH1 */
     dma_channel_enable(BSP_USART_TX_DMA_CHANNEL);
 }
 
 static void usart_tx_dma_complete(void)
 {
-    /* µ±Ç°DMA¶ÎÒÑÍê³É£¬ÏÈ¹Ø±ÕÍ¨µÀ */
+    /* å½“å‰DMAæ®µå·²å®Œæˆï¼Œå…ˆå…³é—­é€šé“ */
     dma_channel_disable(BSP_USART_TX_DMA_CHANNEL);
 
     /*
-     * ¶ÁÖ¸Õë¿ç¹ý±¾´ÎÒÑ¾­·¢ËÍµÄÊý¾Ý¡£
+     * è¯»æŒ‡é’ˆè·¨è¿‡æœ¬æ¬¡å·²ç»å‘é€çš„æ•°æ®ã€‚
      */
     g_usart_tx_read += g_usart_tx_dma_length;
 
@@ -230,76 +230,76 @@ static void usart_tx_dma_complete(void)
     g_usart_tx_dma_busy = 0U;
 
     /*
-     * ¼ÌÐø¼ì²é¶ÓÁÐ£º
-     * - ÓÐÊý¾Ý£º¿ªÊ¼·¢ËÍÏÂÒ»¶Î
-     * - Ã»Êý¾Ý£ºusart_tx_dma_start()»á¹Ø±ÕTX DMAÇëÇó
+     * ç»§ç»­æ£€æŸ¥é˜Ÿåˆ—ï¼š
+     * - æœ‰æ•°æ®ï¼šå¼€å§‹å‘é€ä¸‹ä¸€æ®µ
+     * - æ²¡æ•°æ®ï¼šusart_tx_dma_start()ä¼šå…³é—­TX DMAè¯·æ±‚
      */
     usart_tx_dma_start();
 }
 
 /************************************************
-º¯ÊýÃû³Æ £º usart_gpio_config
-¹¦    ÄÜ £º ´®¿ÚÅäÖÃGPIO
-²Î    Êý £º band_rate:²¨ÌØÂÊ
-·µ »Ø Öµ £º ÎÞ
-×÷    Õß £º LC
+å‡½æ•°åç§° ï¼š usart_gpio_config
+åŠŸ    èƒ½ ï¼š ä¸²å£é…ç½®GPIO
+å‚    æ•° ï¼š band_rate:æ³¢ç‰¹çŽ‡
+è¿” å›ž å€¼ ï¼š æ— 
+ä½œ    è€… ï¼š LC
 *************************************************/
 void usart_gpio_config(uint32_t band_rate)
 {
-	/* ¿ªÆôÊ±ÖÓ */
-	rcu_periph_clock_enable(BSP_USART_TX_RCU);   // ¿ªÆô´®¿ÚÊ±ÖÓ
-	rcu_periph_clock_enable(BSP_USART_RX_RCU);   // ¿ªÆô¶Ë¿ÚÊ±ÖÓ
-	rcu_periph_clock_enable(BSP_USART_RCU);      // ¿ªÆô¶Ë¿ÚÊ±ÖÓ
-	rcu_periph_clock_enable(RCU_DMA);			// ¿ªÆôDMA
+	/* å¼€å¯æ—¶é’Ÿ */
+	rcu_periph_clock_enable(BSP_USART_TX_RCU);   // å¼€å¯ä¸²å£æ—¶é’Ÿ
+	rcu_periph_clock_enable(BSP_USART_RX_RCU);   // å¼€å¯ç«¯å£æ—¶é’Ÿ
+	rcu_periph_clock_enable(BSP_USART_RCU);      // å¼€å¯ç«¯å£æ—¶é’Ÿ
+	rcu_periph_clock_enable(RCU_DMA);			// å¼€å¯DMA
 	
-	/* ÅäÖÃGPIO¸´ÓÃ¹¦ÄÜ */
+	/* é…ç½®GPIOå¤ç”¨åŠŸèƒ½ */
  	gpio_af_set(BSP_USART_TX_PORT,BSP_USART_AF,BSP_USART_TX_PIN);	
 	gpio_af_set(BSP_USART_RX_PORT,BSP_USART_AF,BSP_USART_RX_PIN);	
 	
-	/* ÅäÖÃGPIOµÄÄ£Ê½ */
-	/* ÅäÖÃTXÎª¸´ÓÃÄ£Ê½ ÉÏÀ­Ä£Ê½ */
+	/* é…ç½®GPIOçš„æ¨¡å¼ */
+	/* é…ç½®TXä¸ºå¤ç”¨æ¨¡å¼ ä¸Šæ‹‰æ¨¡å¼ */
 	gpio_mode_set(BSP_USART_TX_PORT,GPIO_MODE_AF,GPIO_PUPD_PULLUP,BSP_USART_TX_PIN);
-	/* ÅäÖÃRXÎª¸´ÓÃÄ£Ê½ ÉÏÀ­Ä£Ê½ */
+	/* é…ç½®RXä¸ºå¤ç”¨æ¨¡å¼ ä¸Šæ‹‰æ¨¡å¼ */
 	gpio_mode_set(BSP_USART_RX_PORT, GPIO_MODE_AF,GPIO_PUPD_PULLUP,BSP_USART_RX_PIN);
 	
-	/* ÅäÖÃTXÎªÍÆÍìÊä³ö 50MHZ */
+	/* é…ç½®TXä¸ºæŽ¨æŒ½è¾“å‡º 50MHZ */
 	gpio_output_options_set(BSP_USART_TX_PORT,GPIO_OTYPE_PP,GPIO_OSPEED_50MHZ,BSP_USART_TX_PIN);
-	/* ÅäÖÃRXÎªÍÆÍìÊä³ö 50MHZ */
+	/* é…ç½®RXä¸ºæŽ¨æŒ½è¾“å‡º 50MHZ */
 	gpio_output_options_set(BSP_USART_RX_PORT,GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, BSP_USART_RX_PIN);
 
-	/* ÅäÖÃ´®¿ÚµÄ²ÎÊý */
-	usart_deinit(BSP_USART);                                 // ¸´Î»´®¿Ú
-	usart_baudrate_set(BSP_USART,band_rate);                 // ÉèÖÃ²¨ÌØÂÊ
-	usart_parity_config(BSP_USART,USART_PM_NONE);            // Ã»ÓÐÐ£ÑéÎ»
-	usart_word_length_set(BSP_USART,USART_WL_8BIT);          // 8Î»Êý¾ÝÎ»
-	usart_stop_bit_set(BSP_USART,USART_STB_1BIT);     			 // 1Î»Í£Ö¹Î»
+	/* é…ç½®ä¸²å£çš„å‚æ•° */
+	usart_deinit(BSP_USART);                                 // å¤ä½ä¸²å£
+	usart_baudrate_set(BSP_USART,band_rate);                 // è®¾ç½®æ³¢ç‰¹çŽ‡
+	usart_parity_config(BSP_USART,USART_PM_NONE);            // æ²¡æœ‰æ ¡éªŒä½
+	usart_word_length_set(BSP_USART,USART_WL_8BIT);          // 8ä½æ•°æ®ä½
+	usart_stop_bit_set(BSP_USART,USART_STB_1BIT);     			 // 1ä½åœæ­¢ä½
 
-  /* Ê¹ÄÜ´®¿Ú */
-	usart_enable(BSP_USART);                                 // Ê¹ÄÜ´®¿Ú
-	usart_transmit_config(BSP_USART,USART_TRANSMIT_ENABLE);  // Ê¹ÄÜ´®¿Ú·¢ËÍ
-	usart_receive_config(BSP_USART,USART_RECEIVE_ENABLE);    // Ê¹ÄÜ´®¿Ú½ÓÊÕ
+  /* ä½¿èƒ½ä¸²å£ */
+	usart_enable(BSP_USART);                                 // ä½¿èƒ½ä¸²å£
+	usart_transmit_config(BSP_USART,USART_TRANSMIT_ENABLE);  // ä½¿èƒ½ä¸²å£å‘é€
+	usart_receive_config(BSP_USART,USART_RECEIVE_ENABLE);    // ä½¿èƒ½ä¸²å£æŽ¥æ”¶
 	
 	/*
-	* ½ÓÊÕÊý¾ÝÓÉDMA_CH2°áÔË¡£
-	* Òò´Ë¹Ø±ÕRBNEÖð×Ö½Ú½ÓÊÕÖÐ¶Ï£¬±ÜÃâCPUºÍDMAÍ¬Ê±¶ÁÈ¡½ÓÊÕ¼Ä´æÆ÷¡£
+	* æŽ¥æ”¶æ•°æ®ç”±DMA_CH2æ¬è¿ã€‚
+	* å› æ­¤å…³é—­RBNEé€å­—èŠ‚æŽ¥æ”¶ä¸­æ–­ï¼Œé¿å…CPUå’ŒDMAåŒæ—¶è¯»å–æŽ¥æ”¶å¯„å­˜å™¨ã€‚
 	*/
 	usart_interrupt_disable(BSP_USART, USART_INT_RBNE);
 
 	/*
-	* IDLE£ºÉÏÎ»»úÍ£·¢Ò»¶ÎÊ±¼ä£¬±íÊ¾Ò»Ö¡½áÊø¡£
-	* ERR£º¼ì²â´®¿ÚÒç³ö¡¢ÔëÉùºÍÖ¡´íÎó¡£
+	* IDLEï¼šä¸Šä½æœºåœå‘ä¸€æ®µæ—¶é—´ï¼Œè¡¨ç¤ºä¸€å¸§ç»“æŸã€‚
+	* ERRï¼šæ£€æµ‹ä¸²å£æº¢å‡ºã€å™ªå£°å’Œå¸§é”™è¯¯ã€‚
 	*/
 	usart_interrupt_enable(BSP_USART, USART_INT_IDLE);
 	usart_interrupt_enable(BSP_USART, USART_INT_ERR);
 
 	/*
-	* DMA_CH1ºÍDMA_CH2¹²ÓÃDMA_Channel1_2_IRQn¡£
-	* DMAÖÐ¶ÏÓÅÏÈ¼¶¸ßÓÚUSART IDLEÖÐ¶Ï¡£
+	* DMA_CH1å’ŒDMA_CH2å…±ç”¨DMA_Channel1_2_IRQnã€‚
+	* DMAä¸­æ–­ä¼˜å…ˆçº§é«˜äºŽUSART IDLEä¸­æ–­ã€‚
 	*/
 	nvic_irq_enable(BSP_USART_DMA_IRQ, 1U);
 	nvic_irq_enable(BSP_USART_IRQ, 2U);
 
-	/* ×îºóÆô¶¯USART0½ÓÊÕDMA */
+	/* æœ€åŽå¯åŠ¨USART0æŽ¥æ”¶DMA */
 	usart_rx_dma_init();
 }
 
@@ -314,9 +314,9 @@ uint16_t usart_send_buffer(const uint8_t *data, uint16_t length)
     }
 
     /*
-     * Ö÷Ñ­»·ÔÚÐ´¶ÓÁÐ£»
-     * DMAÍê³ÉÖÐ¶Ï»áÐÞ¸Ä¶ÁÖ¸Õë²¢Æô¶¯ÏÂÒ»¶ÎDMA¡£
-     * ËùÒÔÖ»ÔÝÍ£DMA_CH1_2ÖÐ¶Ï£¬±£»¤¶ÓÁÐ¶ÁÐ´Ö¸Õë¡£
+     * ä¸»å¾ªçŽ¯åœ¨å†™é˜Ÿåˆ—ï¼›
+     * DMAå®Œæˆä¸­æ–­ä¼šä¿®æ”¹è¯»æŒ‡é’ˆå¹¶å¯åŠ¨ä¸‹ä¸€æ®µDMAã€‚
+     * æ‰€ä»¥åªæš‚åœDMA_CH1_2ä¸­æ–­ï¼Œä¿æŠ¤é˜Ÿåˆ—è¯»å†™æŒ‡é’ˆã€‚
      */
     nvic_irq_disable(BSP_USART_DMA_IRQ);
 
@@ -330,8 +330,8 @@ uint16_t usart_send_buffer(const uint8_t *data, uint16_t length)
         }
 
         /*
-         * ÏÂÒ»¸öÐ´Î»ÖÃ×·ÉÏ¶ÁÎ»ÖÃ£¬ËµÃ÷¶ÓÁÐÂú¡£
-         * ²»µÈ´ý£¬²»ËÀÑ­»·£¬Ö±½ÓÍË³ö¡£
+         * ä¸‹ä¸€ä¸ªå†™ä½ç½®è¿½ä¸Šè¯»ä½ç½®ï¼Œè¯´æ˜Žé˜Ÿåˆ—æ»¡ã€‚
+         * ä¸ç­‰å¾…ï¼Œä¸æ­»å¾ªçŽ¯ï¼Œç›´æŽ¥é€€å‡ºã€‚
          */
         if (next_write == g_usart_tx_read)
         {
@@ -345,8 +345,8 @@ uint16_t usart_send_buffer(const uint8_t *data, uint16_t length)
     }
 
     /*
-     * Êý¾ÝÒÑÐ´Èë¶ÓÁÐ£»Èç¹ûDMAµ±Ç°¿ÕÏÐ£¬Á¢¼´´Ó¶ÓÁÐÈ¡Êý¾Ý·¢ËÍ¡£
-     * ´Ë´¦DMAÖÐ¶ÏÈÔ¹Ø±Õ£¬±ÜÃâÆô¶¯DMAÊ±ÓëDMAÍê³ÉÖÐ¶Ï¾ºÕù¡£
+     * æ•°æ®å·²å†™å…¥é˜Ÿåˆ—ï¼›å¦‚æžœDMAå½“å‰ç©ºé—²ï¼Œç«‹å³ä»Žé˜Ÿåˆ—å–æ•°æ®å‘é€ã€‚
+     * æ­¤å¤„DMAä¸­æ–­ä»å…³é—­ï¼Œé¿å…å¯åŠ¨DMAæ—¶ä¸ŽDMAå®Œæˆä¸­æ–­ç«žäº‰ã€‚
      */
     usart_tx_dma_start();
 
@@ -356,11 +356,11 @@ uint16_t usart_send_buffer(const uint8_t *data, uint16_t length)
 }
 
 /************************************************
-º¯ÊýÃû³Æ £º usart_send_data
-¹¦    ÄÜ £º ´®¿ÚÖØ·¢ËÍÒ»¸ö×Ö½Ú
-²Î    Êý £º ucch£ºÒª·¢ËÍµÄ×Ö½Ú
-·µ »Ø Öµ £º 
-×÷    Õß £º LC
+å‡½æ•°åç§° ï¼š usart_send_data
+åŠŸ    èƒ½ ï¼š ä¸²å£é‡å‘é€ä¸€ä¸ªå­—èŠ‚
+å‚    æ•° ï¼š ucchï¼šè¦å‘é€çš„å­—èŠ‚
+è¿” å›ž å€¼ ï¼š 
+ä½œ    è€… ï¼š LC
 *************************************************/
 void usart_send_data(uint8_t ucch)
 {
@@ -369,11 +369,11 @@ void usart_send_data(uint8_t ucch)
 
 
 /************************************************
-º¯ÊýÃû³Æ £º usart_send_String
-¹¦    ÄÜ £º ´®¿Ú·¢ËÍ×Ö·û´®
-²Î    Êý £º ucstr:Òª·¢ËÍµÄ×Ö·û´®
-·µ »Ø Öµ £º 
-×÷    Õß £º LC
+å‡½æ•°åç§° ï¼š usart_send_String
+åŠŸ    èƒ½ ï¼š ä¸²å£å‘é€å­—ç¬¦ä¸²
+å‚    æ•° ï¼š ucstr:è¦å‘é€çš„å­—ç¬¦ä¸²
+è¿” å›ž å€¼ ï¼š 
+ä½œ    è€… ï¼š LC
 *************************************************/
 void usart_send_string(uint8_t *ucstr)
 {
@@ -393,16 +393,16 @@ void usart_send_string(uint8_t *ucstr)
 }
 
 /************************************************
-º¯ÊýÃû³Æ £º fputc
-¹¦    ÄÜ £º ´®¿ÚÖØ¶¨Ïòº¯Êý
-²Î    Êý £º 
-·µ »Ø Öµ £º 
-×÷    Õß £º LC
+å‡½æ•°åç§° ï¼š fputc
+åŠŸ    èƒ½ ï¼š ä¸²å£é‡å®šå‘å‡½æ•°
+å‚    æ•° ï¼š 
+è¿” å›ž å€¼ ï¼š 
+ä½œ    è€… ï¼š LC
 *************************************************/
 int fputc(int ch, FILE *f)
 {
      usart_send_data(ch);
-     // µÈ´ý·¢ËÍÊý¾Ý»º³åÇø±êÖ¾ÖÃÎ»
+     // ç­‰å¾…å‘é€æ•°æ®ç¼“å†²åŒºæ ‡å¿—ç½®ä½
      return ch;
 }
 
@@ -412,9 +412,9 @@ void BSP_USART_IRQHandler(void)
     uint8_t usart_error = 0U;
 
     /*
-     * ÏÈ´¦ÀíUSART´íÎó¡£
-     * DMAÕý³£½ÓÊÕÊ±£¬²»ÒªÔÙÊÖ¶¯¶ÁÈ¡USART½ÓÊÕ¼Ä´æÆ÷£¬
-     * ·ñÔò»áÇÀ×ßDMA±¾Ó¦¶ÁÈ¡µÄÊý¾Ý¡£
+     * å…ˆå¤„ç†USARTé”™è¯¯ã€‚
+     * DMAæ­£å¸¸æŽ¥æ”¶æ—¶ï¼Œä¸è¦å†æ‰‹åŠ¨è¯»å–USARTæŽ¥æ”¶å¯„å­˜å™¨ï¼Œ
+     * å¦åˆ™ä¼šæŠ¢èµ°DMAæœ¬åº”è¯»å–çš„æ•°æ®ã€‚
      */
     if (usart_flag_get(BSP_USART, USART_FLAG_ORERR) == SET)
     {
@@ -442,13 +442,13 @@ void BSP_USART_IRQHandler(void)
     }
 
     /*
-     * IDLE±íÊ¾ÉÏÎ»»úÒÑ¾­Í£Ö¹·¢ËÍÒ»¶ÎÊ±¼ä£¬
-     * °ÑËü×÷ÎªÒ»Ö¡ÃüÁî½áÊø±êÖ¾¡£
+     * IDLEè¡¨ç¤ºä¸Šä½æœºå·²ç»åœæ­¢å‘é€ä¸€æ®µæ—¶é—´ï¼Œ
+     * æŠŠå®ƒä½œä¸ºä¸€å¸§å‘½ä»¤ç»“æŸæ ‡å¿—ã€‚
      */
     if (usart_interrupt_flag_get(BSP_USART, USART_INT_FLAG_IDLE) == SET)
     {
         /*
-         * ÏÈÍ£Ö¹DMA£¬¶³½áDMAÊ£ÓàÊýÁ¿¡£
+         * å…ˆåœæ­¢DMAï¼Œå†»ç»“DMAå‰©ä½™æ•°é‡ã€‚
          */
         dma_channel_disable(BSP_USART_RX_DMA_CHANNEL);
 
@@ -456,15 +456,15 @@ void BSP_USART_IRQHandler(void)
             (uint16_t)dma_transfer_number_get(BSP_USART_RX_DMA_CHANNEL);
 
         /*
-         * Çå³ýIDLE±êÖ¾¡£
-         * ²»ÐèÒªusart_data_receive()£¬DMAÒÑ¾­¶ÁÈ¡ÁË½ÓÊÕ¼Ä´æÆ÷¡£
+         * æ¸…é™¤IDLEæ ‡å¿—ã€‚
+         * ä¸éœ€è¦usart_data_receive()ï¼ŒDMAå·²ç»è¯»å–äº†æŽ¥æ”¶å¯„å­˜å™¨ã€‚
          */
         usart_interrupt_flag_clear(BSP_USART, USART_INT_FLAG_IDLE);
 
         /*
-         * ³¤¶ÈÎª0£ºÖ»ÊÇÏßÂ·¿ÕÏÐ£¬Ã»ÓÐÓÐÐ§ÃüÁî¡£
-         * ³¤¶È´ïµ½DMA»º³åÇøÉÏÏÞ£ºÈÏÎª±¾Ö¡³¬³¤¡£
-         * ÉÏÒ»Ö¡Î´´¦ÀíÍê³É£º¶ªÆúµ±Ç°Ö¡£¬±£»¤ÉÏÒ»Ö¡ÃüÁî¡£
+         * é•¿åº¦ä¸º0ï¼šåªæ˜¯çº¿è·¯ç©ºé—²ï¼Œæ²¡æœ‰æœ‰æ•ˆå‘½ä»¤ã€‚
+         * é•¿åº¦è¾¾åˆ°DMAç¼“å†²åŒºä¸Šé™ï¼šè®¤ä¸ºæœ¬å¸§è¶…é•¿ã€‚
+         * ä¸Šä¸€å¸§æœªå¤„ç†å®Œæˆï¼šä¸¢å¼ƒå½“å‰å¸§ï¼Œä¿æŠ¤ä¸Šä¸€å¸§å‘½ä»¤ã€‚
          */
         if ((received_length == 0U) ||
             (received_length >= USART_RX_DMA_LENGTH) ||
@@ -478,8 +478,8 @@ void BSP_USART_IRQHandler(void)
         else
         {
             /*
-             * ¸´ÖÆµ½Ô­À´µÄg_recv_buff¡£
-             * ºóÃæµÄrf_uart_config_process()¿É¼ÌÐøÊ¹ÓÃÔ­ÓÐ±äÁ¿¡£
+             * å¤åˆ¶åˆ°åŽŸæ¥çš„g_recv_buffã€‚
+             * åŽé¢çš„rf_uart_config_process()å¯ç»§ç»­ä½¿ç”¨åŽŸæœ‰å˜é‡ã€‚
              */
             memcpy(g_recv_buff,
                    g_usart_rx_dma_buffer,
@@ -491,7 +491,7 @@ void BSP_USART_IRQHandler(void)
         }
 
         /*
-         * ÎÞÂÛ±¾Ö¡ÊÇ·ñÓÐÐ§£¬¶¼»Ö¸´DMA£¬×¼±¸½ÓÊÕÏÂÒ»Ö¡¡£
+         * æ— è®ºæœ¬å¸§æ˜¯å¦æœ‰æ•ˆï¼Œéƒ½æ¢å¤DMAï¼Œå‡†å¤‡æŽ¥æ”¶ä¸‹ä¸€å¸§ã€‚
          */
         usart_rx_dma_restart();
     }
@@ -500,16 +500,16 @@ void BSP_USART_IRQHandler(void)
 void DMA_Channel1_2_IRQHandler(void)
 {
     /*
-     * DMA_CH1£ºUSART0·¢ËÍDMA¡£
+     * DMA_CH1ï¼šUSART0å‘é€DMAã€‚
      */
     if (dma_interrupt_flag_get(BSP_USART_TX_DMA_CHANNEL,
                                DMA_INT_FLAG_FTF) == SET)
     {
-        /* Çå³ýDMA·¢ËÍÍê³É±êÖ¾ */
+        /* æ¸…é™¤DMAå‘é€å®Œæˆæ ‡å¿— */
         dma_interrupt_flag_clear(BSP_USART_TX_DMA_CHANNEL,
                                  DMA_INT_FLAG_FTF);
 
-        /* µ±Ç°Á¬Ðø¶ÎÒÑ·¢ËÍÍê£¬ÍÆ½ø¶ÁÖ¸Õë²¢¼ÌÐøÏÂÒ»¶Î */
+        /* å½“å‰è¿žç»­æ®µå·²å‘é€å®Œï¼ŒæŽ¨è¿›è¯»æŒ‡é’ˆå¹¶ç»§ç»­ä¸‹ä¸€æ®µ */
         usart_tx_dma_complete();
     }
 
@@ -523,8 +523,8 @@ void DMA_Channel1_2_IRQHandler(void)
         usart_dma_transmit_config(BSP_USART, USART_DENT_DISABLE);
 
         /*
-         * DMA´íÎóÊ±£¬Îª±ÜÃâTX¶ÓÁÐÒ»Ö±¿¨ËÀ£¬
-         * ¶ªÆúµ±Ç°´ý·¢ËÍµÄÈÕÖ¾Êý¾Ý²¢¼ÇÂ¼´íÎó¡£
+         * DMAé”™è¯¯æ—¶ï¼Œä¸ºé¿å…TXé˜Ÿåˆ—ä¸€ç›´å¡æ­»ï¼Œ
+         * ä¸¢å¼ƒå½“å‰å¾…å‘é€çš„æ—¥å¿—æ•°æ®å¹¶è®°å½•é”™è¯¯ã€‚
          */
         g_usart_tx_read = g_usart_tx_write;
         g_usart_tx_dma_length = 0U;
@@ -533,8 +533,8 @@ void DMA_Channel1_2_IRQHandler(void)
     }
 
     /*
-     * DMA_CH2ÊÇRX DMA¡£
-     * µ±Ç°·½°¸²»ÆôÓÃCH2µÄDMAÍê³ÉÖÐ¶Ï£¬
-     * RXÖ¡½áÊøÓÉUSART0µÄIDLEÖÐ¶Ï´¦Àí¡£
+     * DMA_CH2æ˜¯RX DMAã€‚
+     * å½“å‰æ–¹æ¡ˆä¸å¯ç”¨CH2çš„DMAå®Œæˆä¸­æ–­ï¼Œ
+     * RXå¸§ç»“æŸç”±USART0çš„IDLEä¸­æ–­å¤„ç†ã€‚
      */
 }

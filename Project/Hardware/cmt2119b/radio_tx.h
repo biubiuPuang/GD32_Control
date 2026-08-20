@@ -6,7 +6,7 @@
 uint8_t radio_tx_init(void);
 uint8_t radio_tx_send(const uint8_t *buf, uint8_t len);
 
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø 
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³ 
 void radio_tx_set_channel(uint8_t channel);
 void radio_tx_set_frequency_step(uint8_t step);
 

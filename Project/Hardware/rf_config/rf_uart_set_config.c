@@ -1,20 +1,20 @@
 #include "rf_uart_set_config.h"
 
 
-// Ğ¾Æ¬FlashÄÚ²¿×îºóÒ»Ò³ÆğÊ¼Ò³µØÖ·(ÓÃÓÚ´æ´¢ÊÕ·¢chipÅäÖÃ²ÎÊı)
+// èŠ¯ç‰‡Flashå†…éƒ¨æœ€åä¸€é¡µèµ·å§‹é¡µåœ°å€(ç”¨äºå­˜å‚¨æ”¶å‘chipé…ç½®å‚æ•°)
 #define RF_FLASH_PAGE_ADDR       0x0800FC00UL
-// FlashÅäÖÃµÄÊ¶±ğ±êÖ¾
+// Flashé…ç½®çš„è¯†åˆ«æ ‡å¿—
 #define RF_FLASH_MAGIC           0x52464643UL
-// FlashÅäÖÃµÄÊ¶±ğ±êÖ¾
+// Flashé…ç½®çš„è¯†åˆ«æ ‡å¿—
 #define RF_FLASH_VERSION         1U
-// ´®¿ÚÅäÖÃÃüÁîµÄ×î´ó³¤¶ÈÎª64×Ö½Ú£¬·ÀÖ¹½ÓÊÕ»º³åÇøÔ½½ç
+// ä¸²å£é…ç½®å‘½ä»¤çš„æœ€å¤§é•¿åº¦ä¸º64å­—èŠ‚ï¼Œé˜²æ­¢æ¥æ”¶ç¼“å†²åŒºè¶Šç•Œ
 #define RF_UART_COMMAND_MAX      64U
 
-// ÊÕ·¢ÃüÁî±êÖ¾Î»
+// æ”¶å‘å‘½ä»¤æ ‡å¿—ä½
 /*
-    RF_TARGET_TX£ºÖ»ÅäÖÃ·¢ÉäĞ¾Æ¬¡£
-    RF_TARGET_RX£ºÖ»ÅäÖÃ½ÓÊÕĞ¾Æ¬¡£
-    RF_TARGET_BOTH£ºÍ¬Ê±ÅäÖÃ·¢ÉäºÍ½ÓÊÕĞ¾Æ¬¡£
+    RF_TARGET_TXï¼šåªé…ç½®å‘å°„èŠ¯ç‰‡ã€‚
+    RF_TARGET_RXï¼šåªé…ç½®æ¥æ”¶èŠ¯ç‰‡ã€‚
+    RF_TARGET_BOTHï¼šåŒæ—¶é…ç½®å‘å°„å’Œæ¥æ”¶èŠ¯ç‰‡ã€‚
 */
 #define RF_TARGET_TX             1U
 #define RF_TARGET_RX             2U
@@ -22,28 +22,28 @@
 
 typedef struct
 {
-    uint32_t magic; // ÅäÖÃÊ¶±ğ±êÖ¾¡£¶ÁÈ¡FlashÊ±£¬ÓÃËüÅĞ¶ÏÊı¾İÊÇ²»ÊÇ±¾³ÌĞò±£´æµÄÉäÆµÅäÖÃ¡£
-    uint16_t version; // ÅäÖÃ¸ñÊ½°æ±¾ºÅ¡£ÓÃÓÚ±ÜÃâÒÔºó½á¹¹Ìå¸ñÊ½±ä»¯ºó´íÎó¶ÁÈ¡¾ÉÊı¾İ¡£
-    uint16_t data_size; // ¼ÇÂ¼Õû¸ö rf_flash_config_t µÄ´óĞ¡¡£¶ÁÈ¡Ê±ÓÃÓÚ¼ì²éFlashÊı¾İ³¤¶ÈÊÇ·ñÕıÈ·¡£
+    uint32_t magic; // é…ç½®è¯†åˆ«æ ‡å¿—ã€‚è¯»å–Flashæ—¶ï¼Œç”¨å®ƒåˆ¤æ–­æ•°æ®æ˜¯ä¸æ˜¯æœ¬ç¨‹åºä¿å­˜çš„å°„é¢‘é…ç½®ã€‚
+    uint16_t version; // é…ç½®æ ¼å¼ç‰ˆæœ¬å·ã€‚ç”¨äºé¿å…ä»¥åç»“æ„ä½“æ ¼å¼å˜åŒ–åé”™è¯¯è¯»å–æ—§æ•°æ®ã€‚
+    uint16_t data_size; // è®°å½•æ•´ä¸ª rf_flash_config_t çš„å¤§å°ã€‚è¯»å–æ—¶ç”¨äºæ£€æŸ¥Flashæ•°æ®é•¿åº¦æ˜¯å¦æ­£ç¡®ã€‚
 
-    rf_factory_config_t tx; // ·¢ÉäĞ¾Æ¬µÄÅäÖÃ¡£
-    rf_factory_config_t rx; // ½ÓÊÕĞ¾Æ¬µÄÅäÖÃ¡£
+    rf_factory_config_t tx; // å‘å°„èŠ¯ç‰‡çš„é…ç½®ã€‚
+    rf_factory_config_t rx; // æ¥æ”¶èŠ¯ç‰‡çš„é…ç½®ã€‚
 
-    uint16_t crc16; // Õû¸ö½á¹¹ÌåµÄCRC16Ğ£ÑéÖµ¡£¶ÁÈ¡FlashºóÖØĞÂ¼ÆËãCRC£¬ÓëËü±È½Ï£¬ÅĞ¶ÏÅäÖÃÊÇ·ñËğ»µ¡£
-    uint16_t reserved; // ±£Áô×Ö¶Î£¬Ä¿Ç°Ã»ÓĞÊµ¼Ê¹¦ÄÜ£¬Ô¤Áô¸øÒÔºóÀ©Õ¹£¬Í¬Ê±ÓĞÖúÓÚ±£³Ö½á¹¹Ìå°´4×Ö½Ú¶ÔÆë¡£
+    uint16_t crc16; // æ•´ä¸ªç»“æ„ä½“çš„CRC16æ ¡éªŒå€¼ã€‚è¯»å–Flashåé‡æ–°è®¡ç®—CRCï¼Œä¸å®ƒæ¯”è¾ƒï¼Œåˆ¤æ–­é…ç½®æ˜¯å¦æŸåã€‚
+    uint16_t reserved; // ä¿ç•™å­—æ®µï¼Œç›®å‰æ²¡æœ‰å®é™…åŠŸèƒ½ï¼Œé¢„ç•™ç»™ä»¥åæ‰©å±•ï¼ŒåŒæ—¶æœ‰åŠ©äºä¿æŒç»“æ„ä½“æŒ‰4å­—èŠ‚å¯¹é½ã€‚
 } rf_flash_config_t;
 
 static rf_flash_config_t g_rf_saved_config;
 
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚÉú³ÉÒ»·İTX»òRXµÄÉäÆµÅäÖÃÊı¾İ¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºç”Ÿæˆä¸€ä»½TXæˆ–RXçš„å°„é¢‘é…ç½®æ•°æ®ã€‚
  * 
- * @param cfg ´æ·ÅÉú³ÉºóµÄÅäÖÃ¡£
- * @param role ÅäÖÃ¶ÔÏó£¬TX»òRX¡£
- * @param offset ÌøÆµ¼ä¸ô²ÎÊı fh_offset
- * @param channel µ±Ç°ÆµµÀ fh_channel
- * @param count ×ÜÆµµÀÊı channel_count
+ * @param cfg å­˜æ”¾ç”Ÿæˆåçš„é…ç½®ã€‚
+ * @param role é…ç½®å¯¹è±¡ï¼ŒTXæˆ–RXã€‚
+ * @param offset è·³é¢‘é—´éš”å‚æ•° fh_offset
+ * @param channel å½“å‰é¢‘é“ fh_channel
+ * @param count æ€»é¢‘é“æ•° channel_count
  */
 static void rf_build_one_config(rf_factory_config_t *cfg,
                                 uint8_t role,
@@ -51,7 +51,7 @@ static void rf_build_one_config(rf_factory_config_t *cfg,
                                 uint8_t channel,
                                 uint8_t count)
 {
-    // ÏÈ°ÑÕû¸öÅäÖÃ½á¹¹ÌåÇåÁã£¬·ÀÖ¹²ĞÁôÊı¾İÓ°ÏìCRCĞ£Ñé¡£
+    // å…ˆæŠŠæ•´ä¸ªé…ç½®ç»“æ„ä½“æ¸…é›¶ï¼Œé˜²æ­¢æ®‹ç•™æ•°æ®å½±å“CRCæ ¡éªŒã€‚
     memset(cfg, 0, sizeof(*cfg));
 
     cfg->magic = RF_CONFIG_MAGIC;
@@ -62,20 +62,20 @@ static void rf_build_one_config(rf_factory_config_t *cfg,
     cfg->fh_channel = channel;
     cfg->channel_count = count;
 
-    // ¼ÆËãCRCÇ°£¬ÏÈ°ÑCRC×Ö¶ÎÇåÁã£¬±ÜÃâ¾ÉCRC²ÎÓë±¾´Î¼ÆËã¡£
+    // è®¡ç®—CRCå‰ï¼Œå…ˆæŠŠCRCå­—æ®µæ¸…é›¶ï¼Œé¿å…æ—§CRCå‚ä¸æœ¬æ¬¡è®¡ç®—ã€‚
     cfg->crc16 = 0U;
-    // ¶ÔÕû¸öÅäÖÃ½á¹¹Ìå¼ÆËãCRC16£¬²¢½«½á¹û±£´æµ½ crc16 ÖĞ£¬Ö®ºó¿ÉÒÔÓÃËü¼ì²éÅäÖÃÊı¾İÊÇ·ñËğ»µ¡£
+    // å¯¹æ•´ä¸ªé…ç½®ç»“æ„ä½“è®¡ç®—CRC16ï¼Œå¹¶å°†ç»“æœä¿å­˜åˆ° crc16 ä¸­ï¼Œä¹‹åå¯ä»¥ç”¨å®ƒæ£€æŸ¥é…ç½®æ•°æ®æ˜¯å¦æŸåã€‚
     cfg->crc16 = rf_crc16_calc((const uint8_t *)cfg, sizeof(*cfg));
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚÉú³ÉÒ»·İÄ¬ÈÏµÄTXºÍRXÅäÖÃ£¬µ«Ëü±¾Éí²»»á°ÑÅäÖÃĞ´ÈëFlash¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºç”Ÿæˆä¸€ä»½é»˜è®¤çš„TXå’ŒRXé…ç½®ï¼Œä½†å®ƒæœ¬èº«ä¸ä¼šæŠŠé…ç½®å†™å…¥Flashã€‚
  * 
- * @param record ÓÃÓÚ´æ·ÅÉú³ÉµÄÍêÕûÄ¬ÈÏÅäÖÃ
+ * @param record ç”¨äºå­˜æ”¾ç”Ÿæˆçš„å®Œæ•´é»˜è®¤é…ç½®
  */
 static void rf_build_default_flash_config(rf_flash_config_t *record)
 {
-    // ½«Õû¸öÅäÖÃ½á¹¹ÌåÇåÁã£¬±ÜÃâ²ĞÁôÊı¾İÓ°ÏìÅäÖÃºÍCRCĞ£Ñé¡£
+    // å°†æ•´ä¸ªé…ç½®ç»“æ„ä½“æ¸…é›¶ï¼Œé¿å…æ®‹ç•™æ•°æ®å½±å“é…ç½®å’ŒCRCæ ¡éªŒã€‚
     memset(record, 0, sizeof(*record));
 
     record->magic = RF_FLASH_MAGIC;
@@ -90,9 +90,9 @@ static void rf_build_default_flash_config(rf_flash_config_t *record)
         rf_crc16_calc((const uint8_t *)record, sizeof(*record));
 }
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚ¼ì²é´ÓFlash¶ÁÈ¡µÄÕû·İTX/RXÅäÖÃÊÇ·ñÓĞĞ§¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºæ£€æŸ¥ä»Flashè¯»å–çš„æ•´ä»½TX/RXé…ç½®æ˜¯å¦æœ‰æ•ˆã€‚
  * 
- * @param record Òª¼ì²éµÄFlashÅäÖÃ¡£
+ * @param record è¦æ£€æŸ¥çš„Flashé…ç½®ã€‚
  * @return uint8_t 
  */
 static uint8_t rf_flash_record_check(const rf_flash_config_t *record)
@@ -147,9 +147,9 @@ static uint8_t rf_flash_record_check(const rf_flash_config_t *record)
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚ´ÓÖ¸¶¨µÄFlashµØÖ·¶ÁÈ¡ÉäÆµÅäÖÃ£¬²¢¼ì²éÅäÖÃÊÇ·ñÓĞĞ§¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºä»æŒ‡å®šçš„Flashåœ°å€è¯»å–å°„é¢‘é…ç½®ï¼Œå¹¶æ£€æŸ¥é…ç½®æ˜¯å¦æœ‰æ•ˆã€‚
  * 
- * @param record ÓÃÓÚ½ÓÊÕ¶ÁÈ¡µ½µÄÅäÖÃ¡£
+ * @param record ç”¨äºæ¥æ”¶è¯»å–åˆ°çš„é…ç½®ã€‚
  * @return uint8_t 
  */
 static uint8_t rf_flash_config_read(rf_flash_config_t *record)
@@ -170,7 +170,7 @@ static uint8_t rf_flash_config_read(rf_flash_config_t *record)
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚ²Á³ıÅäÖÃFlashÒ³¡¢Ğ´ÈëĞÂµÄTX/RXÅäÖÃ£¬²¢¶Á»ØĞ£Ñé¡£·µ»Ø 1U ±íÊ¾³É¹¦£¬·µ»Ø 0U ±íÊ¾Ê§°Ü
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºæ“¦é™¤é…ç½®Flashé¡µã€å†™å…¥æ–°çš„TX/RXé…ç½®ï¼Œå¹¶è¯»å›æ ¡éªŒã€‚è¿”å› 1U è¡¨ç¤ºæˆåŠŸï¼Œè¿”å› 0U è¡¨ç¤ºå¤±è´¥
  * 
  * @param record 
  * @return uint8_t 
@@ -244,7 +244,7 @@ static uint8_t rf_flash_config_write(rf_flash_config_t *record)
 }
 
 /**
- * @brief ´Ó×Ö·û´®µ±Ç°Î»ÖÃ¶ÁÈ¡Ò»¸öÊ®½øÖÆÕûÊı£¬½«½á¹û±£´æÎª uint8_t£¬²¢°Ñ×Ö·û´®Ö¸ÕëÒÆ¶¯µ½Êı×Ö½áÊøµÄÎ»ÖÃ¡£
+ * @brief ä»å­—ç¬¦ä¸²å½“å‰ä½ç½®è¯»å–ä¸€ä¸ªåè¿›åˆ¶æ•´æ•°ï¼Œå°†ç»“æœä¿å­˜ä¸º uint8_tï¼Œå¹¶æŠŠå­—ç¬¦ä¸²æŒ‡é’ˆç§»åŠ¨åˆ°æ•°å­—ç»“æŸçš„ä½ç½®ã€‚
  * 
  * @param cursor 
  * @param value 
@@ -288,7 +288,7 @@ static uint8_t rf_parse_uint8(const char **cursor, uint8_t *value)
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚ¼ì²é×Ö·û´®µ±Ç°Î»ÖÃÊÇ·ñÎªÖ¸¶¨×Ö·û¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºæ£€æŸ¥å­—ç¬¦ä¸²å½“å‰ä½ç½®æ˜¯å¦ä¸ºæŒ‡å®šå­—ç¬¦ã€‚
  * 
  * @param cursor 
  * @param expected 
@@ -311,7 +311,7 @@ static uint8_t rf_expect_char(const char **cursor, char expected)
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚ½âÎö´®¿Ú·¢ËÍµÄÉäÆµÅäÖÃÃüÁî¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºè§£æä¸²å£å‘é€çš„å°„é¢‘é…ç½®å‘½ä»¤ã€‚
  * 
  * @param command 
  * @param target 
@@ -402,7 +402,7 @@ static uint8_t rf_parse_command(const char *command,
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚÉè±¸Æô¶¯Ê±´ÓFlash»Ö¸´TXºÍRXµÄÉäÆµÅäÖÃ¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºè®¾å¤‡å¯åŠ¨æ—¶ä»Flashæ¢å¤TXå’ŒRXçš„å°„é¢‘é…ç½®ã€‚
  * 
  * @return uint8_t 
  */
@@ -428,7 +428,7 @@ uint8_t rf_uart_config_restore(void)
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚÖ´ĞĞ½âÎöÍê³ÉµÄÉäÆµÅäÖÃÃüÁî¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºæ‰§è¡Œè§£æå®Œæˆçš„å°„é¢‘é…ç½®å‘½ä»¤ã€‚
  * 
  * @param target 
  * @param offset 
@@ -504,7 +504,7 @@ static uint8_t rf_execute_command(uint8_t target,
 }
 
 /**
- * @brief Õâ¸öº¯ÊıÓÃÓÚ´¦Àí´®¿Ú½ÓÊÕµ½µÄÉäÆµÅäÖÃÃüÁî¡£
+ * @brief è¿™ä¸ªå‡½æ•°ç”¨äºå¤„ç†ä¸²å£æ¥æ”¶åˆ°çš„å°„é¢‘é…ç½®å‘½ä»¤ã€‚
  * 
  */
 void  rf_uart_config_process(void)
@@ -573,8 +573,8 @@ void  rf_uart_config_process(void)
     {
         usart_send_string((uint8_t *)"OK\r\n");
         /*
-        * ÅäÖÃÒÑ¾­Ğ´Èë Flash ²¢Ó¦ÓÃµ½Ğ¾Æ¬ºó£¬
-        * ¶ÁÈ¡ÊÕ·¢Ğ¾Æ¬¼Ä´æÆ÷ÖĞµÄÕæÊµÅäÖÃ²¢·µ»Ø¡£
+        * é…ç½®å·²ç»å†™å…¥ Flash å¹¶åº”ç”¨åˆ°èŠ¯ç‰‡åï¼Œ
+        * è¯»å–æ”¶å‘èŠ¯ç‰‡å¯„å­˜å™¨ä¸­çš„çœŸå®é…ç½®å¹¶è¿”å›ã€‚
         */
         rf_print_tx_rx_real_freq();
     }

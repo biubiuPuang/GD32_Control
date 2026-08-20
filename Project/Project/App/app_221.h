@@ -13,9 +13,9 @@
 #include "Debug_printf.h"
 
 
-// 221接收�?片初始化
+// 221鎺ユ敹鑺?鐗囧垵濮嬪寲
 void app_221_init(void);
-// 221接收�?片接收数�?
+// 221鎺ユ敹鑺?鐗囨帴鏀舵暟鎹?
 void app_221_receive_data(void);
 
 #endif /* __APP_221_H_ */

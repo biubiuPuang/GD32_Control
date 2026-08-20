@@ -14,7 +14,7 @@ uint8_t cmt2119b_send_packet(const uint8_t *buf, uint8_t len, uint32_t timeout_m
 uint8_t cmt2119b_read_reg(uint8_t addr);
 void cmt2119b_write_reg(uint8_t addr, uint8_t dat);
 
-// // ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
+// // æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
 void cmt2119b_set_frequency_channel(uint8_t channel);
 void cmt2119b_set_frequency_step(uint8_t step);
 

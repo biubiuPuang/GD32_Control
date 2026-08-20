@@ -46,8 +46,8 @@
 #define CMT2119B_SPI_AF           GPIO_AF_0
 
 /*
- * ���Ĵ���ʱ��ʱʹ�� GPIO ģ�� SPI��
- * 1us �ߵ�ƽ + 1us �͵�ƽ����ʱ��Լ 500kHz��
+ * 读寄存器时临时使用 GPIO 模拟 SPI。
+ * 1us 高电平 + 1us 低电平，读时钟约 500kHz。
  */
 #define CMT2119B_READ_SCLK_HALF_PERIOD_US  1U
 #define CMT2119B_READ_CSB_SETUP_US         1U
@@ -61,11 +61,11 @@ void cmt2119b_csb_low(void);
 void cmt2119b_fcsb_high(void);
 void cmt2119b_fcsb_low(void);
 
-/* �Ĵ������ڼ䣬PA5/PA7 �� GPIO �� SPI0 ֮���л� */
+/* 寄存器读期间，PA5/PA7 在 GPIO 与 SPI0 之间切换 */
 void cmt2119b_spi_pins_to_gpio(void);
 void cmt2119b_spi_pins_to_spi0(void);
 
-/* GPIO ģ��� SPI ʱʹ�� */
+/* GPIO 模拟读 SPI 时使用 */
 void cmt2119b_sclk_high(void);
 void cmt2119b_sclk_low(void);
 

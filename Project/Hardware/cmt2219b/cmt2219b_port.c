@@ -11,7 +11,7 @@ void cmt2219b_port_init(void)
     rcu_periph_clock_enable(CMT2219B_SPI_RCU);
 
     /*
-     * FCSB -> PB12����ͨ GPIO ���
+     * FCSB -> PB12，普通 GPIO 输出
      */
     gpio_mode_set(CMT2219B_FCSB_PORT,
                   GPIO_MODE_OUTPUT,
@@ -24,7 +24,7 @@ void cmt2219b_port_init(void)
                             CMT2219B_FCSB_PIN);
 
     /*
-     * CSB -> PB14����ͨ GPIO ���
+     * CSB -> PB14，普通 GPIO 输出
      */
     gpio_mode_set(CMT2219B_CSB_PORT,
                   GPIO_MODE_OUTPUT,
@@ -54,7 +54,7 @@ void cmt2219b_port_init(void)
                             CMT2219B_CLK_PIN);
 
     /*
-     * SDIO -> PB15 -> SPI1_MOSI / ����˫������
+     * SDIO -> PB15 -> SPI1_MOSI / 单线双向数据
      */
     gpio_af_set(CMT2219B_SDIO_PORT,
                 CMT2219B_SPI_AF,
@@ -71,7 +71,7 @@ void cmt2219b_port_init(void)
                             CMT2219B_SDIO_PIN);
 
     /*
-     * GPIO3 -> PB10������״̬����
+     * GPIO3 -> PB10，接收状态输入
      */
     gpio_mode_set(CMT2219B_GPIO3_PORT,
                   GPIO_MODE_INPUT,
@@ -79,34 +79,34 @@ void cmt2219b_port_init(void)
                   CMT2219B_GPIO3_PIN);
 
     /*
-     * ��ʼ��Ĭ�Ͽ��е�ƽ
+     * 初始化默认空闲电平
      */
     cmt2219b_csb_high();
     cmt2219b_fcsb_high();
 
     /*
-     * ���� SPI ���Ŷ�Ӧ��Ĭ�ϵ�ƽ��
+     * 设置 SPI 引脚对应的默认电平。
      */
     gpio_bit_reset(CMT2219B_CLK_PORT, CMT2219B_CLK_PIN);
     gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
 }
 
 /*
- * �� PB13��PB15 �� SPI1 ���ù����л�Ϊ��ͨ GPIO��
+ * 将 PB13、PB15 从 SPI1 复用功能切换为普通 GPIO。
  *
- * 221 ��ȡ�Ĵ����Ͷ�ȡ FIFO ʱʹ�á�
+ * 221 读取寄存器和读取 FIFO 时使用。
  */
 void cmt2219b_spi_pins_to_gpio(void)
 {
     /*
-     * �л�ǰ��֤ CLK Ϊ�͵�ƽ��
-     * ��֤ SDIO �������ֵΪ�ߵ�ƽ��
+     * 切换前保证 CLK 为低电平，
+     * 保证 SDIO 输出锁存值为高电平。
      */
     gpio_bit_reset(CMT2219B_CLK_PORT, CMT2219B_CLK_PIN);
     gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
 
     /*
-     * PB13 -> ��ͨ GPIO �����ģ�� CLK��
+     * PB13 -> 普通 GPIO 输出，模拟 CLK。
      */
     gpio_mode_set(CMT2219B_CLK_PORT,
                   GPIO_MODE_OUTPUT,
@@ -119,8 +119,8 @@ void cmt2219b_spi_pins_to_gpio(void)
                             CMT2219B_CLK_PIN);
 
     /*
-     * PB15 -> ��ͨ GPIO �����
-     * ��ȡ����֮ǰ���л�Ϊ���롣
+     * PB15 -> 普通 GPIO 输出。
+     * 读取数据之前再切换为输入。
      */
     gpio_mode_set(CMT2219B_SDIO_PORT,
                   GPIO_MODE_OUTPUT,
@@ -134,20 +134,20 @@ void cmt2219b_spi_pins_to_gpio(void)
 }
 
 /*
- * �� PB13��PB15 �ָ�Ϊ SPI1 ���ù��ܡ�
+ * 将 PB13、PB15 恢复为 SPI1 复用功能。
  *
- * Ӳ�� SPI д�Ĵ�����д FIFO ʱʹ�á�
+ * 硬件 SPI 写寄存器和写 FIFO 时使用。
  */
 void cmt2219b_spi_pins_to_spi1(void)
 {
     /*
-     * �л�ǰ��֤ CLK Ϊ�͵�ƽ��
+     * 切换前保证 CLK 为低电平。
      */
     gpio_bit_reset(CMT2219B_CLK_PORT, CMT2219B_CLK_PIN);
     gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
 
     /*
-     * �ָ� PB15 -> SPI1_MOSI / SDIO��
+     * 恢复 PB15 -> SPI1_MOSI / SDIO。
      */
     gpio_af_set(CMT2219B_SDIO_PORT,
                 CMT2219B_SPI_AF,
@@ -164,9 +164,9 @@ void cmt2219b_spi_pins_to_spi1(void)
                             CMT2219B_SDIO_PIN);
 
     /*
-     * �ָ� PB13 -> SPI1_SCK��
+     * 恢复 PB13 -> SPI1_SCK。
      *
-     * �Ȼָ� SDIO���ٻָ� CLK�������л�ʱ��������ʱ�ӡ�
+     * 先恢复 SDIO，再恢复 CLK，避免切换时产生错误时钟。
      */
     gpio_af_set(CMT2219B_CLK_PORT,
                 CMT2219B_SPI_AF,

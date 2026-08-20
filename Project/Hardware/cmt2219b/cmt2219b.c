@@ -14,10 +14,10 @@
 
 /* Registers */
 /* 
-ÕâÀïĞÂÔöÁËÈı¸ö¼Ä´æÆ÷£º// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
-#define CMT2219B_CUS_FSK4                   0x27  // AFC ãĞÖµ
-#define CMT2219B_CUS_FREQ_CHNL              0x63  // ÌøÆµĞÅµÀ
-#define CMT2219B_CUS_FREQ_OFS               0x64  // ÌøÆµ²½½ø
+è¿™é‡Œæ–°å¢äº†ä¸‰ä¸ªå¯„å­˜å™¨ï¼š// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
+#define CMT2219B_CUS_FSK4                   0x27  // AFC é˜ˆå€¼
+#define CMT2219B_CUS_FREQ_CHNL              0x63  // è·³é¢‘ä¿¡é“
+#define CMT2219B_CUS_FREQ_OFS               0x64  // è·³é¢‘æ­¥è¿›
 */
 #define CMT2219B_CUS_CMT10                  0x09
 #define CMT2219B_CUS_SYS2                   0x0D
@@ -144,13 +144,13 @@ static void cmt2219b_config_gpio_interrupt(void)
     uint8_t tmp;
 
     /*
-     * Ö»Ê¹ÓÃ GPIO3¡£
-     * ÅäÖÃ GPIO3 Êä³ö INT2¡£
+     * åªä½¿ç”¨ GPIO3ã€‚
+     * é…ç½® GPIO3 è¾“å‡º INT2ã€‚
      */
     cmt2219b_write_reg(CMT2219B_CUS_IO_SEL, CMT2219B_GPIO3_SEL_INT2);
 
     /*
-     * ÅäÖÃ INT2 = PKT_DONE¡£
+     * é…ç½® INT2 = PKT_DONEã€‚
      */
     tmp = cmt2219b_read_reg(CMT2219B_CUS_INT2_CTL);
     tmp &= (uint8_t)(~CMT2219B_MASK_INT2_SEL);
@@ -158,7 +158,7 @@ static void cmt2219b_config_gpio_interrupt(void)
     cmt2219b_write_reg(CMT2219B_CUS_INT2_CTL, tmp);
 
     /*
-     * Ê¹ÄÜ½ÓÊÕÏà¹ØÖĞ¶Ï¡£
+     * ä½¿èƒ½æ¥æ”¶ç›¸å…³ä¸­æ–­ã€‚
      */
     cmt2219b_write_reg(CMT2219B_CUS_INT_EN,
                    CMT2219B_MASK_PKT_DONE_EN |
@@ -199,7 +199,7 @@ uint8_t cmt2219b_init(void)
     cmt2219b_clear_interrupt_flags();
 
     /*
-     * Ğ´Èë¹Ù·½ Demo ²ÎÊı±í¡£
+     * å†™å…¥å®˜æ–¹ Demo å‚æ•°è¡¨ã€‚
      */
     cmt2219b_config_reg_bank(CMT2219B_CMT_BANK_ADDR,
                              g_cmt2219b_cmt_bank,
@@ -230,7 +230,7 @@ uint8_t cmt2219b_init(void)
                             CMT2219B_LBD_BANK_SIZE);
 
     /*
-     * ¹Ù·½ Demo ÀïÓĞÕâ¸ö¶îÍâÅäÖÃ£º
+     * å®˜æ–¹ Demo é‡Œæœ‰è¿™ä¸ªé¢å¤–é…ç½®ï¼š
      * xosc_aac_code[2:0] = 2
      */
     tmp = cmt2219b_read_reg(CMT2219B_CUS_CMT10);
@@ -241,7 +241,7 @@ uint8_t cmt2219b_init(void)
     cmt2219b_config_gpio_interrupt();
 
     /*
-     * ÅäÖÃÍê³Éºó½øÈë Sleep£¬Ê¹ÅäÖÃÉúĞ§¡£
+     * é…ç½®å®Œæˆåè¿›å…¥ Sleepï¼Œä½¿é…ç½®ç”Ÿæ•ˆã€‚
      */
     cmt2219b_go_sleep();
 
@@ -254,7 +254,7 @@ uint8_t cmt2219b_is_exist(void)
     uint8_t dat;
 
     /*
-     * Í¨¹ı¶ÁĞ´ 0x48 ¼Ä´æÆ÷ÅĞ¶Ï SPI ÊÇ·ñÕı³£¡£
+     * é€šè¿‡è¯»å†™ 0x48 å¯„å­˜å™¨åˆ¤æ–­ SPI æ˜¯å¦æ­£å¸¸ã€‚
      */
     back = cmt2219b_read_reg(CMT2219B_CUS_PKT17);
 
@@ -281,8 +281,8 @@ void cmt2219b_write_reg(uint8_t addr, uint8_t dat)
 }
 
 /*
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø 
-ÕâÈı¸öº¯Êı¶ÔÓ¦¹Ù·½ Demo ÀïµÄ£º
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³ 
+è¿™ä¸‰ä¸ªå‡½æ•°å¯¹åº”å®˜æ–¹ Demo é‡Œçš„ï¼š
 CMT2300A_SetFrequencyChannel()
 CMT2300A_SetFrequencyStep()
 CMT2300A_SetAfcOvfTh()
@@ -340,7 +340,7 @@ void cmt2219b_enable_read_fifo(void)
     uint8_t tmp;
 
     /*
-     * ÅäÖÃ SPI ¶Á RX FIFO¡£
+     * é…ç½® SPI è¯» RX FIFOã€‚
      */
     tmp = cmt2219b_read_reg(CMT2219B_CUS_FIFO_CTL);
     tmp &= (uint8_t)(~CMT2219B_MASK_SPI_FIFO_RD_WR_SEL);
@@ -374,14 +374,14 @@ uint8_t cmt2219b_packet_received(void)
     uint8_t int_flag;
 
     /*
-     * 0x6D ÊÇ INT_FLAG ¼Ä´æÆ÷¡£
-     * bit0 = 1 ±íÊ¾ÊÕµ½ÍêÕûÊı¾İ°ü¡£
-     * bit1 = CRC_OK£¬±íÊ¾ CRC Ğ£ÑéÍ¨¹ı¡£
-     * Ö»ÓĞÁ½¸ö±êÖ¾¶¼Îª 1£¬²ÅÈÏÎªÊÕµ½ÓĞĞ§Êı¾İ°ü¡£
+     * 0x6D æ˜¯ INT_FLAG å¯„å­˜å™¨ã€‚
+     * bit0 = 1 è¡¨ç¤ºæ”¶åˆ°å®Œæ•´æ•°æ®åŒ…ã€‚
+     * bit1 = CRC_OKï¼Œè¡¨ç¤º CRC æ ¡éªŒé€šè¿‡ã€‚
+     * åªæœ‰ä¸¤ä¸ªæ ‡å¿—éƒ½ä¸º 1ï¼Œæ‰è®¤ä¸ºæ”¶åˆ°æœ‰æ•ˆæ•°æ®åŒ…ã€‚
      */
     int_flag = cmt2219b_read_reg(0x6D);
 
-    // ÎŞCRCĞ£ÑéÅĞ¶Ï
+    // æ— CRCæ ¡éªŒåˆ¤æ–­
     // if (cmt2219b_read_reg(0x6D) & 0x01) {
     //     return CMT2219B_OK;
     // }

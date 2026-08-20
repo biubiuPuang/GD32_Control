@@ -15,9 +15,9 @@
 #define CMT2119B_CUS_MODE_CTL           0x60
 #define CMT2119B_CUS_MODE_STA           0x61
 #define CMT2119B_CUS_EN_CTL             0x62
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
 #define CMT2119B_CUS_FREQ_CHNL          0x63
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
 #define CMT2119B_CUS_FREQ_OFS           0x64
 #define CMT2119B_CUS_IO_SEL             0x65
 #define CMT2119B_CUS_INT1_CTL           0x66
@@ -221,12 +221,12 @@ void cmt2119b_write_reg(uint8_t addr, uint8_t dat)
     cmt2119b_spi_write_reg(addr, dat);
 }
 
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
 void cmt2119b_set_frequency_channel(uint8_t channel)
 {
     cmt2119b_write_reg(CMT2119B_CUS_FREQ_CHNL, channel);
 }
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³
 void cmt2119b_set_frequency_step(uint8_t step)
 {
     cmt2119b_write_reg(CMT2119B_CUS_FREQ_OFS, step);
@@ -286,15 +286,15 @@ uint8_t cmt2119b_send_packet(const uint8_t *buf, uint8_t len, uint32_t timeout_m
         return CMT2119B_ERROR;
     }
 
-    // ÏÈ½øÈë´ı»ú²¢ÇåÀí×´Ì¬
+    // å…ˆè¿›å…¥å¾…æœºå¹¶æ¸…ç†çŠ¶æ€
     cmt2119b_go_stby();
     cmt2119b_clear_interrupt_flags();
 
-    // ÅäÖÃÎª·¢ËÍ FIFO
+    // é…ç½®ä¸ºå‘é€ FIFO
     cmt2119b_enable_write_fifo();
     cmt2119b_clear_tx_fifo();
 
-    // °Ñ 32 ×Ö½ÚĞ´Èë·¢ËÍĞ¾Æ¬ FIFO
+    // æŠŠ 32 å­—èŠ‚å†™å…¥å‘é€èŠ¯ç‰‡ FIFO
     cmt2119b_write_fifo(buf, len);
 
     fifo_flag = cmt2119b_read_reg(CMT2119B_CUS_FIFO_FLAG);

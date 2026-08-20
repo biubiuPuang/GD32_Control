@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 /*
- * PH2219BBA / CMT2219B ½ÓÊÕÄ£¿éÒý½ÅÁ¬½Ó£º
+ * PH2219BBA / CMT2219B æŽ¥æ”¶æ¨¡å—å¼•è„šè¿žæŽ¥ï¼š
  *
  * FCSB  -> PB12
  * CSB   -> PB14
@@ -14,7 +14,7 @@
  * GPIO3 -> PB10
  * VCC   -> 3V3
  * GND   -> GND
- * ANT   -> 433MHz ½ÓÊÕÌìÏß
+ * ANT   -> 433MHz æŽ¥æ”¶å¤©çº¿
  */
 
 #define CMT2219B_FCSB_PORT      GPIOB
@@ -38,12 +38,12 @@
 #define CMT2219B_GPIO3_RCU      RCU_GPIOB
 
 /*
- * CMT2219B Ê¹ÓÃ GD32E230 SPI1£º
+ * CMT2219B ä½¿ç”¨ GD32E230 SPI1ï¼š
  *
  * PB13 -> SPI1_SCK
- * PB15 -> SPI1_MOSI / µ¥ÏßË«Ïò SDIO
+ * PB15 -> SPI1_MOSI / å•çº¿åŒå‘ SDIO
  *
- * PB12¡¢PB14 ÈÔÈ»Ê¹ÓÃÆÕÍ¨ GPIO ¿ØÖÆ FCSB¡¢CSB¡£
+ * PB12ã€PB14 ä»ç„¶ä½¿ç”¨æ™®é€š GPIO æŽ§åˆ¶ FCSBã€CSBã€‚
  */
 #define CMT2219B_SPI_PERIPH     SPI1
 #define CMT2219B_SPI_RCU        RCU_SPI1
@@ -52,7 +52,7 @@
 void cmt2219b_port_init(void);
 
 /*
- * SPI1 Ó²¼þ¹¦ÄÜºÍ GPIO Ä£Äâ SPI Ö®¼äÇÐ»»¡£
+ * SPI1 ç¡¬ä»¶åŠŸèƒ½å’Œ GPIO æ¨¡æ‹Ÿ SPI ä¹‹é—´åˆ‡æ¢ã€‚
  */
 void cmt2219b_spi_pins_to_gpio(void);
 void cmt2219b_spi_pins_to_spi1(void);

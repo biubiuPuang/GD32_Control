@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-/* 1£ºÔÊÐíµ÷ÊÔÊä³ö£»0£º¹Ø±Õµ÷ÊÔÊä³ö */
+/* 1ï¼šå…è®¸è°ƒè¯•è¾“å‡ºï¼›0ï¼šå…³é—­è°ƒè¯•è¾“å‡º */
 #define DEBUG_PRINTF_ENABLE  1
 
 #if (DEBUG_PRINTF_ENABLE == 1)

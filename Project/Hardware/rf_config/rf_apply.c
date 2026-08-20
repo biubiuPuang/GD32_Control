@@ -2,7 +2,7 @@
 #include "Debug_printf.h"
 
 /**
- * @brief Ó¦ÓÃÅäÖÃµ½ÎŞÏßĞ¾Æ¬
+ * @brief åº”ç”¨é…ç½®åˆ°æ— çº¿èŠ¯ç‰‡
  * 
  * @param cfg 
  * @return uint8_t 
@@ -36,7 +36,7 @@ uint8_t rf_config_apply(const rf_factory_config_t *cfg)
 
 
 /**
- * @brief ²âÊÔº¯Êı Í¨¹ı´Ëº¯Êı¼Ù×°´®¿Ú·¢ËÍÅäÖÃ²ÎÊı
+ * @brief æµ‹è¯•å‡½æ•° é€šè¿‡æ­¤å‡½æ•°å‡è£…ä¸²å£å‘é€é…ç½®å‚æ•°
  * 
  */
 void rf_test_apply_config(void)

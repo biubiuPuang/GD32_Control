@@ -1,7 +1,7 @@
 #include "radio_rx.h"
 #include "cmt2219b.h"
 
-// ÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø 
+// æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³ 
 #define RADIO_FH_STEP_100KHZ        40
 #define RADIO_FH_DEFAULT_CHANNEL    0
 
@@ -17,15 +17,15 @@ uint8_t radio_rx_init(void)
         return CMT2219B_ERROR;
     }
 
-    // ´Ëº¯ÊıÏÂÃæµÄÕâĞ©²¿·Ö¶¼ÊÇÊÖ¶¯¿ìËÙµ÷ÆµÏà¹Ø 
+    // æ­¤å‡½æ•°ä¸‹é¢çš„è¿™äº›éƒ¨åˆ†éƒ½æ˜¯æ‰‹åŠ¨å¿«é€Ÿè°ƒé¢‘ç›¸å…³ 
     cmt2219b_go_stby();
 
     cmt2219b_set_frequency_step(RADIO_FH_STEP_100KHZ);
     cmt2219b_set_frequency_channel(RADIO_FH_DEFAULT_CHANNEL);
 
     /*
-     * AFC ãĞÖµÏÈÒÆÖ²º¯Êı£¬²»Ä¬ÈÏÆôÓÃ¡£
-     * ºóÃæÈç¹û½ÓÊÕ¶Ë¿ìËÙÌøÆµ²»ÎÈ¶¨£¬ÔÙ´ò¿ªÕâÒ»¾ä¡£
+     * AFC é˜ˆå€¼å…ˆç§»æ¤å‡½æ•°ï¼Œä¸é»˜è®¤å¯ç”¨ã€‚
+     * åé¢å¦‚æœæ¥æ”¶ç«¯å¿«é€Ÿè·³é¢‘ä¸ç¨³å®šï¼Œå†æ‰“å¼€è¿™ä¸€å¥ã€‚
      */
     /* cmt2219b_set_afc_ovf_th(0x27); */
 
@@ -59,7 +59,7 @@ uint8_t radio_rx_poll_packet(uint8_t *buf, uint8_t len)
     }
 
     /*
-     * Ã»ÊÕµ½°ü£¬Ö±½Ó·µ»Ø 0¡£
+     * æ²¡æ”¶åˆ°åŒ…ï¼Œç›´æ¥è¿”å› 0ã€‚
      */
     if (!cmt2219b_packet_received())
     {
@@ -67,12 +67,12 @@ uint8_t radio_rx_poll_packet(uint8_t *buf, uint8_t len)
     }
 
     /*
-     * ÊÕµ½°üºó£º
-     * 1. ½øÈë´ı»ú
-     * 2. ¶Á FIFO
-     * 3. Çå FIFO
-     * 4. ÇåÖĞ¶Ï
-     * 5. ÖØĞÂ½øÈë RX
+     * æ”¶åˆ°åŒ…åï¼š
+     * 1. è¿›å…¥å¾…æœº
+     * 2. è¯» FIFO
+     * 3. æ¸… FIFO
+     * 4. æ¸…ä¸­æ–­
+     * 5. é‡æ–°è¿›å…¥ RX
      */
     cmt2219b_go_stby();
 

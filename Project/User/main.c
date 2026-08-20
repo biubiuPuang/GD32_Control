@@ -81,7 +81,7 @@ int main(void)
         // 211 发送数据
         app_211_send_test_data();
         // 221芯片接收数据
-        // app_221_receive_data();
+        app_221_receive_data();
 
         // for (int i = 0; i <= 3; i++)
         // {

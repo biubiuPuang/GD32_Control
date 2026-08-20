@@ -1,7 +1,7 @@
 #include "app_tx-rx_config.h"
 
 /*
- * µ±Ç°ÆµÂÊ = 433.920MHz + 2.5kHz * fh_offset * fh_channel
+ * å½“å‰é¢‘ç‡ = 433.920MHz + 2.5kHz * fh_offset * fh_channel
  */
 static uint32_t rf_calc_freq_hz(uint8_t fh_offset, uint8_t fh_channel)
 {
@@ -9,7 +9,7 @@ static uint32_t rf_calc_freq_hz(uint8_t fh_offset, uint8_t fh_channel)
 }
 
 /*
- * »ñÈ¡µ±Ç° 211·¢ËÍĞ¾Æ¬ ºÍ 221½ÓÊÕĞ¾Æ¬ µÄÕæÊµ¼Ä´æÆ÷ÅäÖÃ
+ * è·å–å½“å‰ 211å‘é€èŠ¯ç‰‡ å’Œ 221æ¥æ”¶èŠ¯ç‰‡ çš„çœŸå®å¯„å­˜å™¨é…ç½®
  */
 void rf_get_tx_rx_real_freq(rf_tx_rx_freq_t *info)
 {
@@ -24,13 +24,13 @@ void rf_get_tx_rx_real_freq(rf_tx_rx_freq_t *info)
     }
 
     /*
-     * Ö±½Ó´Ó 211 ·¢ËÍĞ¾Æ¬¼Ä´æÆ÷¶ÁÈ¡
+     * ç›´æ¥ä» 211 å‘é€èŠ¯ç‰‡å¯„å­˜å™¨è¯»å–
      */
     tx_channel = cmt2119b_read_reg(RF_REG_FH_CHANNEL);
     tx_offset  = cmt2119b_read_reg(RF_REG_FH_OFFSET);
 
     /*
-     * Ö±½Ó´Ó 221 ½ÓÊÕĞ¾Æ¬¼Ä´æÆ÷¶ÁÈ¡
+     * ç›´æ¥ä» 221 æ¥æ”¶èŠ¯ç‰‡å¯„å­˜å™¨è¯»å–
      */
     rx_channel = cmt2219b_read_reg(RF_REG_FH_CHANNEL);
     rx_offset  = cmt2219b_read_reg(RF_REG_FH_OFFSET);
@@ -45,7 +45,7 @@ void rf_get_tx_rx_real_freq(rf_tx_rx_freq_t *info)
 }
 
 /*
- * Èç¹ûÄãÏëÖ±½Ó´®¿Ú´òÓ¡È·ÈÏ£¬¾Íµ÷ÓÃÕâ¸öº¯Êı
+ * å¦‚æœä½ æƒ³ç›´æ¥ä¸²å£æ‰“å°ç¡®è®¤ï¼Œå°±è°ƒç”¨è¿™ä¸ªå‡½æ•°
  */
 void rf_print_tx_rx_real_freq(void)
 {

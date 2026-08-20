@@ -1,45 +1,45 @@
 #include "packet_loss_test.h"
-#include "radio_tx.h"      /* ·¢ËÍµ×²ã½Ó¿Ú radio_tx_send() */
-#include "radio_rx.h"      /* ½ÓÊÕµ×²ã½Ó¿Ú radio_rx_poll_packet() */
+#include "radio_tx.h"      /* å‘é€åº•å±‚æ¥å£ radio_tx_send() */
+#include "radio_rx.h"      /* æ¥æ”¶åº•å±‚æ¥å£ radio_rx_poll_packet() */
 #include "systick.h"       /* delay_us() */
-#include "Debug_printf.h"  /* debug_printf() ´®¿Ú´òÓ¡ */
+#include "Debug_printf.h"  /* debug_printf() ä¸²å£æ‰“å° */
 
-/* °ü³¤£º±ØĞëºÍ RFPDK µÄ Payload Length Ò»ÖÂ£¨µ±Ç° 32 ×Ö½Ú£© */
+/* åŒ…é•¿ï¼šå¿…é¡»å’Œ RFPDK çš„ Payload Length ä¸€è‡´ï¼ˆå½“å‰ 32 å­—èŠ‚ï¼‰ */
 #define TEST_PACKET_LEN   32
-/* ²âÊÔ°üÊı£º1500 °ü ¡Ö 60 Ãë£¨Ã¿°üÔ¼ 40ms£º37.5ms ¿ÕÖĞ + ´¦Àí£© */
+/* æµ‹è¯•åŒ…æ•°ï¼š1500 åŒ… â‰ˆ 60 ç§’ï¼ˆæ¯åŒ…çº¦ 40msï¼š37.5ms ç©ºä¸­ + å¤„ç†ï¼‰ */
 #define TEST_PACKET_TOTAL 1500
 
-/* ===== Ä£¿éÄÚ²¿×´Ì¬ ===== */
-static uint8_t  s_tx_buf[TEST_PACKET_LEN];  /* ·¢ËÍ»º³å */
-static uint8_t  s_rx_buf[TEST_PACKET_LEN];  /* ½ÓÊÕ»º³å */
-static uint16_t s_tx_seq;                   /* ·¢ËÍĞòºÅ 0~65535£¬±¾´Î²»»ØÈÆ */
-static uint32_t s_tx_count;                 /* ·¢ËÍ¼ÆÊı */
-static uint32_t s_rx_count;                 /* ½ÓÊÕ¼ÆÊı */
-static uint32_t s_lost_by_gap;              /* °´ĞòºÅÌø±äÍ³¼ÆµÄ¶ª°üÊı£¨²Î¿¼£© */
-static uint16_t s_last_seq;                 /* ÉÏÒ»¸öÊÕµ½µÄĞòºÅ */
+/* ===== æ¨¡å—å†…éƒ¨çŠ¶æ€ ===== */
+static uint8_t  s_tx_buf[TEST_PACKET_LEN];  /* å‘é€ç¼“å†² */
+static uint8_t  s_rx_buf[TEST_PACKET_LEN];  /* æ¥æ”¶ç¼“å†² */
+static uint16_t s_tx_seq;                   /* å‘é€åºå· 0~65535ï¼Œæœ¬æ¬¡ä¸å›ç»• */
+static uint32_t s_tx_count;                 /* å‘é€è®¡æ•° */
+static uint32_t s_rx_count;                 /* æ¥æ”¶è®¡æ•° */
+static uint32_t s_lost_by_gap;              /* æŒ‰åºå·è·³å˜ç»Ÿè®¡çš„ä¸¢åŒ…æ•°ï¼ˆå‚è€ƒï¼‰ */
+static uint16_t s_last_seq;                 /* ä¸Šä¸€ä¸ªæ”¶åˆ°çš„åºå· */
 
-/* ¸´Î»ËùÓĞÍ³¼Æ×´Ì¬£¬ÅÜ²âÊÔÇ°ÏÈµ÷ÓÃ */
+/* å¤ä½æ‰€æœ‰ç»Ÿè®¡çŠ¶æ€ï¼Œè·‘æµ‹è¯•å‰å…ˆè°ƒç”¨ */
 static void packet_loss_test_reset(void)
 {
     uint8_t i;
 
     for (i = 0; i < TEST_PACKET_LEN; i++)
     {
-        s_tx_buf[i] = (uint8_t)i;   /* Ìî³ä¹Ì¶¨Êı¾İ£¬Ç° 2 ×Ö½Ú»á±»ĞòºÅ¸²¸Ç */
+        s_tx_buf[i] = (uint8_t)i;   /* å¡«å……å›ºå®šæ•°æ®ï¼Œå‰ 2 å­—èŠ‚ä¼šè¢«åºå·è¦†ç›– */
     }
 
     s_tx_seq      = 0;
     s_tx_count    = 0;
     s_rx_count    = 0;
     s_lost_by_gap = 0;
-    s_last_seq    = 0xFFFF;         /* 0xFFFF ±íÊ¾"»¹Ã»ÊÕµ½¹ı" */
+    s_last_seq    = 0xFFFF;         /* 0xFFFF è¡¨ç¤º"è¿˜æ²¡æ”¶åˆ°è¿‡" */
 }
 
-/* ·¢Ò»°ü£ºĞòºÅ·ÅÇ° 2 ×Ö½Ú£¬×èÈûµ½ TX_DONE£¨Ô¼ 37.5ms£© */
+/* å‘ä¸€åŒ…ï¼šåºå·æ”¾å‰ 2 å­—èŠ‚ï¼Œé˜»å¡åˆ° TX_DONEï¼ˆçº¦ 37.5msï¼‰ */
 static void packet_loss_test_send(void)
 {
-    s_tx_buf[0] = (uint8_t)(s_tx_seq & 0xFF);   /* ĞòºÅµÍ×Ö½Ú */
-    s_tx_buf[1] = (uint8_t)(s_tx_seq >> 8);     /* ĞòºÅ¸ß×Ö½Ú */
+    s_tx_buf[0] = (uint8_t)(s_tx_seq & 0xFF);   /* åºå·ä½å­—èŠ‚ */
+    s_tx_buf[1] = (uint8_t)(s_tx_seq >> 8);     /* åºå·é«˜å­—èŠ‚ */
 
     radio_tx_send(s_tx_buf, TEST_PACKET_LEN);
 
@@ -47,17 +47,17 @@ static void packet_loss_test_send(void)
     s_tx_count++;
 }
 
-/* ÊÕÒ»´Î°ü£¨ÓĞ°ü²Å´¦Àí£©£¬²¢ÀÛ¼Æ¶ª°üÊı */
+/* æ”¶ä¸€æ¬¡åŒ…ï¼ˆæœ‰åŒ…æ‰å¤„ç†ï¼‰ï¼Œå¹¶ç´¯è®¡ä¸¢åŒ…æ•° */
 static void packet_loss_test_poll_rx(void)
 {
     uint16_t seq;
 
     if (radio_rx_poll_packet(s_rx_buf, TEST_PACKET_LEN))
     {
-        /* »¹Ô­ĞòºÅ£ºµÍ×Ö½ÚÔÚÇ°£¬ºÍ·¢ËÍ¶ËÒ»ÖÂ */
+        /* è¿˜åŸåºå·ï¼šä½å­—èŠ‚åœ¨å‰ï¼Œå’Œå‘é€ç«¯ä¸€è‡´ */
         seq = (uint16_t)(((uint16_t)s_rx_buf[1] << 8) | s_rx_buf[0]);
 
-        /* ĞòºÅÌø±ä => ÖĞ¼ä¶ªÁË seq - s_last_seq - 1 ¸ö°ü */
+        /* åºå·è·³å˜ => ä¸­é—´ä¸¢äº† seq - s_last_seq - 1 ä¸ªåŒ… */
         if (s_last_seq != 0xFFFF && seq > s_last_seq + 1)
         {
             s_lost_by_gap += (uint32_t)(seq - s_last_seq - 1);
@@ -68,7 +68,7 @@ static void packet_loss_test_poll_rx(void)
 }
 
 /**
- * @brief ¶ª°üÂÊ²âÊÔÖ÷Á÷³Ì£¨¶ÔÉÏ²ã±©Â¶µÄÎ¨Ò»º¯Êı£©
+ * @brief ä¸¢åŒ…ç‡æµ‹è¯•ä¸»æµç¨‹ï¼ˆå¯¹ä¸Šå±‚æš´éœ²çš„å”¯ä¸€å‡½æ•°ï¼‰
  */
 void packet_loss_test_run(void)
 {
@@ -76,29 +76,29 @@ void packet_loss_test_run(void)
 
     packet_loss_test_reset();
 
-    debug_printf("==== ¶ª°üÂÊ²âÊÔ¿ªÊ¼ ====\r\n");
+    debug_printf("==== ä¸¢åŒ…ç‡æµ‹è¯•å¼€å§‹ ====\r\n");
 
-    /* ±³¿¿±³£º·¢Ò»°ü¡¢ÊÕÒ»°ü£¬ÅÜÂú TEST_PACKET_TOTAL °ü */
+    /* èƒŒé èƒŒï¼šå‘ä¸€åŒ…ã€æ”¶ä¸€åŒ…ï¼Œè·‘æ»¡ TEST_PACKET_TOTAL åŒ… */
     while (s_tx_count < TEST_PACKET_TOTAL)
     {
         packet_loss_test_send();
-        delay_us(200);            /* ¸ø½ÓÊÕĞ¾Æ¬Áô CRC Ğ£Ñé + ÖÃ PKT_DONE µÄÊ±¼ä */
+        delay_us(200);            /* ç»™æ¥æ”¶èŠ¯ç‰‡ç•™ CRC æ ¡éªŒ + ç½® PKT_DONE çš„æ—¶é—´ */
         packet_loss_test_poll_rx();
     }
 
-    /* Ñ­»·ÊÇ"ÏÈ·¢ºóÊÕ"£¬×îºóÒ»°ü·¢³öºó»¹Ã»ÊÕ£¬ÕâÀï²¹ÊÕÒ»´Î */
+    /* å¾ªç¯æ˜¯"å…ˆå‘åæ”¶"ï¼Œæœ€åä¸€åŒ…å‘å‡ºåè¿˜æ²¡æ”¶ï¼Œè¿™é‡Œè¡¥æ”¶ä¸€æ¬¡ */
     packet_loss_test_poll_rx();
 
-    /* ¶ª°üÊı£ºÖ÷½á¹ûÓÃ"·¢ËÍ - ½ÓÊÕ"£¬ĞòºÅ·¨×÷²Î¿¼ */
+    /* ä¸¢åŒ…æ•°ï¼šä¸»ç»“æœç”¨"å‘é€ - æ¥æ”¶"ï¼Œåºå·æ³•ä½œå‚è€ƒ */
     lost = s_tx_count - s_rx_count;
 
-    debug_printf("==== ¶ª°üÂÊ²âÊÔ½á¹û ====\r\n");
-    debug_printf("·¢ËÍ°üÊı: %u\r\n", (unsigned)s_tx_count);
-    debug_printf("½ÓÊÕ°üÊı: %u\r\n", (unsigned)s_rx_count);
-    debug_printf("¶ª°üÊı:   %u\r\n", (unsigned)lost);
-    debug_printf("¶ª°üÂÊ:   %u.%02u%%\r\n",
+    debug_printf("==== ä¸¢åŒ…ç‡æµ‹è¯•ç»“æœ ====\r\n");
+    debug_printf("å‘é€åŒ…æ•°: %u\r\n", (unsigned)s_tx_count);
+    debug_printf("æ¥æ”¶åŒ…æ•°: %u\r\n", (unsigned)s_rx_count);
+    debug_printf("ä¸¢åŒ…æ•°:   %u\r\n", (unsigned)lost);
+    debug_printf("ä¸¢åŒ…ç‡:   %u.%02u%%\r\n",
                  (unsigned)(lost * 100 / s_tx_count),
                  (unsigned)(lost * 10000 / s_tx_count % 100));
-    debug_printf("ĞòºÅ·¨¶ª°üÊı: %u\r\n", (unsigned)s_lost_by_gap);
-    debug_printf("ÀíÂÛ·¢°üËÙ¶È: ~25 °ü/Ãë (9.6kbps)\r\n");
+    debug_printf("åºå·æ³•ä¸¢åŒ…æ•°: %u\r\n", (unsigned)s_lost_by_gap);
+    debug_printf("ç†è®ºå‘åŒ…é€Ÿåº¦: ~25 åŒ…/ç§’ (9.6kbps)\r\n");
 }
