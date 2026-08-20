@@ -19,10 +19,8 @@ static uint8_t cmd_44_handled = 0;
 // 221芯片初始化
 void app_221_init(void)
 {
-    // 时钟配置
-    systick_config();
-    // 串口配置
-    usart_gpio_config(115200);
+    // 时钟配置和串口配置已在 app_211_init() 中完成，无需重复调用
+    // 重复调用 usart_gpio_config() 会 usart_deinit() 复位串口，破坏 TX DMA 状态
 
     // 判断221初始化是否成功
     rx_ok = radio_rx_init();

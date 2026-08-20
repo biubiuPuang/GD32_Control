@@ -70,8 +70,14 @@ void NMI_Handler(void)
 */
 void HardFault_Handler(void)
 {
-    /* if Hard Fault exception occurs, go to infinite loop */
+    /* if Hard Fault exception occurs, 用 PB9 LED 闪烁指示 */
+    rcu_periph_clock_enable(RCU_GPIOB);
+    gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_9);
+    gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_9);
     while (1){
+        gpio_bit_toggle(GPIOB, GPIO_PIN_9);
+        /* 粗略延时 */
+        for (volatile uint32_t i = 0; i < 500000; i++) {}
     }
 }
 

@@ -29,16 +29,16 @@ void key_init(void)
                   GPIO_PIN_11);
 
     // 下按键
-    // PA9 配置为上拉输入
-    gpio_mode_set(GPIOA,
-                  GPIO_MODE_INPUT,
-                  GPIO_PUPD_PULLUP,
-                  GPIO_PIN_9);
-    // PA10 配置为上拉输入
-    gpio_mode_set(GPIOA,
-                  GPIO_MODE_INPUT,
-                  GPIO_PUPD_PULLUP,
-                  GPIO_PIN_10);
+    // // PA9 配置为上拉输入
+    // gpio_mode_set(GPIOA,
+    //               GPIO_MODE_INPUT,
+    //               GPIO_PUPD_PULLUP,
+    //               GPIO_PIN_9);
+    // // PA10 配置为上拉输入
+    // gpio_mode_set(GPIOA,
+    //               GPIO_MODE_INPUT,
+    //               GPIO_PUPD_PULLUP,
+    //               GPIO_PIN_10);
 
     // 左按键
     // PB5 配置为上拉输入
