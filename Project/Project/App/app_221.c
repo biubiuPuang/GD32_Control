@@ -3,7 +3,6 @@
 // LED灯头文件
 #include "gd32e23x.h"
 
-
 extern void print_buf(uint8_t *buf, uint8_t len);
 
 // 数据接收长度 固定32字节
@@ -44,14 +43,54 @@ void app_221_init(void)
 // 根据按键内容进行判断
 void key_press_handle(void)
 {
+    // 对右按键逻辑进行判断
     switch (rx_buf[3])
     {
     case 0x10:
-        // 单按键按下
+        // 右单按键按下
         gpio_bit_set(GPIOA, GPIO_PIN_15);
         break;
     case 0x11:
-        // 双按键按下
+        // 右双按键按下
+        gpio_bit_reset(GPIOA, GPIO_PIN_15);
+        break;
+    }
+
+    // 对下按键逻辑进行判断
+    switch (rx_buf[4])
+    {
+    case 0x20:
+        // 下单按键按下
+        gpio_bit_set(GPIOA, GPIO_PIN_15);
+        break;
+    case 0x21:
+        // 下双按键按下
+        gpio_bit_reset(GPIOA, GPIO_PIN_15);
+        break;
+    }
+
+    // 对左按键逻辑进行判断
+    switch (rx_buf[5])
+    {
+    case 0x30:
+        // 左单按键按下
+        gpio_bit_set(GPIOA, GPIO_PIN_15);
+        break;
+    case 0x31:
+        // 左双按键按下
+        gpio_bit_reset(GPIOA, GPIO_PIN_15);
+        break;
+    }
+
+     // 对上按键逻辑进行判断
+    switch (rx_buf[6])
+    {
+    case 0x40:
+        // 左单按键按下
+        gpio_bit_set(GPIOA, GPIO_PIN_15);
+        break;
+    case 0x41:
+        // 左双按键按下
         gpio_bit_reset(GPIOA, GPIO_PIN_15);
         break;
     }
@@ -99,7 +138,7 @@ void app_221_receive_data(void)
     else
     {
         debug_printf("RX no pkt, FLAG=0x%02X, STA=0x%02X\r\n",
-                     cmt2219b_read_reg(0x6D),   // 中断标志位: bit0=接收完成, bit1=CRC通过
-                     cmt2219b_read_reg(0x61));  // 芯片状态: 0x05=接收模式, 0x02=待机模式
+                     cmt2219b_read_reg(0x6D),  // 中断标志位: bit0=接收完成, bit1=CRC通过
+                     cmt2219b_read_reg(0x61)); // 芯片状态: 0x05=接收模式, 0x02=待机模式
     }
 }
