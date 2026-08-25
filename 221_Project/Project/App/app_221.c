@@ -42,7 +42,7 @@ void app_221_init(void)
 void key_press_handle(void)
 {
     // 对右按键逻辑进行判断
-    switch (rx_buf[3])
+    switch (rx_buf[8])
     {
     case 0x10:
         // 右单按键按下
@@ -55,7 +55,7 @@ void key_press_handle(void)
     }
 
     // 对下按键逻辑进行判断
-    switch (rx_buf[4])
+    switch (rx_buf[9])
     {
     case 0x20:
         // 下单按键按下
@@ -68,7 +68,7 @@ void key_press_handle(void)
     }
 
     // 对左按键逻辑进行判断
-    switch (rx_buf[5])
+    switch (rx_buf[10])
     {
     case 0x30:
         // 左单按键按下
@@ -81,7 +81,7 @@ void key_press_handle(void)
     }
 
      // 对上按键逻辑进行判断
-    switch (rx_buf[6])
+    switch (rx_buf[11])
     {
     case 0x40:
         // 左单按键按下

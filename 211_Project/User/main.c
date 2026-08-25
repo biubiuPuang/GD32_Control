@@ -28,7 +28,7 @@ int main(void)
     // LED灯引脚初始化
     pa15_led_init();
     // PB9板载LED灯点亮
-    pb9_led_init(); 
+    pb9_led_init();
     // 发送芯片初始化
     app_211_init();
     delay_ms(10);
@@ -64,6 +64,9 @@ int main(void)
         key_num = get_key_num();
 
         // 211 发送数据
-        app_211_send_test_data();
+        if (key_num != 0)
+        {
+            app_211_send_test_data();
+        }
     }
 }

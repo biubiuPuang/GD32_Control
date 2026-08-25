@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\GD32E230C_START.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\GD32E230C_START.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Mon Aug 24 16:05:57 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Tue Aug 25 17:24:22 2026
 <BR><P>
 <H3>Maximum Stack Usage =        436 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -418,7 +418,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[53]"></a>app_211_send_test_data</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, app_211.o(.text.app_211_send_test_data))
+<P><STRONG><a name="[53]"></a>app_211_send_test_data</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, app_211.o(.text.app_211_send_test_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 244<LI>Call Chain = app_211_send_test_data &rArr; radio_tx_send &rArr; cmt2119b_send_packet &rArr; cmt2119b_go_tx &rArr; cmt2119b_auto_switch_status &rArr; cmt2119b_get_chip_status &rArr; cmt2119b_read_reg &rArr; cmt2119b_spi_read_reg &rArr; cmt2119b_gpio_recv_byte &rArr; cmt2119b_delay_us &rArr; delay_us &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf
@@ -644,7 +644,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_gpio_recv_byte
 </UL>
 
-<P><STRONG><a name="[7d]"></a>cmt2119b_send_packet</STRONG> (Thumb, 178 bytes, Stack size 32 bytes, cmt2119b.o(.text.cmt2119b_send_packet))
+<P><STRONG><a name="[7d]"></a>cmt2119b_send_packet</STRONG> (Thumb, 192 bytes, Stack size 32 bytes, cmt2119b.o(.text.cmt2119b_send_packet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212<LI>Call Chain = cmt2119b_send_packet &rArr; cmt2119b_go_tx &rArr; cmt2119b_auto_switch_status &rArr; cmt2119b_get_chip_status &rArr; cmt2119b_read_reg &rArr; cmt2119b_spi_read_reg &rArr; cmt2119b_gpio_recv_byte &rArr; cmt2119b_delay_us &rArr; delay_us &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_clear_tx_fifo
@@ -656,6 +656,7 @@ Global Symbols
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_read_reg
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_delay_ms
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_enable_write_fifo
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;radio_tx_send
 </UL>
@@ -1190,7 +1191,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0printf)
 </UL>
-<P><STRONG><a name="[b3]"></a>get_key_num</STRONG> (Thumb, 364 bytes, Stack size 16 bytes, app_key.o(.text.get_key_num))
+<P><STRONG><a name="[b3]"></a>get_key_num</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, app_key.o(.text.get_key_num))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = get_key_num &rArr; delay_ms &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
@@ -1292,7 +1293,7 @@ Global Symbols
 <LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardFault_Handler
 </UL>
 
-<P><STRONG><a name="[b4]"></a>key_init</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, app_key.o(.text.key_init))
+<P><STRONG><a name="[b4]"></a>key_init</STRONG> (Thumb, 148 bytes, Stack size 24 bytes, app_key.o(.text.key_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = key_init &rArr; gpio_mode_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_mode_set
@@ -1301,7 +1302,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, main.o(.text.main))
+<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 436<LI>Call Chain = main &rArr; rf_uart_config_process &rArr; rf_execute_command &rArr; rf_config_apply &rArr; radio_tx_set_frequency_step &rArr; cmt2119b_go_stby &rArr; cmt2119b_auto_switch_status &rArr; cmt2119b_get_chip_status &rArr; cmt2119b_read_reg &rArr; cmt2119b_spi_read_reg &rArr; cmt2119b_gpio_recv_byte &rArr; cmt2119b_delay_us &rArr; delay_us &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_211_send_test_data
@@ -1788,6 +1789,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_send_packet
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_211_send_test_data
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_key_num
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_print_tx_rx_real_freq

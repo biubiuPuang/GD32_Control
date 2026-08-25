@@ -1,7 +1,7 @@
 #include "app_211.h"
 
 // 调试输出开关：1=开启，0=关闭
-#define APP_211_DEBUG_LOG 0
+#define APP_211_DEBUG_LOG 1
 // 想关闭哪个，就用 #if 把它包起来
 // --------------Eg-举例---------------
 /*

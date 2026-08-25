@@ -2,6 +2,7 @@
 #include "cmt2119b_spi.h"
 #include "cmt2119b_port.h"
 #include "cmt2119b_params.h"
+#include <stdio.h>
 
 #define CMT2119B_ADDR_CMT_BANK          0x00
 #define CMT2119B_ADDR_SYSTEM_BANK       0x0C
@@ -300,6 +301,8 @@ uint8_t cmt2119b_send_packet(const uint8_t *buf, uint8_t len, uint32_t timeout_m
     fifo_flag = cmt2119b_read_reg(CMT2119B_CUS_FIFO_FLAG);
     if ((fifo_flag & CMT2119B_MASK_TX_FIFO_NMTY_FLG) == 0) {
         cmt2119b_go_sleep();
+        // --------------------
+        printf("\r\n[211] FIFO empty\r\n");
         return CMT2119B_ERROR;
     }
 
@@ -316,5 +319,6 @@ uint8_t cmt2119b_send_packet(const uint8_t *buf, uint8_t len, uint32_t timeout_m
     }
 
     cmt2119b_go_sleep();
+    printf("\r\n[211] TX_DONE timeout\r\n");
     return CMT2119B_ERROR;
 }
