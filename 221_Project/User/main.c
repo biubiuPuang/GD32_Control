@@ -30,8 +30,8 @@ int main(void)
     // PB9板载LED灯点亮
     pb9_led_init(); 
     // 发送芯片初始化
-    app_211_init();
-    delay_ms(10);
+    // app_211_init();
+    // delay_ms(10);
     // 接收芯片初始化
     app_221_init();
     delay_ms(10);
@@ -40,7 +40,7 @@ int main(void)
 
     // 假装串口发送配置参数数据
     // 尝试从 Flash 读取之前保存的 TX/RX 配置
-    debug_printf("=== [DBG] before rf_uart_config_restore ===\r\n");
+    // debug_printf("=== [DBG] before rf_uart_config_restore ===\r\n");
     if (!rf_uart_config_restore())
     {
         debug_printf("=== [DBG] flash invalid, apply default ===\r\n");
@@ -53,7 +53,7 @@ int main(void)
         debug_printf("=== [DBG] rf_print_tx_rx_real_freq done ===\r\n");
         delay_ms(10);
     }
-    debug_printf("=== [DBG] config phase done, entering main loop ===\r\n");
+    // debug_printf("=== [DBG] config phase done, entering main loop ===\r\n");
 
   
     while (1)
@@ -64,8 +64,6 @@ int main(void)
         // 获取按键值
         get_key_num();
 
-        // 211 发送数据
-        // app_211_send_test_data();
         // 221芯片接收数据
         app_221_receive_data();
 

@@ -1,7 +1,7 @@
 #include "app_211.h"
 
 // 调试输出开关：1=开启，0=关闭
-#define APP_211_DEBUG_LOG 1
+#define APP_211_DEBUG_LOG 0
 // 想关闭哪个，就用 #if 把它包起来
 // --------------Eg-举例---------------
 /*
@@ -19,42 +19,42 @@ static uint32_t tx_count = 0;
 extern uint8_t key_num;
 
 /**
- * @brief 测试数据,串口如果打印11 22 33 则说明已初始化测试数据
+ * @brief 测试数据,串口如果打印数据是全0 则说明无线芯片发送的是测试数据
  *
  */
 volatile uint8_t tx_buf_data[TEST_PACKET_LEN] = {
-    0x11,
-    0x22,
-    0x33,
-    0x44,
-    0x55,
-    0x66,
-    0x77,
-    0x88,
-    0x99,
-    0xAA,
-    0xBB,
-    0xCC,
-    0xDD,
-    0xEE,
-    0xFF,
     0x00,
-    0x01,
-    0x02,
-    0x03,
-    0x04,
-    0x05,
-    0x06,
-    0x07,
-    0x08,
-    0x09,
-    0x0A,
-    0x0B,
-    0x0C,
-    0x0D,
-    0x0E,
-    0x0F,
-    0x10,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
 };
 
 /**
@@ -121,7 +121,7 @@ void app_211_send_test_data(void)
 {
     if (key_num != 0)
     {
-        printf("TX User data: ");
+        debug_printf("TX User data: ");
         print_buf((uint8_t *)tx_buf_data, TEST_PACKET_LEN);
     }
 
@@ -144,4 +144,5 @@ void app_211_send_test_data(void)
             debug_printf("\r\nTX ERROR, count=%u\r\n", tx_count);
         }
     }
+    // print_buf((uint8_t *)tx_buf_data, TEST_PACKET_LEN);
 }

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\GD32E230C_START.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\GD32E230C_START.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Tue Aug 25 17:24:22 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Wed Aug 26 16:12:44 2026
 <BR><P>
 <H3>Maximum Stack Usage =        436 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -418,7 +418,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[53]"></a>app_211_send_test_data</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, app_211.o(.text.app_211_send_test_data))
+<P><STRONG><a name="[53]"></a>app_211_send_test_data</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, app_211.o(.text.app_211_send_test_data))
 <BR><BR>[Stack]<UL><LI>Max Depth = 244<LI>Call Chain = app_211_send_test_data &rArr; radio_tx_send &rArr; cmt2119b_send_packet &rArr; cmt2119b_go_tx &rArr; cmt2119b_auto_switch_status &rArr; cmt2119b_get_chip_status &rArr; cmt2119b_read_reg &rArr; cmt2119b_spi_read_reg &rArr; cmt2119b_gpio_recv_byte &rArr; cmt2119b_delay_us &rArr; delay_us &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf

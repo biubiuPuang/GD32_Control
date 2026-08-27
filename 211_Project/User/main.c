@@ -31,10 +31,7 @@ int main(void)
     pb9_led_init();
     // 发送芯片初始化
     app_211_init();
-    delay_ms(10);
-    // 接收芯片初始化
-    // app_221_init();
-    // delay_ms(10);
+    delay_ms(5);
     // 按键初始化
     key_init();
 
