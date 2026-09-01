@@ -22,6 +22,16 @@
 #include "app_key.h"
 
 uint8_t key_num = 0;
+uint8_t last_key_num = 0;
+
+// 按键
+static uint8_t is_double_to_single(uint8_t last, uint8_t cur)
+{
+    return (last == 11 && cur == 10) ||
+           (last == 21 && cur == 20) ||
+           (last == 31 && cur == 30) ||
+           (last == 41 && cur == 40);
+}
 
 int main(void)
 {
@@ -60,10 +70,19 @@ int main(void)
         // 获取按键值
         key_num = get_key_num();
 
+        // 二档退回一档：只是松手过程中的一档，不发送点亮命令
+        if (is_double_to_single(last_key_num, key_num))
+        {
+            last_key_num = key_num;
+            continue;
+        }
+
         // 211 发送数据
-        if (key_num != 0)
+        if (key_num != last_key_num)
         {
             app_211_send_test_data();
         }
+
+        last_key_num = key_num;
     }
 }
