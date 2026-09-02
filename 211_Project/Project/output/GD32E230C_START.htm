@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\output\GD32E230C_START.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\GD32E230C_START.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Tue Sep  1 18:16:20 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Wed Sep  2 17:02:59 2026
 <BR><P>
 <H3>Maximum Stack Usage =        436 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1056,6 +1056,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_power_enter_deepsleep
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_delay_ms
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_power_process
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_key_num
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1373,11 +1374,13 @@ Global Symbols
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c6]"></a>low_power_process</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, low_power.o(.text.low_power_process))
+<P><STRONG><a name="[c6]"></a>low_power_process</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, low_power.o(.text.low_power_process))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212<LI>Call Chain = low_power_process &rArr; low_power_enter_deepsleep &rArr; cmt2119b_go_sleep &rArr; cmt2119b_auto_switch_status &rArr; cmt2119b_get_chip_status &rArr; cmt2119b_read_reg &rArr; cmt2119b_spi_read_reg &rArr; cmt2119b_gpio_recv_byte &rArr; cmt2119b_delay_us &rArr; delay_us &rArr; __aeabi_ui2f &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_power_enter_deepsleep
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_power_note_activity
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1965,6 +1968,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_buf
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmt2119b_send_packet
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_power_process
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_211_send_test_data
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_key_num
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rf_print_tx_rx_real_freq

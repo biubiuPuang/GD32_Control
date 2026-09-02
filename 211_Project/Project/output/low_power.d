@@ -26,4 +26,6 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
-  App\low_power.h ..\Hardware\cmt2119b\cmt2119b.h ..\User\systick.h
+  App\low_power.h ..\Hardware\common\Debug_printf.h \
+  D:\_Keil5\ARM\ARMCLANG\include\stdio.h ..\Hardware\cmt2119b\cmt2119b.h \
+  ..\User\systick.h

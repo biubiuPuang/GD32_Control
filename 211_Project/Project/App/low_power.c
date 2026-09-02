@@ -176,6 +176,8 @@ void low_power_process(void)
      */
     if ((uint32_t)(s_tick_ms - s_last_activity_ms)
         >= LOW_POWER_TIMEOUT_MS) {
+        debug_printf("Enter Low Power Mode\r\n");
+        delay_ms(10);
         low_power_enter_deepsleep();
     }
 }
