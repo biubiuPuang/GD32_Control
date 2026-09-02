@@ -25,18 +25,19 @@ uint8_t key_num = 0;
 
 int main(void)
 {
+    systick_config();
+    usart_gpio_config(115200);
+
     // LED灯引脚初始化
     pa15_led_init();
     // PB9板载LED灯点亮
     pb9_led_init(); 
-    // 发送芯片初始化
-    // app_211_init();
-    // delay_ms(10);
     // 接收芯片初始化
     app_221_init();
     delay_ms(10);
     // 按键初始化
     key_init();
+
 
     // 假装串口发送配置参数数据
     // 尝试从 Flash 读取之前保存的 TX/RX 配置
