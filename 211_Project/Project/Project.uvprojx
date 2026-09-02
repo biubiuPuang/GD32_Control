@@ -594,6 +594,16 @@
               <FileType>5</FileType>
               <FilePath>.\App\packet_loss_test.h</FilePath>
             </File>
+            <File>
+              <FileName>low_power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\low_power.c</FilePath>
+            </File>
+            <File>
+              <FileName>low_power.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\low_power.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

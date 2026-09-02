@@ -59,4 +59,9 @@ void PendSV_Handler(void);
 /* this function handles SysTick exception */
 void SysTick_Handler(void);
 
+// 低功耗相关
+void TIMER13_IRQHandler(void);
+void EXTI2_3_IRQHandler(void);
+void EXTI4_15_IRQHandler(void);
+
 #endif /* GD32E23X_IT_H */

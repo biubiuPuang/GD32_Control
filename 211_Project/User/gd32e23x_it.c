@@ -51,6 +51,7 @@ OF SUCH DAMAGE.
 
 #include "gd32e23x_it.h"
 #include "systick.h"
+#include "low_power.h"
 
 /*!
     \brief      this function handles NMI exception
@@ -159,4 +160,55 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
 
+}
+
+void TIMER13_IRQHandler(void)
+{
+    low_power_timer13_irq_handler();
+}
+
+void EXTI2_3_IRQHandler(void)
+{
+    if (SET == exti_interrupt_flag_get(EXTI_3)) {
+        exti_interrupt_flag_clear(EXTI_3);
+        low_power_key_exti_handler();
+    }
+}
+
+void EXTI4_15_IRQHandler(void)
+{
+    if (SET == exti_interrupt_flag_get(EXTI_4)) {
+        exti_interrupt_flag_clear(EXTI_4);
+        low_power_key_exti_handler();
+    }
+
+    if (SET == exti_interrupt_flag_get(EXTI_5)) {
+        exti_interrupt_flag_clear(EXTI_5);
+        low_power_key_exti_handler();
+    }
+
+    if (SET == exti_interrupt_flag_get(EXTI_6)) {
+        exti_interrupt_flag_clear(EXTI_6);
+        low_power_key_exti_handler();
+    }
+
+    if (SET == exti_interrupt_flag_get(EXTI_9)) {
+        exti_interrupt_flag_clear(EXTI_9);
+        low_power_key_exti_handler();
+    }
+
+    if (SET == exti_interrupt_flag_get(EXTI_10)) {
+        exti_interrupt_flag_clear(EXTI_10);
+        low_power_key_exti_handler();
+    }
+
+    if (SET == exti_interrupt_flag_get(EXTI_11)) {
+        exti_interrupt_flag_clear(EXTI_11);
+        low_power_key_exti_handler();
+    }
+
+    if (SET == exti_interrupt_flag_get(EXTI_12)) {
+        exti_interrupt_flag_clear(EXTI_12);
+        low_power_key_exti_handler();
+    }
 }

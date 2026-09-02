@@ -51,6 +51,10 @@ extern void SystemInit (void);
 /* update the SystemCoreClock with current core clock retrieved from cpu registers */
 extern void SystemCoreClockUpdate (void);
 
+
+// 低功耗相关
+extern void system_clock_recover(void);
+
 #ifdef __cplusplus
 }
 #endif

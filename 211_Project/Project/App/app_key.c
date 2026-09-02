@@ -168,10 +168,8 @@ uint8_t get_key_num(void)
     }
 
     // 无按键按下,对数组数据内容进行清零
-    memset(&tx_buf_data[8],0,(4 * sizeof(tx_buf_data[0])));
     // 没有按键按下
-    // 立刻发送完整32字节数据包
-    app_211_send_test_data();
+    memset(&tx_buf_data[8],0,(4 * sizeof(tx_buf_data[0])));
     
     return 0;
 }

@@ -20,6 +20,7 @@
 ".\output\app_tx-rx_config.o"
 ".\output\app_key.o"
 ".\output\packet_loss_test.o"
+".\output\low_power.o"
 ".\output\gd32e23x_adc.o"
 ".\output\gd32e23x_cmp.o"
 ".\output\gd32e23x_crc.o"

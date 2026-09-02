@@ -300,6 +300,12 @@ static void system_clock_72m_irc8m(void)
     }
 }
 
+void system_clock_recover(void)
+{
+    system_clock_72m_irc8m();
+    SystemCoreClockUpdate();
+}
+
 #else
 /*!
     \brief      configure the system clock to 8M by IRC8M

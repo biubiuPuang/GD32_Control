@@ -11,6 +11,7 @@
 #include "app_tx-rx_config.h"
 #include "packet_loss_test.h"
 #include "cmt2119b.h"
+#include "low_power.h"
 
 // 假装(代码实现)上位机串口发送配置文件参数头文件
 #include "rf_apply.h"
@@ -44,6 +45,8 @@ int main(void)
     delay_ms(5);
     // 按键初始化
     key_init();
+    // 低功耗初始化
+    low_power_init();
 
     // 假装串口发送配置参数数据
     // 尝试从 Flash 读取之前保存的 TX/RX 配置
@@ -62,6 +65,30 @@ int main(void)
     }
     // debug_printf("=== [DBG] config phase done, entering main loop ===\r\n");
 
+    // while (1)
+    // {
+    //     // 这个函数用于处理串口接收到的射频配置命令
+    //     rf_uart_config_process();
+
+    //     // 获取按键值
+    //     key_num = get_key_num();
+
+    //     // 二档退回一档：只是松手过程中的一档，不发送点亮命令
+    //     if (is_double_to_single(last_key_num, key_num))
+    //     {
+    //         last_key_num = key_num;
+    //         continue;
+    //     }
+
+    //     // 211 发送数据
+    //     if (key_num != last_key_num)
+    //     {
+    //         app_211_send_test_data();
+    //     }
+
+    //     last_key_num = key_num;
+    // }
+
     while (1)
     {
         // 这个函数用于处理串口接收到的射频配置命令
@@ -70,19 +97,34 @@ int main(void)
         // 获取按键值
         key_num = get_key_num();
 
-        // 二档退回一档：只是松手过程中的一档，不发送点亮命令
+        // 如果按键仍处于按下状态，则保持MCU唤醒
+        if (key_num != 0U)
+        {
+            low_power_note_activity();
+        }
+
+        // 保留原有的双键切换为单键时的特殊处理
         if (is_double_to_single(last_key_num, key_num))
         {
+            low_power_note_activity();
             last_key_num = key_num;
-            continue;
         }
-
-        // 211 发送数据
-        if (key_num != last_key_num)
+        else
         {
-            app_211_send_test_data();
+            if (key_num != last_key_num)
+            {
+                app_211_send_test_data();
+
+                // 当松开按键使按键状态变为0时，
+                // 这里也会刷新空闲计时器
+                low_power_note_activity();
+            }
+
+            last_key_num = key_num;
         }
 
-        last_key_num = key_num;
+        // 必须放在if/else判断外面，
+        // 确保每次循环都会执行超时检查
+        low_power_process();
     }
 }
