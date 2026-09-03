@@ -26,4 +26,8 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
-  ..\User\systick.h
+  ..\User\systick.h App\app_key.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
+  App\app_211.h ..\Hardware\usart\bsp_usart.h \
+  ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
+  ..\Hardware\cmt2219b\cmt2219b.h ..\Hardware\common\Debug_printf.h \
+  App\led_test.h App\low_power_config.h

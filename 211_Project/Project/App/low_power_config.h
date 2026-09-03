@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define LOW_POWER_TIMEOUT_SECONDS 300U
+#define LOW_POWER_TIMEOUT_SECONDS 10U
 
 extern volatile uint32_t inactivity_seconds;
 extern volatile uint8_t sleep_request;
