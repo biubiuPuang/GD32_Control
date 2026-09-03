@@ -12,5 +12,7 @@ void key_init(void);
 // 获取按键按下状态
 uint8_t get_key_num(void);
 
+// 低功耗
+extern volatile uint8_t key_wakeup_flag;
 
 #endif /* APP_KEY */
