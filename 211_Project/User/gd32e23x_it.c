@@ -171,29 +171,7 @@ void SysTick_Handler(void)
 
 void TIMER2_IRQHandler(void)
 {
-    if (timer_interrupt_flag_get(TIMER2,
-                                  TIMER_INT_FLAG_UP) != RESET)
-    {
-        timer_interrupt_flag_clear(TIMER2,
-                                    TIMER_INT_FLAG_UP);
-
-        /*
-         * 只有正常工作时才累计无按键时间。
-         * 进入低功耗后 TIMER2 已经关闭，这个判断是额外保护。
-         */
-        if (low_power_mode == 0U)
-        {
-            if (inactivity_seconds < LOW_POWER_TIMEOUT_SECONDS)
-            {
-                inactivity_seconds++;
-            }
-
-            if (inactivity_seconds >= LOW_POWER_TIMEOUT_SECONDS)
-            {
-                sleep_request = 1;
-            }
-        }
-    }
+    low_power_timer_irq_handler();
 }
 
 void EXTI2_3_IRQHandler(void)
