@@ -1,3 +1,4 @@
+#include "main.h"
 #include "gd32e23x.h"
 #include "systick.h"
 #include "bsp_usart.h"
@@ -11,6 +12,28 @@
 #include "app_tx-rx_config.h"
 #include "packet_loss_test.h"
 #include "cmt2119b.h"
+#include "bsp_wired.h"
+
+typedef enum
+{
+    sleep_model,
+    wired_model,
+    wireless_model,
+    stop_model
+}Model_t;
+
+wired_all_gpio_init();
+
+int main(void)
+{
+    return 0;
+}
+
+
+
+
+
+/* =======================原项目的main函数代码============================= */
 
 // 假装(代码实现)上位机串口发送配置文件参数头文件
 #include "rf_apply.h"
@@ -69,3 +92,79 @@ int main(void)
 
     }
 }
+/* =======================原项目的main函数代码============================= */
+
+/* =======================AI给出的状态机思路============================= */
+typedef enum
+{
+    MODE_IDLE,       // 待机
+    MODE_UP,         // 上升
+    MODE_DOWN,       // 下降
+    MODE_FAULT       // 故障
+} control_mode_t;
+
+typedef enum
+{
+    DIR_NONE,
+    DIR_UP,
+    DIR_DOWN,
+    DIR_CONFLICT
+} direction_t;
+
+static control_mode_t current_mode = MODE_IDLE;
+
+void control_task(void)
+{
+    direction_t direction = read_effective_direction(); // 读取PB3/PB4
+    uint8_t wireless_timeout = is_wireless_timeout();
+
+    // 方向信号冲突或无线超时，进入故障模式
+    if ((direction == DIR_CONFLICT) || wireless_timeout)
+    {
+        current_mode = MODE_FAULT;
+    }
+
+    switch (current_mode)
+    {
+    case MODE_IDLE:
+        output_stop();  // PA8、PA9、PA10置为停止电平
+        if (direction == DIR_UP)
+            current_mode = MODE_UP;
+        else if (direction == DIR_DOWN)
+            current_mode = MODE_DOWN;
+        break;
+
+    case MODE_UP:
+        if (direction == DIR_UP)
+            output_up(read_quick_input()); // PB5有效时选择快速档
+        else
+        {
+            output_stop();
+            current_mode = MODE_IDLE;
+        }
+        break;
+
+    case MODE_DOWN:
+        if (direction == DIR_DOWN)
+            output_down(read_quick_input());
+        else
+        {
+            output_stop();
+            current_mode = MODE_IDLE;
+        }
+        break;
+
+    case MODE_FAULT:
+        output_stop();
+        set_km1_permit(0); // PB6置高，禁止KM1吸合
+        set_total_permit(0); // PB11按项目定义撤销总许可
+        break;
+
+    default:
+        output_stop();
+        current_mode = MODE_FAULT;
+        break;
+    }
+}
+/* =======================AI给出的状态机思路============================= */
+

@@ -1,4 +1,4 @@
-./output/main.o: ..\User\main.c \
+./output/main.o: ..\User\main.c ..\User\main.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
   D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
   D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
@@ -32,7 +32,8 @@
   App\app_211.h ..\Hardware\common\Debug_printf.h App\app_221.h \
   App\led_test.h App\app_tx-rx_config.h \
   ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
-  App\packet_loss_test.h ..\Hardware\rf_config\rf_apply.h \
+  App\packet_loss_test.h ..\interface\bsp_wired.h \
+  ..\Hardware\rf_config\rf_apply.h \
   ..\Hardware\rf_config\rf_uart_set_config.h \
   D:\_Keil5\ARM\ARMCLANG\include\stddef.h \
   D:\_Keil5\ARM\ARMCLANG\include\string.h App\app_key.h

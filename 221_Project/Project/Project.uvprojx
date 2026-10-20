@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config;..\Hardware\common;..\Hardware\common</IncludePath>
+              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config;..\Hardware\common;..\Hardware\common;..\interface</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -398,6 +398,11 @@
               <FileName>systick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\main.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -738,6 +743,21 @@
               <FileName>rf_uart_set_config.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Hardware\rf_config\rf_uart_set_config.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>interface</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_wired.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\interface\bsp_wired.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_wired.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\interface\bsp_wired.h</FilePath>
             </File>
           </Files>
         </Group>
