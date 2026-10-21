@@ -32,8 +32,5 @@
   App\app_211.h ..\Hardware\common\Debug_printf.h App\app_221.h \
   App\led_test.h App\app_tx-rx_config.h \
   ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
-  App\packet_loss_test.h ..\interface\bsp_wired.h \
-  ..\Hardware\rf_config\rf_apply.h \
-  ..\Hardware\rf_config\rf_uart_set_config.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stddef.h \
-  D:\_Keil5\ARM\ARMCLANG\include\string.h App\app_key.h
+  App\packet_loss_test.h ..\interface\bsp_wired.h ..\Service\control.h \
+  D:\_Keil5\ARM\ARMCLANG\include\stdbool.h

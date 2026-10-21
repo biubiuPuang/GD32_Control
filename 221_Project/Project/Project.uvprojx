@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config;..\Hardware\common;..\Hardware\common;..\interface</IncludePath>
+              <IncludePath>..\Firmware\GD32E23x_standard_peripheral\Include;..\Firmware\CMSIS;..\Firmware\CMSIS\GD\GD32E23x\Include;..\User;..\Hardware;..\Hardware\usart;..\Hardware\cmt2119b;..\Hardware\cmt2219b;.\App;..\Hardware\rf_config;..\Hardware\common;..\Hardware\common;..\interface;..\Service</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -758,6 +758,21 @@
               <FileName>bsp_wired.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\interface\bsp_wired.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Service</GroupName>
+          <Files>
+            <File>
+              <FileName>control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\control.c</FilePath>
+            </File>
+            <File>
+              <FileName>control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Service\control.h</FilePath>
             </File>
           </Files>
         </Group>
