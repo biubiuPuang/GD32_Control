@@ -59,7 +59,7 @@ static void usart_rx_dma_init(void)
     dma_struct_para_init(&dma_init_struct);
 
     /*
-     * USART0接收数据寄存器地址。
+     * USART1接收数据寄存器地址。
      * DMA从这里读取收到的字节。
      */
     dma_init_struct.periph_addr = (uint32_t)&USART_RDATA(BSP_USART);
@@ -96,13 +96,13 @@ static void usart_rx_dma_init(void)
      */
     dma_circulation_disable(BSP_USART_RX_DMA_CHANNEL);
 
-    /* 清除DMA_CH2可能残留的标志 */
+    /* 清除DMA_CH4可能残留的标志 */
     dma_flag_clear(BSP_USART_RX_DMA_CHANNEL, DMA_FLAG_G);
 
-    /* 允许USART0向DMA发出接收请求 */
+    /* 允许USART1向DMA发出接收请求 */
     usart_dma_receive_config(BSP_USART, USART_DENR_ENABLE);
 
-    /* 最后启动DMA_CH2 */
+    /* 最后启动DMA_CH4 */
     dma_channel_enable(BSP_USART_RX_DMA_CHANNEL);
 }
 
@@ -164,13 +164,13 @@ static void usart_tx_dma_start(void)
     g_usart_tx_dma_busy = 1U;
     g_usart_tx_dma_length = continuous_length;
 
-    /* 重新配置DMA_CH1前先关闭并复位 */
+    /* 重新配置DMA_CH3前先关闭并复位 */
     dma_channel_disable(BSP_USART_TX_DMA_CHANNEL);
     dma_deinit(BSP_USART_TX_DMA_CHANNEL);
     dma_struct_para_init(&dma_init_struct);
 
     /*
-     * DMA写到USART0发送数据寄存器。
+     * DMA写到USART1发送数据寄存器。
      */
     dma_init_struct.periph_addr = (uint32_t)&USART_TDATA(BSP_USART);
 
@@ -204,10 +204,10 @@ static void usart_tx_dma_start(void)
     dma_interrupt_enable(BSP_USART_TX_DMA_CHANNEL, DMA_INT_FTF);
     dma_interrupt_enable(BSP_USART_TX_DMA_CHANNEL, DMA_INT_ERR);
 
-    /* 允许USART0向DMA发出发送请求 */
+    /* 允许USART1向DMA发出发送请求 */
     usart_dma_transmit_config(BSP_USART, USART_DENT_ENABLE);
 
-    /* 最后启动DMA_CH1 */
+    /* 最后启动DMA_CH3 */
     dma_channel_enable(BSP_USART_TX_DMA_CHANNEL);
 }
 
@@ -280,7 +280,7 @@ void usart_gpio_config(uint32_t band_rate)
 	usart_receive_config(BSP_USART,USART_RECEIVE_ENABLE);    // 使能串口接收
 	
 	/*
-	* 接收数据由DMA_CH2搬运。
+	* 接收数据由DMA_CH4搬运。
 	* 因此关闭RBNE逐字节接收中断，避免CPU和DMA同时读取接收寄存器。
 	*/
 	usart_interrupt_disable(BSP_USART, USART_INT_RBNE);
@@ -316,7 +316,7 @@ uint16_t usart_send_buffer(const uint8_t *data, uint16_t length)
     /*
      * 主循环在写队列；
      * DMA完成中断会修改读指针并启动下一段DMA。
-     * 所以只暂停DMA_CH1_2中断，保护队列读写指针。
+     * 所以只暂停DMA_CH3_4中断，保护队列读写指针。
      */
     nvic_irq_disable(BSP_USART_DMA_IRQ);
 
@@ -500,7 +500,7 @@ void USART1_IRQHandler(void)
 void DMA_Channel3_4_IRQHandler(void)
 {
     /*
-     * DMA_CH1：USART0发送DMA。
+     * DMA_CH3：USART1发送DMA。
      */
     if (dma_interrupt_flag_get(BSP_USART_TX_DMA_CHANNEL,
                                DMA_INT_FLAG_FTF) == SET)
@@ -533,8 +533,8 @@ void DMA_Channel3_4_IRQHandler(void)
     }
 
     /*
-     * DMA_CH2是RX DMA。
+     * DMA_CH4是RX DMA。
      * 当前方案不启用CH2的DMA完成中断，
-     * RX帧结束由USART0的IDLE中断处理。
+     * RX帧结束由USART1的IDLE中断处理。
      */
 }

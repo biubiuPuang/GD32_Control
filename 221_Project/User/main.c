@@ -7,15 +7,24 @@ Ask wireless = {0};
 // 最终获得的许可定义
 Arbitrament END_REG;
 
-// 定义一个表示当前模式状态的标志位 且默认为停止模式
-static Model_t CURRENT_MODE = stop_model;
-// 运行次数统计
-uint32_t count = 0;
+// 定义一个表示当前模式状态的标志位 且默认为有线模式
+static Model_t CURRENT_MODE = wired_model;
+
+// 打印标记为
+volatile uint32_t count = 0;
+// 毫秒计时器，在SysTick中断里累加
+volatile uint32_t sys_tick_ms = 0;
+// 上次打印的时间戳
+static uint32_t last_printf_tick = 0;
 
 int main(void)
 {
+    // 初始化时钟配置
+    systick_config();
     // 初始化有线部分的所有GPIO引脚
     wired_all_gpio_init();
+    // 初始化串口且配置默认波特率为115200
+    usart_gpio_config(115200);
 
     while (1)
     {
@@ -52,7 +61,14 @@ int main(void)
             printf("ERROR:cant input any model");
             break;
         }
-        printf("runing times: %d", count);
+
+        // 每500ms打印一次，非阻塞，不影响主循环
+        if ((sys_tick_ms - last_printf_tick) >= 500)
+        {
+            last_printf_tick = sys_tick_ms;
+            debug_printf("runing times: %d", count);
+            count++;
+        }
     }
 }
 

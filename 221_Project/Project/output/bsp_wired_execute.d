@@ -28,4 +28,5 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\Service\control.h D:\_Keil5\ARM\ARMCLANG\include\stdbool.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stdio.h ..\interface\bsp_wired.h
+  D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
+  ..\Hardware\common\Debug_printf.h ..\interface\bsp_wired.h
