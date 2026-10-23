@@ -28,6 +28,9 @@ int main(void)
 
     while (1)
     {
+        // 读取当前按键值的状态
+        wired_read_input(&wired);
+
         // 获取当前最新模式
         CURRENT_MODE = model_choose(wired, wireless);
         switch (CURRENT_MODE)
@@ -63,10 +66,10 @@ int main(void)
         }
 
         // 每500ms打印一次，非阻塞，不影响主循环
-        if ((sys_tick_ms - last_printf_tick) >= 500)
+        if ((sys_tick_ms - last_printf_tick ) >= 1000)
         {
             last_printf_tick = sys_tick_ms;
-            debug_printf("runing times: %d", count);
+            debug_printf("runing times: %d\r\n", count);
             count++;
         }
     }

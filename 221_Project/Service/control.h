@@ -3,6 +3,7 @@
 
 #include "stdbool.h"
 #include "stdio.h"
+#include "gd32e23x.h"
 
 typedef enum
 {
@@ -35,5 +36,8 @@ Model_t model_choose(Ask wired, Ask wireless);
 
 // 定义动作许可变量
 Arbitrament arbiter_resolve(Model_t model, Ask wired, Ask wireless);
+
+/* 输入采样：并把读取到的按键值填进 wired 请求结构体 */
+void wired_read_input(Ask *wired);
 
 #endif /* __CONTROL_H__ */

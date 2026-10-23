@@ -161,6 +161,5 @@ void PendSV_Handler(void)
 */
 void SysTick_Handler(void)
 {
-    delay_decrement();  // 官方库里原本就有这行
     sys_tick_ms++;      // 只加这一行
 }

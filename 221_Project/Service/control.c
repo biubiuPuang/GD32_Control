@@ -113,5 +113,22 @@ Arbitrament arbiter_resolve(Model_t model, Ask wired, Ask wireless)
         printf("current is stop mode ");
         break;
     }
+
+    // 没有匹配到任何请求 = 无动作
+    return IDLE_OK; 
 }
 /* -----------------------自定义动作裁决许可函数----------------------------- */
+
+/* -----------------------自定义读取按键值判断是否按下函数----------------------------- */
+/* 输入采样：并把读取到的按键值填进 wired 请求结构体 */
+void wired_read_input(Ask *wired)
+{
+    /* 判断PB3的引脚值并把当前引脚的值填入对应的请求结构体 */
+    wired->UP_ask   = (gpio_input_bit_get(GPIOB, GPIO_PIN_3) == RESET);
+    /* 判断PB4的引脚值并把当前引脚的值填入对应的请求结构体 */
+    wired->DOWN_ask = (gpio_input_bit_get(GPIOB, GPIO_PIN_4) == RESET);
+    /* 有线急停没有独立输入脚，先置0 */
+    wired->STOP_ask = 0;
+}
+
+/* -----------------------自定义读取按键值判断是否按下函数----------------------------- */
