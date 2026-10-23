@@ -759,6 +759,16 @@
               <FileType>5</FileType>
               <FilePath>..\interface\bsp_wired.h</FilePath>
             </File>
+            <File>
+              <FileName>bsp_wired_execute.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\interface\bsp_wired_execute.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_wired_execute.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\interface\bsp_wired_execute.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -16,6 +16,7 @@
 #include "cmt2119b.h"
 #include "bsp_wired.h"
 #include "control.h"
+#include "bsp_wired_execute.h"
 
 
 #endif /* __MAIN_H__ */

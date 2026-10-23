@@ -4,39 +4,59 @@
 Ask wired = {0};
 // 无线请求定义
 Ask wireless = {0};
+// 最终获得的许可定义
+Arbitrament END_REG;
 
 // 定义一个表示当前模式状态的标志位 且默认为停止模式
 static Model_t CURRENT_MODE = stop_model;
+// 运行次数统计
+uint32_t count = 0;
 
 int main(void)
 {
     // 初始化有线部分的所有GPIO引脚
     wired_all_gpio_init();
 
-    // 获取当前最新模式
-    CURRENT_MODE = model_choose(wired, wireless);
-    switch (CURRENT_MODE)
+    while (1)
     {
-    case sleep_model:
-        /* code */
-        break;
-    case wired_model:
-        /* code */
-        break;
-    case wireless_model:
-        /* code */
-        break;
-    case stop_model:
-        /* code */
-        break;
+        // 获取当前最新模式
+        CURRENT_MODE = model_choose(wired, wireless);
+        switch (CURRENT_MODE)
+        {
+        case sleep_model:
+            // 获取睡眠模式的动作许可
+            END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
+            // 根据动作许可执行对应的动作
+            wired_execute_up(END_REG);
+            break;
+        case wired_model:
+            // 获取有线模式的动作许可
+            END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
+            // 根据动作许可执行对应的动作
+            wired_execute_up(END_REG);
+            break;
+        case wireless_model:
+            // 获取无线模式的动作许可
+            END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
+            // 根据动作许可执行对应的动作
+            wired_execute_up(END_REG);
+            break;
+        case stop_model:
+            // 获取急停模式的动作许可
+            END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
+            // 根据动作许可执行对应的动作
+            wired_execute_up(END_REG);
+            break;
 
-    default:
-        printf("ERROR:未进入任何模式");
-        break;
+        default:
+            printf("ERROR:cant input any model");
+            break;
+        }
+        // printf("runing times: %d", count);
     }
 }
 
-// /* =======================原项目的main函数代码============================= */
+// /* =======================原项目的无线main函数代码============================= */
 
 // // 假装(代码实现)上位机串口发送配置文件参数头文件
 // #include "rf_apply.h"
@@ -93,7 +113,7 @@ int main(void)
 //         app_221_receive_data();
 //     }
 // }
-// /* =======================原项目的main函数代码============================= */
+// /* =======================原项目的无线main函数代码============================= */
 
 // /* =======================WorkBuddy给出的状态机思路============================= */
 

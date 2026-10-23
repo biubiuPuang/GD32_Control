@@ -21,6 +21,12 @@ Model_t model_choose(Ask wired, Ask wireless)
     }
     else if ((wireless.UP_ask || wireless.DOWN_ask || wireless.STOP_ask) == 1)
     {
+        // 判断确认是不是有线模式
+        if (flag_model != wired_model)
+        {
+            // 有线模式
+            flag_model = wired_model;
+        }
         // 无线模式
         flag_model = wireless_model;
     }
@@ -29,7 +35,7 @@ Model_t model_choose(Ask wired, Ask wireless)
     // {
 
     // }
-    else if (wired.STOP_ask || wireless.STOP_ask)
+    else if (wired.STOP_ask || wireless.STOP_ask) // 有线或者无线任意一个急停按下
     {
         // 急停模式
         flag_model = stop_model;
@@ -38,12 +44,11 @@ Model_t model_choose(Ask wired, Ask wireless)
 }
 /* -----------------------自定义模式选择函数----------------------------- */
 
-
 /* -----------------------自定义动作裁决许可函数----------------------------- */
 // 定义动作许可变量
 /**
- * @brief 
- * 
+ * @brief
+ *
  * @param model 当前模式
  * @param wired 有线请求枚举
  * @param wireless 无线请求枚举
@@ -65,7 +70,7 @@ Arbitrament arbiter_resolve(Model_t model, Ask wired, Ask wireless)
         }
         else if ((wired.UP_ask == 0) && (wired.DOWN_ask == 1) && (wired.STOP_ask == 0) == 1)
         {
-            // 返回上升许可
+            // 返回下升许可
             return DOWN_OK;
         }
         else if ((wired.UP_ask == 1) && (wired.DOWN_ask == 1) && (wired.STOP_ask == 0) == 1)
@@ -110,5 +115,3 @@ Arbitrament arbiter_resolve(Model_t model, Ask wired, Ask wireless)
     }
 }
 /* -----------------------自定义动作裁决许可函数----------------------------- */
-
-

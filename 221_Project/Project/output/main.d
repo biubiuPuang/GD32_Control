@@ -33,4 +33,5 @@
   App\led_test.h App\app_tx-rx_config.h \
   ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
   App\packet_loss_test.h ..\interface\bsp_wired.h ..\Service\control.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stdbool.h
+  D:\_Keil5\ARM\ARMCLANG\include\stdbool.h \
+  ..\interface\bsp_wired_execute.h

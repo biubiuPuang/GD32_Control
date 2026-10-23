@@ -4,7 +4,7 @@
 #include "gd32e23x.h"
 
 /* ---------------有线功能相关的所有引脚初始化-------------- */
-// 初始化有线相关的所有引脚
+// 初始化有线相关的所有引脚(有效=急停)
 void wired_all_gpio_init(void);
 /* ---------------急停按钮控制相关的引脚初始化-------------- */
 // PB11 电源控制引脚的初始化 高电平有效
@@ -23,7 +23,7 @@ void read_quicker_gpio_init(void);
 void dowm_gpio_init(void);
 /* ---------------上升继电器控制引脚初始化-------------- */
 // PA9上升引脚控制初始化 低电平有效
-void dowm_gpio_init(void);
+void up_gpio_init(void);
 /* ---------------快速控制引脚初始化-------------- */
 // PA10快速控制引脚初始化 低电平有效 (有效-吸合 = 快速模式 \ 无效-断开 = 慢速模式)
 void quicker_gpio_init(void);
@@ -31,3 +31,5 @@ void quicker_gpio_init(void);
 
 
 #endif /* __BSP_WIRED_H__ */
+
+
