@@ -25,13 +25,13 @@ volatile uint8_t g_recv_complete_flag = 0U;
 
 
 /*
- * USART0 RX DMA临时缓冲区。
+ * USART1 RX DMA临时缓冲区。
  * DMA只往这里写；IDLE中断确认一帧结束后，
  * 再复制到上面的g_recv_buff。
  */
 static uint8_t g_usart_rx_dma_buffer[USART_RX_DMA_LENGTH];
 
-/* USART0 TX DMA环形队列 */
+/* USART1 TX DMA环形队列 */
 static uint8_t g_usart_tx_queue[USART_TX_QUEUE_LENGTH];
 static volatile uint16_t g_usart_tx_read = 0U;
 static volatile uint16_t g_usart_tx_write = 0U;
@@ -52,7 +52,7 @@ static void usart_rx_dma_init(void)
 {
     dma_parameter_struct dma_init_struct;
 
-    /* 先复位DMA_CH2 */
+    /* 先复位DMA_CH3 */
     dma_deinit(BSP_USART_RX_DMA_CHANNEL);
 
     /* 给DMA配置结构体填默认值 */
@@ -293,13 +293,13 @@ void usart_gpio_config(uint32_t band_rate)
 	usart_interrupt_enable(BSP_USART, USART_INT_ERR);
 
 	/*
-	* DMA_CH1和DMA_CH2共用DMA_Channel1_2_IRQn。
+	* DMA_CH3和DMA_CH4共用DMA_Channel3_4_IRQn。
 	* DMA中断优先级高于USART IDLE中断。
 	*/
 	nvic_irq_enable(BSP_USART_DMA_IRQ, 1U);
 	nvic_irq_enable(BSP_USART_IRQ, 2U);
 
-	/* 最后启动USART0接收DMA */
+	/* 最后启动USART1接收DMA */
 	usart_rx_dma_init();
 }
 
@@ -406,7 +406,7 @@ int fputc(int ch, FILE *f)
      return ch;
 }
 
-void USART0_IRQHandler(void)
+void USART1_IRQHandler(void)
 {
     uint16_t received_length;
     uint8_t usart_error = 0U;
@@ -497,7 +497,7 @@ void USART0_IRQHandler(void)
     }
 }
 
-void DMA_Channel1_2_IRQHandler(void)
+void DMA_Channel3_4_IRQHandler(void)
 {
     /*
      * DMA_CH1：USART0发送DMA。

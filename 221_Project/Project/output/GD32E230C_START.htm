@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\output\GD32E230C_START.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\output\GD32E230C_START.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Oct 23 12:24:09 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Fri Oct 23 14:34:47 2026
 <BR><P>
-<H3>Maximum Stack Usage =        152 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        156 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; wired_execute_up &rArr; wired_all_gpio_init &rArr; quicker_gpio_init &rArr; gpio_output_options_set
+fputc &rArr; usart_send_data &rArr; usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 <P>
 <H3>
 Mutually Recursive functions
@@ -19,8 +19,8 @@ Function Pointers
 </H3><UL>
  <LI><a href="#[11]">ADC_CMP_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[e]">DMA_Channel0_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
- <LI><a href="#[f]">DMA_Channel1_2_IRQHandler</a> from bsp_usart.o(.text.DMA_Channel1_2_IRQHandler) referenced from startup_gd32e23x.o(RESET)
- <LI><a href="#[10]">DMA_Channel3_4_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
+ <LI><a href="#[f]">DMA_Channel1_2_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
+ <LI><a href="#[10]">DMA_Channel3_4_IRQHandler</a> from bsp_usart.o(.text.DMA_Channel3_4_IRQHandler) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[b]">EXTI0_1_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[c]">EXTI2_3_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[d]">EXTI4_15_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
@@ -49,8 +49,8 @@ Function Pointers
  <LI><a href="#[19]">TIMER16_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[14]">TIMER2_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[15]">TIMER5_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
- <LI><a href="#[1e]">USART0_IRQHandler</a> from bsp_usart.o(.text.USART0_IRQHandler) referenced from startup_gd32e23x.o(RESET)
- <LI><a href="#[1f]">USART1_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
+ <LI><a href="#[1e]">USART0_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
+ <LI><a href="#[1f]">USART1_IRQHandler</a> from bsp_usart.o(.text.USART1_IRQHandler) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[6]">WWDGT_IRQHandler</a> from startup_gd32e23x.o(.text) referenced from startup_gd32e23x.o(RESET)
  <LI><a href="#[24]">__main</a> from entry.o(.ARM.Collect$$$$00000000) referenced from startup_gd32e23x.o(.text)
  <LI><a href="#[25]">fputc</a> from bsp_usart.o(.text.fputc) referenced from printfa.o(i.__0printf)
@@ -96,7 +96,7 @@ Global Symbols
 <P><STRONG><a name="[e]"></a>DMA_Channel0_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
-<P><STRONG><a name="[10]"></a>DMA_Channel3_4_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
+<P><STRONG><a name="[f]"></a>DMA_Channel1_2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
 <P><STRONG><a name="[b]"></a>EXTI0_1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
@@ -162,14 +162,14 @@ Global Symbols
 <P><STRONG><a name="[15]"></a>TIMER5_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
-<P><STRONG><a name="[1f]"></a>USART1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
+<P><STRONG><a name="[1e]"></a>USART0_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
 <P><STRONG><a name="[6]"></a>WWDGT_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_gd32e23x.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(RESET)
 </UL>
 <P><STRONG><a name="[46]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[74]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
@@ -281,8 +281,8 @@ Global Symbols
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 
-<P><STRONG><a name="[f]"></a>DMA_Channel1_2_IRQHandler</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, bsp_usart.o(.text.DMA_Channel1_2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = DMA_Channel1_2_IRQHandler &rArr; usart_tx_dma_complete &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
+<P><STRONG><a name="[10]"></a>DMA_Channel3_4_IRQHandler</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, bsp_usart.o(.text.DMA_Channel3_4_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = DMA_Channel3_4_IRQHandler &rArr; usart_tx_dma_complete &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_interrupt_flag_clear
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_interrupt_flag_get
@@ -322,8 +322,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32e23x.o(.text)
 </UL>
-<P><STRONG><a name="[1e]"></a>USART0_IRQHandler</STRONG> (Thumb, 268 bytes, Stack size 32 bytes, bsp_usart.o(.text.USART0_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = USART0_IRQHandler &rArr; usart_interrupt_flag_get
+<P><STRONG><a name="[1f]"></a>USART1_IRQHandler</STRONG> (Thumb, 268 bytes, Stack size 32 bytes, bsp_usart.o(.text.USART1_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = USART1_IRQHandler &rArr; usart_interrupt_flag_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_transfer_number_get
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
@@ -346,8 +346,8 @@ Global Symbols
 <P><STRONG><a name="[39]"></a>dma_channel_disable</STRONG> (Thumb, 28 bytes, Stack size 4 bytes, gd32e23x_dma.o(.text.dma_channel_disable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = dma_channel_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel1_2_IRQHandler
-<LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel3_4_IRQHandler
+<LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_init
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_tx_dma_complete
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_rx_dma_restart
@@ -391,13 +391,13 @@ Global Symbols
 <P><STRONG><a name="[37]"></a>dma_interrupt_flag_clear</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, gd32e23x_dma.o(.text.dma_interrupt_flag_clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = dma_interrupt_flag_clear
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel1_2_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel3_4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[36]"></a>dma_interrupt_flag_get</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, gd32e23x_dma.o(.text.dma_interrupt_flag_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = dma_interrupt_flag_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel1_2_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel3_4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[5b]"></a>dma_memory_address_config</STRONG> (Thumb, 32 bytes, Stack size 12 bytes, gd32e23x_dma.o(.text.dma_memory_address_config))
@@ -421,7 +421,7 @@ Global Symbols
 <P><STRONG><a name="[45]"></a>dma_transfer_number_get</STRONG> (Thumb, 24 bytes, Stack size 4 bytes, gd32e23x_dma.o(.text.dma_transfer_number_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = dma_transfer_number_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[4a]"></a>dowm_gpio_init</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, bsp_wired.o(.text.dowm_gpio_init))
@@ -435,7 +435,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[25]"></a>fputc</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, bsp_usart.o(.text.fputc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = fputc &rArr; usart_send_data &rArr; usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
+<BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = fputc &rArr; usart_send_data &rArr; usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_send_data
 </UL>
@@ -488,7 +488,7 @@ Global Symbols
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_gpio_init
 </UL>
 
-<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 360 bytes, Stack size 56 bytes, main.o(.text.main))
+<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 368 bytes, Stack size 56 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = main &rArr; wired_execute_up &rArr; wired_all_gpio_init &rArr; quicker_gpio_init &rArr; gpio_output_options_set
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wired_execute_up
@@ -601,30 +601,30 @@ Global Symbols
 <P><STRONG><a name="[3a]"></a>usart_dma_transmit_config</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, gd32e23x_usart.o(.text.usart_dma_transmit_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_dma_transmit_config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel1_2_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel3_4_IRQHandler
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_tx_dma_start
 </UL>
 
 <P><STRONG><a name="[41]"></a>usart_flag_get</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, gd32e23x_usart.o(.text.usart_flag_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = usart_flag_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[42]"></a>usart_interrupt_flag_clear</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, gd32e23x_usart.o(.text.usart_interrupt_flag_clear))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_interrupt_flag_clear
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[44]"></a>usart_interrupt_flag_get</STRONG> (Thumb, 98 bytes, Stack size 28 bytes, gd32e23x_usart.o(.text.usart_interrupt_flag_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = usart_interrupt_flag_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[5f]"></a>usart_send_buffer</STRONG> (Thumb, 168 bytes, Stack size 32 bytes, bsp_usart.o(.text.usart_send_buffer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
+<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_disable
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
@@ -634,7 +634,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4b]"></a>usart_send_data</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, bsp_usart.o(.text.usart_send_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = usart_send_data &rArr; usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
+<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = usart_send_data &rArr; usart_send_buffer &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_send_buffer
 </UL>
@@ -697,8 +697,8 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[60]"></a>usart_tx_dma_start</STRONG> (Thumb, 208 bytes, Stack size 48 bytes, bsp_usart.o(.text.usart_tx_dma_start))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
+<P><STRONG><a name="[60]"></a>usart_tx_dma_start</STRONG> (Thumb, 212 bytes, Stack size 56 bytes, bsp_usart.o(.text.usart_tx_dma_start))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_interrupt_enable
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_channel_disable
@@ -722,16 +722,16 @@ Local Symbols
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_channel_enable
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_flag_clear
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART0_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[38]"></a>usart_tx_dma_complete</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, bsp_usart.o(.text.usart_tx_dma_complete))
-<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = usart_tx_dma_complete &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = usart_tx_dma_complete &rArr; usart_tx_dma_start &rArr; dma_init &rArr; dma_channel_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dma_channel_disable
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_tx_dma_start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel1_2_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Channel3_4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[3f]"></a>system_clock_config</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_gd32e23x.o(.text.system_clock_config))

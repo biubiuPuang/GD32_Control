@@ -22,27 +22,25 @@
 
 #define BSP_USART_TX_RCU  		RCU_GPIOA   		// 串口TX的端口时钟
 #define BSP_USART_RX_RCU  		RCU_GPIOA   		// 串口RX的端口时钟
-#define BSP_USART_RCU    		RCU_USART0  		// 串口0的时钟
+#define BSP_USART_RCU    		RCU_USART1  		// 串口1的时钟
 
 
 #define BSP_USART_TX_PORT 		GPIOA				// 串口TX的端口
 #define BSP_USART_RX_PORT 		GPIOA				// 串口RX的端口
-#define BSP_USART_AF 			GPIO_AF_1   		// 串口0的复用功能
-#define BSP_USART_TX_PIN  		GPIO_PIN_9  		// 
+#define BSP_USART_AF 			GPIO_AF_1   		// 串口1的复用功能
+#define BSP_USART_TX_PIN  		GPIO_PIN_2  		// 串口TX的引脚
+#define BSP_USART_RX_PIN  		GPIO_PIN_3 		// 串口RX的引脚
 
-
-#define BSP_USART_RX_PIN  		GPIO_PIN_10 		// 串口RX的引脚
-
-#define BSP_USART 				USART0      		// 串口0
-#define BSP_USART_IRQ     		USART0_IRQn 		// 串口0中断
-#define BSP_USART_IRQHandler  	USART0_IRQHandler	// 串口0中断服务函数
+#define BSP_USART 				USART1      		// 串口1
+#define BSP_USART_IRQ     		USART1_IRQn 		// 串口1中断
+#define BSP_USART_IRQHandler  	USART1_IRQHandler	// 串口1中断服务函数
 
 /* USART1默认DMA通道映射 */
-#define BSP_USART_TX_DMA_CHANNEL    DMA_CH1
-#define BSP_USART_RX_DMA_CHANNEL    DMA_CH2
+#define BSP_USART_TX_DMA_CHANNEL    DMA_CH3 // USART1_TX 用 DMA_CH3
+#define BSP_USART_RX_DMA_CHANNEL    DMA_CH4 // USART1_RX 用 DMA_CH4
 
 /* DMA_CH3和DMA_CH4共用同一个DMA中断 */
-#define BSP_USART_DMA_IRQ           DMA_Channel1_2_IRQn
+#define BSP_USART_DMA_IRQ           DMA_Channel3_4_IRQn // CH3/CH4 共用这个中断
 
 /* 串口缓冲区的数据长度 */
 #define USART_RECEIVE_LENGTH  4096

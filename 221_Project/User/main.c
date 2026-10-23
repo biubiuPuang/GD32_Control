@@ -52,7 +52,7 @@ int main(void)
             printf("ERROR:cant input any model");
             break;
         }
-        // printf("runing times: %d", count);
+        printf("runing times: %d", count);
     }
 }
 
