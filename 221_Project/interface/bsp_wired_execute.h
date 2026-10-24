@@ -13,6 +13,6 @@
 
 extern Arbitrament END_REG;
 
-void wired_execute_up(Arbitrament END_REG);
+void wired_order(Arbitrament END_REG);
 
 #endif /* __BSP_WIRED_EXECUTE_H__ */

@@ -1,10 +1,6 @@
 ./output/app_221.o: App\app_221.c App\app_221.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
+  D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h \
   ..\User\gd32e23x_libopt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h \
@@ -28,5 +24,5 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\User\systick.h ..\Hardware\usart\bsp_usart.h \
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
-  ..\Hardware\cmt2219b\cmt2219b.h D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
-  App\led_test.h ..\Hardware\common\Debug_printf.h
+  ..\Hardware\cmt2219b\cmt2219b.h App\led_test.h \
+  ..\Hardware\common\Debug_printf.h

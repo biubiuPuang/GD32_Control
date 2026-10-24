@@ -52,8 +52,6 @@ OF SUCH DAMAGE.
 #include "gd32e23x_it.h"
 #include "systick.h"
 
-// 在gd32e23x_it.c文件顶部加extern声明
-extern volatile uint32_t sys_tick_ms;
 
 /*!
     \brief      this function handles NMI exception
@@ -161,5 +159,4 @@ void PendSV_Handler(void)
 */
 void SysTick_Handler(void)
 {
-    sys_tick_ms++;      // 只加这一行
 }

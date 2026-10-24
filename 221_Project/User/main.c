@@ -4,18 +4,11 @@
 Ask wired = {0};
 // 无线请求定义
 Ask wireless = {0};
-// 最终获得的许可定义
+// 最终获得的动作许可定义
 Arbitrament END_REG;
 
 // 定义一个表示当前模式状态的标志位 且默认为有线模式
 static Model_t CURRENT_MODE = wired_model;
-
-// 打印标记为
-volatile uint32_t count = 0;
-// 毫秒计时器，在SysTick中断里累加
-volatile uint32_t sys_tick_ms = 0;
-// 上次打印的时间戳
-static uint32_t last_printf_tick = 0;
 
 int main(void)
 {
@@ -26,52 +19,45 @@ int main(void)
     // 初始化串口且配置默认波特率为115200
     usart_gpio_config(115200);
 
+    // 默认就是急急停模式,且停止升降操作
+    CURRENT_MODE = stop_model;
+    END_REG = STOP_OK;
+    wired_order(END_REG);
+
     while (1)
     {
         // 读取当前按键值的状态
         wired_read_input(&wired);
 
-        // 获取当前最新模式
+        // 根据按键值返回判断更新当前最新模式
         CURRENT_MODE = model_choose(wired, wireless);
+
         switch (CURRENT_MODE)
         {
         case sleep_model:
             // 获取睡眠模式的动作许可
             END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
-            // 根据动作许可执行对应的动作
-            wired_execute_up(END_REG);
             break;
         case wired_model:
             // 获取有线模式的动作许可
             END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
-            // 根据动作许可执行对应的动作
-            wired_execute_up(END_REG);
             break;
         case wireless_model:
             // 获取无线模式的动作许可
             END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
-            // 根据动作许可执行对应的动作
-            wired_execute_up(END_REG);
             break;
         case stop_model:
             // 获取急停模式的动作许可
             END_REG = arbiter_resolve(CURRENT_MODE, wired, wireless);
-            // 根据动作许可执行对应的动作
-            wired_execute_up(END_REG);
             break;
-
         default:
-            printf("ERROR:cant input any model");
+            printf("ERROR:cant input any model\r\n");
             break;
         }
 
-        // 每500ms打印一次，非阻塞，不影响主循环
-        if ((sys_tick_ms - last_printf_tick ) >= 1000)
-        {
-            last_printf_tick = sys_tick_ms;
-            debug_printf("runing times: %d\r\n", count);
-            count++;
-        }
+        // 根据动作许可执行对应的动作
+        wired_order(END_REG);
+
     }
 }
 

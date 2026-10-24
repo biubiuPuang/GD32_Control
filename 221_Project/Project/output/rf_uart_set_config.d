@@ -1,16 +1,10 @@
 ./output/rf_uart_set_config.o: ..\Hardware\rf_config\rf_uart_set_config.c \
   ..\Hardware\rf_config\rf_uart_set_config.h \
-  ..\Hardware\rf_config\rf_apply.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stdio.h \
-  ..\Hardware\rf_config\rf_config.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
+  ..\Hardware\rf_config\rf_apply.h ..\Hardware\rf_config\rf_config.h \
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
   ..\Hardware\usart\bsp_usart.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
-  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
+  D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h \
   ..\User\gd32e23x_libopt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h \
@@ -34,6 +28,4 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\User\systick.h App\app_tx-rx_config.h \
   ..\Hardware\cmt2119b\cmt2119b.h ..\Hardware\cmt2219b\cmt2219b.h \
-  ..\Hardware\common\Debug_printf.h \
-  D:\_Keil5\ARM\ARMCLANG\include\stddef.h \
-  D:\_Keil5\ARM\ARMCLANG\include\string.h
+  ..\Hardware\common\Debug_printf.h

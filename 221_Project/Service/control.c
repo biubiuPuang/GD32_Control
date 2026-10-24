@@ -118,10 +118,17 @@ Arbitrament arbiter_resolve(Model_t model, Ask wired, Ask wireless)
     return IDLE_OK; 
 }
 /* -----------------------自定义动作裁决许可函数----------------------------- */
+typedef enum
+{
+    sleep_model,    /* 睡眠模式 */
+    wired_model,    /* 有线模式 */
+    wireless_model, /* 无线模式 */
+    stop_model      /* 急停模式 */
+} Model_t;
 
 /* -----------------------自定义读取按键值判断是否按下函数----------------------------- */
 /* 输入采样：并把读取到的按键值填进 wired 请求结构体 */
-void wired_read_input(Ask *wired)
+void wired_read_input(Model_t CURRENT_MODE)
 {
     /* 判断PB3的引脚值并把当前引脚的值填入对应的请求结构体 */
     wired->UP_ask   = (gpio_input_bit_get(GPIOB, GPIO_PIN_3) == RESET);

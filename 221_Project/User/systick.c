@@ -67,20 +67,6 @@ void systick_config(void)
     systick_clksource_set(SYSTICK_CLKSOURCE_HCLK_DIV8);
     count_1us = (float)SystemCoreClock/8000000;
     count_1ms = (float)count_1us * 1000;
-
-    /* 设置主循环打印输出的count参数 */
-/*!
-    \brief 下面关于打印输出的配置是有封装好的库函数可以直接进行使用的
-*/
-    /* 2. 重装值：1ms = 9000 个计数 */
-    SysTick->LOAD = (uint32_t)(SystemCoreClock / 8000U) - 1U;
-    /* 3. 清空当前计数值 */
-    SysTick->VAL = 0U;
-    /* 4. 设中断优先级（最高） */
-    NVIC_SetPriority(SysTick_IRQn, 0U);
-    /* 5. 开计数器 + 开中断 */
-    SysTick->CTRL = SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_TICKINT_Msk;
-    /* 设置主循环打印输出的count参数 */
 }
 
 /*!

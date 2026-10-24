@@ -1,7 +1,7 @@
 #include "bsp_wired_execute.h"
 
-// 执行上升许可命令
-void wired_execute_up(Arbitrament END_REG)
+// 执行对应动作
+void wired_order(Arbitrament END_REG)
 {
     /* 有关即debug_printf()打印的部分代码 */
     // 定义一个初始标记为为-1,-1 != 任何状态 除非状态改变否则debug_printf()不会执行
