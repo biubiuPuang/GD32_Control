@@ -17,6 +17,74 @@ static bool PROBE_BUSY = false;
 /* 软件停止步骤是否完成，不代表实际测到了电机停转 */
 static bool OUTPUT_STOPPED = false;
 
+/* 用户自定义函数：每200ms打印一次当前模式和动作 */
+static void control_debug_print(void)
+{
+    static uint32_t last_print_ms = 0U;
+    uint32_t now_ms = control_now_ms();
+
+    /* 时间没到，立即返回，不阻塞主循环 */
+    if ((uint32_t)(now_ms - last_print_ms) < 200U)
+    {
+        return;
+    }
+
+    last_print_ms = now_ms;
+
+    /* 打印当前模式 */
+    if (CURRENT_MODE == wired_model)
+    {
+        debug_printf("you xian model\r\n");
+    }
+    else if (CURRENT_MODE == wireless_model)
+    {
+        debug_printf("wu xian model\r\n");
+    }
+    else if (CURRENT_MODE == stop_model)
+    {
+        debug_printf("stop model\r\n");
+    }
+    else if (CURRENT_MODE == sleep_model)
+    {
+        debug_printf("sleep model\r\n");
+    }
+
+    /*
+     * PB6低：软件已经给出KM1运行许可。
+     * PB11低：软件没有发出急停禁止。
+     * 尚未放行时，不打印正在执行升降。
+     */
+    if ((gpio_output_bit_get(GPIOB, GPIO_PIN_6) != RESET) ||
+        (gpio_output_bit_get(GPIOB, GPIO_PIN_11) != RESET))
+    {
+        return;
+    }
+
+    /* 打印当前动作，快速动作优先显示快速日志 */
+    if (END_REG == UP_OK)
+    {
+        if (FAST_TARGET)
+        {
+            debug_printf("fast uporder\r\n");
+        }
+        else
+        {
+            debug_printf("up order\r\n");
+        }
+    }
+    else if (END_REG == DOWN_OK)
+    {
+        if (FAST_TARGET)
+        {
+            debug_printf("fast dowm order\r\n");
+        }
+        else
+        {
+            debug_printf("dowm order\r\n");
+        }
+    }
+}
+
 int main(void)
 {
     uint32_t now_ms;
@@ -103,6 +171,9 @@ int main(void)
             FAST_TARGET,
             PROBE_BUSY,
             control_now_ms());
+
+        /* 第8步：持续打印调试信息 */
+        control_debug_print();
     }
 }
 

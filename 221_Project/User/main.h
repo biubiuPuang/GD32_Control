@@ -18,6 +18,8 @@
 #include "control.h"
 #include "bsp_wired_execute.h"
 #include "control_time.h"
+#include "main.h"
+#include "Debug_printf.h"
 
 
 #endif /* __MAIN_H__ */

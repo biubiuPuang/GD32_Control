@@ -8,6 +8,7 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "pyocd",
+            "gdbPath": "D:/1_Sofrware/ArmGNUToolchain/bin/arm-none-eabi-gdb.exe",
             "device": "GD32E230C8",
             "interface": "swd",
             "runToEntryPoint": "main",
