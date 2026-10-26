@@ -2,7 +2,11 @@
   ..\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h \
-  D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h \
+  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm23.h \
+  D:\_Keil5\ARM\ARMCLANG\include\stdint.h \
+  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
+  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
+  D:\_Keil5\packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
   ..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h \
   ..\User\gd32e23x_libopt.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h \

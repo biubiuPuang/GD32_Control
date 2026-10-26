@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug GD32E230 (ST-Link)",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/Project/output/GD32E230C_START.axf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "pyocd",
+            "device": "GD32E230C8",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw"
+        }
+    ]
+}
