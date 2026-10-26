@@ -784,6 +784,21 @@
               <FileType>5</FileType>
               <FilePath>..\Service\control.h</FilePath>
             </File>
+            <File>
+              <FileName>control_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Service\control_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>control_time.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Service\control_time.h</FilePath>
+            </File>
+            <File>
+              <FileName>control_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Service\control_config.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

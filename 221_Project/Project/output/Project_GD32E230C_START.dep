@@ -1,6 +1,6 @@
 Dependencies for Project 'Project', Target 'GD32E230C_START': (DO NOT MODIFY !)
 CompilerVersion: 6230000::V6.23::ARMCLANG
-F (..\User\gd32e23x_it.c)(0x6ADB71DA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/gd32e23x_it.o -MMD)
+F (..\User\gd32e23x_it.c)(0x6ADC6E13)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/gd32e23x_it.o -MMD)
 I (..\User\gd32e23x_it.h)(0x6ADB6BC9)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
@@ -26,8 +26,8 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
 I (..\User\systick.h)(0x6ADB6BC9)
-F (..\User\main.c)(0x6ADC6580)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/main.o -MMD)
-I (..\User\main.h)(0x6ADB71DA)
+F (..\User\main.c)(0x6ADD9FED)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/main.o -MMD)
+I (..\User\main.h)(0x6ADDB67C)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -58,16 +58,17 @@ I (..\Hardware\cmt2219b\radio_rx.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)
 I (App\app_211.h)(0x6ADB6BC9)
 I (..\Hardware\common\Debug_printf.h)(0x6ADB6BC9)
-I (App\app_221.h)(0x6ADB6BC9)
+I (App\app_221.h)(0x6ADDA8C4)
 I (App\led_test.h)(0x6ADB6BC9)
+I (..\Service\control.h)(0x6ADDA75B)
 I (App\app_tx-rx_config.h)(0x6ADB6BC9)
 I (..\Hardware\rf_config\rf_config.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2119b\cmt2119b.h)(0x6ADB6BC9)
 I (App\packet_loss_test.h)(0x6ADB6BC9)
-I (..\interface\bsp_wired.h)(0x6ADC6456)
-I (..\Service\control.h)(0x6ADB71DA)
-I (..\interface\bsp_wired_execute.h)(0x6ADC659E)
-F (..\User\systick.c)(0x6ADB71DA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/systick.o -MMD)
+I (..\interface\bsp_wired.h)(0x6ADDF046)
+I (..\interface\bsp_wired_execute.h)(0x6ADDA8C4)
+I (..\Service\control_time.h)(0x6ADDAA3C)
+F (..\User\systick.c)(0x6ADC6E14)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/systick.o -MMD)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -92,7 +93,7 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
 I (..\User\systick.h)(0x6ADB6BC9)
-F (..\User\main.h)(0x6ADB71DA)()
+F (..\User\main.h)(0x6ADDB67C)()
 F (..\Hardware\usart\bsp_usart.c)(0x6ADB71DA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/bsp_usart.o -MMD)
 I (..\Hardware\usart\bsp_usart.h)(0x6ADB71DA)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
@@ -208,10 +209,10 @@ F (..\Hardware\cmt2119b\radio_tx.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-no
 I (..\Hardware\cmt2119b\radio_tx.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2119b\cmt2119b.h)(0x6ADB6BC9)
 F (..\Hardware\cmt2119b\radio_tx.h)(0x6ADB6BC9)()
-F (..\Hardware\cmt2219b\cmt2219b.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/cmt2219b.o -MMD)
+F (..\Hardware\cmt2219b\cmt2219b.c)(0x6ADE17E1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/cmt2219b.o -MMD)
 I (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)
-I (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADB6BC9)
-I (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADB6BC9)
+I (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADDFBA5)
+I (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADDF973)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -238,8 +239,8 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2219b\cmt2219b_params.h)(0x6ADB6BC9)
 F (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)()
 F (..\Hardware\cmt2219b\cmt2219b_params.h)(0x6ADB6BC9)()
-F (..\Hardware\cmt2219b\cmt2219b_port.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/cmt2219b_port.o -MMD)
-I (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADB6BC9)
+F (..\Hardware\cmt2219b\cmt2219b_port.c)(0x6ADDC572)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/cmt2219b_port.o -MMD)
+I (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADDF973)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -264,10 +265,10 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
 I (..\User\systick.h)(0x6ADB6BC9)
-F (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADB6BC9)()
-F (..\Hardware\cmt2219b\cmt2219b_spi.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/cmt2219b_spi.o -MMD)
-I (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADB6BC9)
-I (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADB6BC9)
+F (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADDF973)()
+F (..\Hardware\cmt2219b\cmt2219b_spi.c)(0x6ADE17C3)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/cmt2219b_spi.o -MMD)
+I (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADDFBA5)
+I (..\Hardware\cmt2219b\cmt2219b_port.h)(0x6ADDF973)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -291,8 +292,8 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
-F (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADB6BC9)()
-F (..\Hardware\cmt2219b\radio_rx.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/radio_rx.o -MMD)
+F (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADDFBA5)()
+F (..\Hardware\cmt2219b\radio_rx.c)(0x6ADE17F8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/radio_rx.o -MMD)
 I (..\Hardware\cmt2219b\radio_rx.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)
 F (..\Hardware\cmt2219b\radio_rx.h)(0x6ADB6BC9)()
@@ -355,8 +356,8 @@ I (..\Hardware\cmt2219b\radio_rx.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)
 I (..\Hardware\common\Debug_printf.h)(0x6ADB6BC9)
 F (.\App\app_211.h)(0x6ADB6BC9)()
-F (.\App\app_221.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/app_221.o -MMD)
-I (App\app_221.h)(0x6ADB6BC9)
+F (.\App\app_221.c)(0x6ADE17C3)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/app_221.o -MMD)
+I (App\app_221.h)(0x6ADDA8C4)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -387,7 +388,10 @@ I (..\Hardware\cmt2219b\radio_rx.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)
 I (App\led_test.h)(0x6ADB6BC9)
 I (..\Hardware\common\Debug_printf.h)(0x6ADB6BC9)
-F (.\App\app_221.h)(0x6ADB6BC9)()
+I (..\Service\control.h)(0x6ADDA75B)
+I (..\Hardware\cmt2219b\cmt2219b_spi.h)(0x6ADDFBA5)
+I (..\Service\control_config.h)(0x6ADE1249)
+F (.\App\app_221.h)(0x6ADDA8C4)()
 F (.\App\led_test.c)(0x6ADB6BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/led_test.o -MMD)
 I (App\led_test.h)(0x6ADB6BC9)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
@@ -965,8 +969,8 @@ I (..\Hardware\cmt2119b\cmt2119b.h)(0x6ADB6BC9)
 I (..\Hardware\cmt2219b\cmt2219b.h)(0x6ADB6BC9)
 I (..\Hardware\common\Debug_printf.h)(0x6ADB6BC9)
 F (..\Hardware\rf_config\rf_uart_set_config.h)(0x6ADB6BC9)()
-F (..\interface\bsp_wired.c)(0x6ADC644C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/bsp_wired.o -MMD)
-I (..\interface\bsp_wired.h)(0x6ADC6456)
+F (..\interface\bsp_wired.c)(0x6ADDD068)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/bsp_wired.o -MMD)
+I (..\interface\bsp_wired.h)(0x6ADDF046)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -990,9 +994,9 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
-F (..\interface\bsp_wired.h)(0x6ADC6456)()
-F (..\interface\bsp_wired_execute.c)(0x6ADC65B6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/bsp_wired_execute.o -MMD)
-I (..\interface\bsp_wired_execute.h)(0x6ADC659E)
+F (..\interface\bsp_wired.h)(0x6ADDF046)()
+F (..\interface\bsp_wired_execute.c)(0x6ADDB67C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/bsp_wired_execute.o -MMD)
+I (..\interface\bsp_wired_execute.h)(0x6ADDA8C4)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -1016,12 +1020,13 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
-I (..\Service\control.h)(0x6ADB71DA)
+I (..\Service\control.h)(0x6ADDA75B)
 I (..\Hardware\common\Debug_printf.h)(0x6ADB6BC9)
-I (..\interface\bsp_wired.h)(0x6ADC6456)
-F (..\interface\bsp_wired_execute.h)(0x6ADC659E)()
-F (..\Service\control.c)(0x6ADB71DA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/control.o -MMD)
-I (..\Service\control.h)(0x6ADB71DA)
+I (..\interface\bsp_wired.h)(0x6ADDF046)
+I (..\Service\control_config.h)(0x6ADE1249)
+F (..\interface\bsp_wired_execute.h)(0x6ADDA8C4)()
+F (..\Service\control.c)(0x6ADE12FB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/control.o -MMD)
+I (..\Service\control.h)(0x6ADDA75B)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
 I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
 I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
@@ -1045,4 +1050,32 @@ I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h)(0x6ADB6BC9
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
 I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
-F (..\Service\control.h)(0x6ADB71DA)()
+I (..\Service\control_config.h)(0x6ADE1249)
+F (..\Service\control.h)(0x6ADDA75B)()
+F (..\Service\control_time.c)(0x6ADDB67C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m23 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Firmware/GD32E23x_standard_peripheral/Include -I ../Firmware/CMSIS -I ../Firmware/CMSIS/GD/GD32E23x/Include -I ../User -I ../Hardware -I ../Hardware/usart -I ../Hardware/cmt2119b -I ../Hardware/cmt2219b -I ./App -I ../Hardware/rf_config -I ../Hardware/common -I ../Hardware/common -I ../interface -I ../Service-I./RTE/_GD32E230C_START-ID:/Keil5/Pack/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IDevice/Include-D__UVISION_VERSION="542" -D_RTE_ -DGD32E230-o ./output/control_time.o -MMD)
+I (..\Service\control_time.h)(0x6ADDAA3C)
+I (..\Firmware\CMSIS\GD\GD32E23x\Include\gd32e23x.h)(0x6ADB6BC9)
+I (D:\Keil5\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm23.h)(0x664BD888)
+I (..\Firmware\CMSIS\GD\GD32E23x\Include\system_gd32e23x.h)(0x6ADB6BC9)
+I (..\User\gd32e23x_libopt.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h)(0x6ADB6BC9)
+I (..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h)(0x6ADB6BC9)
+F (..\Service\control_time.h)(0x6ADDAA3C)()
+F (..\Service\control_config.h)(0x6ADE1249)()

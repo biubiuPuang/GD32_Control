@@ -25,4 +25,5 @@
   ..\User\systick.h ..\Hardware\usart\bsp_usart.h \
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
   ..\Hardware\cmt2219b\cmt2219b.h App\led_test.h \
-  ..\Hardware\common\Debug_printf.h
+  ..\Hardware\common\Debug_printf.h ..\Service\control.h \
+  ..\Hardware\cmt2219b\cmt2219b_spi.h ..\Service\control_config.h

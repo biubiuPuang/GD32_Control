@@ -2,6 +2,28 @@
 
 // LED灯头文件
 #include "gd32e23x.h"
+#include "cmt2219b_spi.h"
+#include "control_config.h"
+
+/* 保留当前接收代码的字段位置 */
+#define CONTROL_FRAME_SIZE TEST_PACKET_LEN
+
+#define CONTROL_STOP_INDEX 8U
+#define CONTROL_DOWN_INDEX 9U
+#define CONTROL_FAST_INDEX 10U
+#define CONTROL_UP_INDEX 11U
+
+#define CONTROL_STOP_CODE 0x10U
+#define CONTROL_DOWN_CODE 0x20U
+#define CONTROL_FAST_CODE 0x30U
+#define CONTROL_UP_CODE 0x40U
+
+#ifndef CONTROL_RF_TIMEOUT_MS
+#error "Define CONTROL_RF_TIMEOUT_MS from the actual link timing"
+#endif
+
+static bool have_valid_frame = false;
+static uint32_t last_valid_ms = 0U;
 
 extern void print_buf(uint8_t *buf, uint8_t len);
 
@@ -19,124 +41,171 @@ static uint8_t cmd_44_handled = 0;
 // 221芯片初始化
 void app_221_init(void)
 {
-    // 时钟配置和串口配置已在 app_211_init() 中完成，无需重复调用
-    // 重复调用 usart_gpio_config() 会 usart_deinit() 复位串口，破坏 TX DMA 状态
+    have_valid_frame = false;
+    last_valid_ms = 0U;
 
-    // 判断221初始化是否成功
+    cmt2219b_spi_clear_error();
     rx_ok = radio_rx_init();
-    if (rx_ok)
-    {
-        debug_printf("RX init OK\r\n");
 
-        debug_printf("PA15 hight\r\n");
-        // PA15 输出高电平
-        gpio_bit_set(GPIOA, GPIO_PIN_15);
-    }
-    else
+    if (cmt2219b_spi_has_error())
     {
-        debug_printf("RX init ERROR\r\n");
+        rx_ok = CMT2219B_ERROR;
     }
+
+    if (rx_ok == CMT2219B_OK)
+        debug_printf("RX init OK\r\n");
+    else
+        debug_printf("RX init ERROR\r\n");
+}
+
+/* 撤销无线普通运动，不自行清除已收到的Stop */
+static void wireless_motion_cancel(Ask *request)
+{
+    request->UP_ask = false;
+    request->DOWN_ask = false;
+    request->FAST_ask = false;
+}
+
+/* 按现有单键/双键编码判断有效；0表示松开 */
+static bool decode_key(
+    uint8_t value,
+    uint8_t code,
+    bool *pressed)
+{
+    if (value == 0U)
+    {
+        *pressed = false;
+        return true;
+    }
+
+    if ((value == code) ||
+        (value == (uint8_t)(code + 1U)))
+    {
+        *pressed = true;
+        return true;
+    }
+
+    return false;
 }
 
 // 根据按键内容进行判断
-void key_press_handle(void)
+static bool key_press_handle(Ask *next)
 {
-    // 对右按键逻辑进行判断
-    switch (rx_buf[8])
+    Ask parsed = {0};
+
+    if (!decode_key(
+            rx_buf[CONTROL_STOP_INDEX],
+            CONTROL_STOP_CODE,
+            &parsed.STOP_ask))
     {
-    case 0x10:
-        // 右单按键按下
-        gpio_bit_set(GPIOA, GPIO_PIN_15);
-        break;
-    case 0x11:
-        // 右双按键按下
-        gpio_bit_reset(GPIOA, GPIO_PIN_15);
-        break;
+        return false;
     }
 
-    // 对下按键逻辑进行判断
-    switch (rx_buf[9])
+    /* 合法Stop不被普通操作挡住 */
+    if (parsed.STOP_ask)
     {
-    case 0x20:
-        // 下单按键按下
-        gpio_bit_set(GPIOA, GPIO_PIN_15);
-        break;
-    case 0x21:
-        // 下双按键按下
-        gpio_bit_reset(GPIOA, GPIO_PIN_15);
-        break;
+        *next = parsed;
+        return true;
     }
 
-    // 对左按键逻辑进行判断
-    switch (rx_buf[10])
+    if (!decode_key(
+            rx_buf[CONTROL_UP_INDEX],
+            CONTROL_UP_CODE,
+            &parsed.UP_ask) ||
+        !decode_key(
+            rx_buf[CONTROL_DOWN_INDEX],
+            CONTROL_DOWN_CODE,
+            &parsed.DOWN_ask) ||
+        !decode_key(
+            rx_buf[CONTROL_FAST_INDEX],
+            CONTROL_FAST_CODE,
+            &parsed.FAST_ask))
     {
-    case 0x30:
-        // 左单按键按下
-        gpio_bit_set(GPIOA, GPIO_PIN_15);
-        break;
-    case 0x31:
-        // 左双按键按下
-        gpio_bit_reset(GPIOA, GPIO_PIN_15);
-        break;
+        return false;
     }
 
-     // 对上按键逻辑进行判断
-    switch (rx_buf[11])
-    {
-    case 0x40:
-        // 左单按键按下
-        gpio_bit_set(GPIOA, GPIO_PIN_15);
-        break;
-    case 0x41:
-        // 左双按键按下
-        gpio_bit_reset(GPIOA, GPIO_PIN_15);
-        break;
-    }
+    *next = parsed;
+    return true;
 }
 
 // 221接收数据
-void app_221_receive_data(void)
+void app_221_receive_data(Ask *wireless, uint32_t now_ms)
 {
-    /*
-     * 这里判断的是接收芯片内部 INT_FLAG 寄存器
-     * 0x6D 是 INT_FLAG，bit0 = 1 表示接收芯片收到完整数据包
-     * 所以下面打印出来的数据，是从 PH2219BBA 接收芯片 FIFO 里面读出来的
-     */
-    if (rx_ok && cmt2219b_packet_received())
+    Ask next = {0};
+    bool accepted = false;
+    uint8_t packet_ready;
+    uint8_t resume_ok;
+
+    if (rx_ok != CMT2219B_OK)
     {
-        cmt2219b_go_stby();
+        wireless_motion_cancel(wireless);
+        return;
+    }
 
-        /*
-         * 从接收芯片 FIFO 读取数据，不是直接打印 tx_buf
-         */
-        cmt2219b_read_fifo(rx_buf, TEST_PACKET_LEN);
+    /* 一轮操作开始时清错误，操作过程中错误保持 */
+    cmt2219b_spi_clear_error();
 
-        // 处理按键值的内容
-        key_press_handle();
+    /* 底层现有函数已经检查收包和CRC标志 */
+    packet_ready = cmt2219b_packet_received();
 
-        // 清空 CMT2219B 的接收 FIFO
-        cmt2219b_clear_rx_fifo();
-        // 清除 CMT2219B 的中断标志位
-        cmt2219b_clear_interrupt_flags();
-        // 让 CMT2219B 重新进入接收模式 RX
-        if (cmt2219b_go_rx() != CMT2219B_OK)
+    if (cmt2219b_spi_has_error())
+    {
+        goto receive_failed;
+    }
+
+    if (packet_ready)
+    {
+        if (cmt2219b_go_stby() != CMT2219B_OK)
         {
-            debug_printf("go_rx FAIL\r\n");
+            goto receive_failed;
         }
 
-        rx_count++;
+        cmt2219b_read_fifo(rx_buf, CONTROL_FRAME_SIZE);
 
-        // 串口打印接收芯片 FIFO 数据
-        debug_printf("RX chip FIFO data: ");
-        print_buf(rx_buf, TEST_PACKET_LEN);
+        if (cmt2219b_spi_has_error())
+        {
+            goto receive_failed;
+        }
 
-        // debug_printf("RX chip FIFO data, count=%u: ", rx_count);
-        // print_buf(rx_buf, TEST_PACKET_LEN);
+        accepted = key_press_handle(&next);
+
+        if (accepted && next.STOP_ask)
+        {
+            /* 后面恢复RX即使失败，也不能丢掉已收到的Stop */
+            wireless->STOP_ask = true;
+        }
+
+        cmt2219b_clear_rx_fifo();
+        cmt2219b_clear_interrupt_flags();
+
+        resume_ok = cmt2219b_go_rx();
+
+        if ((resume_ok != CMT2219B_OK) ||
+            cmt2219b_spi_has_error())
+        {
+            goto receive_failed;
+        }
+
+        if (accepted)
+        {
+            *wireless = next;
+            last_valid_ms = now_ms;
+            have_valid_frame = true;
+        }
     }
-    else
+
+    /* 没有新帧时，保留尚未超时的最近有效状态 */
+    if (!have_valid_frame ||
+        ((uint32_t)(now_ms - last_valid_ms) >=
+         CONTROL_RF_TIMEOUT_MS))
     {
-        debug_printf("RX no pkt, FLAG=0x%02X, STA=0x%02X\r\n",
-                     cmt2219b_read_reg(0x6D),  // 中断标志位: bit0=接收完成, bit1=CRC通过
-                     cmt2219b_read_reg(0x61)); // 芯片状态: 0x05=接收模式, 0x02=待机模式
+        wireless_motion_cancel(wireless);
     }
+
+    return;
+
+receive_failed:
+    wireless_motion_cancel(wireless);
+    rx_ok = CMT2219B_ERROR;
+    debug_printf("RX disabled after IO/state error\r\n");
 }

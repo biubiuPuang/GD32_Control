@@ -7,9 +7,14 @@ void cmt2219b_port_init(void)
     rcu_periph_clock_enable(CMT2219B_CSB_RCU);
     rcu_periph_clock_enable(CMT2219B_CLK_RCU);
     rcu_periph_clock_enable(CMT2219B_SDIO_RCU);
-    rcu_periph_clock_enable(CMT2219B_GPIO3_RCU);
     rcu_periph_clock_enable(CMT2219B_SPI_RCU);
 
+    /* 时钟已开启，先预置空闲电平，再配置引脚模式。 */
+    cmt2219b_csb_high();
+    cmt2219b_fcsb_high();
+
+    gpio_bit_reset(CMT2219B_CLK_PORT, CMT2219B_CLK_PIN);
+    gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
     /*
      * FCSB -> PB12，普通 GPIO 输出
      */
@@ -70,13 +75,6 @@ void cmt2219b_port_init(void)
                             GPIO_OSPEED_50MHZ,
                             CMT2219B_SDIO_PIN);
 
-    /*
-     * GPIO3 -> PB10，接收状态输入
-     */
-    gpio_mode_set(CMT2219B_GPIO3_PORT,
-                  GPIO_MODE_INPUT,
-                  GPIO_PUPD_NONE,
-                  CMT2219B_GPIO3_PIN);
 
     /*
      * 初始化默认空闲电平
@@ -138,7 +136,7 @@ void cmt2219b_spi_pins_to_gpio(void)
  *
  * 硬件 SPI 写寄存器和写 FIFO 时使用。
  */
-void cmt2219b_spi_pins_to_spi1(void)
+void cmt2219b_spi_pins_to_spi0(void)
 {
     /*
      * 切换前保证 CLK 为低电平。
@@ -250,11 +248,7 @@ void cmt2219b_sdio_input(void)
                   CMT2219B_SDIO_PIN);
 }
 
-uint8_t cmt2219b_gpio3_read(void)
-{
-    return gpio_input_bit_get(CMT2219B_GPIO3_PORT,
-                              CMT2219B_GPIO3_PIN) ? 1U : 0U;
-}
+
 
 void cmt2219b_delay_us(uint32_t us)
 {

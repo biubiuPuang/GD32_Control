@@ -17,6 +17,7 @@
 #include "bsp_wired.h"
 #include "control.h"
 #include "bsp_wired_execute.h"
+#include "control_time.h"
 
 
 #endif /* __MAIN_H__ */

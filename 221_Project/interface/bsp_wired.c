@@ -4,7 +4,6 @@
 // 初始化有线相关的所有引脚
 void wired_all_gpio_init(void)
 {
-
     /* ---------------急停按钮控制相关的引脚初始化-------------- */
     // PB11 电源控制引脚的初始化 高电平有效(有效=急停)
     stop_gpio_init();
@@ -29,6 +28,9 @@ void wired_all_gpio_init(void)
     /* ---------------上升\下降许可开关引脚初始化-------------- */
     // PB6 上升\下降许可开关引脚的初始化 高电平有效
     up_or_down_permit_init();
+    /* ---------------快速控制引脚初始化-------------- */
+    // PA10快速控制引脚初始化 低电平有效 (有效-吸合 = 快速模式 \ 无效-断开 = 慢速模式)
+    wireless_gpio_init();
 }
 
 /* ---------------急停按钮控制相关的引脚初始化-------------- */
@@ -186,4 +188,20 @@ void quicker_gpio_init(void)
                             GPIO_OTYPE_PP,
                             GPIO_OSPEED_2MHZ,
                             GPIO_PIN_10);
+}
+
+/* ---------------快速控制引脚初始化-------------- */
+// PA10快速控制引脚初始化 低电平有效 (有效-吸合 = 快速模式 \ 无效-断开 = 慢速模式)
+void wireless_gpio_init(void)
+{
+    /* 无线方向请求输出，默认撤销 */
+    rcu_periph_clock_enable(RCU_GPIOB);
+
+    gpio_bit_reset(GPIOB, GPIO_PIN_12 | GPIO_PIN_13);
+
+    gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
+                  GPIO_PIN_12 | GPIO_PIN_13);
+
+    gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_2MHZ,
+                            GPIO_PIN_12 | GPIO_PIN_13);
 }

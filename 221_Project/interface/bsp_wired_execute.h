@@ -13,6 +13,12 @@
 
 extern Arbitrament END_REG;
 
-void wired_order(Arbitrament END_REG);
+/* 现有用户自定义执行函数，需同步重写函数体 */
+bool wired_order(
+    Arbitrament action,
+    bool fast_target,
+    bool probe_busy,
+    uint32_t now_ms
+);
 
 #endif /* __BSP_WIRED_EXECUTE_H__ */

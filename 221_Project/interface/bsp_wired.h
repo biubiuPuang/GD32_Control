@@ -29,5 +29,8 @@ void up_gpio_init(void);
 void quicker_gpio_init(void);
 // PB6 上升\下降许可开关引脚的初始化 高电平有效
 void up_or_down_permit_init(void);
+/* ---------------快速控制引脚初始化-------------- */
+// PA10快速控制引脚初始化 低电平有效 (有效-吸合 = 快速模式 \ 无效-断开 = 慢速模式)
+void wireless_gpio_init(void);
 
 #endif /* __BSP_WIRED_H__ */

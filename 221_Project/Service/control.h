@@ -16,9 +16,10 @@ typedef enum
 /* 请求输出：判断当前的动作请求 */
 typedef struct
 {
-    bool UP_ask;   /* 上升请求 */
-    bool DOWN_ask; /* 下降请求 */
+    bool UP_ask;   /* 上升请求或共用上升反馈 */
+    bool DOWN_ask; /* 下降请求或共用下降反馈 */
     bool STOP_ask; /* 急停请求 */
+    bool FAST_ask; /* 快速请求 */
 } Ask;
 
 /* 仲裁输出：给状态机的"干净命令" */
@@ -32,7 +33,13 @@ typedef enum
 } Arbitrament;
 
 /* 自定义仲裁机制函数 输出干净命令*/
-Model_t model_choose(Ask wired, Ask wireless);
+Model_t model_choose(
+    Ask wired,
+    Ask wireless,
+    uint32_t now_ms,       /* 当前毫秒时间 */
+    bool output_stopped,  /* 软件停止步骤是否完成 */
+    bool *probe_busy      /* 返回：来源检测是否尚未完成 */
+);
 
 // 定义动作许可变量
 Arbitrament arbiter_resolve(Model_t model, Ask wired, Ask wireless);

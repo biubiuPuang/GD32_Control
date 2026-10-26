@@ -24,4 +24,4 @@
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h \
   ..\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h \
   ..\Service\control.h ..\Hardware\common\Debug_printf.h \
-  ..\interface\bsp_wired.h
+  ..\interface\bsp_wired.h ..\Service\control_config.h

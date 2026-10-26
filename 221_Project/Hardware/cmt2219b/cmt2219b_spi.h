@@ -11,4 +11,8 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr);
 void cmt2219b_spi_write_fifo(const uint8_t *buf, uint16_t len);
 void cmt2219b_spi_read_fifo(uint8_t *buf, uint16_t len);
 
+
+void cmt2219b_spi_clear_error(void);
+uint8_t cmt2219b_spi_has_error(void);
+
 #endif

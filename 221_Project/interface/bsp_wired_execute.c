@@ -1,75 +1,159 @@
+/* 建议替换原bsp_wired_execute.c的内容，不把两个同名实现同时加入工程。
+ * 用户自定义执行函数；gpio_bit_set/reset来自GD32官方库。
+ * 正常PB11许可由model_choose管理；这里在Stop时立即发出禁止。
+ * 等待时间来自control_config.h，尚需实际系统确认，未做硬件验证。
+ */
 #include "bsp_wired_execute.h"
+#include "control_config.h"
 
-// 执行对应动作
-void wired_order(Arbitrament END_REG)
+/* 私有执行步骤，记录继电器操作进行到哪里，不增加Model_t工作模式。 */
+typedef enum
 {
-    /* 有关即debug_printf()打印的部分代码 */
-    // 定义一个初始标记为为-1,-1 != 任何状态 除非状态改变否则debug_printf()不会执行
-    // 第一次进来时 last_print 是 -1，跟真实状态（0~4）都不一样，等于也算"状态改变"，所以会打一次。之后状态不变就不打，变了才再打。
-    static Arbitrament last_print = (Arbitrament)-1;
-    uint8_t state_changed = (END_REG != last_print);
-    last_print = END_REG;
-    /* 有关即debug_printf()打印的部分代码 */
+    EXEC_STOP_KM1,
+    EXEC_STOP_RELAYS,
+    EXEC_IDLE,
+    EXEC_PREPARE,
+    EXEC_RUN
+} ExecuteStep;
 
-    switch (END_REG)
+static void execute_relays_release(void)
+{
+    gpio_bit_set(GPIOA, GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10);
+}
+
+static void execute_relays_prepare(Arbitrament direction, bool fast)
+{
+    /* 调用时KM1许可已撤销且旧接法已退出。 */
+    execute_relays_release();
+    if (direction == UP_OK)
     {
-    case UP_OK:
-        /* 执行上升动作 */
-        // 总控制开关(关闭则不会获得信号输入)
-        gpio_bit_reset(GPIOB, GPIO_PIN_11); // 开启
-        // 电机上\下\快速开关(关闭下 即使PA8\9\10继电器吸合也无法驱动电机)
-        gpio_bit_reset(GPIOB, GPIO_PIN_6); // 开启
-        // 上升继电器吸合
         gpio_bit_reset(GPIOA, GPIO_PIN_9);
-        if (state_changed) debug_printf("up model");
-        // 判断快速按键是否按下
-        if (gpio_input_bit_get(GPIOB, GPIO_PIN_5) == 0)
-        {
-            // 进入快速模式
-            gpio_bit_reset(GPIOA, GPIO_PIN_10);
-            if (state_changed) debug_printf("fast up model");
-        }
-        break;
-    case DOWN_OK:
-        /* 执行下降动作 */
-        // 总控制开关(关闭则不会获得信号输入)
-        gpio_bit_reset(GPIOB, GPIO_PIN_11); // 开启
-        // 电机上\下\快速开关(关闭下 即使PA8\9\10继电器吸合也无法驱动电机)
-        gpio_bit_reset(GPIOB, GPIO_PIN_6); // 开启
-        // 下降继电器吸合
-        gpio_bit_reset(GPIOA, GPIO_PIN_8);
-        if (state_changed) debug_printf("dowm model");
-        // 判断快速按键是否按下
-        if (gpio_input_bit_get(GPIOB, GPIO_PIN_5) == 0)
-        {
-            // 进入快速模式
-            gpio_bit_reset(GPIOA, GPIO_PIN_10);
-            if (state_changed) debug_printf("fast dowm model");
-        }
-        break;
-    case IDLE_OK:
-        /* 无动作 */
-        break;
-    case ERROR_OK:
-        /* 动作冲突-不执行任何动作 */
-        // 总控制开关(关闭则不会获得信号输入)
-        gpio_bit_reset(GPIOB, GPIO_PIN_11); // 开启
-        // 电机上\下\快速开关(关闭下 即使PA8\9\10继电器吸合也无法驱动电机)
-        gpio_bit_set(GPIOB, GPIO_PIN_6); // 关闭
-        if (state_changed) debug_printf("error model");
-        break;
-    case STOP_OK:
-        /* 急停(不执行任何动作) */
-        // 初始化有线部分的所有函数
-        wired_all_gpio_init();
-        if (state_changed) debug_printf("stop model");
-        /* 退出急停状态许可的代码:待编写 */
-        /*
-         *
-         *
-         */
-        /* 退出急停状态许可的代码:待编写 */
-
-        break;
     }
+    else
+    {
+        gpio_bit_reset(GPIOA, GPIO_PIN_8);
+    }
+    if (fast)
+    {
+        gpio_bit_reset(GPIOA, GPIO_PIN_10);
+    }
+}
+
+bool wired_order(Arbitrament action, bool fast_target,
+                 bool probe_busy, uint32_t now_ms)
+{
+    static bool initialized = false;
+    static ExecuteStep step = EXEC_STOP_KM1;
+    static uint32_t step_start_ms = 0U;
+    static Arbitrament saved_direction = IDLE_OK;
+    static bool saved_fast = false;
+    bool motion;
+    bool force_stop;
+
+    motion = (action == UP_OK) || (action == DOWN_OK);
+    force_stop = (action == STOP_OK) ||
+                 (!motion && (action != IDLE_OK) && (action != ERROR_OK));
+
+    /* Stop/非法命令先执行禁止，不等待原来的准备/保持步骤。 */
+    if (force_stop)
+    {
+        gpio_bit_set(GPIOB, GPIO_PIN_11 | GPIO_PIN_6);
+        gpio_bit_reset(GPIOB, GPIO_PIN_12 | GPIO_PIN_13);
+    }
+
+    /* 上电第一次同样需要记录一次停止开始时间。 */
+    if (!initialized)
+    {
+        initialized = true;
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        step = EXEC_STOP_KM1;
+        step_start_ms = now_ms;
+    }
+
+    /* 停止已经开始时继续做完，不因下一圈又收到同一命令而重置时间。 */
+    if (step == EXEC_STOP_KM1)
+    {
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        if ((uint32_t)(now_ms - step_start_ms) >= CONTROL_KM1_OFF_MS)
+        {
+            execute_relays_release();
+            step = EXEC_STOP_RELAYS;
+            step_start_ms = now_ms;
+        }
+        return false;
+    }
+    if (step == EXEC_STOP_RELAYS)
+    {
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        if ((uint32_t)(now_ms - step_start_ms) >= CONTROL_RELAY_RELEASE_MS)
+        {
+            step = EXEC_IDLE;
+            saved_direction = IDLE_OK;
+            saved_fast = false;
+            return true;
+        }
+        return false;
+    }
+
+    /* 无方向、冲突、Stop，或探测时方向改变：按正常步骤停止。
+     * 探测期间只允许保留RUN状态下已经建立的同方向输出。
+     */
+    if (force_stop || !motion ||
+        (probe_busy && !((step == EXEC_RUN) && (action == saved_direction))))
+    {
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        if (step == EXEC_IDLE)
+        {
+            execute_relays_release();
+            return true;
+        }
+        step = EXEC_STOP_KM1;
+        step_start_ms = now_ms;
+        return false;
+    }
+
+    if (probe_busy)
+    {
+        /* 不重写已有接法，不根据未确认来源新开FAST。 */
+        return false;
+    }
+
+    if (step == EXEC_RUN)
+    {
+        if ((action == saved_direction) && (fast_target == saved_fast))
+        {
+            return false; /* 目标没变就保持，已确认有线不会周期停机。 */
+        }
+        /* 真正换向/换速时先撤KM1许可，下一圈开始继续停止步骤。 */
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        step = EXEC_STOP_KM1;
+        step_start_ms = now_ms;
+        return false;
+    }
+
+    if (step == EXEC_IDLE)
+    {
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        execute_relays_prepare(action, fast_target);
+        saved_direction = action;
+        saved_fast = fast_target;
+        step = EXEC_PREPARE;
+        step_start_ms = now_ms;
+        return false;
+    }
+
+    /* EXEC_PREPARE：准备途中目标变化也先正常退出，不重新带电切换。 */
+    if ((action != saved_direction) || (fast_target != saved_fast))
+    {
+        gpio_bit_set(GPIOB, GPIO_PIN_6);
+        step = EXEC_STOP_KM1;
+        step_start_ms = now_ms;
+        return false;
+    }
+    if ((uint32_t)(now_ms - step_start_ms) >= CONTROL_RELAY_PREPARE_MS)
+    {
+        gpio_bit_reset(GPIOB, GPIO_PIN_6);
+        step = EXEC_RUN;
+    }
+    return false;
 }

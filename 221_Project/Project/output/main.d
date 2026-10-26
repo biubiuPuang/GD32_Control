@@ -26,7 +26,7 @@
   ..\Hardware\cmt2119b\radio_tx.h ..\Hardware\cmt2219b\radio_rx.h \
   ..\Hardware\cmt2219b\cmt2219b.h App\app_211.h \
   ..\Hardware\common\Debug_printf.h App\app_221.h App\led_test.h \
-  App\app_tx-rx_config.h ..\Hardware\rf_config\rf_config.h \
-  ..\Hardware\cmt2119b\cmt2119b.h App\packet_loss_test.h \
-  ..\interface\bsp_wired.h ..\Service\control.h \
-  ..\interface\bsp_wired_execute.h
+  ..\Service\control.h App\app_tx-rx_config.h \
+  ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
+  App\packet_loss_test.h ..\interface\bsp_wired.h \
+  ..\interface\bsp_wired_execute.h ..\Service\control_time.h

@@ -1,6 +1,46 @@
 #include "cmt2219b_spi.h"
 #include "cmt2219b_port.h"
 
+/* 软件轮询次数上限，不是毫秒数 */
+#define CMT_SPI_POLL_LIMIT 10000U
+
+static uint8_t spi_error = 0U;
+
+/* 新增用户驱动状态接口 */
+void cmt2219b_spi_clear_error(void)
+{
+    spi_error = 0U;
+}
+
+uint8_t cmt2219b_spi_has_error(void)
+{
+    return spi_error;
+}
+
+/* 新增用户私有辅助函数：退出当前片选 */
+static void spi_select_release(void)
+{
+    cmt2219b_csb_high();
+    cmt2219b_fcsb_high();
+}
+
+/* spi_i2s_flag_get是GD32官方库函数 */
+static uint8_t wait_spi_flag(uint32_t flag, FlagStatus expected)
+{
+    uint32_t remaining = CMT_SPI_POLL_LIMIT;
+
+    while (remaining-- != 0U)
+    {
+        if (spi_i2s_flag_get(CMT2219B_SPI_PERIPH, flag) == expected)
+        {
+            return 1U;
+        }
+    }
+
+    spi_error = 1U;
+    return 0U;
+}
+
 static void cmt2219b_spi_delay(void)
 {
     volatile uint32_t n = 20U;
@@ -32,6 +72,8 @@ void cmt2219b_spi_init(void)
 
     cmt2219b_port_init();
 
+    cmt2219b_spi_clear_error();
+
     spi_i2s_deinit(CMT2219B_SPI_PERIPH);
     spi_struct_para_init(&spi_init_struct);
 
@@ -51,9 +93,6 @@ void cmt2219b_spi_init(void)
     * CMT2219B 的寄存器读写单位为 8 bit，
     * 所以 SPI1 的 SPI_DATA / FIFO 必须采用字节访问。
     */
-    spi_fifo_access_size_config(CMT2219B_SPI_PERIPH,
-                                SPI_BYTE_ACCESS);
-
     spi_enable(CMT2219B_SPI_PERIPH);                       
 
     cmt2219b_csb_high();
@@ -63,23 +102,16 @@ void cmt2219b_spi_init(void)
 /*
  * 使用 SPI1 硬件发送一个字节。
  */
-static void cmt2219b_spi_send_byte(uint8_t data)
+static uint8_t cmt2219b_spi_send_byte(uint8_t data)
 {
-    /*
-     * 等待发送缓冲区为空。
-     */
-    while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
-                             SPI_FLAG_TBE) == RESET) {
+    if (spi_error || !wait_spi_flag(SPI_FLAG_TBE, SET))
+    {
+        return 0U;
     }
 
     spi_i2s_data_transmit(CMT2219B_SPI_PERIPH, data);
 
-    /*
-     * 等待当前字节真正发送完成。
-     */
-    while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
-                             SPI_FLAG_TRANS) != RESET) {
-    }
+    return wait_spi_flag(SPI_FLAG_TRANS, RESET);
 }
 
 /*
@@ -165,12 +197,12 @@ void cmt2219b_spi_write_reg(uint8_t addr, uint8_t dat)
      */
     cmt2219b_delay_us(1U);
 
-    /*
-     * bit7 = 0 表示写寄存器。
-     */
-    cmt2219b_spi_send_byte(addr & 0x7FU);
-    cmt2219b_spi_send_byte(dat);
-
+    if (!cmt2219b_spi_send_byte(addr & 0x7FU) ||
+    !cmt2219b_spi_send_byte(dat))
+    {
+        spi_select_release();
+        return;
+    }
     /*
      * 最后一个 SCLK 结束后再释放 CSB。
      */
@@ -189,20 +221,16 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr)
     uint8_t dat;
     uint32_t primask;
 
-    /*
-     * 保存中断状态，并暂时关闭中断。
-     *
-     * 读取期间必须保证 GPIO 模拟时序不被中断打断。
-     */
+    /* 等待硬件发送结束时，保持中断可用。 */
+    if (spi_error || !wait_spi_flag(SPI_FLAG_TRANS, RESET))
+    {
+        spi_select_release();
+        return 0U;
+    }
+
+    /* 接下来保护GPIO模拟读取的时序。 */
     primask = __get_PRIMASK();
     __disable_irq();
-
-    /*
-     * 确保前一笔 SPI1 硬件发送已经结束。
-     */
-    while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
-                             SPI_FLAG_TRANS) != RESET) {
-    }
 
     /*
      * 停止 SPI1，准备由 GPIO 接管 PB13/PB15。
@@ -245,7 +273,7 @@ uint8_t cmt2219b_spi_read_reg(uint8_t addr)
     /*
      * 恢复 PB13/PB15 的 SPI1 复用功能。
      */
-    cmt2219b_spi_pins_to_spi1();
+    cmt2219b_spi_pins_to_spi0();
     spi_enable(CMT2219B_SPI_PERIPH);
 
     /*
@@ -278,7 +306,11 @@ void cmt2219b_spi_write_fifo(const uint8_t *buf, uint16_t len)
         cmt2219b_fcsb_low();
         cmt2219b_delay_us(1U);
 
-        cmt2219b_spi_send_byte(buf[i]);
+        if (!cmt2219b_spi_send_byte(buf[i]))
+        {
+            spi_select_release();
+            return;
+        }
 
         /*
          * 最后一个 SCLK 下降沿后，
@@ -307,71 +339,55 @@ void cmt2219b_spi_read_fifo(uint8_t *buf, uint16_t len)
     uint16_t i;
     uint32_t primask;
 
-    if ((buf == 0) || (len == 0U)) {
+    if ((buf == 0) || (len == 0U))
+    {
         return;
     }
 
-    primask = __get_PRIMASK();
-    __disable_irq();
-
-    /*
-     * 确保前一笔 SPI1 硬件发送已经完成。
-     */
-    while (spi_i2s_flag_get(CMT2219B_SPI_PERIPH,
-                             SPI_FLAG_TRANS) != RESET) {
+    /* 等待发送结束；失败就退出，不能无限等待。 */
+    if (spi_error || !wait_spi_flag(SPI_FLAG_TRANS, RESET))
+    {
+        spi_select_release();
+        return;
     }
 
-    /*
-     * SPI1 暂停，由 GPIO 接管 PB13/PB15。
-     */
+    /* 保存原来的中断状态。 */
+    primask = __get_PRIMASK();
+
+    /* 暂停硬件SPI，改用GPIO读取。 */
     spi_disable(CMT2219B_SPI_PERIPH);
     cmt2219b_spi_pins_to_gpio();
 
     cmt2219b_csb_high();
     cmt2219b_fcsb_high();
     cmt2219b_clk_low();
-
-    /*
-     * FIFO 读取时，SDIO 直接作为输入。
-     */
     cmt2219b_sdio_input();
 
-    for (i = 0U; i < len; i++) {
-        /*
-         * 每个 FIFO 字节单独拉低 FCSB。
-         */
-        cmt2219b_fcsb_low();
+    for (i = 0U; i < len; i++)
+    {
+        /* 只保护当前这个字节的读取时序。 */
+        __disable_irq();
 
-        /*
-         * FCSB 低到第一个 SCLK 上升沿前，
-         * 至少保持一个 SCLK 周期。
-         */
+        cmt2219b_fcsb_low();
         cmt2219b_delay_us(1U);
 
         buf[i] = cmt2219b_gpio_recv_byte();
 
-        /*
-         * 最后一个 SCLK 下降沿后，
-         * FCSB 继续保持低电平至少 2 us。
-         */
         cmt2219b_delay_us(2U);
-
         cmt2219b_fcsb_high();
 
-        /*
-         * 两次 FIFO 读取之间，
-         * FCSB 至少保持高电平 4 us。
-         */
+        /* 字节读完后恢复中断。 */
+        __set_PRIMASK(primask);
+
+        /* 字节间隙允许计时、串口中断执行。 */
         cmt2219b_delay_us(4U);
     }
 
     cmt2219b_fcsb_high();
     cmt2219b_csb_high();
 
-    /*
-     * 恢复 SPI1 硬件功能。
-     */
-    cmt2219b_spi_pins_to_spi1();
+    /* 恢复当前硬件使用的SPI0。 */
+    cmt2219b_spi_pins_to_spi0();
     spi_enable(CMT2219B_SPI_PERIPH);
 
     __set_PRIMASK(primask);
