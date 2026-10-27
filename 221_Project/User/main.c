@@ -107,6 +107,12 @@ int main(void)
     // 无线接收芯片初始化
     app_221_init();
 
+    // 接收芯片默认初始化配置
+    if (!rf_uart_config_restore())
+    {
+        rf_test_apply_config();
+    }
+
     while (1)
     {
         // 第1步：接收无线数据 把收到的请求填入wireless,没有新数据就返回，不能停在这里等待
@@ -174,6 +180,9 @@ int main(void)
 
         /* 第8步：持续打印调试信息 */
         control_debug_print();
+
+        // 无线221接收芯片串口配置,成功就回显,失败则发送error
+        rf_uart_config_process();
     }
 }
 
@@ -235,90 +244,3 @@ int main(void)
 //     }
 // }
 // /* =======================原项目的无线main函数代码============================= */
-
-// /* =======================WorkBuddy给出的状态机思路============================= */
-
-// /* ===== control/arbiter/arbiter.h ===== */
-// #include <stdint.h>
-// #include <stdbool.h>
-
-// /* 无线端解码出来的原始意图（协议层给的） */
-// typedef struct
-// {
-//     bool valid; /* 帧是否合法（CRC/超时由协议层判） */
-//     bool up;
-//     bool down;
-//     bool fast;  /* V1 阶段无线 FAST 禁用 */
-//     bool estop; /* 无线急停 */
-// } RemoteIntent;
-
-// /* 板子上能看到的输入（PB3/4/5 采样结果） */
-// typedef struct
-// {
-//     bool lift_active;  /* PB3：上限位回路有电 */
-//     bool lower_active; /* PB4：下限位回路有电 */
-//     bool wired_fast;   /* PB5：有线快速键 */
-// } ObservedInputs;
-
-// /* 监督层给的许可结论 */
-// typedef struct
-// {
-//     bool permit_ok; /* false = 失联/故障/急停，全部清零 */
-// } PermitDecision;
-
-// /* 仲裁输出：给状态机的"干净命令" */
-// typedef enum
-// {
-//     ARB_OK = 0,
-//     ARB_CONFLICT,    /* UP+DN 同帧 */
-//     ARB_NO_PERMIT,   /* 无许可 */
-//     ARB_FAST_BLOCKED /* 无线 FAST 被禁用 */
-// } ArbResult;
-
-// typedef struct
-// {
-//     bool radio_up;
-//     bool radio_down;
-//     bool radio_fast; /* V1 恒为 0 */
-//     bool permit_req; /* 是否需要拉低 PB11 申请运行 */
-// } EffectiveRequest;
-
-// /* ===== control/arbiter/arbiter.c ===== */
-
-// /* 用户自定义函数：仲裁核心，纯函数，不读硬件不写寄存器 */
-// ArbResult arbiter_resolve(const RemoteIntent *it,
-//                           const ObservedInputs *in,
-//                           const PermitDecision *pm,
-//                           EffectiveRequest *out)
-// {
-//     /* 默认全清零 = 什么都不动（安全默认） */
-//     out->radio_up = false;
-//     out->radio_down = false;
-//     out->radio_fast = false;
-//     out->permit_req = false;
-//     (void)in;
-
-//     /* 规则1：无线急停或无许可 → 全清零 */
-//     if (it->estop || !pm->permit_ok || !it->valid)
-//         return ARB_NO_PERMIT;
-
-//     /* 规则2：UP+DN 同帧 → 双向清零，报冲突 */
-//     if (it->up && it->down)
-//         return ARB_CONFLICT;
-
-//     /* 规则3：FAST 单独有效 → 不许动（快速不能独立产生运动） */
-//     if (it->fast && !it->up && !it->down)
-//         return ARB_OK; /* 无命令，但不算故障 */
-
-//     /* 规则4：V1 无线 FAST 一律禁用 */
-//     if (it->fast)
-//         return ARB_FAST_BLOCKED;
-
-//     /* 规则5：合法单方向 → 放行 */
-//     out->radio_up = it->up;
-//     out->radio_down = it->down;
-//     out->permit_req = true; /* 通知输出层：这次要拉低 PB11 */
-//     return ARB_OK;
-// }
-
-// /* =======================WorkBuddy给出的状态机思路============================= */

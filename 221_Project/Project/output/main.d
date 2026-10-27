@@ -34,4 +34,8 @@
   D:\_Keil5\ARM\ARMCLANG\include\stdbool.h App\app_tx-rx_config.h \
   ..\Hardware\rf_config\rf_config.h ..\Hardware\cmt2119b\cmt2119b.h \
   App\packet_loss_test.h ..\interface\bsp_wired.h \
-  ..\interface\bsp_wired_execute.h ..\Service\control_time.h
+  ..\interface\bsp_wired_execute.h ..\Service\control_time.h \
+  ..\Hardware\rf_config\rf_uart_set_config.h \
+  ..\Hardware\rf_config\rf_apply.h \
+  D:\_Keil5\ARM\ARMCLANG\include\stddef.h \
+  D:\_Keil5\ARM\ARMCLANG\include\string.h

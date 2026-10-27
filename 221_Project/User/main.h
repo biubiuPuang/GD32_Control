@@ -20,6 +20,8 @@
 #include "control_time.h"
 #include "main.h"
 #include "Debug_printf.h"
+#include "rf_uart_set_config.h"
+
 
 
 #endif /* __MAIN_H__ */
