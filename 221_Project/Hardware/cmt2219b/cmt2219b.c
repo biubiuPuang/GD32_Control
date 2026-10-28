@@ -105,29 +105,14 @@ static uint8_t cmt2219b_get_chip_status(void)
 
 static uint8_t cmt2219b_auto_switch_status(uint8_t cmd, uint8_t wait_status)
 {
-     uint8_t i;
-    uint8_t status;
+    uint8_t i;
 
     cmt2219b_write_reg(CMT2219B_CUS_MODE_CTL, cmd);
 
-    if (cmt2219b_spi_has_error())
-    {
-        return CMT2219B_ERROR;
-    }
+    for (i = 0; i < 100; i++) {
+        cmt2219b_delay_us(100);
 
-    for (i = 0U; i < 100U; i++)
-    {
-        cmt2219b_delay_us(100U);
-
-        status = cmt2219b_get_chip_status();
-
-        if (cmt2219b_spi_has_error())
-        {
-            return CMT2219B_ERROR;
-        }
-
-        if (status == wait_status)
-        {
+        if (cmt2219b_get_chip_status() == wait_status) {
             return CMT2219B_OK;
         }
     }
@@ -258,10 +243,7 @@ uint8_t cmt2219b_init(void)
     /*
      * 配置完成后进入 Sleep，使配置生效。
      */
-    if (cmt2219b_go_sleep() != CMT2219B_OK)
-    {
-        return CMT2219B_ERROR;
-    }
+    cmt2219b_go_sleep();
 
     return CMT2219B_OK;
 }

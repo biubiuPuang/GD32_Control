@@ -16,7 +16,7 @@ void cmt2219b_port_init(void)
     gpio_bit_reset(CMT2219B_CLK_PORT, CMT2219B_CLK_PIN);
     gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
     /*
-     * FCSB -> PB12，普通 GPIO 输出
+     * FCSB -> PB0，普通 GPIO 输出
      */
     gpio_mode_set(CMT2219B_FCSB_PORT,
                   GPIO_MODE_OUTPUT,
@@ -29,7 +29,7 @@ void cmt2219b_port_init(void)
                             CMT2219B_FCSB_PIN);
 
     /*
-     * CSB -> PB14，普通 GPIO 输出
+     * CSB -> PA4，普通 GPIO 输出
      */
     gpio_mode_set(CMT2219B_CSB_PORT,
                   GPIO_MODE_OUTPUT,
@@ -42,7 +42,7 @@ void cmt2219b_port_init(void)
                             CMT2219B_CSB_PIN);
 
     /*
-     * CLK -> PB13 -> SPI1_SCK
+     * CLK -> PA5 -> SPI0_SCK
      */
     gpio_af_set(CMT2219B_CLK_PORT,
                 CMT2219B_SPI_AF,
@@ -59,7 +59,7 @@ void cmt2219b_port_init(void)
                             CMT2219B_CLK_PIN);
 
     /*
-     * SDIO -> PB15 -> SPI1_MOSI / 单线双向数据
+     * SDIO -> PA7 -> SPI0_MOSI / 单线双向数据
      */
     gpio_af_set(CMT2219B_SDIO_PORT,
                 CMT2219B_SPI_AF,
@@ -90,7 +90,7 @@ void cmt2219b_port_init(void)
 }
 
 /*
- * 将 PB13、PB15 从 SPI1 复用功能切换为普通 GPIO。
+ * 将 PA5、PA7 从 SPI0 复用功能切换为普通 GPIO。
  *
  * 221 读取寄存器和读取 FIFO 时使用。
  */
@@ -104,7 +104,7 @@ void cmt2219b_spi_pins_to_gpio(void)
     gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
 
     /*
-     * PB13 -> 普通 GPIO 输出，模拟 CLK。
+     * PA5 -> 普通 GPIO 输出，模拟 CLK。
      */
     gpio_mode_set(CMT2219B_CLK_PORT,
                   GPIO_MODE_OUTPUT,
@@ -117,7 +117,7 @@ void cmt2219b_spi_pins_to_gpio(void)
                             CMT2219B_CLK_PIN);
 
     /*
-     * PB15 -> 普通 GPIO 输出。
+     * PA7 -> 普通 GPIO 输出。
      * 读取数据之前再切换为输入。
      */
     gpio_mode_set(CMT2219B_SDIO_PORT,
@@ -132,7 +132,7 @@ void cmt2219b_spi_pins_to_gpio(void)
 }
 
 /*
- * 将 PB13、PB15 恢复为 SPI1 复用功能。
+ * 将 PA5、PA7 恢复为 SPI0 复用功能。
  *
  * 硬件 SPI 写寄存器和写 FIFO 时使用。
  */
@@ -145,7 +145,7 @@ void cmt2219b_spi_pins_to_spi0(void)
     gpio_bit_set(CMT2219B_SDIO_PORT, CMT2219B_SDIO_PIN);
 
     /*
-     * 恢复 PB15 -> SPI1_MOSI / SDIO。
+     * 恢复 PA7 -> SPI0_MOSI / SDIO。
      */
     gpio_af_set(CMT2219B_SDIO_PORT,
                 CMT2219B_SPI_AF,
@@ -162,7 +162,7 @@ void cmt2219b_spi_pins_to_spi0(void)
                             CMT2219B_SDIO_PIN);
 
     /*
-     * 恢复 PB13 -> SPI1_SCK。
+     * 恢复 PA5 -> SPI0_SCK。
      *
      * 先恢复 SDIO，再恢复 CLK，避免切换时产生错误时钟。
      */

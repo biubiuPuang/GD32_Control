@@ -18,10 +18,7 @@ uint8_t radio_rx_init(void)
     }
 
     // 此函数下面的这些部分都是手动快速调频相关 
-    if (cmt2219b_go_stby() != CMT2219B_OK)
-    {
-        return CMT2219B_ERROR;
-    }
+    cmt2219b_go_stby();
 
     cmt2219b_set_frequency_step(RADIO_FH_STEP_100KHZ);
     cmt2219b_set_frequency_channel(RADIO_FH_DEFAULT_CHANNEL);

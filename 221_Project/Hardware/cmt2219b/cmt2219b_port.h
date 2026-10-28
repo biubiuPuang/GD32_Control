@@ -39,7 +39,7 @@
 void cmt2219b_port_init(void);
 
 /*
- * SPI1 硬件功能和 GPIO 模拟 SPI 之间切换。
+ * SPI0 硬件功能和 GPIO 模拟 SPI 之间切换。
  */
 void cmt2219b_spi_pins_to_gpio(void);
 void cmt2219b_spi_pins_to_spi0(void);
